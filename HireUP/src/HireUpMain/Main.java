@@ -458,7 +458,6 @@ public class Main {
 
                                         }
                                         System.out.println("/////////////////////////////");
-
                                         break;
                                 }
 
@@ -499,6 +498,7 @@ public class Main {
                                 Scanner sc29 = new Scanner(System.in);
                                 int selct = sc29.nextInt();
                                 System.out.println("///////////////////////////////");
+
                                 switch (selct) {
                                     case 1:
                                         System.out.println("************     View Interface.User Information    ************");
@@ -612,7 +612,6 @@ public class Main {
 
                 Scanner sc38 = new Scanner(System.in);
                 int roleValue = sc38.nextInt();
-
                 System.out.println("///////////////////////////");
 
                 switch (roleValue) {
@@ -784,7 +783,9 @@ public class Main {
                                 System.out.println("Exit ");
                         }
 
+
                         System.out.println("/////////////////");
+
                     case 3:
                         System.out.println("**    Admin      **");
                         System.out.println("1.Register");
@@ -801,8 +802,8 @@ public class Main {
                                 System.out.println("Go Back");
                                 break;
                         }
-
                         System.out.println("///////////////////////////////////////////////////////");
+
 
                 }
             default:
