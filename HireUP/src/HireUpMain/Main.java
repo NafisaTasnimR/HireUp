@@ -1,3 +1,4 @@
+
 package HireUpMain;
 
 import java.sql.SQLOutput;
@@ -230,7 +231,7 @@ public class Main {
                                         break;
                                 }
 
-          }
+                            }
                         } else if (Objects.equals(role, "Job Provider") || Objects.equals(role, "job provider")) {
                             //file checking function where pass and email is going to be checked
                             //function returns false then
@@ -461,7 +462,7 @@ public class Main {
                                         System.out.println("///////////////////////////////");
                                         break;
                                 }
-                                System.out.println("///////////////////////////////");                                      
+                                System.out.println("///////////////////////////////");
 
                             }
                         } else if (Objects.equals(role, "Admin") || Objects.equals(role, "admin")) {
@@ -471,7 +472,7 @@ public class Main {
 
                             Scanner sc28 = new Scanner(System.in);
                             int value = sc28.nextInt();
-                          
+
                             System.out.println("//////////////////////////////////");
 
                             if (value == 1) {
@@ -596,7 +597,7 @@ public class Main {
 
                 System.out.println("////////////////////////////////////////////////////////////");
 
-                
+
                 break;
             case 2:
                 System.out.println("You choose :SignUp");
@@ -620,7 +621,7 @@ public class Main {
                 Scanner sc38 = new Scanner(System.in);
                 int roleValue = sc38.nextInt();
 
-                
+
                 System.out.println("///////////////////////////");
 
                 switch (roleValue) {
@@ -669,7 +670,7 @@ public class Main {
                         Scanner sc48 = new Scanner(System.in);
                         String nationalID = sc48.nextLine();
 
-                        
+
                         System.out.println(" EDUCATIONAL INFORMATION ");
 
                         System.out.println("School Name: ");
@@ -730,7 +731,7 @@ public class Main {
                         Scanner sc62 = new Scanner(System.in);
                         String skills = sc62.nextLine();
 
-                       
+
 
                         System.out.println("1. Finish Registration ");
                         System.out.println("2. Go Back ");
@@ -791,7 +792,7 @@ public class Main {
                             case 3:
                                 System.out.println("Exit ");
                         }
-                   
+
 
                         System.out.println("/////////////////");
 
