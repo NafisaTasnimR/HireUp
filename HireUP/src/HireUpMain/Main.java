@@ -1,5 +1,6 @@
 package HireUpMain;
 
+import java.sql.SQLOutput;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -14,6 +15,7 @@ public class Main {
         System.out.println("Enter your selection:");
         Scanner sc = new Scanner(System.in);
         int caseValue = sc.nextInt();
+        System.out.println("//////////////////////////////");
         switch (caseValue) {
             case 1:
                 System.out.println("You choose :Login");
@@ -52,6 +54,7 @@ public class Main {
                             System.out.println("If you give 1 then you'll see the error page to see other page give input any number except 1.");
                             Scanner sc6 = new Scanner(System.in);
                             int value = sc6.nextInt();
+                            System.out.println("//////////////////////////////////");
                             if (value == 1) {
                                 System.out.println("Error! Incorrect username or password.");
                                 System.out.println("1.Go back");
@@ -75,6 +78,7 @@ public class Main {
                                 System.out.println("Enter your selection");
                                 Scanner sc8 = new Scanner(System.in);
                                 int selection1 = sc8.nextInt();
+                                System.out.println("/////////////////////////////////////");
                                 switch (selection1) {
                                     case 1:
                                         System.out.println("Search job");
@@ -146,6 +150,7 @@ public class Main {
                                                 break;
 
                                         }
+                                        System.out.println("//////////////////////////////////");
                                     case 2:
                                         System.out.println("Job information");
                                         System.out.println("****************    Job Information    **************");
@@ -173,6 +178,7 @@ public class Main {
                                                 System.out.println("Exit");
                                                 break;
                                         }
+
 
                                         System.out.println("////////////////////////////////////////////////////////////\n");
 
@@ -204,7 +210,7 @@ public class Main {
                                                     System.out.println(" Exit ");
                                                     break;
                                             }
-                                            System.out.println("////////////////////////////////////////////////////////////");
+                                            System.out.println("/////////////////////////////");
                                         }
                                         //after that
                                         System.out.println("1.Go Back");
@@ -220,18 +226,18 @@ public class Main {
                                                 System.out.println(" Exit ");
                                                 break;
                                         }
-                                        System.out.println("////////////////////////////////////////////////////////////");
+                                        System.out.println("////////////////////////////////");
                                         break;
                                 }
 
-                                System.out.println("///////////////////////////////////////////////////////////");
-                            }
+          }
                         } else if (Objects.equals(role, "Job Provider") || Objects.equals(role, "job provider")) {
                             //file checking function where pass and email is going to be checked
                             //function returns false then
                             System.out.println("If you give 1 then you'll see the error page to see other page give input any number except 1.");
                             Scanner sc14 = new Scanner(System.in);
                             int value = sc14.nextInt();
+                            System.out.println("////////////////////////////");
                             if (value == 1) {
                                 System.out.println("Error! Incorrect username or password.");
                                 System.out.println("1.Go back");
@@ -257,7 +263,7 @@ public class Main {
                                 System.out.println("Enter your selection: ");
                                 Scanner sc16 = new Scanner(System.in);
                                 int selectionForProvider = sc16.nextInt();
-                                System.out.println("////////////////////////////////////////////////////////////");
+                                System.out.println("////////////////////////////////////////");
                                 switch (selectionForProvider) {
                                     case 1:
                                         System.out.println("Post Job Circular");
@@ -305,7 +311,7 @@ public class Main {
                                                 System.out.println("Goodbye!");
                                                 break;
                                         }
-                                        System.out.println("/////////////////////////////////");
+                                        System.out.println("");
                                         break;
                                     case 2:
                                         System.out.println("See Applicant List");
@@ -318,6 +324,7 @@ public class Main {
                                             System.out.println("*********   Applicants Personal Information   ********");
                                             System.out.println("PERSONAL INFORMATION");
                                             System.out.println("Name: ");
+
 
 
                                             System.out.println("Father's Name: ");
@@ -342,7 +349,6 @@ public class Main {
 
 
                                             System.out.println("National ID: ");
-
 
                                             System.out.println(" EDUCATIONAL INFORMATION ");
 
@@ -388,7 +394,6 @@ public class Main {
 
                                             System.out.println("Skills: ");
 
-
                                             System.out.println("1. Select ");
                                             System.out.println("2. Reject ");
                                             System.out.println("3. Go Back ");
@@ -411,12 +416,13 @@ public class Main {
                                                     break;
 
                                             }
-                                            System.out.println("/////////////////////////////////");
+                                            System.out.println("");
                                         }
 
                                         System.out.println("1. Go back");
                                         System.out.println("2. Exit");
                                         System.out.println("Enter your selection: ");
+
                                         Scanner sc26 = new Scanner(System.in);
                                         String selection2 = sc26.nextLine();
 
@@ -431,7 +437,7 @@ public class Main {
                                                 System.out.println("Job Applicant Details");
                                                 break;
                                         }
-                                        System.out.println("/////////////////////////////////");
+                                        System.out.println("");
                                         break;
                                     case 3:
                                         System.out.println("See Short List");
@@ -455,15 +461,19 @@ public class Main {
                                         System.out.println("///////////////////////////////");
                                         break;
                                 }
-                                System.out.println("///////////////////////////////");
+                                System.out.println("///////////////////////////////");                                      
 
                             }
                         } else if (Objects.equals(role, "Admin") || Objects.equals(role, "admin")) {
                             //file checking function where pass and email is going to be checked
                             //function returns false then
                             System.out.println("If you give 1 then you'll see the error page to see other page give input any number except 1.");
+
                             Scanner sc28 = new Scanner(System.in);
                             int value = sc28.nextInt();
+                          
+                            System.out.println("//////////////////////////////////");
+
                             if (value == 1) {
                                 System.out.println("Error! Incorrect username or password.");
                                 System.out.println("1.Go back");
@@ -478,15 +488,19 @@ public class Main {
                                         System.out.println("Goodbye!");
                                         break;
                                 }
-                                System.out.println("/////////////////////////////////////");
+                                System.out.println("");
                             } else {
                                 System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\     Admin    " +
                                         "  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
                                 System.out.println("1.View Interface.User Information" + '\n' +
                                         "2.Go back" + '\n' + "3.Exit" + '\n' +
                                         "Enter your selection: ");
+
                                 Scanner sc29 = new Scanner(System.in);
                                 int selct = sc29.nextInt();
+
+                                System.out.println("///////////////////////////////");
+
                                 switch (selct) {
                                     case 1:
                                         System.out.println("************     View Interface.User Information    ************");
@@ -506,6 +520,7 @@ public class Main {
                                                 if (a == 1) {
                                                     System.out.println("***************     Verification      *****************");
                                                     System.out.println("Company Name:");
+
                                                     Scanner sc31 = new Scanner(System.in);
                                                     String companyName = sc31.nextLine();
 
@@ -534,6 +549,7 @@ public class Main {
                                                             System.out.println("Exit");
                                                             break;
                                                     }
+
                                                     System.out.println("/////////////////////////////");
 
                                                 }
@@ -551,7 +567,9 @@ public class Main {
                                                         break;
 
                                                 }
+
                                                 System.out.println("///////////////////////////////");
+
 
                                                 break;
                                             case "2":
@@ -562,7 +580,7 @@ public class Main {
                                                 break;
 
                                         }
-                                        System.out.println("///////////////////////////////");
+                                        System.out.println("");
                                 }
                             }
                         } else {
@@ -575,7 +593,10 @@ public class Main {
 
                 }
 
+
                 System.out.println("////////////////////////////////////////////////////////////");
+
+                
                 break;
             case 2:
                 System.out.println("You choose :SignUp");
@@ -595,15 +616,20 @@ public class Main {
                 System.out.println("2.Job Provider");
                 System.out.println("3.Admin");
                 System.out.println("Enter your role: ");
+
                 Scanner sc38 = new Scanner(System.in);
                 int roleValue = sc38.nextInt();
+
+                
+                System.out.println("///////////////////////////");
+
                 switch (roleValue) {
                     case 1:
-                        System.out.println("////////////////////////////////////////////////////////////");
                         System.out.println("****************    Applicant      *****************");
 
                         System.out.println("PERSONAL INFORMATION");
                         System.out.println("Name: ");
+
                         Scanner sc39 = new Scanner(System.in);
                         name = sc39.nextLine();
 
@@ -643,9 +669,11 @@ public class Main {
                         Scanner sc48 = new Scanner(System.in);
                         String nationalID = sc48.nextLine();
 
+                        
                         System.out.println(" EDUCATIONAL INFORMATION ");
 
                         System.out.println("School Name: ");
+
                         Scanner sc49 = new Scanner(System.in);
                         String schoolName = sc49.nextLine();
 
@@ -702,6 +730,7 @@ public class Main {
                         Scanner sc62 = new Scanner(System.in);
                         String skills = sc62.nextLine();
 
+                       
 
                         System.out.println("1. Finish Registration ");
                         System.out.println("2. Go Back ");
@@ -738,7 +767,7 @@ public class Main {
                                 break;
 
                         }
-                        System.out.println("/////////////////////////////////");
+                        System.out.println("//////////////////////////////");
                         System.out.println("You choose :Exit");
                         break;
                     case 2:
@@ -762,8 +791,10 @@ public class Main {
                             case 3:
                                 System.out.println("Exit ");
                         }
+                   
 
-                        System.out.println("//////////////////////////////////////////////////////////");
+                        System.out.println("/////////////////");
+
                     case 3:
                         System.out.println("**    Admin      **");
                         System.out.println("1.Register");
@@ -780,14 +811,13 @@ public class Main {
                                 System.out.println("Go Back");
                                 break;
                         }
+
                         System.out.println("////////////////////////////////////////////////////////////");
 
                 }
             default:
                 System.out.println("Invalid entry!");
         }
-
-
         System.out.println("////////////////////////////////////////////////////////////");
     }
 }
