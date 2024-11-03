@@ -179,10 +179,7 @@ public class Main {
                                                 System.out.println("Exit");
                                                 break;
                                         }
-
-
-                                        System.out.println("////////////////////////////////////////////////////////////\n");
-
+                                        System.out.println("/////////////////////////////////////");
 
                                         break;
                                     case 3:
@@ -227,7 +224,7 @@ public class Main {
                                                 System.out.println(" Exit ");
                                                 break;
                                         }
-                                        System.out.println("////////////////////////////////");
+                                        System.out.println("/////////////////////");
                                         break;
                                 }
 
@@ -312,7 +309,7 @@ public class Main {
                                                 System.out.println("Goodbye!");
                                                 break;
                                         }
-                                        System.out.println("");
+                                        System.out.println("/////////////////////////////////");
                                         break;
                                     case 2:
                                         System.out.println("See Applicant List");
@@ -417,7 +414,8 @@ public class Main {
                                                     break;
 
                                             }
-                                            System.out.println("");
+                                            System.out.println("///////////////////////");
+
                                         }
 
                                         System.out.println("1. Go back");
@@ -438,7 +436,8 @@ public class Main {
                                                 System.out.println("Job Applicant Details");
                                                 break;
                                         }
-                                        System.out.println("");
+                                        System.out.println("///////////////////////////////");
+
                                         break;
                                     case 3:
                                         System.out.println("See Short List");
@@ -458,11 +457,9 @@ public class Main {
                                                 break;
 
                                         }
-
-                                        System.out.println("///////////////////////////////");
+                                        System.out.println("/////////////////////////////");
                                         break;
                                 }
-                                System.out.println("///////////////////////////////");
 
                             }
                         } else if (Objects.equals(role, "Admin") || Objects.equals(role, "admin")) {
@@ -489,7 +486,8 @@ public class Main {
                                         System.out.println("Goodbye!");
                                         break;
                                 }
-                                System.out.println("");
+                                System.out.println("////////////////////////////////");
+
                             } else {
                                 System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\     Admin    " +
                                         "  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
@@ -499,7 +497,6 @@ public class Main {
 
                                 Scanner sc29 = new Scanner(System.in);
                                 int selct = sc29.nextInt();
-
                                 System.out.println("///////////////////////////////");
 
                                 switch (selct) {
@@ -511,6 +508,7 @@ public class Main {
                                         System.out.println("Enter your selection: ");
                                         Scanner sc30 = new Scanner(System.in);
                                         String selection6 = sc30.nextLine();
+                                        System.out.println("//////////////////////");
                                         switch (selection6) {
                                             case "1":
                                                 System.out.println("Job Provider");
@@ -550,8 +548,7 @@ public class Main {
                                                             System.out.println("Exit");
                                                             break;
                                                     }
-
-                                                    System.out.println("/////////////////////////////");
+                                                    System.out.println("////////////////////");
 
                                                 }
                                                 System.out.println("1. Go Back");
@@ -568,8 +565,7 @@ public class Main {
                                                         break;
 
                                                 }
-
-                                                System.out.println("///////////////////////////////");
+                                                System.out.println("//////////////////////");
 
 
                                                 break;
@@ -581,7 +577,7 @@ public class Main {
                                                 break;
 
                                         }
-                                        System.out.println("");
+
                                 }
                             }
                         } else {
@@ -593,10 +589,6 @@ public class Main {
                         break;
 
                 }
-
-
-                System.out.println("////////////////////////////////////////////////////////////");
-
 
                 break;
             case 2:
@@ -620,8 +612,6 @@ public class Main {
 
                 Scanner sc38 = new Scanner(System.in);
                 int roleValue = sc38.nextInt();
-
-
                 System.out.println("///////////////////////////");
 
                 switch (roleValue) {
@@ -812,13 +802,13 @@ public class Main {
                                 System.out.println("Go Back");
                                 break;
                         }
+                        System.out.println("///////////////////////////////////////////////////////");
 
-                        System.out.println("////////////////////////////////////////////////////////////");
 
                 }
             default:
                 System.out.println("Invalid entry!");
         }
-        System.out.println("////////////////////////////////////////////////////////////");
+
     }
 }
