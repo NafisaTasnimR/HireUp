@@ -16,14 +16,13 @@ public class Main {
         System.out.println("Enter your selection:");
         Scanner sc = new Scanner(System.in);
         int caseValue = sc.nextInt();
-        System.out.println("//////////////////////////////");
+        System.out.println("//////////////////////////////////////////////");
         switch (caseValue) {
             case 1:
                 System.out.println("You choose :Login");
-                System.out.println("\\\\\\\\\\\\\\\\ Login \\\\\\\\\\\\\\\\");
+                System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ Login \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
                 System.out.println("Enter your ");
-
-                System.out.println("Interface.User name:");
+                System.out.println("User name:");
                 Scanner sc1 = new Scanner(System.in);
                 String user = sc1.nextLine();
 
@@ -55,7 +54,7 @@ public class Main {
                             System.out.println("If you give 1 then you'll see the error page to see other page give input any number except 1.");
                             Scanner sc6 = new Scanner(System.in);
                             int value = sc6.nextInt();
-                            System.out.println("//////////////////////////////////");
+                            System.out.println("//////////////////////////////////////////////");
                             if (value == 1) {
                                 System.out.println("Error! Incorrect username or password.");
                                 System.out.println("1.Go back");
@@ -70,20 +69,20 @@ public class Main {
                                         System.out.println("Goodbye!");
                                         break;
                                 }
-                                System.out.println("/////////////////////////////////////");
+                                System.out.println("//////////////////////////////////////////////");
                             } else {
-                                System.out.println("\\\\\\\\\\    Applicant    \\\\\\\\\\\\");
+                                System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  Applicant \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
                                 System.out.println("1.Job Search");
                                 System.out.println("2.See Job Information");
                                 System.out.println("3.See Job Status");
                                 System.out.println("Enter your selection");
                                 Scanner sc8 = new Scanner(System.in);
                                 int selection1 = sc8.nextInt();
-                                System.out.println("/////////////////////////////////////");
+                                System.out.println("//////////////////////////////////////////////");
                                 switch (selection1) {
                                     case 1:
                                         System.out.println("Search job");
-                                        System.out.println("****************    Job Search    ******************");
+                                        System.out.println("***************  Job Search  *****************");
                                         System.out.println("Add your preference");
                                         System.out.println("1.Location");
                                         System.out.println("2.Experience");
@@ -151,10 +150,10 @@ public class Main {
                                                 break;
 
                                         }
-                                        System.out.println("//////////////////////////////////");
+                                        System.out.println("//////////////////////////////////////////////");
                                     case 2:
                                         System.out.println("Job information");
-                                        System.out.println("****************    Job Information    **************");
+                                        System.out.println("***************  Job Information  *************");
                                         System.out.println("Company name:");
                                         System.out.println("Job position:");
                                         System.out.println("Skill:");
@@ -179,7 +178,8 @@ public class Main {
                                                 System.out.println("Exit");
                                                 break;
                                         }
-                                        System.out.println("/////////////////////////////////////");
+
+                                        System.out.println("//////////////////////////////////////////////");
 
                                         break;
                                     case 3:
@@ -193,7 +193,7 @@ public class Main {
                                         //after selecting a job they can see the status (a method will be implemented)
                                         int a = 1;
                                         if (a == 1) {
-                                            System.out.println("////////////////////////////////////////////////////////////");
+                                            System.out.println("//////////////////////////////////////////////");
                                             System.out.println("Shortlisted/Rejected");
                                             System.out.println("1.Go back");
                                             System.out.println("2.Exit");
@@ -208,7 +208,7 @@ public class Main {
                                                     System.out.println(" Exit ");
                                                     break;
                                             }
-                                            System.out.println("/////////////////////////////");
+                                            System.out.println("//////////////////////////////////////////////");
                                         }
                                         //after that
                                         System.out.println("1.Go Back");
@@ -224,7 +224,7 @@ public class Main {
                                                 System.out.println(" Exit ");
                                                 break;
                                         }
-                                        System.out.println("/////////////////////");
+                                        System.out.println("//////////////////////////////////////////////");
                                         break;
                                 }
 
@@ -235,7 +235,7 @@ public class Main {
                             System.out.println("If you give 1 then you'll see the error page to see other page give input any number except 1.");
                             Scanner sc14 = new Scanner(System.in);
                             int value = sc14.nextInt();
-                            System.out.println("////////////////////////////");
+                            System.out.println("//////////////////////////////////////////////");
                             if (value == 1) {
                                 System.out.println("Error! Incorrect username or password.");
                                 System.out.println("1.Go back");
@@ -250,7 +250,7 @@ public class Main {
                                         System.out.println("Goodbye!");
                                         break;
                                 }
-                                System.out.println("/////////////////////////////////////");
+                                System.out.println("//////////////////////////////////////////////");
                             } else {
                                 System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\     Job Provider     " +
                                         "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
@@ -261,7 +261,7 @@ public class Main {
                                 System.out.println("Enter your selection: ");
                                 Scanner sc16 = new Scanner(System.in);
                                 int selectionForProvider = sc16.nextInt();
-                                System.out.println("////////////////////////////////////////");
+                                System.out.println("//////////////////////////////////////////////");
                                 switch (selectionForProvider) {
                                     case 1:
                                         System.out.println("Post Job Circular");
@@ -457,9 +457,11 @@ public class Main {
                                                 break;
 
                                         }
-                                        System.out.println("/////////////////////////////");
+
+                                        System.out.println("//////////////////////////////////////////////");
                                         break;
                                 }
+                                System.out.println("//////////////////////////////////////////////");
 
                             }
                         } else if (Objects.equals(role, "Admin") || Objects.equals(role, "admin")) {
@@ -470,7 +472,7 @@ public class Main {
                             Scanner sc28 = new Scanner(System.in);
                             int value = sc28.nextInt();
 
-                            System.out.println("//////////////////////////////////");
+                            System.out.println("//////////////////////////////////////////////");
 
                             if (value == 1) {
                                 System.out.println("Error! Incorrect username or password.");
@@ -497,7 +499,7 @@ public class Main {
 
                                 Scanner sc29 = new Scanner(System.in);
                                 int selct = sc29.nextInt();
-                                System.out.println("///////////////////////////////");
+                                System.out.println("//////////////////////////////////////////////");
 
                                 switch (selct) {
                                     case 1:
@@ -548,7 +550,8 @@ public class Main {
                                                             System.out.println("Exit");
                                                             break;
                                                     }
-                                                    System.out.println("////////////////////");
+
+                                                    System.out.println("//////////////////////////////////////////////");
 
                                                 }
                                                 System.out.println("1. Go Back");
@@ -565,9 +568,7 @@ public class Main {
                                                         break;
 
                                                 }
-                                                System.out.println("//////////////////////");
-
-
+                                                System.out.println("//////////////////////////////////////////////");
                                                 break;
                                             case "2":
                                                 System.out.println("You have successfully go back!");
@@ -589,7 +590,7 @@ public class Main {
                         break;
 
                 }
-
+                System.out.println("//////////////////////////////////////////////");
                 break;
             case 2:
                 System.out.println("You choose :SignUp");
@@ -612,8 +613,7 @@ public class Main {
 
                 Scanner sc38 = new Scanner(System.in);
                 int roleValue = sc38.nextInt();
-                System.out.println("///////////////////////////");
-
+                System.out.println("//////////////////////////////////////////////");
                 switch (roleValue) {
                     case 1:
                         System.out.println("****************    Applicant      *****************");
@@ -758,13 +758,19 @@ public class Main {
                                 break;
 
                         }
-                        System.out.println("//////////////////////////////");
+                        System.out.println("//////////////////////////////////////////////");
                         System.out.println("You choose :Exit");
                         break;
                     case 2:
                         System.out.println("**    Job Provider     **");
                         System.out.println("Company Name:");
+                        Scanner sc65 = new Scanner(System.in);
+                        String companyName = sc65.nextLine();
+
                         System.out.println("Web Address:");
+                        Scanner sc66 = new Scanner(System.in);
+                        String webAddress = sc66.nextLine();
+
                         System.out.println("1.Register");
                         System.out.println("2.Go back");
                         System.out.println("3.Exit");
@@ -775,17 +781,33 @@ public class Main {
                         switch (selection6) {
                             case 1:
                                 System.out.println("Register");
+                                //method call to register
+                                System.out.println("Congratulations! You have created your account.");
+                                System.out.println("1.Go back");
+                                System.out.println("2.Exit");
+                                System.out.println("Enter your selection: ");
+                                Scanner sc67 = new Scanner(System.in);
+                                int selection11 = sc67.nextInt();
+                                switch (selection11) {
+                                    case 1:
+                                        System.out.println("Go Back");
+                                        break;
+
+                                    case 2:
+                                        System.out.println("Exit");
+                                        break;
+
+                                }
                                 break;
                             case 2:
                                 System.out.println("Go Back");
                                 break;
                             case 3:
                                 System.out.println("Exit ");
+                                break;
                         }
-
-
-                        System.out.println("/////////////////");
-
+                        System.out.println("//////////////////////////////////////////////");
+                        break;
                     case 3:
                         System.out.println("**    Admin      **");
                         System.out.println("1.Register");
@@ -797,18 +819,31 @@ public class Main {
                         switch (selection7) {
                             case 1:
                                 System.out.println("Register");
+                                //method call
+                                System.out.println("Congratulations! You are an admin from now on.");
+                                System.out.println("1.Go back");
+                                System.out.println("2.Exit");
+                                System.out.println("Enter your selection: ");
+                                Scanner sc68 = new Scanner(System.in);
+                                int selection12 = sc68.nextInt();
+                                switch (selection12) {
+                                    case 1:
+                                        System.out.println("Go Back");
+                                        break;
+
+                                    case 2:
+                                        System.out.println("Exit");
+                                        break;
+
+                                }
                                 break;
                             case 2:
                                 System.out.println("Go Back");
                                 break;
                         }
-                        System.out.println("///////////////////////////////////////////////////////");
-
-
+                        System.out.println("//////////////////////////////////////////////");
+                        break;
                 }
-            default:
-                System.out.println("Invalid entry!");
         }
-
     }
 }
