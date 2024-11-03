@@ -298,7 +298,7 @@ public class Main {
                                                 System.out.println("Goodbye!");
                                                 break;
                                         }
-                                        System.out.println("");
+                                        
                                         break;
                                     case 2:
                                         System.out.println("See Applicant List");
@@ -448,7 +448,7 @@ public class Main {
                                         System.out.println("");
                                         break;
                                 }
-                                System.out.println("");
+
 
                             }
                         } else if (Objects.equals(role, "Admin") || Objects.equals(role, "admin")) {
@@ -565,7 +565,6 @@ public class Main {
 
                 }
 
-                System.out.println("");
                 break;
             case 2:
                 System.out.println("You choose :SignUp");
@@ -747,6 +746,6 @@ public class Main {
         }
 
 
-        System.out.println("");
+
     }
 }
