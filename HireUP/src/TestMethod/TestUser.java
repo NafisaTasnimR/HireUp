@@ -14,4 +14,11 @@ public class TestUser {
         User user = new User("nafisa","www",".com","applicant");
         assertEquals(expectedValue,user.logIn());
     }
+    @Test
+    public void testLogin2()
+    {
+        boolean expectedValue = true;
+        User user = new User("rodoshi","www.som","..com","admin");
+        assertEquals(expectedValue,user.logIn());
+    }
 }
