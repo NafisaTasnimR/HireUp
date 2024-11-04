@@ -100,15 +100,15 @@ public class PersonalInformation {
     }
 
     public String toFileString() {
-        return "Name: " + getName() + "\n"
-                + "Father: " + getFatherName() + "\n"
-                + "Mother: " + getMotherName() + "\n"
-                + "Date: " + getDateOfBirth() + "\n"
-                + "Nationality: " + getNationality() + "\n"
-                + "Religion: " + getReligion() + "\n"
-                + "Gender: " + getGender() + "\n"
-                + "Phone: " + getPhoneNumber() + "\n"
-                + "Address: " + getAddress() + "\n"
+        return "Name: " + getName() + ","
+                + "Father: " + getFatherName() + ","
+                + "Mother: " + getMotherName() + ","
+                + "Date: " + getDateOfBirth() + ","
+                + "Nationality: " + getNationality() + ","
+                + "Religion: " + getReligion() + ","
+                + "Gender: " + getGender() + ","
+                + "Phone: " + getPhoneNumber() + ","
+                + "Address: " + getAddress() + ","
                 + "NationalID: " + getNationality();
 
     }
