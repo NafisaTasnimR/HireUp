@@ -25,4 +25,10 @@ public class Utility {
         String modifiedFormat = firstChar + secondPartOfString;
         return modifiedFormat;
     }
+
+    public static void updateConsole() {
+        for(int i=0; i<50; i++) {
+            System.out.println();
+        }
+    }
 }

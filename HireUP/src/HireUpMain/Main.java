@@ -5,6 +5,8 @@ import java.sql.SQLOutput;
 import java.util.Objects;
 import java.util.Scanner;
 
+import static HireUpMain.Utility.updateConsole;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -17,6 +19,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int caseValue = sc.nextInt();
         System.out.println("//////////////////////////////////////////////");
+        updateConsole();
         switch (caseValue) {
             case 1:
                 System.out.println("You choose :Login");
@@ -55,12 +58,14 @@ public class Main {
                             Scanner sc6 = new Scanner(System.in);
                             int value = sc6.nextInt();
                             System.out.println("//////////////////////////////////////////////");
+                            updateConsole();
                             if (value == 1) {
                                 System.out.println("Error! Incorrect username or password.");
                                 System.out.println("1.Go back");
                                 System.out.println("2.Exit");
                                 System.out.println("Enter your selection: ");
                                 Scanner sc7 = new Scanner(System.in);
+                                updateConsole();
                                 switch (sc7.nextInt()) {
                                     case 1:
                                         System.out.println("You have successfully go back!");
@@ -70,6 +75,7 @@ public class Main {
                                         break;
                                 }
                                 System.out.println("//////////////////////////////////////////////");
+                                updateConsole();
                             } else {
                                 System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  Applicant \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
                                 System.out.println("1.Job Search");
@@ -79,6 +85,7 @@ public class Main {
                                 Scanner sc8 = new Scanner(System.in);
                                 int selection1 = sc8.nextInt();
                                 System.out.println("//////////////////////////////////////////////");
+                                updateConsole();
                                 switch (selection1) {
                                     case 1:
                                         System.out.println("Search job");
@@ -151,6 +158,7 @@ public class Main {
 
                                         }
                                         System.out.println("//////////////////////////////////////////////");
+                                        updateConsole();
                                     case 2:
                                         System.out.println("Job information");
                                         System.out.println("***************  Job Information  *************");
@@ -178,13 +186,13 @@ public class Main {
                                                 System.out.println("Exit");
                                                 break;
                                         }
-
                                         System.out.println("//////////////////////////////////////////////");
-
+                                        updateConsole();
                                         break;
+
                                     case 3:
                                         System.out.println("Job status");
-                                        System.out.println("****************    Job Status    **************");
+                                        System.out.println("***************  Job Status  ***************");
                                         //Job list
                                         ///1…….
                                         //2……
@@ -194,6 +202,7 @@ public class Main {
                                         int a = 1;
                                         if (a == 1) {
                                             System.out.println("//////////////////////////////////////////////");
+                                            updateConsole();
                                             System.out.println("Shortlisted/Rejected");
                                             System.out.println("1.Go back");
                                             System.out.println("2.Exit");
@@ -209,6 +218,7 @@ public class Main {
                                                     break;
                                             }
                                             System.out.println("//////////////////////////////////////////////");
+                                            updateConsole();
                                         }
                                         //after that
                                         System.out.println("1.Go Back");
@@ -225,6 +235,7 @@ public class Main {
                                                 break;
                                         }
                                         System.out.println("//////////////////////////////////////////////");
+                                        updateConsole();
                                         break;
                                 }
 
@@ -236,6 +247,7 @@ public class Main {
                             Scanner sc14 = new Scanner(System.in);
                             int value = sc14.nextInt();
                             System.out.println("//////////////////////////////////////////////");
+                            updateConsole();
                             if (value == 1) {
                                 System.out.println("Error! Incorrect username or password.");
                                 System.out.println("1.Go back");
@@ -251,6 +263,7 @@ public class Main {
                                         break;
                                 }
                                 System.out.println("//////////////////////////////////////////////");
+                                updateConsole();
                             } else {
                                 System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\     Job Provider     " +
                                         "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
@@ -262,10 +275,11 @@ public class Main {
                                 Scanner sc16 = new Scanner(System.in);
                                 int selectionForProvider = sc16.nextInt();
                                 System.out.println("//////////////////////////////////////////////");
+                                updateConsole();
                                 switch (selectionForProvider) {
                                     case 1:
                                         System.out.println("Post Job Circular");
-                                        System.out.println("**************      Post Job Circular      **************");
+                                        System.out.println("***************  Post Job Circular  ***************");
                                         System.out.println("Company Name: ");
                                         Scanner sc17 = new Scanner(System.in);
                                         String companyName = sc17.nextLine();
@@ -290,7 +304,9 @@ public class Main {
                                         System.out.println("Website Link: ");
                                         Scanner sc24 = new Scanner(System.in);
                                         String websiteLink = sc24.nextLine();
-                                        System.out.println("Addional: ");
+                                        System.out.println("Additional: ");
+                                        Scanner sc69 = new Scanner(System.in);
+                                        String additional = sc69.nextLine();
 
                                         System.out.println("1. Post");
                                         System.out.println("2. Go Back");
@@ -309,20 +325,21 @@ public class Main {
                                                 System.out.println("Goodbye!");
                                                 break;
                                         }
-                                        System.out.println("/////////////////////////////////");
+                                        System.out.println("//////////////////////////////////////////////");
+                                        updateConsole();
+
                                         break;
                                     case 2:
                                         System.out.println("See Applicant List");
-                                        System.out.println("************     Watch Application list    ************");
+                                        System.out.println("***************  Watch Application list  ***************");
                                         //Application list showing
                                         //here input for watch the applicant info will be taken
                                         //a function will be called and that would show the info
                                         int a = 1;
                                         if (a == 1) {
-                                            System.out.println("*********   Applicants Personal Information   ********");
+                                            System.out.println("***************  Applicants Personal Information  ***************");
                                             System.out.println("PERSONAL INFORMATION");
                                             System.out.println("Name: ");
-
 
 
                                             System.out.println("Father's Name: ");
@@ -414,7 +431,8 @@ public class Main {
                                                     break;
 
                                             }
-                                            System.out.println("///////////////////////");
+                                            System.out.println("//////////////////////////////////////////////");
+                                            updateConsole();
 
                                         }
 
@@ -424,7 +442,6 @@ public class Main {
 
                                         Scanner sc26 = new Scanner(System.in);
                                         String selection2 = sc26.nextLine();
-
                                         switch (selection2) {
                                             case "1":
                                                 System.out.println("You have successfully go back!");
@@ -436,17 +453,19 @@ public class Main {
                                                 System.out.println("Job Applicant Details");
                                                 break;
                                         }
-                                        System.out.println("///////////////////////////////");
+                                        System.out.println("//////////////////////////////////////////////");
+                                        updateConsole();
+
 
                                         break;
                                     case 3:
                                         System.out.println("See Short List");
-                                        System.out.println("************     Shortlisted Applicants     ************");
+                                        System.out.println("***************  Shortlisted Applicants  ***************");
                                         //list will be shown
                                         System.out.println("1. Go Back");
                                         System.out.println("2. Exit");
                                         System.out.println("Enter your selection: ");
-                                        Scanner sc27= new Scanner(System.in);
+                                        Scanner sc27 = new Scanner(System.in);
                                         String selection4 = sc27.nextLine();
                                         switch (selection4) {
                                             case "1":
@@ -459,9 +478,10 @@ public class Main {
                                         }
 
                                         System.out.println("//////////////////////////////////////////////");
+                                        updateConsole();
                                         break;
                                 }
-                                System.out.println("//////////////////////////////////////////////");
+
 
                             }
                         } else if (Objects.equals(role, "Admin") || Objects.equals(role, "admin")) {
@@ -471,8 +491,8 @@ public class Main {
 
                             Scanner sc28 = new Scanner(System.in);
                             int value = sc28.nextInt();
-
                             System.out.println("//////////////////////////////////////////////");
+                            updateConsole();
 
                             if (value == 1) {
                                 System.out.println("Error! Incorrect username or password.");
@@ -488,7 +508,7 @@ public class Main {
                                         System.out.println("Goodbye!");
                                         break;
                                 }
-                                System.out.println("////////////////////////////////");
+
 
                             } else {
                                 System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\     Admin    " +
@@ -500,26 +520,28 @@ public class Main {
                                 Scanner sc29 = new Scanner(System.in);
                                 int selct = sc29.nextInt();
                                 System.out.println("//////////////////////////////////////////////");
+                                updateConsole();
 
                                 switch (selct) {
                                     case 1:
-                                        System.out.println("************     View Interface.User Information    ************");
+                                        System.out.println("***************  View Interface.User Information  ***************");
                                         System.out.println("1. Job Provider");
                                         System.out.println("2. Go Back");
                                         System.out.println("3. Exit");
                                         System.out.println("Enter your selection: ");
                                         Scanner sc30 = new Scanner(System.in);
                                         String selection6 = sc30.nextLine();
-                                        System.out.println("//////////////////////");
+                                        System.out.println("//////////////////////////////////////////////");
+                                        updateConsole();
                                         switch (selection6) {
                                             case "1":
                                                 System.out.println("Job Provider");
-                                                System.out.println("*********      Job Provider’s Website List      **********");
+                                                System.out.println("***************  Job Provider’s Website List  ***************");
                                                 //list
                                                 //input from the list
                                                 int a = 1;
                                                 if (a == 1) {
-                                                    System.out.println("***************     Verification      *****************");
+                                                    System.out.println("***************  Verification  ***************");
                                                     System.out.println("Company Name:");
 
                                                     Scanner sc31 = new Scanner(System.in);
@@ -552,6 +574,7 @@ public class Main {
                                                     }
 
                                                     System.out.println("//////////////////////////////////////////////");
+                                                    updateConsole();
 
                                                 }
                                                 System.out.println("1. Go Back");
@@ -569,6 +592,7 @@ public class Main {
 
                                                 }
                                                 System.out.println("//////////////////////////////////////////////");
+                                                updateConsole();
                                                 break;
                                             case "2":
                                                 System.out.println("You have successfully go back!");
@@ -590,7 +614,7 @@ public class Main {
                         break;
 
                 }
-                System.out.println("//////////////////////////////////////////////");
+
                 break;
             case 2:
                 System.out.println("You choose :SignUp");
@@ -614,9 +638,10 @@ public class Main {
                 Scanner sc38 = new Scanner(System.in);
                 int roleValue = sc38.nextInt();
                 System.out.println("//////////////////////////////////////////////");
+                updateConsole();
                 switch (roleValue) {
                     case 1:
-                        System.out.println("****************    Applicant      *****************");
+                        System.out.println("***************  Applicant  ***************");
 
                         System.out.println("PERSONAL INFORMATION");
                         System.out.println("Name: ");
@@ -729,6 +754,7 @@ public class Main {
                         System.out.println("Enter your selection: ");
                         Scanner sc63 = new Scanner(System.in);
                         int selection9 = sc63.nextInt();
+
                         switch (selection9) {
                             case 1:
                                 System.out.println("Finish Registration");
@@ -748,6 +774,7 @@ public class Main {
                         System.out.println("Enter your selection: ");
                         Scanner sc64 = new Scanner(System.in);
                         int selection10 = sc64.nextInt();
+
                         switch (selection10) {
                             case 1:
                                 System.out.println("Go Back");
@@ -760,9 +787,10 @@ public class Main {
                         }
                         System.out.println("//////////////////////////////////////////////");
                         System.out.println("You choose :Exit");
+                        updateConsole();
                         break;
                     case 2:
-                        System.out.println("**    Job Provider     **");
+                        System.out.println("***************  Job Provider  ***************");
                         System.out.println("Company Name:");
                         Scanner sc65 = new Scanner(System.in);
                         String companyName = sc65.nextLine();
@@ -776,8 +804,8 @@ public class Main {
                         System.out.println("3.Exit");
                         System.out.println("Enter your selection");
                         Scanner in6 = new Scanner(System.in);
-
                         int selection6 = in6.nextInt();
+
                         switch (selection6) {
                             case 1:
                                 System.out.println("Register");
@@ -788,6 +816,7 @@ public class Main {
                                 System.out.println("Enter your selection: ");
                                 Scanner sc67 = new Scanner(System.in);
                                 int selection11 = sc67.nextInt();
+
                                 switch (selection11) {
                                     case 1:
                                         System.out.println("Go Back");
@@ -807,9 +836,10 @@ public class Main {
                                 break;
                         }
                         System.out.println("//////////////////////////////////////////////");
+                        updateConsole();
                         break;
                     case 3:
-                        System.out.println("**    Admin      **");
+                        System.out.println("***************  Admin  ***************");
                         System.out.println("1.Register");
                         System.out.println("2.Go Back");
                         System.out.println("3.Exit");
@@ -826,6 +856,7 @@ public class Main {
                                 System.out.println("Enter your selection: ");
                                 Scanner sc68 = new Scanner(System.in);
                                 int selection12 = sc68.nextInt();
+
                                 switch (selection12) {
                                     case 1:
                                         System.out.println("Go Back");
@@ -842,6 +873,7 @@ public class Main {
                                 break;
                         }
                         System.out.println("//////////////////////////////////////////////");
+                        updateConsole();
                         break;
                 }
         }

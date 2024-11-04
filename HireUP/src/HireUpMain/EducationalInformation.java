@@ -113,18 +113,18 @@ public class EducationalInformation extends PersonalInformation{
     }
 
     public String toFileString() {
-        return  "SchoolName: " + getSchoolName() + "\n"
-                + "SSCPassingYear: " + getSscPassingYear() + "\n"
-                + "SSCOLevelResult: " + getSscOLevelResult() + "\n"
-                + "CollegeName: " + getCollegeName() + "\n"
-                + "HSCPassingYear: " + getHscPassingYear() + "\n"
-                + "HSCALevelResult: " + getHscALevelResult() + "\n"
-                + "UniversityName: " + getUniversityName() + "\n"
-                + "Department: " + getDepartment() + "\n"
-                + "UndergraduateDegree: " + getUndergraduateDegree() + "\n"
-                + "UndergradCGPA: " + getUndergradCGPA() + "\n"
-                + "PostgraduateDegree: " + getPostgraduateDegree() + "\n"
-                + "PostgradCGPA: " + getPostgradCGPA() + "\n";
+        return  "SchoolName: " + getSchoolName() + ","
+                + "SSCPassingYear: " + getSscPassingYear() + ","
+                + "SSCOLevelResult: " + getSscOLevelResult() + ","
+                + "CollegeName: " + getCollegeName() + ","
+                + "HSCPassingYear: " + getHscPassingYear() + ","
+                + "HSCALevelResult: " + getHscALevelResult() + ","
+                + "UniversityName: " + getUniversityName() + ","
+                + "Department: " + getDepartment() + ","
+                + "UndergraduateDegree: " + getUndergraduateDegree() + ","
+                + "UndergradCGPA: " + getUndergradCGPA() + ","
+                + "PostgraduateDegree: " + getPostgraduateDegree() + ","
+                + "PostgradCGPA: " + getPostgradCGPA() + ",";
 
 
     }
