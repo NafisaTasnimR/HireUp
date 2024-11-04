@@ -1,0 +1,7 @@
+Abcd,Manager,Def,3,12000,Uttora,8am-6pm,www.abcd.com,experienced
+Abcd,Manager,Def,3,12000,Mirpur,8am-6pm,www.abcd.com,experienced
+Abcd,Manager,Def,3,12000,Gulshan,8am-6pm,www.abcd.com,experienced
+Abcd,Manager,Def,3,12000,Bashundhora,8am-6pm,www.abcd.com,experienced
+Abcer,Manager,Def,3,12000,Uttora,8am-6pm,www.abcd.com,experienced
+Abcd,Manager,Def,3,12000,Gulshan,8am-6pm,www.abcd.com,experienced
+Abcdwd,Manager,Def,3,12000,Uttora,8am-6pm,www.abcd.com,experienced

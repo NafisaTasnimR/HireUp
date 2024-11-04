@@ -34,7 +34,7 @@ public class Applicant {
                     String websiteLink = data[7];
                     String additional = data[8];
 
-                    if (Objects.equals(preference,companyName) || Objects.equals(formatData(preference),location) ||
+                    if (Objects.equals(formatData(preference),companyName) || Objects.equals(formatData(preference),location) ||
                             Objects.equals(formatData(preference),jobPosition) || Objects.equals(preference,experience)
                     || Objects.equals(preference,salary) || Objects.equals(formatData(preference),skill)
                             || Objects.equals(preference,time))
@@ -44,7 +44,8 @@ public class Applicant {
                                 + "Job Position: " + data[1] + " " + "WebSite Address: " + data[7] + '\n');
                         jobList.add(serial+","+line);
                     }
-                } else {
+                }
+                else {
                     System.out.println("Invalid data format.");
                 }
             }
