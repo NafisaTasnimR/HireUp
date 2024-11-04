@@ -1,8 +1,6 @@
 package HireUpMain;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Objects;
 
 public class User {
@@ -36,7 +34,7 @@ public class User {
 
     public boolean logIn() {
         try (BufferedReader br = new BufferedReader(new FileReader(
-                "LogIn_Info.txt"))) {
+                "HireUP\\LogIn_Info.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
@@ -59,4 +57,23 @@ public class User {
         }
         return false;
     }
+    public boolean registration(User user) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("HireUP\\LogIn_Info.txt", true))) {
+
+
+                bufferedWriter.write(user.getUserName() + "," + user.getPassword() + "," + user.getEmail() + "," + user.getRole());
+                bufferedWriter.newLine();
+
+            System.out.println("Data has been written.");
+            return true;
+        } catch (IOException e) {
+            System.err.println("Error in file writing." + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+
+
+    }
+
+
 }
