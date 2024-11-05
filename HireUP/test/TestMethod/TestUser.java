@@ -28,6 +28,7 @@ public class TestUser {
         User user = new User("rodoshi","www.som","..com","admin");
         assertEquals(expectedValue,user.logIn());
     }
+
     @Test
     public void testRegistration()
     {
@@ -36,6 +37,7 @@ public class TestUser {
         assertEquals(expectedValue,user1.registration(user1));
 
     }
+
     @Test
     public void testRegistration2()
     {
