@@ -59,15 +59,13 @@ public class User {
     }
 
     public boolean registration(User user) {
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("LogIn_Info.txt", true))) {
-
-
-
-                bufferedWriter.write(user.getUserName() + "," + user.getPassword() + "," + user.getEmail() + "," + user.getRole());
-                
-
-
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("Registration_info.txt", true))) {
+                bufferedWriter.write(user.getUserName() + "," +
+                        user.getPassword() + "," + user.getEmail() +
+                        "," + user.getRole());
+                bufferedWriter.newLine();
             System.out.println("Data has been written.");
+            bufferedWriter.close();
             return true;
         } catch (IOException e) {
             System.err.println("Error in file writing." + e.getMessage());

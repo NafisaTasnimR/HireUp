@@ -3,4 +3,3 @@ rodoshi,www.som,..com,admin
 Mrittika,www//,m.com,admin
 Nishat,wwwmm,n.com,admin
 AR,hjhfrg,ar.com,applicant
-Nishat,wwwmm,n.com,admin
