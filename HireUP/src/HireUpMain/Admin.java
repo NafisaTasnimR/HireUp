@@ -1,11 +1,9 @@
 package HireUpMain;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Admin extends User {
 
@@ -36,14 +34,14 @@ public class Admin extends User {
         String line;
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
-                "HireUP\\Job_Provider_Info.txt"))) {
+                "JobProvider_info.txt"))) {
             System.out.println("Job Provider Information:");
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
                 if (data.length == 2) {
-                    String Company_Name = data[0];
+                    String companyName = data[0];
                     String Weblink = data[1];
-                    System.out.println("Company Name: " + Company_Name);
+                    System.out.println("Company Name: " + companyName);
                     System.out.println("Weblink: " + Weblink);
                     return true;
                 } else {
@@ -64,7 +62,7 @@ public class Admin extends User {
         String line;
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
-                "HireUP\\Job_Provider_Info.txt"))) {
+                "JobProvider_info.txt"))) {
             System.out.println("Job Provider Information:");
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
@@ -86,22 +84,25 @@ public class Admin extends User {
         }
         return false;
     }
-    public void delete(String webAddress) {
+    public boolean delete(String webAddress) {
             String line;
             List<String> JobProviderInfo = new ArrayList<>();
+            boolean dataDeleted = false;
 
 
             try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
-                    "HireUP\\Job_Provider_Info.txt"))) {
-                System.out.println("Job Provider Information:");
+                    "JobProvider_info.txt"))) {
+
                 while ((line = bufferedReader.readLine()) != null) {
                     String[] data = line.split(",");
                     if (data.length == 2) {
-                        String Company_Name = data[0];
+                        String companyName = data[0];
                         String Weblink = data[1];
-                        if(data[1]!=webAddress){
-                            JobProviderInfo.add(line);
+                        if(!Weblink.equals(webAddress) || dataDeleted) {
+                            JobProviderInfo.add(companyName + "," + Weblink);
 
+                        } else{
+                            dataDeleted = true;
                         }
 
                     } else {
@@ -110,27 +111,30 @@ public class Admin extends User {
                     }
 
                 }
+                bufferedReader.close();
             } catch (IOException e) {
                 System.err.println("Error reading file" + e.getMessage());
                 e.printStackTrace();
             }
 
-            try {
-                FileWriter fileWriter = new FileWriter("HireUP\\Job_Provider_Info.txt");
-                for(String jobprovider: JobProviderInfo ){
-                    fileWriter.write(jobprovider);
-                    fileWriter.write("\n");
-                    fileWriter.close();
-                }
+            if (dataDeleted) {
 
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter("JobProvider_info.txt"))){
+                    for (String jobprovider : JobProviderInfo) {
+                        writer.write(jobprovider);
+                        writer.newLine();
+
+                    }
+                    return true;
+
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
 
-        }
+            return false;
 
-
-
-
+    }
 
 }

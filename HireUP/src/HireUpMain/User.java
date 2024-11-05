@@ -57,13 +57,13 @@ public class User {
         }
         return false;
     }
+
     public boolean registration(User user) {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("Registration_info.txt", true))) {
                 bufferedWriter.write(user.getUserName() + "," +
                         user.getPassword() + "," + user.getEmail() +
                         "," + user.getRole());
                 bufferedWriter.newLine();
-
             System.out.println("Data has been written.");
             bufferedWriter.close();
             return true;

@@ -11,6 +11,15 @@ public class TestAdmin {
     public void testviewInformation() {
         boolean expectedValue = true;
         Admin admin = new Admin("ndjd" ,"djigk","djfj","dnhnf");
-        assertTrue(admin.ViewInformation());
+        assertEquals(expectedValue,admin.ViewInformation());
     }
+
+    @Test
+    public void testDelete() {
+        boolean expectedValue = true;
+        Admin admin = new Admin("ndjd" ,"djigk","djfj","dnhnf");
+        assertEquals(expectedValue,admin.delete("www.shi.com"));
+
+    }
+
 }
