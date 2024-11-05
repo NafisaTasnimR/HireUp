@@ -37,10 +37,9 @@ public class Resume {
     }
 
     public boolean generateResume() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt", true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Applicant_info.txt", true))) {
             writer.write(PersonalInformation.toFileString()+","+EducationalInformation.toFileString()+","+AdditionalInformation.toFileString());
-
-
+            writer.newLine();
             return true;
 
         } catch (IOException e) {
