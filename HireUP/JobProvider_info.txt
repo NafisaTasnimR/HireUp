@@ -1,1 +1,1 @@
-redDot,www.dot
+Abc,www.shi.com
