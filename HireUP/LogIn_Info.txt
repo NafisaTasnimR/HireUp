@@ -1,4 +1,4 @@
-nafisa,www,.com,applicant
+nafisa,www,.com,job provider
 rodoshi,www.som,..com,admin
 Mrittika,www//,m.com,admin
 Nishat,wwwmm,n.com,admin

@@ -4,8 +4,9 @@ import java.io.*;
 import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class JobProvider {
+public class JobProvider extends User{
     private String companyName;
     private String webAddress;
 
@@ -14,6 +15,7 @@ public class JobProvider {
         this.companyName = companyname;
         this.webAddress = webaddress;
     }
+    public JobProvider(){}
 
     public String getCompanyName()
     {
@@ -38,8 +40,9 @@ public class JobProvider {
 
     public boolean postJob(Job job)
     {
+        String jobPostNo = job.getCompanyName()+ String.valueOf(Math.random()*100);
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("Job_info.txt",true))){
-            bufferedWriter.write(job.getCompanyName() + "," +
+            bufferedWriter.write(jobPostNo + "," + job.getCompanyName() + "," +
                     job.getJobPosition() + "," + job.getSkill() + "," + job.getExperience()
             + "," + job.getSalary() + "," + job.getLocation() + "," + job.getTime()
             + "," + job.getWebsiteLink() + "," + job.getAdditional());
@@ -53,19 +56,34 @@ public class JobProvider {
         return false;
     }
 
-    public void seeApplicantList()
+    public void seeApplicantList(String jobPostNo)
     {
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Applicant_info.txt"))){
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Application.txt")))
+        {
             String line;
-            int serial=1;
-            String applicantInfo = "";
-            List<String> applicantList = new ArrayList<>();
+            int serial = 0;
             while((line = bufferedReader.readLine()) != null)
             {
                 String[] data = line.split(",");
-                System.out.println(serial+" "+data[0]);
-                applicantInfo = serial + "," + line;
-                applicantList.add(applicantInfo);
+                String applicantName;
+                if(Objects.equals(this.getUserName(), data[1]) && Objects.equals(jobPostNo, data[0]))
+                {
+                    try(BufferedReader bufferedReader1 = new BufferedReader(new FileReader("Applicant_info.txt"))){
+                        String line1;
+                        while ((line1 = bufferedReader1.readLine()) != null)
+                        {
+                            String[] data1 = line1.split(",");
+                            if(Objects.equals(data1[0], data[3])){
+                                serial++;
+                                System.out.println(serial + "Name: " + data1[0] +
+                                        "Phone Number: " + data1[7] +
+                                        "Email: " + data1[10] + '\n');
+                            }
+                        }
+                    }catch (IOException e){
+                        System.out.println("Error while getting the applicant info: " + e.getMessage());
+                    }
+                }
             }
         }
         catch (IOException e)
@@ -110,6 +128,31 @@ public class JobProvider {
         {
             System.out.println("Some error occurred while showing the list: " + e.getMessage());
         }
+    }
+    public boolean seeJobPosts()
+    {
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Job_info.txt")))
+        {
+            String line;
+            int serial = 0;
+            while ((line = bufferedReader.readLine()) != null)
+            {
+                String[] data = line.split(",");
+                String jobPostNo = data[0];
+                String companyName = data[1];
+                String position = data[2];
+                if(Objects.equals(this.getCompanyName(), data[1])) {
+                    serial++;
+                    System.out.println(serial + "Job Post No. : " + data[0] +
+                            "Company Name: " + data[1] + "Position: " + data[2] + '\n');
+                }
+            }
+            return true;
+        }catch (IOException e)
+        {
+            System.out.println("Error while showing the Job Posts :" + e.getMessage());
+        }
+        return false;
     }
 
 }
