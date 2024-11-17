@@ -16,7 +16,7 @@ public class Applicant {
     public List<String> searchJob(String preference)
     {
         List<String> jobList = new ArrayList<>();
-        try(BufferedReader reader = new BufferedReader(new FileReader("Job_info.txt")))
+        try(BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Job_info.txt")))
         {
             String line;
             int serial=0;
@@ -55,4 +55,28 @@ public class Applicant {
         }
         return jobList;
     }
+
+    public void showInformation(String query, List<String> jobs) {
+        List<String> matchingJobs = new ArrayList<>();
+        for (String job : jobs) {
+            String[] jobInfo = job.split(",");
+            if (jobInfo[0].equals(query)) {
+                System.out.println("Company Name: " + jobInfo[1] + "\n");
+                System.out.println("Job Position: " + jobInfo[2] + "\n");
+                System.out.println("Skill: " + jobInfo[3] + "\n");
+                System.out.println("Experience: " + jobInfo[4] + "\n");
+                System.out.println("Salary: " + jobInfo[5] + "\n");
+                System.out.println("Location: " + jobInfo[6] + "\n");
+                System.out.println("Time: " + jobInfo[7] + "\n");
+                System.out.println("Website Link: " + jobInfo[8] + "\n");
+                System.out.println("Additional: " + jobInfo[9] + "\n");
+            }
+
+            return;
+        }
+
+
+    }
+
+
 }
