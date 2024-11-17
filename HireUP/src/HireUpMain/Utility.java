@@ -1,6 +1,6 @@
 package HireUpMain;
 import java.util.regex.Pattern;
-public abstract class Utility {
+public  class Utility {
     public static String formatData(String s)
     {
         int length = s.length();
