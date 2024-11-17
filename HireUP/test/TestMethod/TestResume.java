@@ -20,7 +20,7 @@ public class TestResume {
 
         boolean expactedValue = true;
         Resume resume = new Resume(personalInformation, educationalInformation, additionalInformation);
-        assertEquals(expactedValue, resume.generateResume());
+        assertEquals(expactedValue, resume.generateResume("mira1234@gmail.com"));
 
     }
 }

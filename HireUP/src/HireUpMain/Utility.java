@@ -27,7 +27,7 @@ public  class Utility {
     }
 
     public static void updateConsole() {
-        for(int i=0; i<50; i++) {
+        for(int i=0; i<15; i++) {
             System.out.println();
         }
     }

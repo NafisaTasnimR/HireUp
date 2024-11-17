@@ -1,3 +1,1 @@
-redDot,www.dot
-pran,www.pran.com
-uniliver,www.unilever
+Abc,www.shi.com
