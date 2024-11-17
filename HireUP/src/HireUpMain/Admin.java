@@ -46,53 +46,71 @@ public class Admin extends User {
                     return true;
                 } else {
                     System.out.println("Invalid Data:" + line);
-
                 }
-
             }
         } catch (IOException e) {
             System.err.println("Error reading file" + e.getMessage());
             e.printStackTrace();
         }
-
         return false;
     }
 
-    public boolean verify() {
+
+    public boolean verify(String webAddress2) {
         String line;
+        List<String> VerifiedCompanies =new ArrayList<>();
+        boolean verifiedCompany = false;
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
                 "JobProvider_info.txt"))) {
-            System.out.println("Job Provider Information:");
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
                 if (data.length == 2) {
-                    String Company_Name = data[0];
+                    String companyName = data[0];
                     String Weblink = data[1];
-                    System.out.println("Company Name: " + Company_Name);
-                    System.out.println("Weblink: " + Weblink);
-                    return true;
+                    if(Weblink.equals(webAddress2)) {
+                        VerifiedCompanies.add(companyName +","+ Weblink);
+                            verifiedCompany = true;
+                    }
+
                 } else {
                     System.out.println("Invalid Data:" + line);
-
                 }
-
             }
+            bufferedReader.close();
         } catch (IOException e) {
             System.err.println("Error reading file" + e.getMessage());
             e.printStackTrace();
         }
+        if(verifiedCompany) {
+            try(BufferedWriter writer2 = new BufferedWriter(new FileWriter("VerifiedCompanies.txt", true))) {
+                for(String company : VerifiedCompanies) {
+                    writer2.write(company);
+
+                }
+                return true;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
         return false;
     }
+
+
+
+
+
+
+
+
+
+
     public boolean delete(String webAddress) {
             String line;
             List<String> JobProviderInfo = new ArrayList<>();
             boolean dataDeleted = false;
-
-
             try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
                     "JobProvider_info.txt"))) {
-
                 while ((line = bufferedReader.readLine()) != null) {
                     String[] data = line.split(",");
                     if (data.length == 2) {
@@ -100,41 +118,29 @@ public class Admin extends User {
                         String Weblink = data[1];
                         if(!Weblink.equals(webAddress) || dataDeleted) {
                             JobProviderInfo.add(companyName + "," + Weblink);
-
                         } else{
                             dataDeleted = true;
                         }
-
                     } else {
                         System.out.println("Invalid Data:" + line);
-
                     }
-
                 }
                 bufferedReader.close();
             } catch (IOException e) {
                 System.err.println("Error reading file" + e.getMessage());
                 e.printStackTrace();
             }
-
             if (dataDeleted) {
-
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter("JobProvider_info.txt"))){
                     for (String jobprovider : JobProviderInfo) {
                         writer.write(jobprovider);
                         writer.newLine();
-
                     }
                     return true;
-
-
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
-
             return false;
-
     }
-
 }
