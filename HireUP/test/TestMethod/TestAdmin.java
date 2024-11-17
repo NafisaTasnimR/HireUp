@@ -35,4 +35,17 @@ public class TestAdmin {
         assertEquals(expectedValue,admin.verify("www.pran.com"));
     }
 
+    @Test
+    public void testviewAdminRequest(){
+        boolean expectedValue = true;
+        Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
+        assertEquals(expectedValue,admin.viewAdminRequest());
+    }
+
+    @Test
+    public void testApprove(){
+        boolean expectedValue = true;
+        Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
+        assertEquals(expectedValue,admin.approve("nana"));
+    }
 }
