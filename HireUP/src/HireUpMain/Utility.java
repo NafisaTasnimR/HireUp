@@ -1,6 +1,6 @@
 package HireUpMain;
-
-public class Utility {
+import java.util.regex.Pattern;
+public  class Utility {
     public static String formatData(String s)
     {
         int length = s.length();
@@ -38,4 +38,21 @@ public class Utility {
             System.out.println("Error clearing the console.");
         }
     }
+
+    public static boolean isValidEmail(String email){
+        String emailRegex = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,6}$";
+        return Pattern.matches(emailRegex, email);
+
+    }
+
+    public static boolean isValidPassword(String password){
+        String passwordRegex = "^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[a-zA-Z0-9]).{8,}$";
+        return Pattern.matches(passwordRegex, password);
+    }
+
+    public static boolean isValidPhoneNumber(String phoneNumber){
+        String phoneNumberRegex = "^(\\+8801|01)[3-9]\\d{8}$";
+        return Pattern.matches(phoneNumberRegex, phoneNumber);
+    }
+
 }

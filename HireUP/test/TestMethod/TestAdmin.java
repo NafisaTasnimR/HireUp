@@ -22,4 +22,17 @@ public class TestAdmin {
 
     }
 
+    @Test
+    public void testVerify() {
+        boolean expectedValue = true;
+        Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
+        assertEquals(expectedValue,admin.verify("www.unilever"));
+    }
+    @Test
+    public void testVerify1() {
+        boolean expectedValue = true;
+        Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
+        assertEquals(expectedValue,admin.verify("www.pran.com"));
+    }
+
 }
