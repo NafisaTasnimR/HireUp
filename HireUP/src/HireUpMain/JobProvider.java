@@ -3,6 +3,7 @@ package HireUpMain;
 import java.io.*;
 import java.nio.Buffer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -40,7 +41,7 @@ public class JobProvider extends User{
 
     public boolean postJob(Job job)
     {
-        String jobPostNo = job.getCompanyName()+ String.valueOf(Math.random()*100);
+        String jobPostNo = Arrays.toString(job.getCompanyName().split(" ")) + String.valueOf((int)(Math.random()*100));
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("Job_info.txt",true))){
             bufferedWriter.write(jobPostNo + "," + job.getCompanyName() + "," +
                     job.getJobPosition() + "," + job.getSkill() + "," + job.getExperience()
@@ -143,8 +144,8 @@ public class JobProvider extends User{
                 String position = data[2];
                 if(Objects.equals(this.getCompanyName(), data[1])) {
                     serial++;
-                    System.out.println(serial + "Job Post No. : " + data[0] +
-                            "Company Name: " + data[1] + "Position: " + data[2] + '\n');
+                    System.out.println(serial + "Job Post No. : " + jobPostNo +
+                            "Company Name: " + companyName + "Position: " + position + '\n');
                 }
             }
             return true;

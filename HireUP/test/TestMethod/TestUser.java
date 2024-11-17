@@ -11,7 +11,7 @@ public class TestUser {
     public void testLogin()
     {
         boolean expectedValue = true;
-        User user = new User("nafisa","www",".com","applicant");
+        User user = new User("nafisa","www",".com","job provider");
         assertEquals(expectedValue,user.logIn());
     }
     @Test

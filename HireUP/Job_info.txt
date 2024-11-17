@@ -5,3 +5,4 @@ Abcd4,Abcd,Manager,Def,3,12000,Bashundhora,8am-6pm,www.abcd.com,experienced
 Abcer5,Abcer,Manager,Def,3,12000,Uttora,8am-6pm,www.abcd.com,experienced
 Abcd6,Abcd,Manager,Def,3,12000,Gulshan,8am-6pm,www.abcd.com,experienced
 Abcdwd7,Abcdwd,Manager,Def,3,12000,Uttora,8am-6pm,www.abcd.com,experienced
+RedDot company Limited52.50599460578875,RedDot company Limited,Senior executive,programming,3 years,50000,Mirpur-12,8am-6pm,www.RedDot.com,fluent in english
