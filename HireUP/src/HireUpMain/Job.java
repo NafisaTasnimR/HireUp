@@ -18,6 +18,7 @@ public class Job {
                String skill, String experience, String salary,
                String location, String time, String websiteLink,
                String additional) {
+
         this.companyName = companyName;
         this.jobPosition = jobPosition;
         this.skill = skill;
@@ -40,7 +41,6 @@ public class Job {
     public String getSkill() {
         return skill;
     }
-
     public String getExperience() {
         return experience;
     }
@@ -63,6 +63,21 @@ public class Job {
 
     public String getAdditional() {
         return additional;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Job Details: " +
+                "Company: " + companyName +
+                "Position: " + jobPosition +
+                "Required Skill: " + skill +
+                "Experience: " + experience + " years" +
+                "Salary: $" + salary +
+                "Location: " + location +
+                "Type: " + time +
+                "Website: " + websiteLink +
+                "Additional Info: " + additional ;
     }
 
 }

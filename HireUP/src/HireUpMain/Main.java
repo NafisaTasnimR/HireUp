@@ -1,7 +1,10 @@
 
 package HireUpMain;
 
+import java.awt.*;
 import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -84,6 +87,8 @@ public class Main {
                                 System.out.println("Enter your selection");
                                 Scanner sc8 = new Scanner(System.in);
                                 int selection1 = sc8.nextInt();
+                                Applicant applicant = new Applicant();
+                                List<String> jobList = new ArrayList<>();
                                 System.out.println("//////////////////////////////////////////////");
                                 updateConsole();
                                 switch (selection1) {
@@ -101,7 +106,11 @@ public class Main {
                                         int selection2 = sc9.nextInt();
                                         switch (selection2) {
                                             case 1:
-                                                System.out.println("Location");
+                                                System.out.println("Location: ");
+                                                Scanner sc71 = new Scanner(System.in);
+                                                String location = sc71.nextLine();
+                                                jobList = applicant.searchJob(location);
+
                                                 //Location/Experience/Salary/Skills/Time:
                                                 ///1…….
                                                 //2……
@@ -110,6 +119,9 @@ public class Main {
                                                 break;
                                             case 2:
                                                 System.out.println("Experience");
+                                                Scanner sc72 = new Scanner(System.in);
+                                                String experience = sc72.nextLine();
+                                                jobList = applicant.searchJob(experience);
                                                 //Location/Experience/Salary/Skills/Time:
                                                 ///1…….
                                                 //2……
@@ -118,6 +130,9 @@ public class Main {
                                                 break;
                                             case 3:
                                                 System.out.println("Salary");
+                                                Scanner sc73 = new Scanner(System.in);
+                                                String salary = sc73.nextLine();
+                                                jobList = applicant.searchJob(salary);
                                                 //Location/Experience/Salary/Skills/Time:
                                                 ///1…….
                                                 //2……
@@ -126,6 +141,9 @@ public class Main {
                                                 break;
                                             case 4:
                                                 System.out.println("Skills");
+                                                Scanner sc74 = new Scanner(System.in);
+                                                String skills = sc74.nextLine();
+                                                jobList = applicant.searchJob(skills);
                                                 //Location/Experience/Salary/Skills/Time:
                                                 ///1…….
                                                 //2……
@@ -134,6 +152,9 @@ public class Main {
                                                 break;
                                             case 5:
                                                 System.out.println("Time");
+                                                Scanner sc75 = new Scanner(System.in);
+                                                String time = sc75.nextLine();
+                                                jobList = applicant.searchJob(time);
                                                 //Location/Experience/Salary/Skills/Time:
                                                 ///1…….
                                                 //2……
@@ -162,13 +183,11 @@ public class Main {
                                     case 2:
                                         System.out.println("Job information");
                                         System.out.println("***************  Job Information  *************");
-                                        System.out.println("Company name:");
-                                        System.out.println("Job position:");
-                                        System.out.println("Skill:");
-                                        System.out.println("Experience:");
-                                        System.out.println("Salary:");
-                                        System.out.println("Website Link:");
-                                        System.out.println("Additional:");
+                                        System.out.println("Add your preference");
+                                        Scanner sc70 = new Scanner(System.in);
+                                        String query = sc70.nextLine();
+                                        applicant.showInformation(query, jobList);
+
                                         System.out.println("1.Apply");
                                         System.out.println("2.Go back");
                                         System.out.println("3.Exit");
