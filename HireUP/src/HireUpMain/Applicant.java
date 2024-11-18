@@ -30,16 +30,16 @@ public class Applicant extends User{
             while((line = reader.readLine()) != null)
             {
                 String[] data = line.split(",");
-                if (data.length == 9) {
-                    String companyName = data[0];
-                    String jobPosition = data[1];
-                    String skill = data[2];
-                    String experience = data[3];
-                    String salary = data[4];
-                    String location = data[5];
-                    String time = data[6];
-                    String websiteLink = data[7];
-                    String additional = data[8];
+                if (data.length == 10) {
+                    String companyName = data[1];
+                    String jobPosition = data[2];
+                    String skill = data[3];
+                    String experience = data[4];
+                    String salary = data[5];
+                    String location = data[6];
+                    String time = data[7];
+                    String websiteLink = data[8];
+                    String additional = data[9];
 
                     if (Objects.equals(formatData(preference),companyName) || Objects.equals(formatData(preference),location) ||
                             Objects.equals(formatData(preference),jobPosition) || Objects.equals(preference,experience)
@@ -47,8 +47,8 @@ public class Applicant extends User{
                             || Objects.equals(preference,time))
                     {
                         serial++;
-                        System.out.println(serial+ "." + "Company Name: " + data[0] + " "
-                                + "Job Position: " + data[1] + " " + "WebSite Address: " + data[7] + '\n');
+                        System.out.println(serial+ "." + "Company Name: " + data[1] + " "
+                                + "Job Position: " + data[2] + " " + "WebSite Address: " + data[8] + '\n');
                         jobList.add(serial+","+line);
                     }
                 }
