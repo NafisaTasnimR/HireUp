@@ -1,18 +1,25 @@
 package HireUpMain;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import static HireUpMain.Utility.formatData;
 
-public class Applicant {
+public class Applicant extends User{
+    private Resume resume;
+    public Applicant(String userName, String password, String email, String role) {
+        super(userName, password, email, role);
+        this.resume = new Resume();
+    }
+
     public Applicant()
     {
+        super();
 
     }
+
     public List<String> searchJob(String preference)
     {
         List<String> jobList = new ArrayList<>();
@@ -56,6 +63,7 @@ public class Applicant {
         return jobList;
     }
 
+
     public void showInformation(String query, List<String> jobs) {
         List<String> matchingJobs = new ArrayList<>();
         for (String job : jobs) {
@@ -78,5 +86,12 @@ public class Applicant {
 
     }
 
+
+
+    public void createResume()
+    {
+        resume.generateResume(this.getEmail());
+
+    }
 
 }

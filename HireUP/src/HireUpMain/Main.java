@@ -262,12 +262,13 @@ public class Main {
                         } else if (Objects.equals(role, "Job Provider") || Objects.equals(role, "job provider")) {
                             //file checking function where pass and email is going to be checked
                             //function returns false then
-                            System.out.println("If you give 1 then you'll see the error page to see other page give input any number except 1.");
-                            Scanner sc14 = new Scanner(System.in);
-                            int value = sc14.nextInt();
+                            User user1 = new User(user,pass,email,role);
+                            //System.out.println("If you give 1 then you'll see the error page to see other page give input any number except 1.");
+                            //Scanner sc14 = new Scanner(System.in);
+                            //int value = sc14.nextInt();
                             System.out.println("//////////////////////////////////////////////");
                             updateConsole();
-                            if (value == 1) {
+                            if (!user1.logIn()) {
                                 System.out.println("Error! Incorrect username or password.");
                                 System.out.println("1.Go back");
                                 System.out.println("2.Exit");
@@ -310,16 +311,16 @@ public class Main {
                                         String skill = sc19.nextLine();
                                         System.out.println("Experience: ");
                                         Scanner sc20 = new Scanner(System.in);
-                                        int experience = sc20.nextInt();
+                                        String experience = sc20.nextLine();
                                         System.out.println("Salary: ");
                                         Scanner sc21 = new Scanner(System.in);
-                                        int salary = sc21.nextInt();
+                                        String salary = sc21.nextLine();
                                         System.out.println("Location: ");
                                         Scanner sc22 = new Scanner(System.in);
                                         String location = sc22.nextLine();
                                         System.out.println("Time: ");
                                         Scanner sc23 = new Scanner(System.in);
-                                        int time = sc23.nextInt();
+                                        String time = sc23.nextLine();
                                         System.out.println("Website Link: ");
                                         Scanner sc24 = new Scanner(System.in);
                                         String websiteLink = sc24.nextLine();
@@ -335,7 +336,11 @@ public class Main {
                                         int selection1 = sc25.nextInt();
                                         switch (selection1) {
                                             case 1:
-                                                System.out.println("You have successfully posted a Job post!");
+                                                Job job = new Job(companyName,jobPosition,skill,experience,salary,location,time,websiteLink,additional);
+                                                JobProvider jobProvider = new JobProvider();
+                                                if(jobProvider.postJob(job)) {
+                                                    System.out.println("You have successfully posted a Job post!");
+                                                }
                                                 break;
                                             case 2:
                                                 System.out.println("You have successfully gone back!");
@@ -354,6 +359,13 @@ public class Main {
                                         //Application list showing
                                         //here input for watch the applicant info will be taken
                                         //a function will be called and that would show the info
+                                        System.out.println("Choose a Job Circular from the following list: ");
+                                        JobProvider jobProvider = new JobProvider();
+                                        jobProvider.seeJobPosts();
+                                        System.out.println("Enter the Job Post Number that you want to see: ");
+                                        Scanner sc70 = new Scanner(System.in);
+                                        String jobPostNo = sc70.nextLine();
+                                        jobProvider.seeApplicantList(jobPostNo);
                                         int a = 1;
                                         if (a == 1) {
                                             System.out.println("***************  Applicants Personal Information  ***************");

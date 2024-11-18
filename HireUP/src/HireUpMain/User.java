@@ -16,6 +16,10 @@ public class User {
         this.role = role;
     }
 
+    public User() {
+
+    }
+
     public String getUserName() {
         return userName;
     }

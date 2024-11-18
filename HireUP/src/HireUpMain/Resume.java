@@ -10,6 +10,8 @@ public class Resume {
     private EducationalInformation EducationalInformation;
     private AdditionalInformation AdditionalInformation;
 
+    public Resume() {}
+
     public Resume(PersonalInformation personalInformation, EducationalInformation educationalInformation, AdditionalInformation additionalInformation) {
         PersonalInformation = personalInformation;
         EducationalInformation = educationalInformation;
@@ -36,9 +38,11 @@ public class Resume {
         AdditionalInformation = additionalInformation;
     }
 
-    public boolean generateResume() {
+    public boolean generateResume(String email) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Applicant_info.txt", true))) {
-            writer.write(PersonalInformation.toFileString()+","+EducationalInformation.toFileString()+","+AdditionalInformation.toFileString());
+            writer.write(PersonalInformation.toFileString()+","+"Email:"+email+
+                    EducationalInformation.toFileString()+","+
+                    AdditionalInformation.toFileString());
             writer.newLine();
             return true;
 
