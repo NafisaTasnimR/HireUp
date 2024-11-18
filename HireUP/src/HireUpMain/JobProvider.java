@@ -18,6 +18,10 @@ public class JobProvider extends User{
     }
     public JobProvider(){}
 
+    public JobProvider(String companyName){
+        this.companyName = companyName;
+    }
+
     public String getCompanyName()
     {
         return companyName;
@@ -41,13 +45,18 @@ public class JobProvider extends User{
 
     public boolean postJob(Job job)
     {
-        String jobPostNo = Arrays.toString(job.getCompanyName().split(" ")) + String.valueOf((int)(Math.random()*100));
+        String companyName = job.getCompanyName();
+        String regex = "[,\\.\\s]";
+        String[] nameArray = companyName.split(regex);
+        String jobPostNo = nameArray[0] + String.valueOf((int)(Math.random()*100));
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("Job_info.txt",true))){
+            bufferedWriter.newLine();
             bufferedWriter.write(jobPostNo + "," + job.getCompanyName() + "," +
                     job.getJobPosition() + "," + job.getSkill() + "," + job.getExperience()
             + "," + job.getSalary() + "," + job.getLocation() + "," + job.getTime()
             + "," + job.getWebsiteLink() + "," + job.getAdditional());
-            bufferedWriter.newLine();
+            bufferedWriter.flush();
+            bufferedWriter.close();
             System.out.println("You have successfully posted a job circular!");
             return true;
         }catch (IOException e)
@@ -144,8 +153,8 @@ public class JobProvider extends User{
                 String position = data[2];
                 if(Objects.equals(this.getCompanyName(), data[1])) {
                     serial++;
-                    System.out.println(serial + "Job Post No. : " + jobPostNo +
-                            "Company Name: " + companyName + "Position: " + position + '\n');
+                    System.out.println(serial +"."+" "+ "Job Post No: " + jobPostNo +" "+
+                            "Company Name: " + companyName + " " + "Position: " + position + '\n');
                 }
             }
             return true;
