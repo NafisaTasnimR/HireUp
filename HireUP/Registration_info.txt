@@ -3,3 +3,4 @@ AR,hjhfrg,ar.com,applicant
 Mrittika,www//,m.com,admin
 Nishat,wwwmm,n.com,admin
 nana,mrittika210@gmail.com,admin
+oishee,oishee@iut-dhaka.edu,admin

@@ -204,4 +204,44 @@ public class Admin extends User {
         return false;
     }
 
+    public boolean reject(String UserName1) {
+        String line;
+        List<String> approvedAdmins = new ArrayList<>();
+        boolean requestDeleted = false;
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
+                "AdminRequest.txt"))) {
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data.length == 3) {
+                    String userName = data[0];
+                    String email = data[1];
+                    String role = data[2];
+                    if (!userName.equals(UserName1) || requestDeleted) {
+                        approvedAdmins.add(userName + "," + email+ "," + role);
+                    } else {
+                        requestDeleted = true;
+                    }
+                } else {
+                    System.out.println("Invalid Data:" + line);
+                }
+            }
+            bufferedReader.close();
+        } catch (IOException e) {
+            System.err.println("Error reading file" + e.getMessage());
+            e.printStackTrace();
+        }
+        if (requestDeleted) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("AdminRequest.txt"))) {
+                for (String approvedAdmin: approvedAdmins) {
+                    writer.write(approvedAdmin);
+
+                }
+                return true;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return false;
+    }
+
 }

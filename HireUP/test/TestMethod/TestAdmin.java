@@ -48,4 +48,16 @@ public class TestAdmin {
         Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
         assertEquals(expectedValue,admin.approve("nana"));
     }
+    @Test
+    public void testApprove1() {
+        boolean expectedValue = true;
+        Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
+        assertEquals(expectedValue,admin.approve("oishee"));
+    }
+    @Test
+    public void testReject() {
+        boolean expectedValue = true;
+        Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
+        assertEquals(expectedValue,admin.reject("adrita"));
+    }
 }
