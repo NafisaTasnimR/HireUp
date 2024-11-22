@@ -881,6 +881,7 @@ public class Main {
                             case 1:
                                 System.out.println("Register");
                                 //method call
+
                                 System.out.println("Congratulations! You are an admin from now on.");
                                 System.out.println("1.Go back");
                                 System.out.println("2.Exit");

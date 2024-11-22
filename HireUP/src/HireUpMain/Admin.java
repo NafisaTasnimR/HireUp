@@ -85,7 +85,10 @@ public class Admin extends User {
         if (verifiedCompany) {
             try (BufferedWriter writer2 = new BufferedWriter(new FileWriter("VerifiedCompanies.txt", true))) {
                 for (String company : VerifiedCompanies) {
+                    writer2.newLine();
                     writer2.write(company);
+                    writer2.flush();
+                    writer2.close();
 
                 }
                 return true;
@@ -125,8 +128,10 @@ public class Admin extends User {
         if (dataDeleted) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("JobProvider_info.txt"))) {
                 for (String jobprovider : JobProviderInfo) {
-                    writer.write(jobprovider);
                     writer.newLine();
+                    writer.write(jobprovider);
+                    writer.flush();
+                    writer.close();
                 }
                 return true;
             } catch (IOException e) {
@@ -172,7 +177,7 @@ public class Admin extends User {
                 "AdminRequest.txt"))) {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data.length == 3) {
+                if (data.length == 4) {
                     String userName = data[0];
                     String email = data[1];
                     String role = data[2];
@@ -193,18 +198,24 @@ public class Admin extends User {
         if (approvedAdmin) {
             try (BufferedWriter writer3 = new BufferedWriter(new FileWriter("Registration_info.txt", true))) {
                 for (String admin : approvedAdmins) {
+                    writer3.newLine();
                     writer3.write(admin);
+                    writer3.flush();
+                    writer3.close();
 
-                }
+
+                } this.deleteRequest(UserName);
                 return true;
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
+        } this.deleteRequest(UserName);
         return false;
+
     }
 
-    public boolean reject(String UserName1) {
+
+    public boolean deleteRequest(String UserName1) {
         String line;
         List<String> approvedAdmins = new ArrayList<>();
         boolean requestDeleted = false;
@@ -212,10 +223,10 @@ public class Admin extends User {
                 "AdminRequest.txt"))) {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data.length == 3) {
+                if (data.length == 4) {
                     String userName = data[0];
-                    String email = data[1];
-                    String role = data[2];
+                    String email = data[2];
+                    String role = data[3];
                     if (!userName.equals(UserName1) || requestDeleted) {
                         approvedAdmins.add(userName + "," + email+ "," + role);
                     } else {
@@ -231,9 +242,12 @@ public class Admin extends User {
             e.printStackTrace();
         }
         if (requestDeleted) {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("AdminRequest.txt"))) {
+            try (BufferedWriter writer4 = new BufferedWriter(new FileWriter("AdminRequest.txt"))) {
                 for (String approvedAdmin: approvedAdmins) {
-                    writer.write(approvedAdmin);
+                    writer4.newLine();
+                    writer4.write(approvedAdmin);
+                    writer4.flush();
+                    writer4.close();
 
                 }
                 return true;
