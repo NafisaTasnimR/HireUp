@@ -9,6 +9,7 @@ public class User {
     private String email;
     private String role;
 
+
     public User(String userName, String password, String email, String role) {
         this.userName = userName;
         this.password = password;
@@ -76,8 +77,23 @@ public class User {
             e.printStackTrace();
             return false;
         }
+    }
 
+    public boolean adminRegistrationRequest(User user) {
+        try (BufferedWriter bufferedWriter1 = new BufferedWriter(new FileWriter("AdminRequest.txt", true))) {
+            bufferedWriter1.write(user.getUserName() + "," +
+                    user.getPassword() + "," + user.getEmail() +
+                    "," + user.getRole());
+            bufferedWriter1.newLine();
+            System.out.println("Data has been written.");
 
+            bufferedWriter1.close();
+            return true;
+        } catch (IOException e) {
+            System.err.println("Error in file writing." + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
     }
 
 

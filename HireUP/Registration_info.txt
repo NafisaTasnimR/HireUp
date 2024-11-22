@@ -2,5 +2,13 @@ Nishat,wwwmm,n.com,admin
 AR,hjhfrg,ar.com,applicant
 Mrittika,www//,m.com,admin
 Nishat,wwwmm,n.com,admin
-AR,hjhfrg,ar.com,applicant
-Mrittika,www//,m.com,admin
+nana,mrittika210@gmail.com,admin
+oishee,oishee@iut-dhaka.edu,admin
+nana,mrittika210@gmail.com,admin
+ridika,ridika210@gmail.com,admin
+oishee,oishee@iut-dhaka.edu,admin
+sanjana,sanjana@iut-dhaka.edu,admin
+rodoshi,coolnafisa@gmail.com,admin
+nana,mrittika210@gmail.com,admin
+rodoshi,rodoshi@gmail.com,admin
+Nishat,wwwmm,n.com

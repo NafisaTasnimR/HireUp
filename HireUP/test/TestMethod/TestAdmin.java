@@ -35,4 +35,41 @@ public class TestAdmin {
         assertEquals(expectedValue,admin.verify("www.pran.com"));
     }
 
+    @Test
+    public void testviewAdminRequest(){
+        boolean expectedValue = true;
+        Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
+        assertEquals(expectedValue,admin.viewAdminRequest());
+    }
+
+    @Test
+    public void testApprove(){
+        boolean expectedValue = true;
+        Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
+        assertEquals(expectedValue,admin.approve("nana"));
+    }
+    @Test
+    public void testApprove1() {
+        boolean expectedValue = true;
+        Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
+        assertEquals(expectedValue,admin.approve("oishee"));
+    }
+    @Test
+    public void testReject() {
+        boolean expectedValue = true;
+        Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
+        assertEquals(expectedValue,admin.deleteRequest("ridika"));
+    }
+    @Test
+    public void testApprove2() {
+        boolean expectedValue = true;
+        Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
+        assertEquals(expectedValue,admin.approve("oishee"));
+    }
+    @Test
+    public void testApprove3() {
+        boolean expectedValue = true;
+        Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
+        assertEquals(expectedValue,admin.approve("Nishat"));
+    }
 }

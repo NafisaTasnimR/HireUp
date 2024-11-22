@@ -53,4 +53,10 @@ public class TestUser {
         User user1 = new User("AR","hjhfrg","ar.com","applicant");
         assertEquals(expectedValue,user1.registration(user1));
     }
+    @Test
+    public void testAdminRequest(){
+        boolean expectedValue = true;
+        User user1 = new User("Nishat","wwwmm","n.com","admin");
+        assertEquals(expectedValue, user1.adminRegistrationRequest(user1));
+    }
 }
