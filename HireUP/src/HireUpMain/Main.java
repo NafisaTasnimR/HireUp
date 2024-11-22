@@ -592,7 +592,7 @@ public class Main {
                                                     int selection8 = sc33.nextInt();
                                                     switch (selection8) {
                                                         case 1:
-                                                            admin = new Admin();
+                                                            
 
                                                             Scanner scc =new Scanner(System.in);
                                                             String selection88 = scc.nextLine();

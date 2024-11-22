@@ -18,7 +18,9 @@ public class TestAdmin {
     public void testDelete() {
         boolean expectedValue = true;
         Admin admin = new Admin("ndjd" ,"djigk","djfj","dnhnf");
-        assertEquals(expectedValue,admin.delete("www.dot"));
+        assertEquals(expectedValue,admin.delete("www.bbc.com"));
+
+
 
     }
 

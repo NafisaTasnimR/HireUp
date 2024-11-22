@@ -111,6 +111,7 @@ public class Admin extends User {
     public boolean delete(String webAddress) {
         String line;
         List<String> JobProviderInfo = new ArrayList<>();
+
         boolean dataDeleted = false;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
                 "JobProvider_info.txt"))) {
@@ -139,9 +140,10 @@ public class Admin extends User {
                     writer.newLine();
                     writer.write(jobprovider);
                     writer.flush();
-                    writer.close();
                 }
                 return true;
+
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
