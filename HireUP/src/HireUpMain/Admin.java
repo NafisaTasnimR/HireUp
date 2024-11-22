@@ -13,6 +13,10 @@ public class Admin extends User {
 
     }
 
+    public Admin() {
+
+    }
+
     @Override
     public String getUserName() {
         return super.getUserName();
@@ -36,18 +40,22 @@ public class Admin extends User {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
                 "JobProvider_info.txt"))) {
             System.out.println("Job Provider Information:");
+            int serial =0;
+            boolean foundData = false;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data.length == 2) {
-                    String companyName = data[0];
-                    String Weblink = data[1];
-                    System.out.println("Company Name: " + companyName);
-                    System.out.println("Weblink: " + Weblink);
-                    return true;
+                String companyName = data[0];
+                String Weblink = data[1];
+                if (companyName.equals(companyName)) {
+                    serial++;
+                    System.out.println(serial +"."+" "+ "Company Name:" + companyName + " " + "Weblink:" + Weblink + '\n');
+
+                    foundData = true;
+
                 } else {
                     System.out.println("Invalid Data:" + line);
                 }
-            }
+            } return foundData;
         } catch (IOException e) {
             System.err.println("Error reading file" + e.getMessage());
             e.printStackTrace();
@@ -146,20 +154,23 @@ public class Admin extends User {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
                 "AdminRequest.txt"))) {
             System.out.println("Admin Requests:");
+            int serial=0;
+            boolean foundRequest = false;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data.length == 4) {
+
                     String userName = data[0];
                     String email = data[1];
                     String role = data[2];
-                    System.out.println("Name: " + userName);
-                    System.out.println("Email: " + email);
-                    System.out.println("Role: " + role);
-                    return true;
+                    if(userName.equals(data[0])){
+                        serial++;
+                        System.out.println(serial +"."+" "+ "Username:"+ userName + " " + "Email:" + email + " "+"Role:"+role+'\n');
+
+                    foundRequest = true;
                 } else {
                     System.out.println("Invalid Data:" + line);
                 }
-            }
+            } return foundRequest;
         } catch (IOException e) {
             System.err.println("Error reading file" + e.getMessage());
             e.printStackTrace();

@@ -567,19 +567,21 @@ public class Main {
                                             case "1":
                                                 System.out.println("Job Provider");
                                                 System.out.println("***************  Job Provider’s Website List  ***************");
+                                                Admin admin=new Admin();
+                                                admin.ViewInformation();
                                                 //list
                                                 //input from the list
                                                 int a = 1;
                                                 if (a == 1) {
                                                     System.out.println("***************  Verification  ***************");
-                                                    System.out.println("Company Name:");
+                                                    /* System.out.println("Company Name:");
 
                                                     Scanner sc31 = new Scanner(System.in);
                                                     String companyName = sc31.nextLine();
 
                                                     System.out.println("Web Address:");
                                                     Scanner sc32 = new Scanner(System.in);
-                                                    String webAddress = sc32.nextLine();
+                                                    String webAddress = sc32.nextLine();*/
 
                                                     System.out.println("1. Verify ");
                                                     System.out.println("2. Delete");
@@ -590,9 +592,17 @@ public class Main {
                                                     int selection8 = sc33.nextInt();
                                                     switch (selection8) {
                                                         case 1:
-                                                            System.out.println("Verify");
+                                                            admin = new Admin();
+
+                                                            Scanner scc =new Scanner(System.in);
+                                                            String selection88 = scc.nextLine();
+                                                            admin.verify(selection88);
+                                                            System.out.println("Verified");
                                                             break;
                                                         case 2:
+                                                            Scanner adminsc= new Scanner(System.in);
+                                                            String selection90 = adminsc.nextLine();
+                                                            admin.delete(selection90);
                                                             System.out.println("Delete");
                                                             break;
                                                         case 3:
@@ -879,6 +889,7 @@ public class Main {
                         switch (selection7) {
                             case 1:
                                 System.out.println("Register");
+
                                 //method call
 
                                 System.out.println("Congratulations! You are an admin from now on.");
