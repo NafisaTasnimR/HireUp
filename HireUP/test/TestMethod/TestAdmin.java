@@ -58,6 +58,18 @@ public class TestAdmin {
     public void testReject() {
         boolean expectedValue = true;
         Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
-        assertEquals(expectedValue,admin.reject("adrita"));
+        assertEquals(expectedValue,admin.deleteRequest("ridika"));
+    }
+    @Test
+    public void testApprove2() {
+        boolean expectedValue = true;
+        Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
+        assertEquals(expectedValue,admin.approve("oishee"));
+    }
+    @Test
+    public void testApprove3() {
+        boolean expectedValue = true;
+        Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
+        assertEquals(expectedValue,admin.approve("Nishat"));
     }
 }
