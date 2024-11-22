@@ -23,7 +23,7 @@ public class TestApplicant {
         for (String line: filteredJobList)
         {
             String[] data = line.split(",");
-            if(Objects.equals(data[6], formatData(location)))
+            if(Objects.equals(data[7], formatData(location)))
             {
                 count++;
             }
@@ -44,7 +44,7 @@ public class TestApplicant {
         for (String line: filteredJobList)
         {
             String[] data = line.split(",");
-            if(Objects.equals(data[1],formatData(companyName)))
+            if(Objects.equals(data[2],formatData(companyName)))
             {
                 count++;
             }

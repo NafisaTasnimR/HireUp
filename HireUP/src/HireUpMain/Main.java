@@ -51,6 +51,7 @@ public class Main {
                 System.out.println("Enter your selection");
                 Scanner sc5 = new Scanner(System.in);
                 int selection = sc5.nextInt();
+
                 switch (selection) {
                     case 1:
                         System.out.println("Enter");
@@ -287,7 +288,7 @@ public class Main {
                             } else {
                                 System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\     Job Provider     " +
                                         "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
-
+                                JobProvider jobProvider = new JobProvider(user1.getUserName());
                                 System.out.println("1.Post Job Circular");
                                 System.out.println("2.See Applicant List");
                                 System.out.println("3.See Short List");
@@ -337,7 +338,6 @@ public class Main {
                                         switch (selection1) {
                                             case 1:
                                                 Job job = new Job(companyName,jobPosition,skill,experience,salary,location,time,websiteLink,additional);
-                                                JobProvider jobProvider = new JobProvider();
                                                 if(jobProvider.postJob(job)) {
                                                     System.out.println("You have successfully posted a Job post!");
                                                 }
@@ -360,7 +360,6 @@ public class Main {
                                         //here input for watch the applicant info will be taken
                                         //a function will be called and that would show the info
                                         System.out.println("Choose a Job Circular from the following list: ");
-                                        JobProvider jobProvider = new JobProvider();
                                         jobProvider.seeJobPosts();
                                         System.out.println("Enter the Job Post Number that you want to see: ");
                                         Scanner sc70 = new Scanner(System.in);

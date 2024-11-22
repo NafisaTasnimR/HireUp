@@ -27,7 +27,16 @@ public  class Utility {
     }
 
     public static void updateConsole() {
-
+        try {
+            if (System.getProperty("os.name").contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (Exception e) {
+            System.out.println("Error clearing the console.");
+        }
     }
 
     public static boolean isValidEmail(String email){
