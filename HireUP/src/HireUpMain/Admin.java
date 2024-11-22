@@ -148,7 +148,7 @@ public class Admin extends User {
             System.out.println("Admin Requests:");
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data.length == 3) {
+                if (data.length == 4) {
                     String userName = data[0];
                     String email = data[1];
                     String role = data[2];
