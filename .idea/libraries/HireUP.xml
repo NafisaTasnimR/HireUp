@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="HireUP">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/HireUP/out/artifacts/HireUP_jar/HireUP.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
