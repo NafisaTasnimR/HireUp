@@ -1,9 +1,7 @@
 package HireUpMain;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import static HireUpMain.Utility.formatData;
 
@@ -93,5 +91,59 @@ public class Applicant extends User{
         resume.generateResume(this.getEmail());
 
     }
+
+    public static List<String> findPerson(String email, String resumeFile) {
+        List<String> resumeList = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))) {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 26) {
+                    String name = parts[0];
+                    String phoneNumber = parts[7];
+                    String fileEmail = parts[10];
+
+
+                    if (fileEmail.equalsIgnoreCase(email)) {
+                        resumeList.add( name);
+                        resumeList.add( phoneNumber);
+                        resumeList.add(fileEmail);
+                        return resumeList;
+                    }
+                }
+            }
+
+        } catch (IOException e) {
+            System.err.println("Error reading the resume file: " + e.getMessage());
+        }
+
+        return resumeList;
+    }
+
+    public static List<String> jobApplication(String jobFile, List<String> resumeFiles, String outputFile) {
+        List<String> jobDetailsList = new ArrayList<>();
+        try (BufferedReader jobReader = new BufferedReader(new FileReader("Job_info.txt"))) {
+            String line;
+            while ((line = jobReader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 10) {
+                    String jobPostNo = parts[0];
+                    String companyName = parts[1];
+                    String position = parts[3];
+                    jobDetailsList.add(jobPostNo);
+                    jobDetailsList.add(companyName);
+                    jobDetailsList.add(position);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading job file: " + e.getMessage());
+
+        }
+        return jobDetailsList;
+
+    }
+
 
 }
