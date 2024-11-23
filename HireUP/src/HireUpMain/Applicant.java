@@ -92,10 +92,10 @@ public class Applicant extends User{
 
     }
 
-    public static List<String> findPerson(String email, String resumeFile) {
+    public static List<String> findApplicant(String email) {
         List<String> resumeList = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
             String line;
 
             while ((line = reader.readLine()) != null) {
@@ -105,11 +105,11 @@ public class Applicant extends User{
                     String phoneNumber = parts[7];
                     String fileEmail = parts[10];
 
+                    String resumeInfo = name + "," + phoneNumber + "," + fileEmail;
+
 
                     if (fileEmail.equalsIgnoreCase(email)) {
-                        resumeList.add( name);
-                        resumeList.add( phoneNumber);
-                        resumeList.add(fileEmail);
+                        resumeList.add(resumeInfo);
                         return resumeList;
                     }
                 }
@@ -122,9 +122,11 @@ public class Applicant extends User{
         return resumeList;
     }
 
-    public static List<String> jobApplication(String jobFile, List<String> resumeFiles, String outputFile) {
+    public List<String> jobApplication( String email) {
         List<String> jobDetailsList = new ArrayList<>();
-        try (BufferedReader jobReader = new BufferedReader(new FileReader("Job_info.txt"))) {
+        List<String> applicationResults = new ArrayList<>();
+
+        try (BufferedReader jobReader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\Job_info.txt"))) {
             String line;
             while ((line = jobReader.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -132,18 +134,23 @@ public class Applicant extends User{
                     String jobPostNo = parts[0];
                     String companyName = parts[1];
                     String position = parts[3];
-                    jobDetailsList.add(jobPostNo);
-                    jobDetailsList.add(companyName);
-                    jobDetailsList.add(position);
+                    String jobDetails = jobPostNo + "," + companyName + "," + position;
+                    jobDetailsList.add(jobDetails);
                 }
             }
         } catch (IOException e) {
             System.err.println("Error reading job file: " + e.getMessage());
 
         }
-        return jobDetailsList;
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("\\HireUp\\HireUp\\HireUP\\Application.txt", true))) {
+            List<String> resumeFiles = this.findApplicant(email);
+
+        } catch (IOException e) {
+            System.err.println("Error writing to output file: " + e.getMessage());
+        }
+
+        return applicationResults;
 
     }
-
 
 }
