@@ -556,8 +556,9 @@ public class Main {
                                     case 1:
                                         System.out.println("***************  View Interface.User Information  ***************");
                                         System.out.println("1. Job Provider");
-                                        System.out.println("2. Go Back");
-                                        System.out.println("3. Exit");
+                                        System.out.println("2. Admin Requests");
+                                        System.out.println("3. Go Back");
+                                        System.out.println("4. Exit");
                                         System.out.println("Enter your selection: ");
                                         Scanner sc30 = new Scanner(System.in);
                                         String selection6 = sc30.nextLine();
@@ -592,8 +593,6 @@ public class Main {
                                                     int selection8 = sc33.nextInt();
                                                     switch (selection8) {
                                                         case 1:
-                                                            
-
                                                             Scanner scc =new Scanner(System.in);
                                                             String selection88 = scc.nextLine();
                                                             admin.verify(selection88);
@@ -635,14 +634,47 @@ public class Main {
                                                 updateConsole();
                                                 break;
                                             case "2":
+                                                Admin admin2=new Admin();
+                                                admin2.viewAdminRequest();
+                                                System.out.println("***************  Approval  ***************");
+                                                System.out.println("1. Approve ");
+                                                System.out.println("2. Reject ");
+                                                System.out.println("3. Go Back");
+                                                System.out.println("4. Exit");
+                                                System.out.println("Enter your selection: ");
+                                                Scanner sc888 = new Scanner(System.in);
+                                                int selection15 = sc888.nextInt();
+                                                switch (selection15) {
+                                                    case 1:
+                                                        Scanner scc1 =new Scanner(System.in);
+                                                        String selection889 = scc1.nextLine();
+                                                        admin2.approve(selection889);
+                                                        System.out.println("Approved");
+                                                        break;
+                                                    case 2:
+                                                        Scanner adminsc1= new Scanner(System.in);
+                                                        String selection901 = adminsc1.nextLine();
+                                                        admin2.deleteRequest(selection901);
+                                                        System.out.println("Rejected");
+                                                        break;
+                                                    case 3:
+                                                        System.out.println("Go Back");
+                                                        break;
+                                                    case 4:
+                                                        System.out.println("Exit");
+                                                        break;
+                                                }
+
+                                                System.out.println("//////////////////////////////////////////////");
+                                                updateConsole();
+
+                                            case "3":
                                                 System.out.println("You have successfully go back!");
                                                 break;
-                                            case "3":
+                                            case "4":
                                                 System.out.println("Goodbye!");
                                                 break;
-
                                         }
-
                                 }
                             }
                         } else {
@@ -652,9 +684,7 @@ public class Main {
                     case 2:
                         System.out.println("Exit");
                         break;
-
                 }
-
                 break;
             case 2:
                 System.out.println("You choose :SignUp");
@@ -677,6 +707,19 @@ public class Main {
 
                 Scanner sc38 = new Scanner(System.in);
                 int roleValue = sc38.nextInt();
+                User user1 = null;
+                switch (roleValue) {
+                    case 1:
+                        user1 = new User(name,pass1,email1,"applicant");
+                        break;
+                    case 2:
+                        user1 = new User(name, pass1, email1, "job provider");
+                        break;
+                    case 3:
+                        user1 = new User(name, pass1, email1, "admin");
+                        break;
+                }
+
                 System.out.println("//////////////////////////////////////////////");
                 updateConsole();
                 switch (roleValue) {
@@ -889,10 +932,12 @@ public class Main {
                         switch (selection7) {
                             case 1:
                                 System.out.println("Register");
+                                user1.adminRegistrationRequest(user1);
+
 
                                 //method call
 
-                                System.out.println("Congratulations! You are an admin from now on.");
+                                System.out.println("Your request has been sent to Admin.");
                                 System.out.println("1.Go back");
                                 System.out.println("2.Exit");
                                 System.out.println("Enter your selection: ");

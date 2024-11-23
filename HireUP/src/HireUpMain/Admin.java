@@ -121,7 +121,7 @@ public class Admin extends User {
                     String companyName = data[0];
                     String Weblink = data[1];
                     if (!Weblink.equals(webAddress) || dataDeleted) {
-                        JobProviderInfo.add(companyName + "," + Weblink);
+                        JobProviderInfo.add(line);
                     } else {
                         dataDeleted = true;
                     }
@@ -137,10 +137,9 @@ public class Admin extends User {
         if (dataDeleted) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("JobProvider_info.txt"))) {
                 for (String jobprovider : JobProviderInfo) {
-                    writer.newLine();
                     writer.write(jobprovider);
                     writer.flush();
-                }
+                } writer.close();
                 return true;
 
 
@@ -181,7 +180,7 @@ public class Admin extends User {
     }
 
 
-    public boolean approve(String UserName) {
+    public boolean approve(String Email1) {
         String line;
         List<String> approvedAdmins = new ArrayList<>();
         boolean approvedAdmin = false;
@@ -190,11 +189,11 @@ public class Admin extends User {
                 "AdminRequest.txt"))) {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data.length == 4) {
+                if (data.length == 3) {
                     String userName = data[0];
                     String email = data[1];
                     String role = data[2];
-                    if (userName.equals(UserName)) {
+                    if (email.equals(Email1)) {
                        approvedAdmins.add(userName + "," + email+ "," + role );
                         approvedAdmin = true;
                     }
@@ -203,7 +202,7 @@ public class Admin extends User {
                     System.out.println("Invalid Data:" + line);
                 }
             }
-            bufferedReader.close();
+
         } catch (IOException e) {
             System.err.println("Error reading file" + e.getMessage());
             e.printStackTrace();
@@ -214,34 +213,31 @@ public class Admin extends User {
                     writer3.newLine();
                     writer3.write(admin);
                     writer3.flush();
-                    writer3.close();
-
-
-                } this.deleteRequest(UserName);
+                } writer3.close();
+                this.deleteRequest(Email1);
                 return true;
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        } this.deleteRequest(UserName);
+        } this.deleteRequest(Email1);
         return false;
-
     }
 
 
-    public boolean deleteRequest(String UserName1) {
+    public boolean deleteRequest(String Email) {
         String line;
         List<String> approvedAdmins = new ArrayList<>();
         boolean requestDeleted = false;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
-                "AdminRequest.txt"))) {
+                "AdminRequest.txt" ))) {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data.length == 4) {
+                if (data.length == 3) {
                     String userName = data[0];
-                    String email = data[2];
-                    String role = data[3];
-                    if (!userName.equals(UserName1) || requestDeleted) {
-                        approvedAdmins.add(userName + "," + email+ "," + role);
+                    String email = data[1];
+                    String role = data[2];
+                    if (!email.equals(Email) || requestDeleted) {
+                        approvedAdmins.add(userName +","+ email+ "," + role);
                     } else {
                         requestDeleted = true;
                     }
@@ -257,12 +253,10 @@ public class Admin extends User {
         if (requestDeleted) {
             try (BufferedWriter writer4 = new BufferedWriter(new FileWriter("AdminRequest.txt"))) {
                 for (String approvedAdmin: approvedAdmins) {
-                    writer4.newLine();
                     writer4.write(approvedAdmin);
+                    writer4.newLine();
                     writer4.flush();
-                    writer4.close();
-
-                }
+                } writer4.close();
                 return true;
             } catch (IOException e) {
                 throw new RuntimeException(e);

@@ -19,9 +19,6 @@ public class TestAdmin {
         boolean expectedValue = true;
         Admin admin = new Admin("ndjd" ,"djigk","djfj","dnhnf");
         assertEquals(expectedValue,admin.delete("www.bbc.com"));
-
-
-
     }
 
     @Test
@@ -48,7 +45,7 @@ public class TestAdmin {
     public void testApprove(){
         boolean expectedValue = true;
         Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
-        assertEquals(expectedValue,admin.approve("nana"));
+        assertEquals(expectedValue,admin.approve("Mrittika"));
     }
     @Test
     public void testApprove1() {
@@ -60,18 +57,18 @@ public class TestAdmin {
     public void testReject() {
         boolean expectedValue = true;
         Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
-        assertEquals(expectedValue,admin.deleteRequest("ridika"));
+        assertEquals(expectedValue,admin.deleteRequest("Nishat"));
     }
     @Test
     public void testApprove2() {
         boolean expectedValue = true;
         Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
-        assertEquals(expectedValue,admin.approve("oishee"));
+        assertEquals(expectedValue,admin.approve("Oishee"));
     }
     @Test
     public void testApprove3() {
         boolean expectedValue = true;
         Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
-        assertEquals(expectedValue,admin.approve("Nishat"));
+        assertEquals(expectedValue,admin.approve("mrittika@gmail.com"));
     }
 }
