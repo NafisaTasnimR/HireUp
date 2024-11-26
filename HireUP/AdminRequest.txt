@@ -1,4 +1,5 @@
 Oishee,o.com,admin
 Oishee,o.com,admin
 Sanjana,so.com,admin
-Mrittika,mri@gmail.com,admin
+Sanjana,so.com,admin
+bully,nafisa.com,admin

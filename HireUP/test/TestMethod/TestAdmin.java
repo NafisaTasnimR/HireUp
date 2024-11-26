@@ -69,6 +69,6 @@ public class TestAdmin {
     public void testApprove3() {
         boolean expectedValue = true;
         Admin admin = new Admin("ndjd","djigk","djfj","dnhnf");
-        assertEquals(expectedValue,admin.approve("mrittika@gmail.com"));
+        assertEquals(expectedValue,admin.approve("coolnafisa.com"));
     }
 }
