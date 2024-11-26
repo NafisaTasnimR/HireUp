@@ -365,79 +365,39 @@ public class Main {
                                         Scanner sc70 = new Scanner(System.in);
                                         String jobPostNo = sc70.nextLine();
                                         jobProvider.seeApplicantList(jobPostNo);
-                                        int a = 1;
-                                        if (a == 1) {
+                                        if (jobPostNo != null) {
                                             System.out.println("***************  Applicants Personal Information  ***************");
-                                            System.out.println("PERSONAL INFORMATION");
-                                            System.out.println("Name: ");
-
-
-                                            System.out.println("Father's Name: ");
-
-
-                                            System.out.println("Mother's Name: ");
-
-
-                                            System.out.println("Date of Birth: ");
-
-
-                                            System.out.println("Nationality: ");
-
-                                            System.out.println("Religion: ");
-
-                                            System.out.println("Gender: ");
-
-                                            System.out.println("Phone Number: ");
-
-
-                                            System.out.println("Address: ");
-
-
-                                            System.out.println("National ID: ");
-
-                                            System.out.println(" EDUCATIONAL INFORMATION ");
-
-                                            System.out.println("School Name: ");
-
-
-                                            System.out.println("Passing Year(SSC/O Level): ");
-
-
-                                            System.out.println("SSC/O Level Result: ");
-
-
-                                            System.out.println("College Name: ");
-
-
-                                            System.out.println("Passing Year (HSC/A Level): ");
-
-
-                                            System.out.println("HSC/A Level Result: ");
-
-
-                                            System.out.println("University Name: ");
-
-
-                                            System.out.println("Undergraduate Degree: ");
-
-
-                                            System.out.println("CGPA: ");
-
-
-                                            System.out.println("Postgraduate Degree: ");
-
-
-                                            System.out.println("CGPA: ");
-
-
-                                            System.out.println("ADDITIONAL INFORMATION: ");
-                                            System.out.println("Experience: ");
-
-
-                                            System.out.println("Hobbies: ");
-
-
-                                            System.out.println("Skills: ");
+                                            System.out.println("Enter the Serial number of the applicant you want to see: ");
+                                            Scanner scanner1 = new Scanner(System.in);
+                                            int serialNumber = scanner1.nextInt();
+                                            jobProvider.viewApplicantDetails(serialNumber);
+//                                            System.out.println("PERSONAL INFORMATION");
+//                                            System.out.println("Name: ");
+//                                            System.out.println("Father's Name: ");
+//                                            System.out.println("Mother's Name: ");
+//                                            System.out.println("Date of Birth: ");
+//                                            System.out.println("Nationality: ");
+//                                            System.out.println("Religion: ");
+//                                            System.out.println("Gender: ");
+//                                            System.out.println("Phone Number: ");
+//                                            System.out.println("Address: ");
+//                                            System.out.println("National ID: ");
+//                                            System.out.println(" EDUCATIONAL INFORMATION ");
+//                                            System.out.println("School Name: ");
+//                                            System.out.println("Passing Year(SSC/O Level): ");
+//                                            System.out.println("SSC/O Level Result: ");
+//                                            System.out.println("College Name: ");
+//                                            System.out.println("Passing Year (HSC/A Level): ");
+//                                            System.out.println("HSC/A Level Result: ");
+//                                            System.out.println("University Name: ");
+//                                            System.out.println("Undergraduate Degree: ");
+//                                            System.out.println("CGPA: ");
+//                                            System.out.println("Postgraduate Degree: ");
+//                                            System.out.println("CGPA: ");
+//                                            System.out.println("ADDITIONAL INFORMATION: ");
+//                                            System.out.println("Experience: ");
+//                                            System.out.println("Hobbies: ");
+//                                            System.out.println("Skills: ");
 
                                             System.out.println("1. Select ");
                                             System.out.println("2. Reject ");
@@ -449,6 +409,7 @@ public class Main {
                                             switch (selection3) {
                                                 case 1:
                                                     System.out.println("Selected!");
+                                                    jobProvider.addToShortList(new Resume());
                                                     break;
                                                 case 2:
                                                     System.out.println("Rejected!");
@@ -492,6 +453,11 @@ public class Main {
                                         System.out.println("See Short List");
                                         System.out.println("***************  Shortlisted Applicants  ***************");
                                         //list will be shown
+                                        jobProvider.seeShortList();
+                                        System.out.println("Enter the serial number: ");
+                                        Scanner scanner2 = new Scanner(System.in);
+                                        int serialNumber = scanner2.nextInt();
+                                        jobProvider.viewApplicantDetails(serialNumber);
                                         System.out.println("1. Go Back");
                                         System.out.println("2. Exit");
                                         System.out.println("Enter your selection: ");

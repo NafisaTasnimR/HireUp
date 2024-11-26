@@ -66,8 +66,9 @@ public class JobProvider extends User{
         return false;
     }
 
-    public void seeApplicantList(String jobPostNo)
+    public boolean seeApplicantList(String jobPostNo)
     {
+        System.out.println(this.getCompanyName());
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Application.txt")))
         {
             String line;
@@ -75,18 +76,18 @@ public class JobProvider extends User{
             while((line = bufferedReader.readLine()) != null)
             {
                 String[] data = line.split(",");
-                String applicantName;
-                if(Objects.equals(this.getUserName(), data[1]) && Objects.equals(jobPostNo, data[0]))
+                String applicantEmail = data[5];
+                if(Objects.equals(this.getCompanyName(), data[1]) && Objects.equals(jobPostNo, data[0]))
                 {
                     try(BufferedReader bufferedReader1 = new BufferedReader(new FileReader("Applicant_info.txt"))){
                         String line1;
                         while ((line1 = bufferedReader1.readLine()) != null)
                         {
                             String[] data1 = line1.split(",");
-                            if(Objects.equals(data1[0], data[3])){
+                            if(Objects.equals(data1[10], applicantEmail)){
                                 serial++;
-                                System.out.println(serial + "Name: " + data1[0] +
-                                        "Phone Number: " + data1[7] +
+                                System.out.println(serial + "."+"Name: " + data1[0] +" "+
+                                        "Phone Number: " + data1[7] +" "+
                                         "Email: " + data1[10] + '\n');
                             }
                         }
@@ -95,11 +96,18 @@ public class JobProvider extends User{
                     }
                 }
             }
+            return true;
         }
         catch (IOException e)
         {
             System.out.println("There is a error : " + e.getMessage());
         }
+        return false;
+    }
+
+    public boolean viewApplicantDetails(int serialNumber)
+    {
+        return false;
     }
 
     public void addToShortList(Resume resume)
