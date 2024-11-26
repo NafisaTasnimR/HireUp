@@ -196,8 +196,8 @@ public class Main {
                                         switch (selection4) {
                                             case 1:
                                                 System.out.println(" Apply");
-                                                List<String> applicationResults = Applicant.jobApplication("E:\\HireUp\\HireUp\\HireUP\\Job_info.txt", "E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt", "E:\\HireUp\\HireUp\\HireUP\\Application.txt");
-
+                                                Applicant applicant2 = new Applicant();
+                                                applicant2.processApplication(query,jobList);
                                                 break;
                                             case 2:
                                                 System.out.println(" Go Back");
