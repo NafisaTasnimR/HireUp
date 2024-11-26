@@ -39,8 +39,7 @@ public class AdditionalInformation extends PersonalInformation{
     }
 
     public String toFileString() {
-        return "Experience: " + getExperience() + ","
-                + "Hobby: " + getHobby() + "," + "Skills: " + getSkills() ;
+        return getExperience() + "," + getHobby() + "," + getSkills() ;
     }
 
 

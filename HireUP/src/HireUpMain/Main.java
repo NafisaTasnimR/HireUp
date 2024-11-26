@@ -44,6 +44,8 @@ public class Main {
                 Scanner sc4 = new Scanner(System.in);
                 String role = sc4.nextLine();
 
+                User user2 = new User(user, pass, email, role);
+
                 System.out.println("1.Enter");
 
                 System.out.println("2.Exit");
@@ -55,21 +57,17 @@ public class Main {
                 switch (selection) {
                     case 1:
                         System.out.println("Enter");
+                        user2.logIn();
                         if (Objects.equals(role, "Applicant") || Objects.equals(role, "applicant")) {
                             //file checking function where pass and email is going to be checked
                             //function returns false then
-                            System.out.println("If you give 1 then you'll see the error page to see other page give input any number except 1.");
-                            Scanner sc6 = new Scanner(System.in);
-                            int value = sc6.nextInt();
                             System.out.println("//////////////////////////////////////////////");
-                            updateConsole();
-                            if (value == 1) {
+                            if (!user2.logIn()) {
                                 System.out.println("Error! Incorrect username or password.");
                                 System.out.println("1.Go back");
                                 System.out.println("2.Exit");
                                 System.out.println("Enter your selection: ");
                                 Scanner sc7 = new Scanner(System.in);
-                                updateConsole();
                                 switch (sc7.nextInt()) {
                                     case 1:
                                         System.out.println("You have successfully go back!");
@@ -198,6 +196,8 @@ public class Main {
                                         switch (selection4) {
                                             case 1:
                                                 System.out.println(" Apply");
+                                                Applicant applicant2 = new Applicant();
+                                                applicant2.processApplication(query,jobList);
                                                 break;
                                             case 2:
                                                 System.out.println(" Go Back");
