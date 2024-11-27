@@ -34,5 +34,8 @@ Mrittika,mri@gmail.com,admin
 Rodo,coolnafisa.com,admin
 Mrittika,m.com,admin
 Rah,rah.com,admin
-6,Mrittika,mu.com,admin
-2,Sanjana,n.com,admin
+Mrittika,mu.com,admin
+Sanjana,n.com,admin
+Rah,r.com,admin
+Mrittika,m.com,admin
+mithila,mm.com,admin

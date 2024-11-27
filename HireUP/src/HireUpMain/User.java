@@ -84,6 +84,7 @@ public class User {
 
             bufferedWriter1.write(user.getUserName() + "," + user.getEmail() +
                     "," + user.getRole());
+            bufferedWriter1.newLine();
             bufferedWriter1.flush();
             System.out.println("Data has been written.");
             bufferedWriter1.close();

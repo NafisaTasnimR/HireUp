@@ -161,7 +161,7 @@ public class Admin extends User {
             String email = data[2];
             String role = data[3];
             if (Serial==serial2) {
-                approvedAdmins.add(serial2+","+userName + "," + email+ "," + role );
+                approvedAdmins.add(userName + "," + email+ "," + role );
                 approvedAdmin = true;
             }
         }
@@ -172,7 +172,7 @@ public class Admin extends User {
                     writer3.write(admin);
                     writer3.flush();
                 }
-                this.deleteRequest(Serial,approvedAdmins);
+                this.deleteRequest(Serial,AdminRequestList);
                 return true;
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -191,8 +191,8 @@ public class Admin extends User {
             String userName = data[1];
             String email = data[2];
             String role = data[3];
-            if (serial3==serial2) {
-                approvedAdmins.add(serial2+","+userName + "," + email+ "," + role );
+            if (!(serial3==serial2)||requestDeleted) {
+                approvedAdmins.add(userName + "," + email+ "," + role );
             } else {
                 requestDeleted = true;
             }
