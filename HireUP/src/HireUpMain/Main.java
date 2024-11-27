@@ -628,7 +628,7 @@ public class Main {
                                                 break;
                                             case "2":
                                                 Admin admin2=new Admin();
-                                                admin2.viewAdminRequest();
+                                              List<String> adminRequests=  admin2.viewAdminRequest();
                                                 System.out.println("***************  Approval  ***************");
                                                 System.out.println("1. Approve ");
                                                 System.out.println("2. Reject ");
@@ -640,14 +640,14 @@ public class Main {
                                                 switch (selection15) {
                                                     case 1:
                                                         Scanner scc1 =new Scanner(System.in);
-                                                        String selection889 = scc1.nextLine();
-                                                        admin2.approve(selection889);
+                                                        int selection889 = scc1.nextInt();
+                                                        admin2.approve(selection889,adminRequests);
                                                         System.out.println("Approved");
                                                         break;
                                                     case 2:
                                                         Scanner adminsc1= new Scanner(System.in);
-                                                        String selection901 = adminsc1.nextLine();
-                                                        admin2.deleteRequest(selection901);
+                                                        int selection901 = adminsc1.nextInt();
+                                                        admin2.deleteRequest(selection901,adminRequests);
                                                         System.out.println("Rejected");
                                                         break;
                                                     case 3:

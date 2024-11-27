@@ -1,5 +1,2 @@
-Oishee,o.com,admin
-Oishee,o.com,admin
-Sanjana,so.com,admin
-Sanjana,so.com,admin
-bully,nafisa.com,admin
+Mrittika,m.com,admin
+Rah,r.com,admin
