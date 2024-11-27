@@ -1,9 +1,6 @@
 package TestMethod;
 
-import HireUpMain.AdditionalInformation;
-import HireUpMain.EducationalInformation;
-import HireUpMain.PersonalInformation;
-import HireUpMain.Resume;
+import HireUpMain.*;
 import org.junit.Assert;
 import org.junit.Test;
 
