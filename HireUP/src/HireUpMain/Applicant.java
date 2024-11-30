@@ -139,29 +139,41 @@ public class Applicant extends User {
         writeToFile(combinedContent);
     }
 
-    public boolean applicationStatus(String email) {
-        boolean found = false;
+    public boolean applicationStatus(String serialNo, List<String> jobList) {
+        for (String job : jobList) {
+            String[] jobInfo = job.split(",");
+            if (Objects.equals(jobInfo[0], serialNo)) {
+                System.out.println("Application Status: " + jobInfo[7] + "\n");
+
+            }
+
+        }
+        return true;
+
+    }
+
+
+    public List<String> applicationList(String email) {
+        List<String> jobList = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\Application.txt"))) {
             String line;
+            int serial = 0;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                    if (parts[5].equals(email)) {
-                        System.out.println(parts[parts.length - 1]);
+                if (parts[5].equals(email)) {
+                    serial++;
+                    System.out.println(serial + "." + "Company Name: " + parts[1] + ","
+                            + "Job Position: " + parts[2] + '\n');
+                    jobList.add(serial + "," + line);
 
-                        found = true;
-                    }
+                }
 
             }
-
-            if(!found) {
-                System.out.println("You didn't apply for the job.");
-            }
-            return true;
 
         } catch (IOException e) {
             System.err.println("Error reading the file: " + e.getMessage());
         }
-        return false;
+        return jobList;
     }
 
 

@@ -57,7 +57,7 @@ public class Main {
                 switch (selection) {
                     case 1:
                         System.out.println("Enter");
-                        user2.logIn();
+
                         Applicant applicant = new Applicant();
                         if (Objects.equals(role, "Applicant") || Objects.equals(role, "applicant")) {
                             //file checking function where pass and email is going to be checked
@@ -214,13 +214,21 @@ public class Main {
                                     case 3:
                                         System.out.println("Job status");
                                         System.out.println("***************  Job Status  ***************");
+                                        List<String> jobs = applicant.applicationList(email);
+
+                                        System.out.println("Enter the number of the job you want to see status of :");
+                                        Scanner jobPostNo = new Scanner(System.in);
+                                        String  selection80 = jobPostNo.nextLine();
+                                        applicant.applicationStatus(selection80, jobs);
+
+
                                         //Job list
                                         ///1…….
                                         //2……
                                         //3……
                                         //Enter your selected job:/ //
                                         //after selecting a job they can see the status (a method will be implemented)
-                                        applicant.applicationStatus(email);
+
                                         int a = 1;
                                         if (a == 1) {
                                             System.out.println("//////////////////////////////////////////////");
