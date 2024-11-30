@@ -370,7 +370,7 @@ public class Main {
                                             System.out.println("Enter the Serial number of the applicant you want to see: ");
                                             Scanner scanner1 = new Scanner(System.in);
                                             String serialNumber = scanner1.nextLine();
-                                            jobProvider.viewApplicantDetails(serialNumber,applicantList);
+                                            String applicantResume = jobProvider.viewApplicantDetails(serialNumber,applicantList);
 //                                            System.out.println("PERSONAL INFORMATION");
 //                                            System.out.println("Name: ");
 //                                            System.out.println("Father's Name: ");
@@ -409,10 +409,13 @@ public class Main {
                                             switch (selection3) {
                                                 case 1:
                                                     System.out.println("Selected!");
-                                                    //jobProvider.addToShortList(new Resume());
+                                                    List<String> applications = jobProvider.changeStatus(applicantResume,"Shortlisted");
+                                                    jobProvider.addToShortList(applications);
                                                     break;
                                                 case 2:
                                                     System.out.println("Rejected!");
+                                                    List<String> applications1 = jobProvider.changeStatus(applicantResume,"Rejected");
+                                                    jobProvider.addToShortList(applications1);
                                                     break;
                                                 case 3:
                                                     System.out.println("You have successfully go back!");
@@ -424,13 +427,10 @@ public class Main {
                                             }
                                             System.out.println("//////////////////////////////////////////////");
                                             updateConsole();
-
                                         }
-
                                         System.out.println("1. Go back");
                                         System.out.println("2. Exit");
                                         System.out.println("Enter your selection: ");
-
                                         Scanner sc26 = new Scanner(System.in);
                                         String selection2 = sc26.nextLine();
                                         switch (selection2) {
@@ -440,14 +440,9 @@ public class Main {
                                             case "2":
                                                 System.out.println("Goodbye!");
                                                 break;
-                                            case "a":
-                                                System.out.println("Job Applicant Details");
-                                                break;
                                         }
                                         System.out.println("//////////////////////////////////////////////");
                                         updateConsole();
-
-
                                         break;
                                     case 3:
                                         System.out.println("See Short List");

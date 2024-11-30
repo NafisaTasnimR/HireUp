@@ -118,29 +118,60 @@ public class JobProvider extends User{
             {
                 email = data[12];
                 applicantResume = applicantInfo;
+                //applicant details print
             }
         }
         return applicantResume;
     }
 
-    public void addToShortList(String applicantResume)
+    public List<String> changeStatus(String applicantResume,String status)
     {
         String jobPostNo = null;
         String applicantEmail = null;
-        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("ApplicantShortList.txt",true)))
+        List<String> changedApplicationInfo = new ArrayList<>();
+        String[] data = applicantResume.split(",");
+        jobPostNo = data[1];
+        applicantEmail = data[12];
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Application.txt")))
         {
-            bufferedWriter.write(applicantResume);
-            String[] data = applicantResume.split(",");
-            bufferedWriter.newLine();
-            jobPostNo = data[1];
-            applicantEmail = data[12];
+            String line;
+            while ((line = bufferedReader.readLine()) != null)
+            {
+                String[] applicationData = line.split(",");
+                if(Objects.equals(jobPostNo, applicationData[0]) && Objects.equals(applicantEmail, applicationData[5]))
+                {
+                    applicationData[6] = status;
+                    changedApplicationInfo.add(applicationData[0] + "," +applicationData[1] + ","+applicationData[2]
+                            + "," +applicationData[3] + ","+applicationData[4] +
+                            ","+applicationData[5] + ","+applicationData[6]);
+                }
+                else {
+                    changedApplicationInfo.add(line);
+                }
+            }
         } catch (IOException e)
         {
-             System.out.println("There is a error : " + e.getMessage());
+            System.out.println("There is a error : " + e.getMessage());
         }
+
+
         //need to pass the data from application.txt file to change the status
         //already have the applicantEmail and job post no to find the accurate applicant and change his/her status
+        return changedApplicationInfo;
 
+    }
+
+    public void addToShortList(List<String> changedApplicationInfo)
+    {
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("Application.txt"))){
+            for(String application: changedApplicationInfo){
+                bufferedWriter.write(application);
+                bufferedWriter.newLine();
+            }
+        }catch (IOException e)
+        {
+            System.out.println("Error occurred while writing ");
+        }
     }
 
     public void seeShortList()

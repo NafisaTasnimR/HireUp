@@ -1,6 +1,6 @@
 jobPostNo,companyName,position,applicantName,applicantPhoneNumber,applicantEmail,applicationStatus
 Abcd1,Abcd,Manager,nafisa,114,nafisa@gmail,pending
 Abcd1,Abcd,Manager,adrita,108,adrita@gmail,pending
-Abcd3,Abcd,Manager,lin,7001,lin@gmail,pending
+Abcd3,Abcd,Manager,lin,7001,lin@gmail,Shortlisted
 Abcd2,Abcd,Manager,mrittika,150,mrittika@gmail,pending
 Abcd3,Abcd,Manager,preo,124,preo@gmail,pending
