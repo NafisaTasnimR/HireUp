@@ -62,7 +62,6 @@ public class Admin extends User {
 
 
     public boolean verify(int serial,List<String> JobProviderList) {
-        String line = "";
         List<String> VerifiedCompanies = new ArrayList<>();
         boolean verifiedCompany = false;
         for(String JobProvider : JobProviderList) {
@@ -92,7 +91,6 @@ public class Admin extends User {
     }
 
     public boolean delete(int serial,List<String> JobProviderList) {
-        String line ;
         List<String> JobProviderInfo = new ArrayList<>();
         boolean dataDeleted = false;
         for(String JobProvider : JobProviderList) {
@@ -151,7 +149,6 @@ public class Admin extends User {
 
 
     public boolean approve(int Serial,List<String> AdminRequestList) {
-        String line="";
         List<String> approvedAdmins = new ArrayList<>();
         boolean approvedAdmin = false;
         for(String AdminRequest : AdminRequestList) {
@@ -182,7 +179,6 @@ public class Admin extends User {
 
 
     public boolean deleteRequest(int serial3,List<String> AdminRequestList) {
-        String line;
         List<String> approvedAdmins = new ArrayList<>();
         boolean requestDeleted = false;
         for(String AdminRequest : AdminRequestList) {
@@ -212,6 +208,95 @@ public class Admin extends User {
         }
         return false;
     }
+
+    public List<String> ViewApplicantInformation() {
+        List<String> ApplicantList = new ArrayList<>();
+        String line;
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
+                "Applicant_info.txt"))) {
+            System.out.println("Applicant Information:");
+            int applicantSerial =0;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(",");
+                String Name = data[0];
+                String NID = data[9];
+                String Email = data[10];
+                if (Name.equals(Name)) {
+                    applicantSerial++;
+                    System.out.println(applicantSerial +"."+" "+ "Name:" + Name + " " + "Email:" + Email+ " " +"National ID:"+NID + '\n');
+                    ApplicantList.add(applicantSerial+","+line);
+                } else {
+                    System.out.println("Invalid Data:" + line);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file" + e.getMessage());
+            e.printStackTrace();
+        }
+        return ApplicantList;
+    }
+
+    public boolean verifyApplicant(int serial,List<String> ApplicantList) {
+        List<String> VerifiedApplicants = new ArrayList<>();
+        boolean verifiedApplicant = false;
+        for(String JobProvider : ApplicantList) {
+            String[] data = JobProvider.split(",");
+            int applicantSerial= Integer.parseInt(data[0]);
+            String Name = data[1];
+            String NID = data[10];
+            String Email = data[11];
+            if (serial==applicantSerial) {
+                VerifiedApplicants.add(Name + "," + NID + "," + Email );
+                verifiedApplicant = true;
+            }
+        }
+        if (verifiedApplicant) {
+            try (BufferedWriter writer5 = new BufferedWriter(new FileWriter("VerifiedApplicants.txt", true))) {
+                for (String applicant : VerifiedApplicants) {
+                    writer5.newLine();
+                    writer5.write(applicant);
+                    writer5.flush();
+                    writer5.close();
+                }
+                return true;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return false;
+    }
+
+    public boolean deleteApplicant(int serial,List<String> ApplicantList) {
+        List<String> ApplicantInfo = new ArrayList<>();
+        boolean applicantDeleted = false;
+        for(String Applicant : ApplicantList) {
+            String[] data = Applicant.split(",");
+            int applicantSerial= Integer.parseInt(data[0]);
+            String Name = data[1];
+            String NID = data[10];
+            String Email = data[11];
+            if (!(serial ==applicantSerial) || applicantDeleted) {
+                ApplicantInfo.add(Name +","+ NID + "," + Email );
+            } else {
+                applicantDeleted = true;
+            }
+        }
+        if (applicantDeleted) {
+            try (BufferedWriter writer7 = new BufferedWriter(new FileWriter("Applicant_info.txt"))) {
+                for (String applicant : ApplicantInfo) {
+                    writer7.write(applicant);
+                    writer7.newLine();
+                    writer7.flush();
+                } writer7.close();
+                return true;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return false;
+    }
+
+
 
 }
 
