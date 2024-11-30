@@ -29,3 +29,14 @@ Rodoshi,r.com,admin
 Ahir,oh.com,admin
 Mubashir,mk.com,admin
 Mrittika,mrittika@gmail.com,admin
+Mrittika,mrittika@gmail.com,admin
+Mrittika,mri@gmail.com,admin
+Rodo,coolnafisa.com,admin
+Mrittika,m.com,admin
+Rah,rah.com,admin
+Mrittika,mu.com,admin
+Sanjana,n.com,admin
+Rah,r.com,admin
+Mrittika,m.com,admin
+mithila,mm.com,admin
+Irina,irina@gmail.com,admin

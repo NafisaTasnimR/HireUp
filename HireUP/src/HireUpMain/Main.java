@@ -515,22 +515,22 @@ public class Main {
 
                             }
                         } else if (Objects.equals(role, "Admin") || Objects.equals(role, "admin")) {
+                            User user4= new User(user,pass,email,role);
                             //file checking function where pass and email is going to be checked
                             //function returns false then
-                            System.out.println("If you give 1 then you'll see the error page to see other page give input any number except 1.");
+                            //System.out.println("If you give 1 then you'll see the error page to see other page give input any number except 1.");
 
-                            Scanner sc28 = new Scanner(System.in);
-                            int value = sc28.nextInt();
+                            //Scanner sc28 = new Scanner(System.in);
+                            //int value = sc28.nextInt();
                             System.out.println("//////////////////////////////////////////////");
                             updateConsole();
-
-                            if (value == 1) {
+                            if (!user4.logIn()) {
                                 System.out.println("Error! Incorrect username or password.");
                                 System.out.println("1.Go back");
                                 System.out.println("2.Exit");
                                 System.out.println("Enter your selection: ");
-                                Scanner scIDKFixIt = new Scanner(System.in);
-                                switch (scIDKFixIt.nextInt()) {
+                                Scanner us4 = new Scanner(System.in);
+                                switch (us4.nextInt()) {
                                     case 1:
                                         System.out.println("You have successfully go back!");
                                         break;
@@ -538,7 +538,8 @@ public class Main {
                                         System.out.println("Goodbye!");
                                         break;
                                 }
-
+                                System.out.println("//////////////////////////////////////////////");
+                                updateConsole();
 
                             } else {
                                 System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\     Admin    " +
@@ -548,11 +549,11 @@ public class Main {
                                         "Enter your selection: ");
 
                                 Scanner sc29 = new Scanner(System.in);
-                                int selct = sc29.nextInt();
+                                int select = sc29.nextInt();
                                 System.out.println("//////////////////////////////////////////////");
                                 updateConsole();
 
-                                switch (selct) {
+                                switch (select) {
                                     case 1:
                                         System.out.println("***************  View Interface.User Information  ***************");
                                         System.out.println("1. Job Provider");
@@ -569,21 +570,13 @@ public class Main {
                                                 System.out.println("Job Provider");
                                                 System.out.println("***************  Job Provider’s Website List  ***************");
                                                 Admin admin=new Admin();
-                                                admin.ViewInformation();
+                                               List<String>jobProviders= admin.ViewInformation();
+
                                                 //list
                                                 //input from the list
                                                 int a = 1;
                                                 if (a == 1) {
                                                     System.out.println("***************  Verification  ***************");
-                                                    /* System.out.println("Company Name:");
-
-                                                    Scanner sc31 = new Scanner(System.in);
-                                                    String companyName = sc31.nextLine();
-
-                                                    System.out.println("Web Address:");
-                                                    Scanner sc32 = new Scanner(System.in);
-                                                    String webAddress = sc32.nextLine();*/
-
                                                     System.out.println("1. Verify ");
                                                     System.out.println("2. Delete");
                                                     System.out.println("3. Go Back");
@@ -594,15 +587,15 @@ public class Main {
                                                     switch (selection8) {
                                                         case 1:
                                                             Scanner scc =new Scanner(System.in);
-                                                            String selection88 = scc.nextLine();
-                                                            admin.verify(selection88);
+                                                            int selection88 = scc.nextInt();
+                                                            admin.verify(selection88,jobProviders);
                                                             System.out.println("Verified");
                                                             break;
                                                         case 2:
                                                             Scanner adminsc= new Scanner(System.in);
-                                                            String selection90 = adminsc.nextLine();
-                                                            admin.delete(selection90);
-                                                            System.out.println("Delete");
+                                                            int selection90 = adminsc.nextInt();
+                                                            admin.delete(selection90,jobProviders);
+                                                            System.out.println("Deleted");
                                                             break;
                                                         case 3:
                                                             System.out.println("Go Back");
@@ -635,7 +628,7 @@ public class Main {
                                                 break;
                                             case "2":
                                                 Admin admin2=new Admin();
-                                                admin2.viewAdminRequest();
+                                              List<String> adminRequests=  admin2.viewAdminRequest();
                                                 System.out.println("***************  Approval  ***************");
                                                 System.out.println("1. Approve ");
                                                 System.out.println("2. Reject ");
@@ -647,14 +640,14 @@ public class Main {
                                                 switch (selection15) {
                                                     case 1:
                                                         Scanner scc1 =new Scanner(System.in);
-                                                        String selection889 = scc1.nextLine();
-                                                        admin2.approve(selection889);
+                                                        int selection889 = scc1.nextInt();
+                                                        admin2.approve(selection889,adminRequests);
                                                         System.out.println("Approved");
                                                         break;
                                                     case 2:
                                                         Scanner adminsc1= new Scanner(System.in);
-                                                        String selection901 = adminsc1.nextLine();
-                                                        admin2.deleteRequest(selection901);
+                                                        int selection901 = adminsc1.nextInt();
+                                                        admin2.deleteRequest(selection901,adminRequests);
                                                         System.out.println("Rejected");
                                                         break;
                                                     case 3:
