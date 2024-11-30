@@ -58,6 +58,7 @@ public class Main {
                     case 1:
                         System.out.println("Enter");
                         user2.logIn();
+                        Applicant applicant = new Applicant();
                         if (Objects.equals(role, "Applicant") || Objects.equals(role, "applicant")) {
                             //file checking function where pass and email is going to be checked
                             //function returns false then
@@ -83,10 +84,11 @@ public class Main {
                                 System.out.println("1.Job Search");
                                 System.out.println("2.See Job Information");
                                 System.out.println("3.See Job Status");
+                                System.out.println("4.Create Resume");
+                                System.out.println("5.View Resume");
                                 System.out.println("Enter your selection");
                                 Scanner sc8 = new Scanner(System.in);
                                 int selection1 = sc8.nextInt();
-                                Applicant applicant = new Applicant();
                                 List<String> jobList = new ArrayList<>();
                                 System.out.println("//////////////////////////////////////////////");
                                 updateConsole();
@@ -196,8 +198,7 @@ public class Main {
                                         switch (selection4) {
                                             case 1:
                                                 System.out.println(" Apply");
-                                                Applicant applicant2 = new Applicant();
-                                                applicant2.processApplication(query,jobList);
+                                                applicant.processApplication(query,jobList);
                                                 break;
                                             case 2:
                                                 System.out.println(" Go Back");
@@ -219,11 +220,12 @@ public class Main {
                                         //3……
                                         //Enter your selected job:/ //
                                         //after selecting a job they can see the status (a method will be implemented)
+                                        applicant.applicationStatus(email);
                                         int a = 1;
                                         if (a == 1) {
                                             System.out.println("//////////////////////////////////////////////");
                                             updateConsole();
-                                            System.out.println("Shortlisted/Rejected");
+                                            System.out.println("Shortlisted/Rejected/Pending");
                                             System.out.println("1.Go back");
                                             System.out.println("2.Exit");
                                             System.out.println("Enter your selection");
@@ -257,6 +259,13 @@ public class Main {
                                         System.out.println("//////////////////////////////////////////////");
                                         updateConsole();
                                         break;
+
+
+                                    case 4:
+                                        System.out.println("Create Resume");
+                                        System.out.println("***************  Create Resume ***************");
+
+
                                 }
 
                             }
