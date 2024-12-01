@@ -13,6 +13,10 @@ public class Applicant extends User {
         this.resume = new Resume();
     }
 
+    public Applicant(String userName, String password, String email, String role, Resume resume) {
+        super(userName, password, email, role);
+        this.resume = resume;
+    }
     public Applicant() {
         super();
 
@@ -82,6 +86,10 @@ public class Applicant extends User {
     public void createResume() {
         resume.generateResume(this.getEmail());
 
+    }
+
+    public void showResume() {
+        resume.showResume(this.getEmail());
     }
 
     private String findApplicant() {
