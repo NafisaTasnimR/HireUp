@@ -1,8 +1,6 @@
 
 package HireUpMain;
 
-import java.awt.*;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -58,7 +56,6 @@ public class Main {
                     case 1:
                         System.out.println("Enter");
 
-                        Applicant applicant = new Applicant();
                         if (Objects.equals(role, "Applicant") || Objects.equals(role, "applicant")) {
                             //file checking function where pass and email is going to be checked
                             //function returns false then
@@ -534,10 +531,11 @@ public class Main {
                                 switch (select) {
                                     case 1:
                                         System.out.println("***************  View Interface.User Information  ***************");
-                                        System.out.println("1. Job Provider");
-                                        System.out.println("2. Admin Requests");
-                                        System.out.println("3. Go Back");
-                                        System.out.println("4. Exit");
+                                        System.out.println("1. Applicant");
+                                        System.out.println("2. Job Provider");
+                                        System.out.println("3. Admin Requests");
+                                        System.out.println("4. Go Back");
+                                        System.out.println("5. Exit");
                                         System.out.println("Enter your selection: ");
                                         Scanner sc30 = new Scanner(System.in);
                                         String selection6 = sc30.nextLine();
@@ -545,10 +543,10 @@ public class Main {
                                         updateConsole();
                                         switch (selection6) {
                                             case "1":
-                                                System.out.println("Job Provider");
-                                                System.out.println("***************  Job Provider’s Website List  ***************");
+                                                System.out.println("Applicant");
+                                                System.out.println("***************  Applicant List  ***************");
                                                 Admin admin=new Admin();
-                                               List<String>jobProviders= admin.ViewInformation();
+                                                List<String>applicants= admin.ViewApplicantInformation();
 
                                                 //list
                                                 //input from the list
@@ -560,19 +558,19 @@ public class Main {
                                                     System.out.println("3. Go Back");
                                                     System.out.println("4. Exit");
                                                     System.out.println("Enter your selection: ");
-                                                    Scanner sc33 = new Scanner(System.in);
-                                                    int selection8 = sc33.nextInt();
-                                                    switch (selection8) {
+                                                    Scanner applicantsc33 = new Scanner(System.in);
+                                                    int applicantInformationSelection = applicantsc33.nextInt();
+                                                    switch (applicantInformationSelection) {
                                                         case 1:
-                                                            Scanner scc =new Scanner(System.in);
-                                                            int selection88 = scc.nextInt();
-                                                            admin.verify(selection88,jobProviders);
+                                                            Scanner userApplicantscc =new Scanner(System.in);
+                                                            int selectionApplicantVerify88 = userApplicantscc.nextInt();
+                                                            admin.verifyApplicant(selectionApplicantVerify88,applicants);
                                                             System.out.println("Verified");
                                                             break;
                                                         case 2:
-                                                            Scanner adminsc= new Scanner(System.in);
-                                                            int selection90 = adminsc.nextInt();
-                                                            admin.delete(selection90,jobProviders);
+                                                            Scanner deleteApplicantsc = new Scanner(System.in);
+                                                            int selectionApplicantDelete90 = deleteApplicantsc.nextInt();
+                                                            admin.deleteApplicant(selectionApplicantDelete90,applicants);
                                                             System.out.println("Deleted");
                                                             break;
                                                         case 3:
@@ -582,7 +580,6 @@ public class Main {
                                                             System.out.println("Exit");
                                                             break;
                                                     }
-
                                                     System.out.println("//////////////////////////////////////////////");
                                                     updateConsole();
 
@@ -605,6 +602,65 @@ public class Main {
                                                 updateConsole();
                                                 break;
                                             case "2":
+                                                System.out.println("Job Provider");
+                                                System.out.println("***************  Job Provider’s Website List  ***************");
+                                                Admin admin12=new Admin();
+                                               List<String>jobProviders= admin12.ViewInformation();
+
+                                                //list
+                                                //input from the list
+                                                int b = 1;
+                                                if (b == 1) {
+                                                    System.out.println("***************  Verification  ***************");
+                                                    System.out.println("1. Verify ");
+                                                    System.out.println("2. Delete");
+                                                    System.out.println("3. Go Back");
+                                                    System.out.println("4. Exit");
+                                                    System.out.println("Enter your selection: ");
+                                                    Scanner sc33 = new Scanner(System.in);
+                                                    int selection8 = sc33.nextInt();
+                                                    switch (selection8) {
+                                                        case 1:
+                                                            Scanner scc =new Scanner(System.in);
+                                                            int selection88 = scc.nextInt();
+                                                            admin12.verify(selection88,jobProviders);
+                                                            System.out.println("Verified");
+                                                            break;
+                                                        case 2:
+                                                            Scanner adminsc= new Scanner(System.in);
+                                                            int selection90 = adminsc.nextInt();
+                                                            admin12.delete(selection90,jobProviders);
+                                                            System.out.println("Deleted");
+                                                            break;
+                                                        case 3:
+                                                            System.out.println("Go Back");
+                                                            break;
+                                                        case 4:
+                                                            System.out.println("Exit");
+                                                            break;
+                                                    }
+                                                    System.out.println("//////////////////////////////////////////////");
+                                                    updateConsole();
+
+                                                }
+                                                System.out.println("1. Go Back");
+                                                System.out.println("2. Exit");
+                                                System.out.println("Enter your selection: ");
+                                                Scanner sc345 = new Scanner(System.in);
+                                                String selection785 = sc345.nextLine();
+                                                switch (selection785) {
+                                                    case "1":
+                                                        System.out.println("Go Back");
+                                                        break;
+                                                    case "2":
+                                                        System.out.println("Goodbye!");
+                                                        break;
+
+                                                }
+                                                System.out.println("//////////////////////////////////////////////");
+                                                updateConsole();
+                                                break;
+                                            case "3":
                                                 Admin admin2=new Admin();
                                               List<String> adminRequests=  admin2.viewAdminRequest();
                                                 System.out.println("***************  Approval  ***************");
@@ -639,10 +695,10 @@ public class Main {
                                                 System.out.println("//////////////////////////////////////////////");
                                                 updateConsole();
 
-                                            case "3":
+                                            case "4":
                                                 System.out.println("You have successfully go back!");
                                                 break;
-                                            case "4":
+                                            case "5":
                                                 System.out.println("Goodbye!");
                                                 break;
                                         }
