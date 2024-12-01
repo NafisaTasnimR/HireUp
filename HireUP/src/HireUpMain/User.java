@@ -39,7 +39,7 @@ public class User {
 
     public boolean logIn() {
         try (BufferedReader br = new BufferedReader(new FileReader(
-                "LogIn_Info.txt"))) {
+                "User_Info.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
@@ -64,7 +64,7 @@ public class User {
     }
 
     public boolean registration(User user) {
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("Registration_info.txt", true))) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("User_info.txt", true))) {
                 bufferedWriter.write(user.getUserName() + "," +
                         user.getPassword() + "," + user.getEmail() +
                         "," + user.getRole());
