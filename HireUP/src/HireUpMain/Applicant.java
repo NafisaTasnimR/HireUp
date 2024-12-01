@@ -63,8 +63,9 @@ public class Applicant extends User {
 
     public void showInformation(String query, List<String> jobs) {
         for (String job : jobs) {
+
             String[] jobInfo = job.split(",");
-            if (jobInfo[0].equals(query)) {
+            if (Objects.equals(jobInfo[0],query) ) {
                 System.out.println("Company Name: " + jobInfo[2] + "\n");
                 System.out.println("Job Position: " + jobInfo[3] + "\n");
                 System.out.println("Skill: " + jobInfo[4] + "\n");
@@ -76,9 +77,7 @@ public class Applicant extends User {
                 System.out.println("Additional: " + jobInfo[10] + "\n");
             }
 
-            return;
         }
-
 
     }
 
@@ -92,13 +91,13 @@ public class Applicant extends User {
         resume.showResume(this.getEmail());
     }
 
-    private String findApplicant() {
+    private String findApplicant(String email) {
         String resumeInfo = "";
         try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 26) {
+                if (parts.length == 26 && parts[10].equals(email) ) {
                     String name = parts[0];
                     String phoneNumber = parts[7];
                     String fileEmail = parts[10];
@@ -140,9 +139,9 @@ public class Applicant extends User {
     }
 
 
-    public void processApplication(String serialNo, List<String> jobList) {
+    public void processApplication(String serialNo, List<String> jobList, String email) {
 
-        String combinedContent = findJob(serialNo, jobList) + findApplicant();
+        String combinedContent = findJob(serialNo, jobList) + findApplicant(email) + "," + "pending";
 
         writeToFile(combinedContent);
     }

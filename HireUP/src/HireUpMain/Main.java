@@ -185,7 +185,7 @@ public class Main {
                                     case 2:
                                         System.out.println("Job information");
                                         System.out.println("***************  Job Information  *************");
-                                        System.out.println("Add your preference");
+                                        System.out.println("Add your preferred job no");
                                         Scanner sc70 = new Scanner(System.in);
                                         String query = sc70.nextLine();
                                         applicant.showInformation(query, jobList);
@@ -199,7 +199,7 @@ public class Main {
                                         switch (selection4) {
                                             case 1:
                                                 System.out.println(" Apply");
-                                                applicant.processApplication(query,jobList);
+                                                applicant.processApplication(query,jobList,email);
                                                 break;
                                             case 2:
                                                 System.out.println(" Go Back");
@@ -843,110 +843,6 @@ public class Main {
                 switch (roleValue) {
                     case 1:
                         System.out.println("***************  Applicant  ***************");
-
-                        System.out.println("PERSONAL INFORMATION");
-                        System.out.println("Name: ");
-
-                        Scanner sc39 = new Scanner(System.in);
-                        name = sc39.nextLine();
-
-                        System.out.println("Father's Name: ");
-                        Scanner sc40 = new Scanner(System.in);
-                        String fatherName = sc40.nextLine();
-
-                        System.out.println("Mother's Name: ");
-                        Scanner sc41 = new Scanner(System.in);
-                        String motherName = sc41.nextLine();
-
-                        System.out.println("Date of Birth: ");
-                        Scanner sc42 = new Scanner(System.in);
-                        String dateOfBirth = sc42.nextLine();
-
-                        System.out.println("Nationality: ");
-                        Scanner sc43 = new Scanner(System.in);
-                        String nationality = sc43.nextLine();
-
-                        System.out.println("Religion: ");
-                        Scanner sc44 = new Scanner(System.in);
-                        String religion = sc44.nextLine();
-
-                        System.out.println("Gender: ");
-                        Scanner sc45 = new Scanner(System.in);
-                        String gender = sc45.nextLine();
-
-                        System.out.println("Phone Number: ");
-                        Scanner sc46 = new Scanner(System.in);
-                        String phoneNumber = sc46.nextLine();
-
-                        System.out.println("Address: ");
-                        Scanner sc47 = new Scanner(System.in);
-                        String address = sc47.nextLine();
-
-                        System.out.println("National ID: ");
-                        Scanner sc48 = new Scanner(System.in);
-                        String nationalID = sc48.nextLine();
-
-
-                        System.out.println(" EDUCATIONAL INFORMATION ");
-
-                        System.out.println("School Name: ");
-
-                        Scanner sc49 = new Scanner(System.in);
-                        String schoolName = sc49.nextLine();
-
-                        System.out.println("Passing Year(SSC/O Level): ");
-                        Scanner sc50 = new Scanner(System.in);
-                        int passingYear = sc50.nextInt();
-
-                        System.out.println("SSC/O Level Result: ");
-                        Scanner sc51 = new Scanner(System.in);
-                        Double sscOLevelResult = sc51.nextDouble();
-
-                        System.out.println("College Name: ");
-                        Scanner sc52 = new Scanner(System.in);
-                        String collegeName = sc52.nextLine();
-
-                        System.out.println("Passing Year (HSC/A Level): ");
-                        Scanner sc53 = new Scanner(System.in);
-                        int passingYearHSC = sc53.nextInt();
-
-                        System.out.println("HSC/A Level Result: ");
-                        Scanner sc54 = new Scanner(System.in);
-                        Double hscALevelResult = sc54.nextDouble();
-
-                        System.out.println("University Name: ");
-                        Scanner sc55 = new Scanner(System.in);
-                        String universityName = sc55.nextLine();
-
-                        System.out.println("Undergraduate Degree: ");
-                        Scanner sc56 = new Scanner(System.in);
-                        String undergraduateDegree = sc56.nextLine();
-
-                        System.out.println("CGPA: ");
-                        Scanner sc57 = new Scanner(System.in);
-                        double cgpa = sc57.nextDouble();
-
-                        System.out.println("Postgraduate Degree: ");
-                        Scanner sc58 = new Scanner(System.in);
-                        String postgraduateDegree = sc58.nextLine();
-
-                        System.out.println("CGPA: ");
-                        Scanner sc59 = new Scanner(System.in);
-                        Double cgpaCGPA = sc59.nextDouble();
-
-                        System.out.println("ADDITIONAL INFORMATION: ");
-                        System.out.println("Experience: ");
-                        Scanner sc60 = new Scanner(System.in);
-                        String Experince = sc60.nextLine();
-
-                        System.out.println("Hobbies: ");
-                        Scanner sc61 = new Scanner(System.in);
-                        String hobbies = sc61.nextLine();
-
-                        System.out.println("Skills: ");
-                        Scanner sc62 = new Scanner(System.in);
-                        String skills = sc62.nextLine();
-
 
 
                         System.out.println("1. Finish Registration ");
