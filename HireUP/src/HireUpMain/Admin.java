@@ -273,10 +273,33 @@ public class Admin extends User {
             String[] data = Applicant.split(",");
             int applicantSerial= Integer.parseInt(data[0]);
             String Name = data[1];
+            String FatherName = data[2];
+            String MotherName = data[3];
+            String DateOfBirth = data[4];
+            String Nationality = data[5];
+            String Religion = data[6];
+            String Gender = data[7];
+            String PhoneNumber = data[8];
+            String Address = data[9];
             String NID = data[10];
             String Email = data[11];
+            String SchoolName = data[12];
+            String PassingYearSSC= data[13];
+            String SSCResult = data[14];
+            String CollegeName = data[15];
+            String PassingYearHSC= data[16];
+            String HSCResult = data[17];
+            String UniversityName = data[18];
+            String DepartmentName = data[19];
+            String UnderGraduateDegree = data[20];
+            String UnderGraduateCGPA = data[21];
+            String PostGraduateDegree = data[22];
+            String PostGraduateCGPA = data[23];
+            String Experience = data[24];
+            String Hobby = data[25];
+            String Skills = data[26];
             if (!(serial ==applicantSerial) || applicantDeleted) {
-                ApplicantInfo.add(Name +","+ NID + "," + Email );
+                ApplicantInfo.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + Experience + "," + Hobby + "," + Skills);
             } else {
                 applicantDeleted = true;
             }
