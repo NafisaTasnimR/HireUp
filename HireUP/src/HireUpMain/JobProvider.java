@@ -66,28 +66,32 @@ public class JobProvider extends User{
         return false;
     }
 
-    public void seeApplicantList(String jobPostNo)
+    public List<String> seeApplicantList(String jobPostNo)
     {
+        List<String> applicantList = new ArrayList<>();
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Application.txt")))
         {
             String line;
+            String applicantInfo = null;
             int serial = 0;
             while((line = bufferedReader.readLine()) != null)
             {
                 String[] data = line.split(",");
-                String applicantName;
-                if(Objects.equals(this.getUserName(), data[1]) && Objects.equals(jobPostNo, data[0]))
+                String applicantEmail = data[5];
+                if(Objects.equals(this.getCompanyName(), data[1]) && Objects.equals(jobPostNo, data[0]))
                 {
                     try(BufferedReader bufferedReader1 = new BufferedReader(new FileReader("Applicant_info.txt"))){
                         String line1;
                         while ((line1 = bufferedReader1.readLine()) != null)
                         {
                             String[] data1 = line1.split(",");
-                            if(Objects.equals(data1[0], data[3])){
+                            if(Objects.equals(data1[10], applicantEmail)){
                                 serial++;
-                                System.out.println(serial + "Name: " + data1[0] +
-                                        "Phone Number: " + data1[7] +
+                                System.out.println(serial + "."+"Name: " + data1[0] +" "+
+                                        "Phone Number: " + data1[7] +" "+
                                         "Email: " + data1[10] + '\n');
+                                applicantInfo = serial + "," + jobPostNo + "," + line1;
+                                applicantList.add(applicantInfo);
                             }
                         }
                     }catch (IOException e){
@@ -100,34 +104,88 @@ public class JobProvider extends User{
         {
             System.out.println("There is a error : " + e.getMessage());
         }
+        return applicantList;
     }
 
-    public void addToShortList(Resume resume)
+    public String viewApplicantDetails(String serialNumber,List<String> applicantList)
     {
-            try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("ApplicantShortList.txt",true)))
+        String email = null;
+        String applicantResume = null;
+        for(String applicantInfo : applicantList)
+        {
+            String[] data = applicantInfo.split(",");
+            if(Objects.equals(data[0], serialNumber))
             {
-                bufferedWriter.write(resume.getPersonalInformation().toFileString()+","+
-                        resume.getEducationalInformation().toFileString()+","+
-                        resume.getAdditionalInformation().toFileString());
-                bufferedWriter.newLine();
-            } catch (IOException e)
-            {
-                System.out.println("There is a error : " + e.getMessage());
+                email = data[12];
+                applicantResume = applicantInfo;
+                //applicant details print
             }
+        }
+        return applicantResume;
+    }
+
+    public List<String> changeStatus(String applicantResume,String status)
+    {
+        String jobPostNo = null;
+        String applicantEmail = null;
+        List<String> changedApplicationInfo = new ArrayList<>();
+        String[] data = applicantResume.split(",");
+        jobPostNo = data[1];
+        applicantEmail = data[12];
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Application.txt")))
+        {
+            String line;
+            while ((line = bufferedReader.readLine()) != null)
+            {
+                String[] applicationData = line.split(",");
+                if(Objects.equals(jobPostNo, applicationData[0]) && Objects.equals(applicantEmail, applicationData[5]))
+                {
+                    applicationData[6] = status;
+                    changedApplicationInfo.add(applicationData[0] + "," +applicationData[1] + ","+applicationData[2]
+                            + "," +applicationData[3] + ","+applicationData[4] +
+                            ","+applicationData[5] + ","+applicationData[6]);
+                }
+                else {
+                    changedApplicationInfo.add(line);
+                }
+            }
+        } catch (IOException e)
+        {
+            System.out.println("There is a error : " + e.getMessage());
+        }
+
+
+        //need to pass the data from application.txt file to change the status
+        //already have the applicantEmail and job post no to find the accurate applicant and change his/her status
+        return changedApplicationInfo;
+
+    }
+
+    public void addToShortList(List<String> changedApplicationInfo)
+    {
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("Application.txt"))){
+            for(String application: changedApplicationInfo){
+                bufferedWriter.write(application);
+                bufferedWriter.newLine();
+            }
+        }catch (IOException e)
+        {
+            System.out.println("Error occurred while writing ");
+        }
     }
 
     public void seeShortList()
     {
         int serial =0;
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("ApplicantList.txt")))
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("ApplicantShortList.txt")))
         {
             String line;
             while ((line = bufferedReader.readLine()) != null)
             {
                 String[] data = line.split(",");
-                String name = data[0];
-                String phoneNumber = data[7];
-                String email = data[10];
+                String name = data[2];
+                String phoneNumber = data[9];
+                String email = data[12];
                 serial++;
                 System.out.println(serial + " " + "Name: " + name + " " +
                        "Phone Number: " + phoneNumber + " " +
@@ -139,11 +197,13 @@ public class JobProvider extends User{
             System.out.println("Some error occurred while showing the list: " + e.getMessage());
         }
     }
-    public boolean seeJobPosts()
+    public List<String> seeJobPosts()
     {
+        List<String> jobPostList = new ArrayList<>();
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Job_info.txt")))
         {
             String line;
+            String jobPost;
             int serial = 0;
             while ((line = bufferedReader.readLine()) != null)
             {
@@ -155,14 +215,29 @@ public class JobProvider extends User{
                     serial++;
                     System.out.println(serial +"."+" "+ "Job Post No: " + jobPostNo +" "+
                             "Company Name: " + companyName + " " + "Position: " + position + '\n');
+                    jobPost = serial + "," + line;
+                    jobPostList.add(jobPost);
                 }
             }
-            return true;
         }catch (IOException e)
         {
             System.out.println("Error while showing the Job Posts :" + e.getMessage());
         }
-        return false;
+        return jobPostList;
+    }
+
+    public String getJobPostNo(String number,List<String> jobPostList)
+    {
+        String jobPostNo = null;
+        for(String jobPost: jobPostList)
+        {
+            String[] data = jobPost.split(",");
+            if(Objects.equals(data[0], number))
+            {
+                jobPostNo = data[1];
+            }
+        }
+        return jobPostNo;
     }
 
 }
