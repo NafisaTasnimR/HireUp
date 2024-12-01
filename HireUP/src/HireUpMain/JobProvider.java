@@ -109,17 +109,66 @@ public class JobProvider extends User{
 
     public String viewApplicantDetails(String serialNumber,List<String> applicantList)
     {
-        String email = null;
+        String email;
         String applicantResume = null;
-        for(String applicantInfo : applicantList)
-        {
-            String[] data = applicantInfo.split(",");
-            if(Objects.equals(data[0], serialNumber))
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Applicant_info.txt"))){
+            String line;
+            while((line = bufferedReader.readLine()) != null)
             {
-                email = data[12];
-                applicantResume = applicantInfo;
-                //applicant details print
+                int count = 0;
+                String[] applicantData = line.split(",");
+                email = applicantData[10];
+                for(String applicantInfo : applicantList)
+                {
+                    String[] data = applicantInfo.split(",");
+                    int index = data.length;
+                    for(int i=0; i<index; i++)
+                    {
+                        if(Objects.equals(email,data[i]) && Objects.equals(serialNumber,data[0])){
+                            count = 1;
+                            applicantResume = applicantInfo;
+                            break;
+                        }
+                    }
+                    if(count == 1)
+                    {
+                        break;
+                    }
+                }
+                if(count == 1) {
+                    System.out.println("PERSONAL INFORMATION");
+                    System.out.println("Name: " + applicantData[0]);
+                    System.out.println("Father's Name: " + applicantData[1]);
+                    System.out.println("Mother's Name: " + applicantData[2]);
+                    System.out.println("Date of Birth: " + applicantData[3]);
+                    System.out.println("Nationality: " + applicantData[4]);
+                    System.out.println("Religion: " + applicantData[5]);
+                    System.out.println("Gender: " + applicantData[6]);
+                    System.out.println("Phone Number: " + applicantData[7]);
+                    System.out.println("Address: " + applicantData[8]);
+                    System.out.println("National ID: " + applicantData[9]);
+                    System.out.println(" EDUCATIONAL INFORMATION ");
+                    System.out.println("School Name: " + applicantData[11]);
+                    System.out.println("Passing Year(SSC/O Level): " + applicantData[12]);
+                    System.out.println("SSC/O Level Result: " + applicantData[13]);
+                    System.out.println("College Name: " + applicantData[14]);
+                    System.out.println("Passing Year (HSC/A Level): " + applicantData[15]);
+                    System.out.println("HSC/A Level Result: " + applicantData[16]);
+                    System.out.println("University Name: " + applicantData[17]);
+                    System.out.println("University Department Name: " + applicantData[18]);
+                    System.out.println("Undergraduate Degree: " + applicantData[19]);
+                    System.out.println("CGPA: " + applicantData[20]);
+                    System.out.println("Postgraduate Degree: " + applicantData[21]);
+                    System.out.println("CGPA: " + applicantData[22]);
+                    System.out.println("ADDITIONAL INFORMATION: ");
+                    System.out.println("Experience: " + applicantData[23]);
+                    System.out.println("Hobbies: " + applicantData[24]);
+                    System.out.println("Skills: " + applicantData[25]);
+                }
             }
+        }catch (IOException e){
+            System.out.println("Error occurred while reading the file:" + e.getMessage());
+            e.printStackTrace();
         }
         return applicantResume;
     }
@@ -174,10 +223,11 @@ public class JobProvider extends User{
         }
     }
 
-    public void seeShortList(String serialNUmber,List<String> jobPostList)
+    public List<String> seeShortList(String serialNUmber,List<String> jobPostList)
     {
         int serial =0;
         String jobPostNo = null;
+        List<String> applicantShortList = new ArrayList<>();
         boolean pendingApplicant = false;
         for(String jobPost : jobPostList)
         {
@@ -201,6 +251,7 @@ public class JobProvider extends User{
                     System.out.println(serial + "." + "Name: " + name + " " +
                             "Phone Number: " + phoneNumber + " " +
                             "Email: " + email + '\n');
+                    applicantShortList.add(serial + "," + name + ","+ phoneNumber + ","+ email);
                     pendingApplicant = true;
                 }
             }
@@ -208,10 +259,12 @@ public class JobProvider extends User{
             {
                 System.out.println("You haven't selected any applicant!");
             }
+
         }catch (IOException e)
         {
             System.out.println("Some error occurred while showing the list: " + e.getMessage());
         }
+        return applicantShortList;
     }
     public List<String> seeJobPosts()
     {
