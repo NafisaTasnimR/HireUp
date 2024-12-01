@@ -113,18 +113,18 @@ public class EducationalInformation extends PersonalInformation{
     }
 
     public String toFileString() {
-        return  "SchoolName: " + getSchoolName() + ","
-                + "SSCPassingYear: " + getSscPassingYear() + ","
-                + "SSCOLevelResult: " + getSscOLevelResult() + ","
-                + "CollegeName: " + getCollegeName() + ","
-                + "HSCPassingYear: " + getHscPassingYear() + ","
-                + "HSCALevelResult: " + getHscALevelResult() + ","
-                + "UniversityName: " + getUniversityName() + ","
-                + "Department: " + getDepartment() + ","
-                + "UndergraduateDegree: " + getUndergraduateDegree() + ","
-                + "UndergradCGPA: " + getUndergradCGPA() + ","
-                + "PostgraduateDegree: " + getPostgraduateDegree() + ","
-                + "PostgradCGPA: " + getPostgradCGPA() + ",";
+        return  getSchoolName() + ","
+                + getSscPassingYear() + ","
+                + getSscOLevelResult() + ","
+                + getCollegeName() + ","
+                + getHscPassingYear() + ","
+                + getHscALevelResult() + ","
+                + getUniversityName() + ","
+                + getDepartment() + ","
+                + getUndergraduateDegree() + ","
+                + getUndergradCGPA() + ","
+                + getPostgraduateDegree() + ","
+                + getPostgradCGPA() + ",";
 
 
     }

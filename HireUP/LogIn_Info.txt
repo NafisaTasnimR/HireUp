@@ -2,4 +2,5 @@ Abcd,www,.com,job provider
 rodoshi,www.som,..com,admin
 Mrittika,www//,m.com,admin
 Nishat,wwwmm,n.com,admin
-AR,hjhfrg,ar.com,applicant
+AR,ar,ar.com,applicant
+Mira,mira,mira.com,applicant

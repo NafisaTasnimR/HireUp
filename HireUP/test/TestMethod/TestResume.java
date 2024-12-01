@@ -1,9 +1,6 @@
 package TestMethod;
 
-import HireUpMain.AdditionalInformation;
-import HireUpMain.EducationalInformation;
-import HireUpMain.PersonalInformation;
-import HireUpMain.Resume;
+import HireUpMain.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -18,9 +15,9 @@ public class TestResume {
         EducationalInformation educationalInformation = new EducationalInformation("Mira", "DPS", 2005, 5.0, "DPS", 2007, 5.0, "IUT", "CSE", "BSc", 3.5, "CSE", 3.5);
         AdditionalInformation additionalInformation = new AdditionalInformation("Mira", "5", "gardening", "coding");
 
-        boolean expactedValue = true;
+        boolean expectedValue = true;
         Resume resume = new Resume(personalInformation, educationalInformation, additionalInformation);
-        assertEquals(expactedValue, resume.generateResume("mira1234@gmail.com"));
+        assertEquals(expectedValue, resume.generateResume("mira1234@gmail.com"));
 
     }
 }
