@@ -465,11 +465,16 @@ public class Main {
                                         System.out.println("See Short List");
                                         System.out.println("***************  Shortlisted Applicants  ***************");
                                         //list will be shown
-                                        jobProvider.seeShortList();
+                                        System.out.println("You have previously posted these posts:");
+                                        List<String> jobPostList1 = jobProvider.seeJobPosts();
+                                        System.out.println("Choose a post to see it's shortListed applicants:");
+                                        Scanner scanner100 = new Scanner(System.in);
+                                        String selectedJobPost = scanner100.nextLine();
+                                        jobProvider.seeShortList(selectedJobPost,jobPostList1);
                                         System.out.println("Enter the serial number: ");
                                         Scanner scanner2 = new Scanner(System.in);
                                         int serialNumber = scanner2.nextInt();
-                                        jobProvider.viewApplicantDetails(serialNumber);
+                                        //jobProvider.viewApplicantDetails(serialNumber);
                                         System.out.println("1. Go Back");
                                         System.out.println("2. Exit");
                                         System.out.println("Enter your selection: ");

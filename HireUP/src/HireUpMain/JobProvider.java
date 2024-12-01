@@ -174,23 +174,39 @@ public class JobProvider extends User{
         }
     }
 
-    public void seeShortList()
+    public void seeShortList(String serialNUmber,List<String> jobPostList)
     {
         int serial =0;
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("ApplicantShortList.txt")))
+        String jobPostNo = null;
+        boolean pendingApplicant = false;
+        for(String jobPost : jobPostList)
+        {
+            String[] jobData = jobPost.split(",");
+            if(Objects.equals(serialNUmber, jobData[0]))
+            {
+                jobPostNo = jobData[1];
+            }
+        }
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Application.txt")))
         {
             String line;
             while ((line = bufferedReader.readLine()) != null)
             {
                 String[] data = line.split(",");
-                String name = data[2];
-                String phoneNumber = data[9];
-                String email = data[12];
-                serial++;
-                System.out.println(serial + " " + "Name: " + name + " " +
-                       "Phone Number: " + phoneNumber + " " +
-                        "Email: " + email + '\n');
-
+                String name = data[3];
+                String phoneNumber = data[4];
+                String email = data[5];
+                if(Objects.equals(jobPostNo, data[0]) && Objects.equals(data[6], "Shortlisted")) {
+                    serial++;
+                    System.out.println(serial + "." + "Name: " + name + " " +
+                            "Phone Number: " + phoneNumber + " " +
+                            "Email: " + email + '\n');
+                    pendingApplicant = true;
+                }
+            }
+            if(!pendingApplicant)
+            {
+                System.out.println("You haven't selected any applicant!");
             }
         }catch (IOException e)
         {
