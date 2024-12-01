@@ -469,7 +469,7 @@ public class Main {
                                         System.out.println("Enter the serial number: ");
                                         Scanner scanner2 = new Scanner(System.in);
                                         int serialNumber = scanner2.nextInt();
-                                        //jobProvider.viewApplicantDetails(serialNumber);
+                                        jobProvider.viewApplicantDetails(serialNumber);
                                         System.out.println("1. Go Back");
                                         System.out.println("2. Exit");
                                         System.out.println("Enter your selection: ");
