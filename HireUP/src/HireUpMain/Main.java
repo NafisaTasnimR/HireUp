@@ -309,6 +309,8 @@ public class Main {
                                 System.out.println("1.Post Job Circular");
                                 System.out.println("2.See Applicant List");
                                 System.out.println("3.See Short List");
+                                System.out.println("4. Go Back");
+                                System.out.println("5. Exit");
                                 System.out.println("Enter your selection: ");
                                 Scanner sc16 = new Scanner(System.in);
                                 int selectionForProvider = sc16.nextInt();
@@ -443,25 +445,49 @@ public class Main {
                                         Scanner scanner100 = new Scanner(System.in);
                                         String selectedJobPost = scanner100.nextLine();
                                         List<String> applicantShortList = jobProvider.seeShortList(selectedJobPost,jobPostList1);
-                                        System.out.println("Enter the serial number: ");
-                                        Scanner scanner2 = new Scanner(System.in);
-                                        String serialNumber = scanner2.nextLine();
-                                        jobProvider.viewApplicantDetails(serialNumber,applicantShortList);
-                                        System.out.println("1. ");
+                                        System.out.println("1. See Any Applicant's Details");
                                         System.out.println("2. Go Back");
-                                        System.out.println("2. Exit");
+                                        System.out.println("3. Exit");
                                         System.out.println("Enter your selection: ");
                                         Scanner sc27 = new Scanner(System.in);
                                         String selection4 = sc27.nextLine();
                                         switch (selection4) {
                                             case "1":
+                                                System.out.println("Enter the serial number: ");
+                                                Scanner scanner2 = new Scanner(System.in);
+                                                String serialNumber = scanner2.nextLine();
+                                                jobProvider.viewApplicantDetails(serialNumber,applicantShortList);
+                                                System.out.println("1. Go Back");
+                                                System.out.println("2. Exit");
+                                                System.out.println("Enter your selection: ");
+                                                Scanner sc100 = new Scanner(System.in);
+                                                String selection100 = sc100.nextLine();
+                                                switch (selection100){
+                                                    case "1":
+                                                        System.out.println("You have successfully go back!");
+                                                        break;
+                                                    case "2":
+                                                        System.out.println("Goodbye!");
+                                                        break;
+                                                }
+                                            case "2":
                                                 System.out.println("You have successfully go back!");
                                                 break;
-                                            case "2":
+                                            case "3":
                                                 System.out.println("Goodbye!");
                                                 break;
 
                                         }
+                                        System.out.println("//////////////////////////////////////////////");
+                                        updateConsole();
+                                        break;
+                                    case 4:
+                                        System.out.println("You have successfully go back!");
+                                        System.out.println("//////////////////////////////////////////////");
+                                        updateConsole();
+                                        break;
+                                    case 5:
+                                        System.out.println("Goodbye!");
 
                                         System.out.println("//////////////////////////////////////////////");
                                         updateConsole();
