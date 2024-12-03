@@ -669,7 +669,7 @@ public class Main {
                             } else {
                                 System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\     Admin    " +
                                         "  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
-                                System.out.println("1.View Interface.User Information" + '\n' +
+                                System.out.println("1.View User Information" + '\n' +
                                         "2.Go back" + '\n' + "3.Exit" + '\n' +
                                         "Enter your selection: ");
 
@@ -680,7 +680,7 @@ public class Main {
 
                                 switch (select) {
                                     case 1:
-                                        System.out.println("***************  View Interface.User Information  ***************");
+                                        System.out.println("***************  User Information  ***************");
                                         System.out.println("1. Job Provider");
                                         System.out.println("2. Admin Requests");
                                         System.out.println("3. Go Back");
@@ -829,65 +829,12 @@ public class Main {
                 switch (roleValue) {
                     case 1:
                         user1 = new User(name,pass1,email1,"applicant");
+                        user1.registration(user1);
+                        System.out.println("Congratulations! You have been registered.");
                         break;
                     case 2:
                         user1 = new User(name, pass1, email1, "job provider");
-                        break;
-                    case 3:
-                        user1 = new User(name, pass1, email1, "admin");
-                        break;
-                }
-
-                System.out.println("//////////////////////////////////////////////");
-                updateConsole();
-                switch (roleValue) {
-                    case 1:
-                        System.out.println("***************  Applicant  ***************");
-
-
-                        System.out.println("1. Finish Registration ");
-                        System.out.println("2. Go Back ");
-                        System.out.println("3. Exit ");
-                        System.out.println("Enter your selection: ");
-                        Scanner sc63 = new Scanner(System.in);
-                        int selection9 = sc63.nextInt();
-
-                        switch (selection9) {
-                            case 1:
-                                System.out.println("Finish Registration");
-                                //method call to save info in file
-                                break;
-                            case 2:
-                                System.out.println("Go Back");
-                                break;
-                            case 3:
-                                System.out.println("Exit");
-                                break;
-
-                        }
-                        System.out.println("Congratulations! You have created your resume");
-                        System.out.println("1.Go back");
-                        System.out.println("2.Exit");
-                        System.out.println("Enter your selection: ");
-                        Scanner sc64 = new Scanner(System.in);
-                        int selection10 = sc64.nextInt();
-
-                        switch (selection10) {
-                            case 1:
-                                System.out.println("Go Back");
-                                break;
-
-                            case 2:
-                                System.out.println("Exit");
-                                break;
-
-                        }
-                        System.out.println("//////////////////////////////////////////////");
-                        System.out.println("You choose :Exit");
-                        updateConsole();
-                        break;
-                    case 2:
-                        System.out.println("***************  Job Provider  ***************");
+                        System.out.println("You need to provide some additional information");
                         System.out.println("Company Name:");
                         Scanner sc65 = new Scanner(System.in);
                         String companyName = sc65.nextLine();
@@ -896,87 +843,158 @@ public class Main {
                         Scanner sc66 = new Scanner(System.in);
                         String webAddress = sc66.nextLine();
 
-                        System.out.println("1.Register");
-                        System.out.println("2.Go back");
-                        System.out.println("3.Exit");
-                        System.out.println("Enter your selection");
-                        Scanner in6 = new Scanner(System.in);
-                        int selection6 = in6.nextInt();
+                        user1.registration(user1);
 
-                        switch (selection6) {
-                            case 1:
-                                System.out.println("Register");
-                                //method call to register
-                                System.out.println("Congratulations! You have created your account.");
-                                System.out.println("1.Go back");
-                                System.out.println("2.Exit");
-                                System.out.println("Enter your selection: ");
-                                Scanner sc67 = new Scanner(System.in);
-                                int selection11 = sc67.nextInt();
+                        System.out.println("Congratulations! You have been registered.");
 
-                                switch (selection11) {
-                                    case 1:
-                                        System.out.println("Go Back");
-                                        break;
-
-                                    case 2:
-                                        System.out.println("Exit");
-                                        break;
-
-                                }
-                                break;
-                            case 2:
-                                System.out.println("Go Back");
-                                break;
-                            case 3:
-                                System.out.println("Exit ");
-                                break;
-                        }
-                        System.out.println("//////////////////////////////////////////////");
-                        updateConsole();
                         break;
                     case 3:
-                        System.out.println("***************  Admin  ***************");
-                        System.out.println("1.Register");
-                        System.out.println("2.Go Back");
-                        System.out.println("3.Exit");
-                        System.out.println("Enter your selection");
-                        Scanner in7 = new Scanner(System.in);
-                        int selection7 = in7.nextInt();
-                        switch (selection7) {
-                            case 1:
-                                System.out.println("Register");
-                                user1.adminRegistrationRequest(user1);
+                        user1 = new User(name, pass1, email1, "admin");
+                        user1.adminRegistrationRequest(user1);
 
-
-                                //method call
-
-                                System.out.println("Your request has been sent to Admin.");
-                                System.out.println("1.Go back");
-                                System.out.println("2.Exit");
-                                System.out.println("Enter your selection: ");
-                                Scanner sc68 = new Scanner(System.in);
-                                int selection12 = sc68.nextInt();
-
-                                switch (selection12) {
-                                    case 1:
-                                        System.out.println("Go Back");
-                                        break;
-
-                                    case 2:
-                                        System.out.println("Exit");
-                                        break;
-
-                                }
-                                break;
-                            case 2:
-                                System.out.println("Go Back");
-                                break;
-                        }
-                        System.out.println("//////////////////////////////////////////////");
-                        updateConsole();
+                        System.out.println("Your request has been sent to Admin.");
                         break;
                 }
+
+                System.out.println("//////////////////////////////////////////////");
+                updateConsole();
+//                switch (roleValue) {
+//                    case 1:
+//                        System.out.println("***************  Applicant  ***************");
+//
+//
+//                        System.out.println("1. Finish Registration ");
+//                        System.out.println("2. Go Back ");
+//                        System.out.println("3. Exit ");
+//                        System.out.println("Enter your selection: ");
+//                        Scanner sc63 = new Scanner(System.in);
+//                        int selection9 = sc63.nextInt();
+//
+//                        switch (selection9) {
+//                            case 1:
+//                                System.out.println("Finish Registration");
+//                                //method call to save info in file
+//                                break;
+//                            case 2:
+//                                System.out.println("Go Back");
+//                                break;
+//                            case 3:
+//                                System.out.println("Exit");
+//                                break;
+//
+//                        }
+//                        System.out.println("Congratulations! You have created your resume");
+//                        System.out.println("1.Go back");
+//                        System.out.println("2.Exit");
+//                        System.out.println("Enter your selection: ");
+//                        Scanner sc64 = new Scanner(System.in);
+//                        int selection10 = sc64.nextInt();
+//
+//                        switch (selection10) {
+//                            case 1:
+//                                System.out.println("Go Back");
+//                                break;
+//
+//                            case 2:
+//                                System.out.println("Exit");
+//                                break;
+//
+//                        }
+//                        System.out.println("//////////////////////////////////////////////");
+//                        System.out.println("You choose :Exit");
+//                        updateConsole();
+//                        break;
+//                    case 2:
+//                        System.out.println("***************  Job Provider  ***************");
+//                        System.out.println("Company Name:");
+//                        Scanner sc65 = new Scanner(System.in);
+//                        String companyName = sc65.nextLine();
+//
+//                        System.out.println("Web Address:");
+//                        Scanner sc66 = new Scanner(System.in);
+//                        String webAddress = sc66.nextLine();
+//
+//                        System.out.println("1.Register");
+//                        System.out.println("2.Go back");
+//                        System.out.println("3.Exit");
+//                        System.out.println("Enter your selection");
+//                        Scanner in6 = new Scanner(System.in);
+//                        int selection6 = in6.nextInt();
+//
+//                        switch (selection6) {
+//                            case 1:
+//                                System.out.println("Register");
+//                                //method call to register
+//                                System.out.println("Congratulations! You have created your account.");
+//                                System.out.println("1.Go back");
+//                                System.out.println("2.Exit");
+//                                System.out.println("Enter your selection: ");
+//                                Scanner sc67 = new Scanner(System.in);
+//                                int selection11 = sc67.nextInt();
+//
+//                                switch (selection11) {
+//                                    case 1:
+//                                        System.out.println("Go Back");
+//                                        break;
+//
+//                                    case 2:
+//                                        System.out.println("Exit");
+//                                        break;
+//
+//                                }
+//                                break;
+//                            case 2:
+//                                System.out.println("Go Back");
+//                                break;
+//                            case 3:
+//                                System.out.println("Exit ");
+//                                break;
+//                        }
+//                        System.out.println("//////////////////////////////////////////////");
+//                        updateConsole();
+//                        break;
+//                    case 3:
+//                        System.out.println("***************  Admin  ***************");
+//                        System.out.println("1.Register");
+//                        System.out.println("2.Go Back");
+//                        System.out.println("3.Exit");
+//                        System.out.println("Enter your selection");
+//                        Scanner in7 = new Scanner(System.in);
+//                        int selection7 = in7.nextInt();
+//                        switch (selection7) {
+//                            case 1:
+//                                System.out.println("Register");
+//                                user1.adminRegistrationRequest(user1);
+//
+//
+//                                //method call
+//
+//                                System.out.println("Your request has been sent to Admin.");
+//                                System.out.println("1.Go back");
+//                                System.out.println("2.Exit");
+//                                System.out.println("Enter your selection: ");
+//                                Scanner sc68 = new Scanner(System.in);
+//                                int selection12 = sc68.nextInt();
+//
+//                                switch (selection12) {
+//                                    case 1:
+//                                        System.out.println("Go Back");
+//                                        break;
+//
+//                                    case 2:
+//                                        System.out.println("Exit");
+//                                        break;
+//
+//                                }
+//                                break;
+//                            case 2:
+//                                System.out.println("Go Back");
+//                                break;
+//                        }
+//                        System.out.println("//////////////////////////////////////////////");
+//                        updateConsole();
+//                        break;
+//                }
         }
     }
 }

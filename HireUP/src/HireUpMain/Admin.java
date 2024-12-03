@@ -38,7 +38,7 @@ public class Admin extends User {
         List<String> JobProviderList = new ArrayList<>();
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
-                "JobProvider_info.txt"))) {
+                "E:\\HireUp\\HireUp\\HireUP\\JobProvider_info.txt"))) {
             System.out.println("Job Provider Information:");
             int serial1 =0;
             while ((line = bufferedReader.readLine()) != null) {
@@ -76,7 +76,7 @@ public class Admin extends User {
             }
         }
         if (verifiedCompany) {
-            try (BufferedWriter writer2 = new BufferedWriter(new FileWriter("VerifiedCompanies.txt", true))) {
+            try (BufferedWriter writer2 = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\VerifiedCompanies.txt", true))) {
                 for (String company : VerifiedCompanies) {
                     writer2.newLine();
                     writer2.write(company);
@@ -107,7 +107,7 @@ public class Admin extends User {
             }
         }
         if (dataDeleted) {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("JobProvider_info.txt"))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\JobProvider_info.txt"))) {
                 for (String jobprovider : JobProviderInfo) {
                     writer.write(jobprovider);
                     writer.newLine();
@@ -125,15 +125,15 @@ public class Admin extends User {
         List<String> AdminRequestList = new ArrayList<>();
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
-                "AdminRequest.txt"))) {
+                "E:\\HireUp\\HireUp\\HireUP\\AdminRequest.txt"))) {
             System.out.println("Admin Requests:");
             int serial2=0;
 
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
                     String userName = data[0];
-                    String email = data[1];
-                    String role = data[2];
+                    String email = data[2];
+                    String role = data[3];
                     if(userName.equals(data[0])){
                         serial2++;
                         System.out.println(serial2 +"."+" "+ "Username:"+ userName + " " + "Email:" + email + " "+"Role:"+role+'\n');
@@ -158,15 +158,16 @@ public class Admin extends User {
             String[] data = AdminRequest.split(",");
             int serial2= Integer.parseInt(data[0]);
             String userName = data[1];
-            String email = data[2];
-            String role = data[3];
+            String password = data[2];
+            String email = data[3];
+            String role = data[4];
             if (Serial==serial2) {
-                approvedAdmins.add(userName + "," + email+ "," + role );
+                approvedAdmins.add(userName + "," + password + "," + email+ "," + role );
                 approvedAdmin = true;
             }
         }
         if (approvedAdmin) {
-            try (BufferedWriter writer3 = new BufferedWriter(new FileWriter("Registration_info.txt", true))) {
+            try (BufferedWriter writer3 = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\Registration_info.txt", true))) {
                 for (String admin : approvedAdmins) {
                     writer3.newLine();
                     writer3.write(admin);
@@ -199,7 +200,7 @@ public class Admin extends User {
         }
 
         if (requestDeleted) {
-            try (BufferedWriter writer4 = new BufferedWriter(new FileWriter("AdminRequest.txt"))) {
+            try (BufferedWriter writer4 = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\AdminRequest.txt"))) {
                 for (String approvedAdmin: approvedAdmins) {
                     writer4.write(approvedAdmin);
                     writer4.newLine();
