@@ -1,4 +1,4 @@
-bbgh,www.bbgh.com
-abc,www.abc.com
-dhhh,www.dhhh.com
-hjk,www.hjk.com
+bbgh,www.bbgh.com,Not Verified
+ilt,www.ilt.com,Not Verified
+hjk,www.hjk.com,Verified
+bbc,www.bbc.com,Not Verified

@@ -4,6 +4,8 @@ import HireUpMain.User;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.testng.Assert.assertNotNull;
 
 public class TestUser {
 
@@ -58,5 +60,19 @@ public class TestUser {
         boolean expectedValue = true;
         User user1 = new User("Sanjana","snake","n.com","admin");
         assertEquals(expectedValue, user1.adminRegistrationRequest(user1));
+    }
+
+
+    @Test
+    public void testUserObject() {
+
+        String password = "mira";
+        String email = "mira.com";
+        String role = "applicant";
+        Object result = User.userObject(password, email, role);
+
+        boolean expectedValue = true;
+        User user = (User) result;
+        assertEquals(expectedValue, user.userObject(password, email, role));
     }
 }
