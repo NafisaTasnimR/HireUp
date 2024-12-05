@@ -40,8 +40,8 @@ public class Resume {
     }
 
     public boolean generateResume(String email) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Applicant_info.txt", true))) {
-            writer.write(PersonalInformation.toFileString()+","+"Email:"+email+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("\\HireUp\\HireUp\\HireUP\\Applicant_info.txt", true))) {
+            writer.write(PersonalInformation.toFileString()+","+email+ "," +
                     EducationalInformation.toFileString()+","+
                     AdditionalInformation.toFileString());
             writer.newLine();
