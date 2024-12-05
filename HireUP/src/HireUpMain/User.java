@@ -39,7 +39,7 @@ public class User {
 
     public boolean logIn() {
         try (BufferedReader br = new BufferedReader(new FileReader(
-                "User_Info.txt"))) {
+                "\\HireUp\\HireUp\\HireUP\\User_Info.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
@@ -64,7 +64,7 @@ public class User {
     }
 
     public boolean registration(User user) {
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("User_info.txt", true))) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("\\HireUp\\HireUp\\HireUP\\User_info.txt", true))) {
                 bufferedWriter.write(user.getUserName() + "," +
                         user.getPassword() + "," + user.getEmail() +
                         "," + user.getRole());
@@ -92,6 +92,30 @@ public class User {
             return false;
         }
     }
+
+    public static Object userObject(String password, String email, String role) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\User_info.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 4) {
+                    String username = parts[0];
+                    String Password = parts[1];
+                    String Email = parts[2];
+                    String Role = parts[3];
+
+                    if (Password.equals(password) && Email.equals(email) && Role.equals(role)) {
+                        return new User(username, password, Email, Role);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading the file: " + e.getMessage());
+        }
+
+        return null;
+    }
+
 
 
 }
