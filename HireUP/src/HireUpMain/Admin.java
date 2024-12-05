@@ -70,12 +70,15 @@ public class Admin extends User {
             String companyName = data[1];
             String Weblink = data[2];
             if (serial==serial1) {
-                VerifiedCompanies.add(companyName + "," + Weblink);
+                VerifiedCompanies.add(companyName + "," + Weblink  );
                 verifiedCompany = true;
             }
+
         }
         if (verifiedCompany) {
-            try (BufferedWriter writer2 = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\VerifiedCompanies.txt", true))) {
+
+            try (BufferedWriter writer2 = new BufferedWriter(new FileWriter("VerifiedCompanies.txt",true))) {
+           
                 for (String company : VerifiedCompanies) {
                     writer2.newLine();
                     writer2.write(company);
