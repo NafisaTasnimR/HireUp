@@ -38,20 +38,19 @@ public class Admin extends User {
         List<String> JobProviderList = new ArrayList<>();
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
-                "E:\\HireUp\\HireUp\\HireUP\\JobProvider_info.txt"))) {
+                "JobProvider_info.txt"))) {
             System.out.println("Job Provider Information:");
             int serial1 =0;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
                 String companyName = data[0];
                 String Weblink = data[1];
-                if (companyName.equals(companyName)) {
+                String status = (data.length > 2) ? data[2] : "";
+
                     serial1++;
-                    System.out.println(serial1 +"."+" "+ "Company Name:" + companyName + " " + "Weblink:" + Weblink + '\n');
+                    System.out.println(serial1 +"."+" "+ "Company Name:" + companyName + " " + "Weblink:" + Weblink + ", Status: " + status+ '\n');
                     JobProviderList.add(serial1+","+line);
-                } else {
-                    System.out.println("Invalid Data:" + line);
-                }
+
             }
         } catch (IOException e) {
             System.err.println("Error reading file" + e.getMessage());
@@ -69,21 +68,24 @@ public class Admin extends User {
             int serial1= Integer.parseInt(data[0]);
             String companyName = data[1];
             String Weblink = data[2];
+            String status = (data.length > 3) ? data[3] : "Not Verified";
             if (serial==serial1) {
-                VerifiedCompanies.add(companyName + "," + Weblink);
+                VerifiedCompanies.add(companyName + "," + Weblink + "," + "Verified");
                 verifiedCompany = true;
+            }else if ("Verified".equals(status)) {
+                VerifiedCompanies.add(companyName + "," + Weblink + "," + "Verified");
+            } else {
+                VerifiedCompanies.add(companyName + "," + Weblink + "," + "Not Verified");
             }
         }
         if (verifiedCompany) {
-
-            try (BufferedWriter writer2 = new BufferedWriter(new FileWriter("VerifiedCompanies.txt",true))) {
-           
+            try (BufferedWriter writer2 = new BufferedWriter(new FileWriter("JobProvider_info.txt"))) {
                 for (String company : VerifiedCompanies) {
-                    writer2.newLine();
                     writer2.write(company);
+                    writer2.newLine();
                     writer2.flush();
-                    writer2.close();
                 }
+                writer2.close();
                 return true;
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -100,19 +102,26 @@ public class Admin extends User {
             int serial1= Integer.parseInt(data[0]);
             String companyName = data[1];
             String Weblink = data[2];
-            if (!(serial ==serial1) || dataDeleted) {
-                JobProviderInfo.add(companyName +","+ Weblink);
-            } else {
+            String status = (data.length > 3) ? data[3] : "Not Verified";
+            if (serial ==serial1)  {
                 dataDeleted = true;
+            } else {
+                if("Verified".equals(status)) {
+                    JobProviderInfo.add(companyName + "," + Weblink + "," + "Verified");
+                }
+                else{
+                    JobProviderInfo.add(companyName + "," + Weblink + "," + "Not Verified");
+                }
             }
         }
         if (dataDeleted) {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\JobProvider_info.txt"))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("JobProvider_info.txt"))) {
                 for (String jobprovider : JobProviderInfo) {
                     writer.write(jobprovider);
                     writer.newLine();
                     writer.flush();
-                } writer.close();
+
+                }writer.close();
                 return true;
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -125,7 +134,7 @@ public class Admin extends User {
         List<String> AdminRequestList = new ArrayList<>();
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
-                "E:\\HireUp\\HireUp\\HireUP\\AdminRequest.txt"))) {
+                "AdminRequest.txt"))) {
             System.out.println("Admin Requests:");
             int serial2=0;
 
@@ -166,7 +175,7 @@ public class Admin extends User {
             }
         }
         if (approvedAdmin) {
-            try (BufferedWriter writer3 = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\Registration_info.txt", true))) {
+            try (BufferedWriter writer3 = new BufferedWriter(new FileWriter("Registration_info.txt", true))) {
                 for (String admin : approvedAdmins) {
                     writer3.newLine();
                     writer3.write(admin);
@@ -198,7 +207,7 @@ public class Admin extends User {
         }
 
         if (requestDeleted) {
-            try (BufferedWriter writer4 = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\AdminRequest.txt"))) {
+            try (BufferedWriter writer4 = new BufferedWriter(new FileWriter("AdminRequest.txt"))) {
                 for (String approvedAdmin: approvedAdmins) {
                     writer4.write(approvedAdmin);
                     writer4.newLine();
@@ -224,13 +233,12 @@ public class Admin extends User {
                 String Name = data[0];
                 String NID = data[9];
                 String Email = data[10];
-                if (Name.equals(Name)) {
+                String status = (data.length > 26) ? data[26] : "Not Verified";
+
                     applicantSerial++;
-                    System.out.println(applicantSerial +"."+" "+ "Name:" + Name + " " + "Email:" + Email+ " " +"National ID:"+NID + '\n');
+                    System.out.println(applicantSerial +"."+" "+ "Name:" + Name + " " + "Email:" + Email+ " " + "National ID:"+ NID + " " + "Status:"+ status + '\n');
                     ApplicantList.add(applicantSerial+","+line);
-                } else {
-                    System.out.println("Invalid Data:" + line);
-                }
+
             }
         } catch (IOException e) {
             System.err.println("Error reading file" + e.getMessage());
@@ -246,21 +254,49 @@ public class Admin extends User {
             String[] data = JobProvider.split(",");
             int applicantSerial= Integer.parseInt(data[0]);
             String Name = data[1];
+            String FatherName = data[2];
+            String MotherName = data[3];
+            String DateOfBirth = data[4];
+            String Nationality = data[5];
+            String Religion = data[6];
+            String Gender = data[7];
+            String PhoneNumber = data[8];
+            String Address = data[9];
             String NID = data[10];
             String Email = data[11];
-            if (serial==applicantSerial) {
-                VerifiedApplicants.add(Name + "," + NID + "," + Email );
-                verifiedApplicant = true;
+            String SchoolName = data[12];
+            String PassingYearSSC= data[13];
+            String SSCResult = data[14];
+            String CollegeName = data[15];
+            String PassingYearHSC= data[16];
+            String HSCResult = data[17];
+            String UniversityName = data[18];
+            String DepartmentName = data[19];
+            String UnderGraduateDegree = data[20];
+            String UnderGraduateCGPA = data[21];
+            String PostGraduateDegree = data[22];
+            String PostGraduateCGPA = data[23];
+            String Experience = data[24];
+            String Hobby = data[25];
+            String Skills = data[26];
+            String status =  (data.length > 27) ? data[27] : "Not Verified";
+            if (serial ==applicantSerial)  {
+                VerifiedApplicants.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + Experience + "," + Hobby + "," + Skills + "," + "Verified");
+                verifiedApplicant=true;
+            }else if ("Verified".equals(status)) {
+                VerifiedApplicants.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + Experience + "," + Hobby + "," + Skills + "," + "Verified");
+            } else {
+                VerifiedApplicants.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + Experience + "," + Hobby + "," + Skills + "," + "Not Verified");
             }
         }
         if (verifiedApplicant) {
-            try (BufferedWriter writer5 = new BufferedWriter(new FileWriter("VerifiedApplicants.txt", true))) {
+            try (BufferedWriter writer5 = new BufferedWriter(new FileWriter("Applicant_info.txt"))) {
                 for (String applicant : VerifiedApplicants) {
-                    writer5.newLine();
                     writer5.write(applicant);
+                    writer5.newLine();
                     writer5.flush();
-                    writer5.close();
                 }
+                writer5.close();
                 return true;
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -301,11 +337,17 @@ public class Admin extends User {
             String Experience = data[24];
             String Hobby = data[25];
             String Skills = data[26];
-            if (!(serial ==applicantSerial) || applicantDeleted) {
-                ApplicantInfo.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + Experience + "," + Hobby + "," + Skills);
-            } else {
-                applicantDeleted = true;
-            }
+            String status =  (data.length > 27) ? data[27] : "Not Verified";
+           if(serial==applicantSerial){
+               applicantDeleted=true;
+           }
+           else{
+               if ("Verified".equals(status)) {
+                   ApplicantInfo.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + Experience + "," + Hobby + "," + Skills + "," + "Verified");
+               } else {
+                   ApplicantInfo.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + Experience + "," + Hobby + "," + Skills + "," + "Not Verified");
+               }
+           }
         }
         if (applicantDeleted) {
             try (BufferedWriter writer7 = new BufferedWriter(new FileWriter("Applicant_info.txt"))) {
