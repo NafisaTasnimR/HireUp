@@ -3,19 +3,19 @@ package HireUpMain;
 public class EducationalInformation extends PersonalInformation{
     private String name;
     private String schoolName;
-    private int sscPassingYear;
-    private double sscOLevelResult;
+    private String sscPassingYear;
+    private String sscOLevelResult;
     private String collegeName;
-    private int hscPassingYear;
-    private double hscALevelResult;
+    private String hscPassingYear;
+    private String hscALevelResult;
     private String universityName;
     private String department;
     private String undergraduateDegree;
-    private double undergradCGPA;
+    private String undergradCGPA;
     private String postgraduateDegree;
-    private double postgradCGPA;
+    private String postgradCGPA;
 
-    public EducationalInformation(String name, String schoolName, int sscPassingYear, double sscOLevelResult, String collegeName, int hscPassingYear, double hscALevelResult, String universityName, String department, String undergraduateDegree, double undergradCGPA, String postgraduateDegree, double postgradCGPA) {
+    public EducationalInformation(String name, String schoolName, String sscPassingYear, String sscOLevelResult, String collegeName, String hscPassingYear, String hscALevelResult, String universityName, String department, String undergraduateDegree, String undergradCGPA, String postgraduateDegree, String postgradCGPA) {
         super(name);
         this.schoolName = schoolName;
         this.sscPassingYear = sscPassingYear;
@@ -38,19 +38,19 @@ public class EducationalInformation extends PersonalInformation{
     public String getSchoolName(){
         return schoolName;
     }
-    public int getSscPassingYear(){
+    public String getSscPassingYear(){
         return sscPassingYear;
     }
-    public double getSscOLevelResult(){
+    public String getSscOLevelResult(){
         return sscOLevelResult;
     }
     public String getCollegeName(){
         return collegeName;
     }
-    public int getHscPassingYear(){
+    public String getHscPassingYear(){
         return hscPassingYear;
     }
-    public double getHscALevelResult(){
+    public String getHscALevelResult(){
         return hscALevelResult;
     }
     public String getUniversityName(){
@@ -62,55 +62,16 @@ public class EducationalInformation extends PersonalInformation{
     public String getUndergraduateDegree(){
         return undergraduateDegree;
     }
-    public double getUndergradCGPA(){
+    public String getUndergradCGPA(){
         return undergradCGPA;
     }
     public String getPostgraduateDegree(){
         return postgraduateDegree;
     }
-    public double getPostgradCGPA(){
+    public String getPostgradCGPA(){
         return postgradCGPA;
     }
 
-    public void setName(String name){
-        this.name = name;
-    }
-    public void setSchoolName(String schoolName){
-        this.schoolName = schoolName;
-    }
-    public void setSscPassingYear(int sscPassingYear){
-        this.sscPassingYear = sscPassingYear;
-    }
-    public void setSscOLevelResult(int sscOLevelResult){
-        this.sscOLevelResult = sscOLevelResult;
-    }
-    public void setCollegeName(String collegeName){
-        this.collegeName = collegeName;
-    }
-    public void setHscPassingYear(int hscPassingYear){
-        this.hscPassingYear = hscPassingYear;
-    }
-    public void setHscALevelResult(int hscALevelResult){
-        this.hscALevelResult = hscALevelResult;
-    }
-    public void setUniversityName(String universityName){
-        this.universityName = universityName;
-    }
-    public void setDepartment(String department){
-        this.department = department;
-    }
-    public void setUndergraduateDegree(String undergraduateDegree){
-        this.undergraduateDegree = undergraduateDegree;
-    }
-    public void setUndergradCGPA(int undergradCGPA){
-        this.undergradCGPA = undergradCGPA;
-    }
-    public void setPostgraduateDegree(String postgraduateDegree){
-        this.postgraduateDegree = postgraduateDegree;
-    }
-    public void setPostgradCGPA(int postgradCGPA){
-        this.postgradCGPA = postgradCGPA;
-    }
 
     public String toFileString() {
         return  getSchoolName() + ","
@@ -124,7 +85,7 @@ public class EducationalInformation extends PersonalInformation{
                 + getUndergraduateDegree() + ","
                 + getUndergradCGPA() + ","
                 + getPostgraduateDegree() + ","
-                + getPostgradCGPA() + ",";
+                + getPostgradCGPA() ;
 
 
     }
