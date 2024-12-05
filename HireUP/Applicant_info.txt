@@ -1,5 +1,5 @@
 lin,jack,mita,2003,bangladeshi,islam,female,12345,dhaka,577697,lin@gmail,lps,2019,5,rajuk,2022,5,iut,cse,bsc,3.7,msc,3.5,5year,coding,java
 preo,jack,mita,2003,bangladeshi,islam,female,67890,dhaka,577697,preo@gmail,lps,2019,5,rajuk,2022,5,iut,cse,bsc,3.7,msc,3.5,5year,coding,java
-Kira,Jack,Mita,2003,bangladeshi,Islam,female,123456,dhk,3465658778,kira123@gmail.com,DPS,2018,gpa5,rajuk,2020,gpa5,iut,cse,bsc,3.5,msc,3.4,5,gardening,coding
-mira,giash,hiya,5/6/2000,banladeshi,islam,female,019656574,uttara,776875764,mira.com,vns,2016,gpa 5,vnc,2018,gpa 5,iut,cse,bsc,3.5,msc,3.4,4 year,reading,java
-nafisa,Jackson,Mita,2003,bangladeshi,Islam,female,123456,dhk,3465658778,nafisa23@gmail.com,DPS,2018,gpa5,lps,2020,gpa5,iut,cse,bsc,3.5,msc,3.4,5 year,reading,coding
+nafisa,jack,mita,2003,bangladeshi,islam,female,12345,dhaka,577697,nafisa@gmail,lps,2019,5,rajuk,2022,5,iut,cse,bsc,3.7,msc,3.5,5year,coding,java
+adrita,jack,mita,2003,bangladeshi,islam,female,12345,dhaka,577697,adrita@gmail,lps,2019,5,rajuk,2022,5,iut,cse,bsc,3.7,msc,3.5,5year,coding,java
+lin,jack,mita,2003,bangladeshi,islam,female,12345,dhaka,577697,lin@gmail,lps,2019,5,rajuk,2022,5,iut,cse,bsc,3.7,msc,3.5,5year,coding,java
