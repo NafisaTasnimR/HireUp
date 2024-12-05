@@ -83,6 +83,8 @@ public class Main {
                                 System.out.println("1.Job Search");
                                 System.out.println("2.See Job Information");
                                 System.out.println("3.See Job Status");
+                                System.out.println("4.Create Resume");
+                                System.out.println("5.View Resume");
                                 System.out.println("Enter your selection");
                                 Scanner sc8 = new Scanner(System.in);
                                 int selection1 = sc8.nextInt();
@@ -214,17 +216,18 @@ public class Main {
                                     case 3:
                                         System.out.println("Job status");
                                         System.out.println("***************  Job Status  ***************");
-                                        //Job list
-                                        ///1…….
-                                        //2……
-                                        //3……
-                                        //Enter your selected job:/ //
+                                        List<String> jobs = applicant.applicationList(email);
+                                        System.out.println("Enter the number of the job you want to see status of :");
+                                        Scanner jobPostNo = new Scanner(System.in);
+                                        String  selection80 = jobPostNo.nextLine();
+                                        applicant.applicationStatus(selection80, jobs);
+
                                         //after selecting a job they can see the status (a method will be implemented)
                                         int a = 1;
                                         if (a == 1) {
                                             System.out.println("//////////////////////////////////////////////");
                                             updateConsole();
-                                            System.out.println("Shortlisted/Rejected");
+                                            System.out.println("Shortlisted/Rejected/Pending");
                                             System.out.println("1.Go back");
                                             System.out.println("2.Exit");
                                             System.out.println("Enter your selection");
