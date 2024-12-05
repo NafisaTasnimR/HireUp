@@ -55,7 +55,7 @@ public class Main {
                 switch (selection) {
                     case 1:
                         System.out.println("Enter");
-                        if (Objects.equals(role, "Applicant") || Objects.equals(role, "applicant")) {
+                       if (Objects.equals(role, "Applicant") || Objects.equals(role, "applicant")) {
                             //file checking function where pass and email is going to be checked
                             //function returns false then
                             System.out.println("//////////////////////////////////////////////");
@@ -569,6 +569,9 @@ public class Main {
                                                 System.out.println("***************  Applicant List  ***************");
                                                 Admin admin=new Admin();
                                                 List<String>applicants= admin.ViewApplicantInformation();
+                                                System.out.println("Enter your selection: ");
+                                                Scanner Applicants = new Scanner(System.in);
+                                                int select2 = Applicants.nextInt();
 
                                                 //list
                                                 //input from the list
@@ -584,15 +587,11 @@ public class Main {
                                                     int applicantInformationSelection = applicantsc33.nextInt();
                                                     switch (applicantInformationSelection) {
                                                         case 1:
-                                                            Scanner userApplicantscc =new Scanner(System.in);
-                                                            int selectionApplicantVerify88 = userApplicantscc.nextInt();
-                                                            admin.verifyApplicant(selectionApplicantVerify88,applicants);
+                                                            admin.verifyApplicant(select2,applicants);
                                                             System.out.println("Verified");
                                                             break;
                                                         case 2:
-                                                            Scanner deleteApplicantsc = new Scanner(System.in);
-                                                            int selectionApplicantDelete90 = deleteApplicantsc.nextInt();
-                                                            admin.deleteApplicant(selectionApplicantDelete90,applicants);
+                                                            admin.deleteApplicant(select2,applicants);
                                                             System.out.println("Deleted");
                                                             break;
                                                         case 3:
@@ -628,6 +627,9 @@ public class Main {
                                                 System.out.println("***************  Job Provider’s Website List  ***************");
                                                 Admin admin12=new Admin();
                                                List<String>jobProviders= admin12.ViewInformation();
+                                                System.out.println("Enter your selection: ");
+                                                Scanner sc301 = new Scanner(System.in);
+                                                int selection66 = sc301.nextInt();
 
                                                 //list
                                                 //input from the list
@@ -643,15 +645,11 @@ public class Main {
                                                     int selection8 = sc33.nextInt();
                                                     switch (selection8) {
                                                         case 1:
-                                                            Scanner scc =new Scanner(System.in);
-                                                            int selection88 = scc.nextInt();
-                                                            admin12.verify(selection88,jobProviders);
+                                                            admin12.verify(selection66,jobProviders);
                                                             System.out.println("Verified");
                                                             break;
                                                         case 2:
-                                                            Scanner adminsc= new Scanner(System.in);
-                                                            int selection90 = adminsc.nextInt();
-                                                            admin12.delete(selection90,jobProviders);
+                                                            admin12.delete(selection66,jobProviders);
                                                             System.out.println("Deleted");
                                                             break;
                                                         case 3:
@@ -685,6 +683,11 @@ public class Main {
                                             case "3":
                                                 Admin admin2=new Admin();
                                               List<String> adminRequests=  admin2.viewAdminRequest();
+                                              System.out.println("Enter your selection: ");
+                                              Scanner sc302 = new Scanner(System.in);
+                                              int selection9 = sc302.nextInt();
+
+
                                                 System.out.println("***************  Approval  ***************");
                                                 System.out.println("1. Approve ");
                                                 System.out.println("2. Reject ");
@@ -695,15 +698,11 @@ public class Main {
                                                 int selection15 = sc888.nextInt();
                                                 switch (selection15) {
                                                     case 1:
-                                                        Scanner scc1 =new Scanner(System.in);
-                                                        int selection889 = scc1.nextInt();
-                                                        admin2.approve(selection889,adminRequests);
+                                                        admin2.approve(selection9,adminRequests);
                                                         System.out.println("Approved");
                                                         break;
                                                     case 2:
-                                                        Scanner adminsc1= new Scanner(System.in);
-                                                        int selection901 = adminsc1.nextInt();
-                                                        admin2.deleteRequest(selection901,adminRequests);
+                                                        admin2.deleteRequest(selection9,adminRequests);
                                                         System.out.println("Rejected");
                                                         break;
                                                     case 3:

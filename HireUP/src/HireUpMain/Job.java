@@ -1,6 +1,7 @@
 package HireUpMain;
 
-public class Job {
+public class
+Job {
     private String companyName;
     private String jobPosition;
     private String skill;

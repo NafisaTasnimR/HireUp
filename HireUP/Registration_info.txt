@@ -40,3 +40,4 @@ Rah,r.com,admin
 Mrittika,m.com,admin
 mithila,mm.com,admin
 Irina,irina@gmail.com,admin
+Humayra,hum.com,admin

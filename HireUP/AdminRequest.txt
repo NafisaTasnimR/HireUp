@@ -1,5 +1,4 @@
 Sanjana,n.com,admin
 Sanjana,n.com,admin
-Humayra,hum.com,admin
 Mim,mim.com,admin
 Mumu,mu@gmail.com,admin
