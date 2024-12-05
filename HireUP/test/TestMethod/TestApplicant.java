@@ -54,4 +54,18 @@ public class TestApplicant {
         assertEquals(listCount,count);
     }
 
+//    @Test
+//    public void testStatus() {
+//        boolean expectedValue = true;
+//        Applicant applicant = new Applicant();
+//        assertEquals(expectedValue,applicant.applicationStatus("ar.com"));
+//    }
+
+//    @Test
+//    public void testApplicationList() {
+//        boolean expectedValue = false;
+//        Applicant applicant = new Applicant();
+//        assertEquals(expectedValue,applicant.applicationList("ar.com"));
+//    }
+
 }
