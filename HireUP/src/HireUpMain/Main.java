@@ -86,7 +86,6 @@ public class Main {
                                 System.out.println("Enter your selection");
                                 Scanner sc8 = new Scanner(System.in);
                                 int selection1 = sc8.nextInt();
-                                Applicant applicant = new Applicant();
                                 List<String> jobList = new ArrayList<>();
                                 System.out.println("//////////////////////////////////////////////");
                                 updateConsole();
@@ -516,85 +515,17 @@ public class Main {
                                         //here input for watch the applicant info will be taken
                                         //a function will be called and that would show the info
                                         System.out.println("Choose a Job Circular from the following list: ");
-                                        jobProvider.seeJobPosts();
+                                        List<String> jobPostList = jobProvider.seeJobPosts();
                                         System.out.println("Enter the Job Post Number that you want to see: ");
                                         Scanner sc70 = new Scanner(System.in);
-                                        String jobPostNo = sc70.nextLine();
-                                        jobProvider.seeApplicantList(jobPostNo);
-                                        int a = 1;
-                                        if (a == 1) {
+                                        String serialNo = sc70.nextLine();
+                                        List<String> applicantList = jobProvider.seeApplicantList(jobProvider.getJobPostNo(serialNo,jobPostList));
+                                        if (serialNo != null) {
                                             System.out.println("***************  Applicants Personal Information  ***************");
-                                            System.out.println("PERSONAL INFORMATION");
-                                            System.out.println("Name: ");
-
-
-                                            System.out.println("Father's Name: ");
-
-
-                                            System.out.println("Mother's Name: ");
-
-
-                                            System.out.println("Date of Birth: ");
-
-
-                                            System.out.println("Nationality: ");
-
-                                            System.out.println("Religion: ");
-
-                                            System.out.println("Gender: ");
-
-                                            System.out.println("Phone Number: ");
-
-
-                                            System.out.println("Address: ");
-
-
-                                            System.out.println("National ID: ");
-
-                                            System.out.println(" EDUCATIONAL INFORMATION ");
-
-                                            System.out.println("School Name: ");
-
-
-                                            System.out.println("Passing Year(SSC/O Level): ");
-
-
-                                            System.out.println("SSC/O Level Result: ");
-
-
-                                            System.out.println("College Name: ");
-
-
-                                            System.out.println("Passing Year (HSC/A Level): ");
-
-
-                                            System.out.println("HSC/A Level Result: ");
-
-
-                                            System.out.println("University Name: ");
-
-
-                                            System.out.println("Undergraduate Degree: ");
-
-
-                                            System.out.println("CGPA: ");
-
-
-                                            System.out.println("Postgraduate Degree: ");
-
-
-                                            System.out.println("CGPA: ");
-
-
-                                            System.out.println("ADDITIONAL INFORMATION: ");
-                                            System.out.println("Experience: ");
-
-
-                                            System.out.println("Hobbies: ");
-
-
-                                            System.out.println("Skills: ");
-
+                                            System.out.println("Enter the Serial number of the applicant you want to see: ");
+                                            Scanner scanner1 = new Scanner(System.in);
+                                            String serialNumber = scanner1.nextLine();
+                                            String applicantResume = jobProvider.viewApplicantDetails(serialNumber,applicantList);
                                             System.out.println("1. Select ");
                                             System.out.println("2. Reject ");
                                             System.out.println("3. Go Back ");
@@ -605,9 +536,13 @@ public class Main {
                                             switch (selection3) {
                                                 case 1:
                                                     System.out.println("Selected!");
+                                                    List<String> applications = jobProvider.changeStatus(applicantResume,"Shortlisted");
+                                                    jobProvider.addToShortList(applications);
                                                     break;
                                                 case 2:
                                                     System.out.println("Rejected!");
+                                                    List<String> applications1 = jobProvider.changeStatus(applicantResume,"Rejected");
+                                                    jobProvider.addToShortList(applications1);
                                                     break;
                                                 case 3:
                                                     System.out.println("You have successfully go back!");
@@ -619,13 +554,10 @@ public class Main {
                                             }
                                             System.out.println("//////////////////////////////////////////////");
                                             updateConsole();
-
                                         }
-
                                         System.out.println("1. Go back");
                                         System.out.println("2. Exit");
                                         System.out.println("Enter your selection: ");
-
                                         Scanner sc26 = new Scanner(System.in);
                                         String selection2 = sc26.nextLine();
                                         switch (selection2) {
@@ -635,14 +567,9 @@ public class Main {
                                             case "2":
                                                 System.out.println("Goodbye!");
                                                 break;
-                                            case "a":
-                                                System.out.println("Job Applicant Details");
-                                                break;
                                         }
                                         System.out.println("//////////////////////////////////////////////");
                                         updateConsole();
-
-
                                         break;
                                     case 3:
                                         System.out.println("See Short List");
