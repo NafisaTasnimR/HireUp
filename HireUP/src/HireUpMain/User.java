@@ -68,8 +68,6 @@ public class User {
                 bufferedWriter.write(user.getUserName() + "," +
                         user.getPassword() + "," + user.getEmail() +
                         "," + user.getRole());
-                bufferedWriter.newLine();
-            System.out.println("Data has been written.");
             bufferedWriter.close();
             return true;
         } catch (IOException e) {
@@ -80,13 +78,12 @@ public class User {
     }
 
     public boolean adminRegistrationRequest(User user) {
-        try (BufferedWriter bufferedWriter1 = new BufferedWriter(new FileWriter("AdminRequest.txt", true))) {
+        try (BufferedWriter bufferedWriter1 = new BufferedWriter(new FileWriter("\\HireUp\\HireUp\\HireUP\\AdminRequest.txt", true))) {
 
-            bufferedWriter1.write(user.getUserName() + "," + user.getEmail() +
+            bufferedWriter1.write(user.getUserName() + "," + user.getPassword() + "," +user.getEmail() +
                     "," + user.getRole());
             bufferedWriter1.newLine();
             bufferedWriter1.flush();
-            System.out.println("Data has been written.");
             bufferedWriter1.close();
             return true;
         } catch (IOException e) {

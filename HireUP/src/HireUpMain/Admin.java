@@ -38,7 +38,7 @@ public class Admin extends User {
         List<String> JobProviderList = new ArrayList<>();
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
-                "JobProvider_info.txt"))) {
+                "E:\\HireUp\\HireUp\\HireUP\\JobProvider_info.txt"))) {
             System.out.println("Job Provider Information:");
             int serial1 =0;
             while ((line = bufferedReader.readLine()) != null) {
@@ -62,7 +62,6 @@ public class Admin extends User {
 
 
     public boolean verify(int serial,List<String> JobProviderList) {
-        String line = "";
         List<String> VerifiedCompanies = new ArrayList<>();
         boolean verifiedCompany = false;
         for(String JobProvider : JobProviderList) {
@@ -71,12 +70,15 @@ public class Admin extends User {
             String companyName = data[1];
             String Weblink = data[2];
             if (serial==serial1) {
-                VerifiedCompanies.add(companyName + "," + Weblink);
+                VerifiedCompanies.add(companyName + "," + Weblink  );
                 verifiedCompany = true;
             }
+
         }
         if (verifiedCompany) {
-            try (BufferedWriter writer2 = new BufferedWriter(new FileWriter("VerifiedCompanies.txt", true))) {
+
+            try (BufferedWriter writer2 = new BufferedWriter(new FileWriter("VerifiedCompanies.txt",true))) {
+           
                 for (String company : VerifiedCompanies) {
                     writer2.newLine();
                     writer2.write(company);
@@ -92,7 +94,6 @@ public class Admin extends User {
     }
 
     public boolean delete(int serial,List<String> JobProviderList) {
-        String line ;
         List<String> JobProviderInfo = new ArrayList<>();
         boolean dataDeleted = false;
         for(String JobProvider : JobProviderList) {
@@ -107,7 +108,7 @@ public class Admin extends User {
             }
         }
         if (dataDeleted) {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("JobProvider_info.txt"))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\JobProvider_info.txt"))) {
                 for (String jobprovider : JobProviderInfo) {
                     writer.write(jobprovider);
                     writer.newLine();
@@ -125,15 +126,15 @@ public class Admin extends User {
         List<String> AdminRequestList = new ArrayList<>();
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
-                "AdminRequest.txt"))) {
+                "E:\\HireUp\\HireUp\\HireUP\\AdminRequest.txt"))) {
             System.out.println("Admin Requests:");
             int serial2=0;
 
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
                     String userName = data[0];
-                    String email = data[1];
-                    String role = data[2];
+                    String email = data[2];
+                    String role = data[3];
                     if(userName.equals(data[0])){
                         serial2++;
                         System.out.println(serial2 +"."+" "+ "Username:"+ userName + " " + "Email:" + email + " "+"Role:"+role+'\n');
@@ -151,22 +152,22 @@ public class Admin extends User {
 
 
     public boolean approve(int Serial,List<String> AdminRequestList) {
-        String line="";
         List<String> approvedAdmins = new ArrayList<>();
         boolean approvedAdmin = false;
         for(String AdminRequest : AdminRequestList) {
             String[] data = AdminRequest.split(",");
             int serial2= Integer.parseInt(data[0]);
             String userName = data[1];
-            String email = data[2];
-            String role = data[3];
+            String password = data[2];
+            String email = data[3];
+            String role = data[4];
             if (Serial==serial2) {
-                approvedAdmins.add(userName + "," + email+ "," + role );
+                approvedAdmins.add(userName + "," + password + "," + email+ "," + role );
                 approvedAdmin = true;
             }
         }
         if (approvedAdmin) {
-            try (BufferedWriter writer3 = new BufferedWriter(new FileWriter("Registration_info.txt", true))) {
+            try (BufferedWriter writer3 = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\Registration_info.txt", true))) {
                 for (String admin : approvedAdmins) {
                     writer3.newLine();
                     writer3.write(admin);
@@ -182,7 +183,6 @@ public class Admin extends User {
 
 
     public boolean deleteRequest(int serial3,List<String> AdminRequestList) {
-        String line;
         List<String> approvedAdmins = new ArrayList<>();
         boolean requestDeleted = false;
         for(String AdminRequest : AdminRequestList) {
@@ -199,7 +199,7 @@ public class Admin extends User {
         }
 
         if (requestDeleted) {
-            try (BufferedWriter writer4 = new BufferedWriter(new FileWriter("AdminRequest.txt"))) {
+            try (BufferedWriter writer4 = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\AdminRequest.txt"))) {
                 for (String approvedAdmin: approvedAdmins) {
                     writer4.write(approvedAdmin);
                     writer4.newLine();
@@ -212,6 +212,118 @@ public class Admin extends User {
         }
         return false;
     }
+
+    public List<String> ViewApplicantInformation() {
+        List<String> ApplicantList = new ArrayList<>();
+        String line;
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
+                "Applicant_info.txt"))) {
+            System.out.println("Applicant Information:");
+            int applicantSerial =0;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(",");
+                String Name = data[0];
+                String NID = data[9];
+                String Email = data[10];
+                if (Name.equals(Name)) {
+                    applicantSerial++;
+                    System.out.println(applicantSerial +"."+" "+ "Name:" + Name + " " + "Email:" + Email+ " " +"National ID:"+NID + '\n');
+                    ApplicantList.add(applicantSerial+","+line);
+                } else {
+                    System.out.println("Invalid Data:" + line);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file" + e.getMessage());
+            e.printStackTrace();
+        }
+        return ApplicantList;
+    }
+
+    public boolean verifyApplicant(int serial,List<String> ApplicantList) {
+        List<String> VerifiedApplicants = new ArrayList<>();
+        boolean verifiedApplicant = false;
+        for(String JobProvider : ApplicantList) {
+            String[] data = JobProvider.split(",");
+            int applicantSerial= Integer.parseInt(data[0]);
+            String Name = data[1];
+            String NID = data[10];
+            String Email = data[11];
+            if (serial==applicantSerial) {
+                VerifiedApplicants.add(Name + "," + NID + "," + Email );
+                verifiedApplicant = true;
+            }
+        }
+        if (verifiedApplicant) {
+            try (BufferedWriter writer5 = new BufferedWriter(new FileWriter("VerifiedApplicants.txt", true))) {
+                for (String applicant : VerifiedApplicants) {
+                    writer5.newLine();
+                    writer5.write(applicant);
+                    writer5.flush();
+                    writer5.close();
+                }
+                return true;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return false;
+    }
+
+    public boolean deleteApplicant(int serial,List<String> ApplicantList) {
+        List<String> ApplicantInfo = new ArrayList<>();
+        boolean applicantDeleted = false;
+        for(String Applicant : ApplicantList) {
+            String[] data = Applicant.split(",");
+            int applicantSerial= Integer.parseInt(data[0]);
+            String Name = data[1];
+            String FatherName = data[2];
+            String MotherName = data[3];
+            String DateOfBirth = data[4];
+            String Nationality = data[5];
+            String Religion = data[6];
+            String Gender = data[7];
+            String PhoneNumber = data[8];
+            String Address = data[9];
+            String NID = data[10];
+            String Email = data[11];
+            String SchoolName = data[12];
+            String PassingYearSSC= data[13];
+            String SSCResult = data[14];
+            String CollegeName = data[15];
+            String PassingYearHSC= data[16];
+            String HSCResult = data[17];
+            String UniversityName = data[18];
+            String DepartmentName = data[19];
+            String UnderGraduateDegree = data[20];
+            String UnderGraduateCGPA = data[21];
+            String PostGraduateDegree = data[22];
+            String PostGraduateCGPA = data[23];
+            String Experience = data[24];
+            String Hobby = data[25];
+            String Skills = data[26];
+            if (!(serial ==applicantSerial) || applicantDeleted) {
+                ApplicantInfo.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + Experience + "," + Hobby + "," + Skills);
+            } else {
+                applicantDeleted = true;
+            }
+        }
+        if (applicantDeleted) {
+            try (BufferedWriter writer7 = new BufferedWriter(new FileWriter("Applicant_info.txt"))) {
+                for (String applicant : ApplicantInfo) {
+                    writer7.write(applicant);
+                    writer7.newLine();
+                    writer7.flush();
+                } writer7.close();
+                return true;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return false;
+    }
+
+
 
 }
 
