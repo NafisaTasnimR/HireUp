@@ -39,7 +39,7 @@ public class User {
 
     public boolean logIn() {
         try (BufferedReader br = new BufferedReader(new FileReader(
-                "\\HireUp\\HireUp\\HireUP\\User_Info.txt"))) {
+                "User_Info.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
@@ -64,7 +64,8 @@ public class User {
     }
 
     public boolean registration(User user) {
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("\\HireUp\\HireUp\\HireUP\\User_info.txt", true))) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("User_info.txt", true))) {
+                bufferedWriter.newLine();
                 bufferedWriter.write(user.getUserName() + "," +
                         user.getPassword() + "," + user.getEmail() +
                         "," + user.getRole());
@@ -78,11 +79,10 @@ public class User {
     }
 
     public boolean adminRegistrationRequest(User user) {
-        try (BufferedWriter bufferedWriter1 = new BufferedWriter(new FileWriter("\\HireUp\\HireUp\\HireUP\\AdminRequest.txt", true))) {
-
+        try (BufferedWriter bufferedWriter1 = new BufferedWriter(new FileWriter("AdminRequest.txt", true))) {
+            bufferedWriter1.newLine();
             bufferedWriter1.write(user.getUserName() + "," + user.getPassword() + "," +user.getEmail() +
                     "," + user.getRole());
-            bufferedWriter1.newLine();
             bufferedWriter1.flush();
             bufferedWriter1.close();
             return true;
@@ -94,7 +94,7 @@ public class User {
     }
 
     public static Object userObject(String password, String email, String role) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\User_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("User_info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
