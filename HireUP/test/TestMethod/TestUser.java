@@ -69,10 +69,9 @@ public class TestUser {
         String password = "mira";
         String email = "mira.com";
         String role = "applicant";
-        Object result = User.userObject(password, email, role);
 
         boolean expectedValue = true;
-        User user = (User) result;
-        assertEquals(expectedValue, user.userObject(password, email, role));
+        User user = new User(password,email,role,role);
+        assertEquals(expectedValue,user.userObject(password,email,role));
     }
 }

@@ -25,9 +25,6 @@ public class Main {
                 System.out.println("You choose :Login");
                 System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ Login \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
                 System.out.println("Enter your ");
-                System.out.println("User name:");
-                Scanner sc1 = new Scanner(System.in);
-                String user = sc1.nextLine();
 
                 System.out.println("Password:");
                 Scanner sc2 = new Scanner(System.in);
@@ -38,10 +35,29 @@ public class Main {
                 String email = sc3.nextLine();
 
                 System.out.println("Role:");
+                System.out.println("1.Applicant");
+                System.out.println("2.Job Provider");
+                System.out.println("3.Admin");
+                System.out.println("Enter your selection:");
+
                 Scanner sc4 = new Scanner(System.in);
                 String role = sc4.nextLine();
 
-                User user2 = new User(user, pass, email, role);
+                switch (role) {
+                    case "1":
+                        role = "applicant";
+                        break;
+                    case "2":
+                        role = "job provider";
+                        break;
+                    case "3":
+                        role = "admin";
+                        break;
+                }
+
+                User user2 = new User();
+
+                user2 = user2.userObject(pass, email, role);
 
                 System.out.println("1.Enter");
 
@@ -56,7 +72,7 @@ public class Main {
                         System.out.println("Enter");
 
 
-                        Applicant applicant = new Applicant(user, pass, email, role);
+                        Applicant applicant = new Applicant(user2.getUserName(), pass, email, role);
 
                         if (Objects.equals(role, "Applicant") || Objects.equals(role, "applicant")) {
                             //file checking function where pass and email is going to be checked
@@ -377,7 +393,7 @@ public class Main {
                                         EducationalInformation educationalInformation = new EducationalInformation(name,schoolName,passingYear,sscOLevelResult,collegeName,passingYearHSC,hscALevelResult,universityName,department,undergraduateDegree,undergradCGPA,postgraduateDegree,postgradCGPA);
                                         AdditionalInformation additionalInformation = new AdditionalInformation(name,experince,hobbies,skills);
                                         Resume resume = new Resume(personalInformation,educationalInformation,additionalInformation);
-                                        applicant = new Applicant(user, pass, email, role, resume);
+                                        applicant = new Applicant(user2.getUserName(), pass, email, role, resume);
 
 
 
@@ -420,7 +436,7 @@ public class Main {
                         } else if (Objects.equals(role, "Job Provider") || Objects.equals(role, "job provider")) {
                             //file checking function where pass and email is going to be checked
                             //function returns false then
-                            User user1 = new User(user,pass,email,role);
+                            User user1 = new User(user2.getUserName(), pass,email,role);
                             //System.out.println("If you give 1 then you'll see the error page to see other page give input any number except 1.");
                             //Scanner sc14 = new Scanner(System.in);
                             //int value = sc14.nextInt();
@@ -637,7 +653,7 @@ public class Main {
 
                             }
                         } else if (Objects.equals(role, "Admin") || Objects.equals(role, "admin")) {
-                            User user4= new User(user,pass,email,role);
+                            User user4= new User(user2.getUserName(),pass,email,role);
                             //file checking function where pass and email is going to be checked
                             //function returns false then
                             //System.out.println("If you give 1 then you'll see the error page to see other page give input any number except 1.");
