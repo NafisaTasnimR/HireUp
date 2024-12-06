@@ -175,7 +175,7 @@ public class Admin extends User {
             }
         }
         if (approvedAdmin) {
-            try (BufferedWriter writer3 = new BufferedWriter(new FileWriter("Registration_info.txt", true))) {
+            try (BufferedWriter writer3 = new BufferedWriter(new FileWriter("User_info.txt", true))) {
                 for (String admin : approvedAdmins) {
                     writer3.newLine();
                     writer3.write(admin);
@@ -197,10 +197,11 @@ public class Admin extends User {
             String[] data = AdminRequest.split(",");
             int serial2= Integer.parseInt(data[0]);
             String userName = data[1];
-            String email = data[2];
-            String role = data[3];
+            String password = data[2];
+            String email = data[3];
+            String role = data[4];
             if (!(serial3==serial2)||requestDeleted) {
-                approvedAdmins.add(userName + "," + email+ "," + role );
+                approvedAdmins.add(userName + "," + password + "," + email+ "," + role );
             } else {
                 requestDeleted = true;
             }

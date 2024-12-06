@@ -13,3 +13,8 @@ mithila,80988,mm.com,admin
 Irina,2454,irina@gmail.com,admin
 pqr,1234,pqr.com,job provider
 xyz,456,xyz@gmail.com,job provider
+igu,988,yuf,admin
+Mumu,679,mu@gmail.com,admin
+Sanjana,658,n.com,admin
+mimi,www..,mim@gmail.com,applicant
+bin,www,,,,bin@g.com,applicant
