@@ -93,8 +93,9 @@ public class User {
         }
     }
 
-    public static Object userObject(String password, String email, String role) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("User_info.txt"))) {
+
+    public User userObject(String password, String email, String role) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\User_info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
