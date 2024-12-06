@@ -712,6 +712,7 @@ public class Main {
                                                 System.out.println("***************  Applicant List  ***************");
                                                 Admin admin=new Admin();
                                                 List<String>applicants= admin.ViewApplicantInformation();
+                                                System.out.println("Enter your selection: ");
                                                 Scanner applicantsc = new Scanner(System.in);
                                                 int selectionApplicant = applicantsc.nextInt();
 
@@ -769,6 +770,7 @@ public class Main {
                                                 System.out.println("***************  Job Provider’s Website List  ***************");
                                                 Admin admin12=new Admin();
                                                List<String>jobProviders= admin12.ViewInformation();
+                                               System.out.println("Enter your selection: ");
                                                Scanner jobProvidersc = new Scanner(System.in);
                                                int selectionJobProvider = jobProvidersc.nextInt();
                                                 //list
@@ -824,6 +826,7 @@ public class Main {
                                                 Admin admin2=new Admin();
                                               List<String> adminRequests=  admin2.viewAdminRequest();
                                               Scanner adminRequestsc = new Scanner(System.in);
+                                              System.out.println("Enter your selection: ");
                                               int selectionAdminRequest = adminRequestsc.nextInt();
                                                 System.out.println("***************  Approval  ***************");
                                                 System.out.println("1. Approve ");
