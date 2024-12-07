@@ -46,13 +46,13 @@ public class Main {
 
                 switch (role) {
                     case "1":
-                        role = "applicant";
+                        role = "Applicant";
                         break;
                     case "2":
-                        role = "job provider";
+                        role = "Job Provider";
                         break;
                     case "3":
-                        role = "admin";
+                        role = "Admin";
                         break;
                 }
 
@@ -926,7 +926,10 @@ public class Main {
                         Scanner sc66 = new Scanner(System.in);
                         String webAddress = sc66.nextLine();
 
-                        if(user1.registration(user1)) {
+                        if(user1.registration(user1)) {                       
+                        JobProvider jobProvider = new JobProvider(companyName,webAddress);
+                        jobProvider.registrationJobProvider();
+
                             System.out.println("Congratulations! You have been registered.");
                         } else{
                             System.out.println("Sorry! You have not registered.");

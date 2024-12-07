@@ -1,5 +1,7 @@
 package HireUpMain;
 
+import static HireUpMain.Utility.formatData;
+
 public class PersonalInformation {
    private String name;
    private String fatherName;
@@ -12,7 +14,9 @@ public class PersonalInformation {
    private String address;
    private String nationalID;
 
-    public PersonalInformation(String name, String fatherName, String motherName, String dateOfBirth, String nationality, String religion, String gender, String phoneNumber, String address, String nationalID) {
+    public PersonalInformation(String name, String fatherName, String motherName,
+                               String dateOfBirth, String nationality, String religion,
+                               String gender, String phoneNumber, String address, String nationalID) {
         this.name = name;
         this.fatherName = fatherName;
         this.motherName = motherName;
@@ -100,9 +104,9 @@ public class PersonalInformation {
     }
 
     public String toFileString() {
-        return getName() + "," + getFatherName() + "," + getMotherName() + ","
-                + getDateOfBirth() + "," + getNationality() + ","
-                + getReligion() + "," + getGender() + ","
+        return formatData(getName()) + "," + formatData(getFatherName()) + "," + formatData(getMotherName()) + ","
+                + getDateOfBirth() + "," + formatData(getNationality()) + ","
+                + formatData(getReligion()) + "," + formatData(getGender()) + ","
                 + getPhoneNumber() + "," + getAddress() + "," + getNationalID();
 
     }

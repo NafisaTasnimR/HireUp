@@ -1,5 +1,7 @@
 package HireUpMain;
 
+import static HireUpMain.Utility.formatData;
+
 public class EducationalInformation extends PersonalInformation{
     private String name;
     private String schoolName;
@@ -15,7 +17,11 @@ public class EducationalInformation extends PersonalInformation{
     private String postgraduateDegree;
     private String postgradCGPA;
 
-    public EducationalInformation(String name, String schoolName, String sscPassingYear, String sscOLevelResult, String collegeName, String hscPassingYear, String hscALevelResult, String universityName, String department, String undergraduateDegree, String undergradCGPA, String postgraduateDegree, String postgradCGPA) {
+    public EducationalInformation(String name, String schoolName, String sscPassingYear,
+                                  String sscOLevelResult, String collegeName, String hscPassingYear,
+                                  String hscALevelResult, String universityName, String department,
+                                  String undergraduateDegree, String undergradCGPA,
+                                  String postgraduateDegree, String postgradCGPA) {
         super(name);
         this.schoolName = schoolName;
         this.sscPassingYear = sscPassingYear;
@@ -77,16 +83,14 @@ public class EducationalInformation extends PersonalInformation{
         return  getSchoolName() + ","
                 + getSscPassingYear() + ","
                 + getSscOLevelResult() + ","
-                + getCollegeName() + ","
+                + formatData(getCollegeName()) + ","
                 + getHscPassingYear() + ","
                 + getHscALevelResult() + ","
-                + getUniversityName() + ","
-                + getDepartment() + ","
+                + formatData(getUniversityName()) + ","
+                + formatData(getDepartment()) + ","
                 + getUndergraduateDegree() + ","
                 + getUndergradCGPA() + ","
                 + getPostgraduateDegree() + ","
                 + getPostgradCGPA() ;
-
-
     }
 }

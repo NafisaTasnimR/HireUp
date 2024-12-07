@@ -3,6 +3,8 @@ package HireUpMain;
 import java.io.*;
 import java.util.Objects;
 
+import static HireUpMain.Utility.formatData;
+
 import static HireUpMain.Utility.isValidEmail;
 import static HireUpMain.Utility.isValidPassword;
 
@@ -51,7 +53,10 @@ public class User {
                     String pass = data[1];
                     String mail = data[2];
                     String role = data[3];
-                    if (Objects.equals(this.getUserName(), name) && Objects.equals(this.getPassword(), pass) && Objects.equals(this.getEmail(), mail) && Objects.equals(this.getRole(), role)) {
+                    if (Objects.equals(formatData(this.getUserName()), name)
+                            && Objects.equals(this.getPassword(), pass)
+                            && Objects.equals(this.getEmail(), mail)
+                            && Objects.equals(formatData(this.getRole()), role)) {
                         System.out.println("Welcome," + data[0] + "!");
                         return true;
                     }
@@ -76,9 +81,9 @@ public class User {
                 return false;
             } else {
                 bufferedWriter.newLine();
-                bufferedWriter.write(user.getUserName() + "," +
+                bufferedWriter.write(formatData(user.getUserName()) + "," +
                         user.getPassword() + "," + user.getEmail() +
-                        "," + user.getRole());
+                        "," + formatData(user.getRole()));
                 bufferedWriter.close();
                 return true;
             }
@@ -89,10 +94,11 @@ public class User {
     }
 
     public boolean adminRegistrationRequest(User user) {
-        try (BufferedWriter bufferedWriter1 = new BufferedWriter(new FileWriter("AdminRequest.txt", true))) {
+        try (BufferedWriter bufferedWriter1 = new BufferedWriter(
+                new FileWriter("AdminRequest.txt",true))) {
             bufferedWriter1.newLine();
-            bufferedWriter1.write(user.getUserName() + "," + user.getPassword() + "," +user.getEmail() +
-                    "," + user.getRole());
+            bufferedWriter1.write(formatData(user.getUserName()) + "," + user.getPassword() + "," +user.getEmail() +
+                    "," + formatData(user.getRole()));
             bufferedWriter1.flush();
             bufferedWriter1.close();
             return true;
@@ -104,7 +110,7 @@ public class User {
 
 
     public User userObject(String password, String email, String role) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("User_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("User_Info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -114,13 +120,14 @@ public class User {
                     String Email = parts[2];
                     String Role = parts[3];
 
-                    if (Password.equals(password) && Email.equals(email) && Role.equals(role)) {
+                    if (Password.equals(password) && Email.equals(email) && Role.equals(formatData(role))) {
                         return new User(username, password, Email, Role);
                     }
                 }
             }
         } catch (IOException e) {
             System.err.println("Error reading the file: " + e.getMessage());
+            e.printStackTrace();
         }
 
         return null;

@@ -1,22 +1,6 @@
-Abcd,www,.com,job provider
-rodoshi,www.som,..com,admin
-Mrittika,www//,m.com,admin
-Nishat,wwwmm,n.com,admin
-AR,ar,ar.com,applicant
-Mira,mira,mira.com,applicant
-Nishat,wwwmm,n.com,admin
-AR,hjhfrg,ar.com,applicant
-Mrittika,www//,m.com,admin
-Nishat,wwwmm,n.com,admin
-Mrittika,98798,m.com,admin
-mithila,80988,mm.com,admin
-Irina,2454,irina@gmail.com,admin
-pqr,1234,pqr.com,job provider
-xyz,456,xyz@gmail.com,job provider
-igu,988,yuf,admin
-Mumu,679,mu@gmail.com,admin
-Sanjana,658,n.com,admin
-mimi,www..,mim@gmail.com,applicant
-bin,www,,,,bin@g.com,applicant
-Mri,MriTika!!09,mri210@gmail.com,applicant
-Samiha,hkj@gshY#,samiha@gmail.com,applicant
+Abcd,www,.com,Job Provider
+Rodoshi,www.som,..com,Admin
+Mrittika,www//,m.com,Admin
+Nishat,wwwmm,n.com,Admin
+Ar,ar,ar.com,Applicant
+Mira,mira,mira.com,Applicant

@@ -1,5 +1,7 @@
 package HireUpMain;
 
+import static HireUpMain.Utility.formatData;
+
 public class AdditionalInformation extends PersonalInformation{
     private String name;
     private String experience;
@@ -39,7 +41,7 @@ public class AdditionalInformation extends PersonalInformation{
     }
 
     public String toFileString() {
-        return getExperience() + "," + getHobby() + "," + getSkills() ;
+        return getExperience() + "," + formatData(getHobby()) + "," + formatData(getSkills()) ;
     }
 
 

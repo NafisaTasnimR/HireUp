@@ -14,9 +14,14 @@ public  class Utility {
         String secondPartOfString = "";
         for(int i=1; i<length; i++)
         {
-            if(s.charAt(i) >= 'A' && s.charAt(i) <= 'Z'){
+            if(s.charAt(i-1) != ' ' && s.charAt(i) >= 'A' && s.charAt(i) <= 'Z'){
                 char toLowerCaseChar = (char)((s.charAt(i) - 'A')+'a');
                 secondPartOfString = secondPartOfString + toLowerCaseChar;
+            }
+            else if(s.charAt(i-1) == ' ' && s.charAt(i) >= 'a' && s.charAt(i) <= 'z')
+            {
+                char toUpperCaseChar = (char)((s.charAt(i) - 'a')+'A');
+                secondPartOfString = secondPartOfString + toUpperCaseChar;
             }
             else {
                 secondPartOfString = secondPartOfString + s.charAt(i);
