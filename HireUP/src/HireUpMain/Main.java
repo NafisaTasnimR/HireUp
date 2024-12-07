@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
+import static HireUpMain.Utility.isValidPhoneNumber;
 import static HireUpMain.Utility.updateConsole;
 
 public class Main {
@@ -325,7 +326,7 @@ public class Main {
                                         String nationalID = sc48.nextLine();
 
 
-                                        System.out.println(" EDUCATIONAL INFORMATION ");
+                                        System.out.println("EDUCATIONAL INFORMATION ");
 
                                         System.out.println("School Name: ");
 
@@ -409,7 +410,12 @@ public class Main {
 
                                         switch (option) {
                                             case 1:
-                                                applicant.createResume();
+                                                if(isValidPhoneNumber(phoneNumber)) {
+                                                    applicant.createResume();
+                                                }
+                                                else{
+                                                    System.out.println("Invalid phone number");
+                                                }
 
                                                 break;
                                             case 2:
@@ -899,8 +905,11 @@ public class Main {
                 switch (roleValue) {
                     case 1:
                         user1 = new User(name,pass1,email1,"applicant");
-                        user1.registration(user1);
-                        System.out.println("Congratulations! You have been registered.");
+                        if(user1.registration(user1)) {
+                            System.out.println("Congratulations! You have been registered.");
+                        } else{
+                            System.out.println("Sorry! You have not registered.");
+                        }
                         break;
                     case 2:
                         user1 = new User(name, pass1, email1, "job provider");
@@ -913,16 +922,20 @@ public class Main {
                         Scanner sc66 = new Scanner(System.in);
                         String webAddress = sc66.nextLine();
 
-                        user1.registration(user1);
-
-                        System.out.println("Congratulations! You have been registered.");
+                        if(user1.registration(user1)) {
+                            System.out.println("Congratulations! You have been registered.");
+                        } else{
+                            System.out.println("Sorry! You have not registered.");
+                        }
 
                         break;
                     case 3:
                         user1 = new User(name, pass1, email1, "admin");
-                        user1.adminRegistrationRequest(user1);
-
-                        System.out.println("Your request has been sent to Admin.");
+                        if(user1.adminRegistrationRequest(user1)) {
+                            System.out.println("Your request has been sent to Admin.");
+                        } else{
+                            System.out.println("Sorry! Your request has not been sent to Admin.");
+                        }
                         break;
                 }
 
