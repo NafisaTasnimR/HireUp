@@ -45,13 +45,13 @@ public class Main {
 
                 switch (role) {
                     case "1":
-                        role = "applicant";
+                        role = "Applicant";
                         break;
                     case "2":
-                        role = "job provider";
+                        role = "Job Provider";
                         break;
                     case "3":
-                        role = "admin";
+                        role = "Admin";
                         break;
                 }
 

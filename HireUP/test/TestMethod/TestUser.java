@@ -4,8 +4,6 @@ import HireUpMain.User;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.testng.Assert.assertNotNull;
 
 public class TestUser {
 
