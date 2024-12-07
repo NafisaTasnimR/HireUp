@@ -3,6 +3,9 @@ package HireUpMain;
 import java.io.*;
 import java.util.Objects;
 
+import static HireUpMain.Utility.isValidEmail;
+import static HireUpMain.Utility.isValidPassword;
+
 public class User {
     private String userName;
     private String password;
@@ -26,7 +29,7 @@ public class User {
     }
 
     public String getPassword() {
-        return password;
+            return password;
     }
 
     public String getEmail() {
@@ -64,18 +67,25 @@ public class User {
     }
 
     public boolean registration(User user) {
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("User_info.txt", true))) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("User_Info.txt", true))) {
+            if (!isValidEmail(user.getEmail())) {
+                System.out.println("Registration failed: Invalid email format.");
+                return false;
+            } else if (!isValidPassword(user.getPassword())) {
+                System.out.println("Registration failed: Invalid password format.");
+                return false;
+            } else {
                 bufferedWriter.newLine();
                 bufferedWriter.write(user.getUserName() + "," +
                         user.getPassword() + "," + user.getEmail() +
                         "," + user.getRole());
-            bufferedWriter.close();
-            return true;
+                bufferedWriter.close();
+                return true;
+            }
         } catch (IOException e) {
             System.err.println("Error in file writing." + e.getMessage());
             e.printStackTrace();
-            return false;
-        }
+        } return false;
     }
 
     public boolean adminRegistrationRequest(User user) {
@@ -89,13 +99,12 @@ public class User {
         } catch (IOException e) {
             System.err.println("Error in file writing." + e.getMessage());
             e.printStackTrace();
-            return false;
-        }
+        }return false;
     }
 
 
     public User userObject(String password, String email, String role) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\User_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("User_info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");

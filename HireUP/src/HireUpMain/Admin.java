@@ -3,7 +3,6 @@ package HireUpMain;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Admin extends User {
 
@@ -26,9 +25,7 @@ public class Admin extends User {
         return super.getPassword();
     }
 
-    public String getEmail() {
-        return super.getEmail();
-    }
+    public String getEmail() { return super.getEmail();}
 
     public String getRole() {
         return super.getRole();
@@ -47,7 +44,7 @@ public class Admin extends User {
                 String Weblink = data[1];
                 String status = (data.length > 2) ? data[2] : "";
 
-                    serial1++;
+                serial1++;
                     System.out.println(serial1 +"."+" "+ "Company Name:" + companyName + " " + "Weblink:" + Weblink + ", Status: " + status+ '\n');
                     JobProviderList.add(serial1+","+line);
 
