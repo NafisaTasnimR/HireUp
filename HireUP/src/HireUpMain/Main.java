@@ -26,13 +26,13 @@ public class Main {
                 System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ Login \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
                 System.out.println("Enter your ");
 
-                System.out.println("Password:");
-                Scanner sc2 = new Scanner(System.in);
-                String pass = sc2.nextLine();
-
                 System.out.println("Email:");
                 Scanner sc3 = new Scanner(System.in);
                 String email = sc3.nextLine();
+
+                System.out.println("Password:");
+                Scanner sc2 = new Scanner(System.in);
+                String pass = sc2.nextLine();
 
                 System.out.println("Role:");
                 System.out.println("1.Applicant");
@@ -282,8 +282,11 @@ public class Main {
                                     case 4:
                                         System.out.println("Create Resume");
                                         System.out.println("***************  Create Resume ***************");
-                                        System.out.println("PERSONAL INFORMATION");
-                                        System.out.println("Name: ");
+                                        System.out.println("=======================================");
+                                        System.out.println("         RESUME BUILDER        ");
+                                        System.out.println("=======================================\n");
+                                        System.out.println("===============   PERSONAL INFORMATION   ===============");
+                                        System.out.println("Full Name: ");
 
                                         Scanner sc39 = new Scanner(System.in);
                                         String name = sc39.nextLine();
@@ -325,7 +328,7 @@ public class Main {
                                         String nationalID = sc48.nextLine();
 
 
-                                        System.out.println(" EDUCATIONAL INFORMATION ");
+                                        System.out.println("===============   EDUCATIONAL INFORMATION   ===============");
 
                                         System.out.println("School Name: ");
 
@@ -376,7 +379,7 @@ public class Main {
                                         Scanner sc59 = new Scanner(System.in);
                                         String postgradCGPA = sc59.nextLine();
 
-                                        System.out.println("ADDITIONAL INFORMATION: ");
+                                        System.out.println("===============   ADDITIONAL INFORMATION   ===============");
                                         System.out.println("Experience: ");
                                         Scanner sc60 = new Scanner(System.in);
                                         String experince = sc60.nextLine();
@@ -388,6 +391,8 @@ public class Main {
                                         System.out.println("Skills: ");
                                         Scanner sc62 = new Scanner(System.in);
                                         String skills = sc62.nextLine();
+
+                                        System.out.println("=======================================");
 
                                         PersonalInformation personalInformation = new PersonalInformation(name,fatherName,motherName,dateOfBirth,nationality,religion,gender,phoneNumber,address,nationalID);
                                         EducationalInformation educationalInformation = new EducationalInformation(name,schoolName,passingYear,sscOLevelResult,collegeName,passingYearHSC,hscALevelResult,universityName,department,undergraduateDegree,undergradCGPA,postgraduateDegree,postgradCGPA);
