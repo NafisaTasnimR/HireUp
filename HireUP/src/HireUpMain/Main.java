@@ -914,6 +914,8 @@ public class Main {
                         String webAddress = sc66.nextLine();
 
                         user1.registration(user1);
+                        JobProvider jobProvider = new JobProvider(companyName,webAddress);
+                        jobProvider.registrationJobProvider();
 
                         System.out.println("Congratulations! You have been registered.");
 
