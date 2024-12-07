@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
+import static HireUpMain.Utility.isValidPhoneNumber;
 import static HireUpMain.Utility.updateConsole;
 
 public class Main {
@@ -26,13 +27,13 @@ public class Main {
                 System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ Login \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
                 System.out.println("Enter your ");
 
-                System.out.println("Password:");
-                Scanner sc2 = new Scanner(System.in);
-                String pass = sc2.nextLine();
-
                 System.out.println("Email:");
                 Scanner sc3 = new Scanner(System.in);
                 String email = sc3.nextLine();
+
+                System.out.println("Password:");
+                Scanner sc2 = new Scanner(System.in);
+                String pass = sc2.nextLine();
 
                 System.out.println("Role:");
                 System.out.println("1.Applicant");
@@ -282,8 +283,11 @@ public class Main {
                                     case 4:
                                         System.out.println("Create Resume");
                                         System.out.println("***************  Create Resume ***************");
-                                        System.out.println("PERSONAL INFORMATION");
-                                        System.out.println("Name: ");
+                                        System.out.println("=======================================");
+                                        System.out.println("         RESUME BUILDER        ");
+                                        System.out.println("=======================================\n");
+                                        System.out.println("===============   PERSONAL INFORMATION   ===============");
+                                        System.out.println("Full Name: ");
 
                                         Scanner sc39 = new Scanner(System.in);
                                         String name = sc39.nextLine();
@@ -324,8 +328,7 @@ public class Main {
                                         Scanner sc48 = new Scanner(System.in);
                                         String nationalID = sc48.nextLine();
 
-
-                                        System.out.println(" EDUCATIONAL INFORMATION ");
+                                        System.out.println("===============   EDUCATIONAL INFORMATION   ===============");
 
                                         System.out.println("School Name: ");
 
@@ -376,7 +379,7 @@ public class Main {
                                         Scanner sc59 = new Scanner(System.in);
                                         String postgradCGPA = sc59.nextLine();
 
-                                        System.out.println("ADDITIONAL INFORMATION: ");
+                                        System.out.println("===============   ADDITIONAL INFORMATION   ===============");
                                         System.out.println("Experience: ");
                                         Scanner sc60 = new Scanner(System.in);
                                         String experince = sc60.nextLine();
@@ -388,6 +391,8 @@ public class Main {
                                         System.out.println("Skills: ");
                                         Scanner sc62 = new Scanner(System.in);
                                         String skills = sc62.nextLine();
+
+                                        System.out.println("=======================================");
 
                                         PersonalInformation personalInformation = new PersonalInformation(name,fatherName,motherName,dateOfBirth,nationality,religion,gender,phoneNumber,address,nationalID);
                                         EducationalInformation educationalInformation = new EducationalInformation(name,schoolName,passingYear,sscOLevelResult,collegeName,passingYearHSC,hscALevelResult,universityName,department,undergraduateDegree,undergradCGPA,postgraduateDegree,postgradCGPA);
@@ -409,7 +414,12 @@ public class Main {
 
                                         switch (option) {
                                             case 1:
-                                                applicant.createResume();
+                                                if(isValidPhoneNumber(phoneNumber)) {
+                                                    applicant.createResume();
+                                                }
+                                                else{
+                                                    System.out.println("Invalid phone number");
+                                                }
 
                                                 break;
                                             case 2:
@@ -899,8 +909,11 @@ public class Main {
                 switch (roleValue) {
                     case 1:
                         user1 = new User(name,pass1,email1,"applicant");
-                        user1.registration(user1);
-                        System.out.println("Congratulations! You have been registered.");
+                        if(user1.registration(user1)) {
+                            System.out.println("Congratulations! You have been registered.");
+                        } else{
+                            System.out.println("Sorry! You have not registered.");
+                        }
                         break;
                     case 2:
                         user1 = new User(name, pass1, email1, "job provider");
@@ -913,18 +926,23 @@ public class Main {
                         Scanner sc66 = new Scanner(System.in);
                         String webAddress = sc66.nextLine();
 
-                        user1.registration(user1);
+                        if(user1.registration(user1)) {                       
                         JobProvider jobProvider = new JobProvider(companyName,webAddress);
                         jobProvider.registrationJobProvider();
 
-                        System.out.println("Congratulations! You have been registered.");
+                            System.out.println("Congratulations! You have been registered.");
+                        } else{
+                            System.out.println("Sorry! You have not registered.");
+                        }
 
                         break;
                     case 3:
                         user1 = new User(name, pass1, email1, "admin");
-                        user1.adminRegistrationRequest(user1);
-
-                        System.out.println("Your request has been sent to Admin.");
+                        if(user1.adminRegistrationRequest(user1)) {
+                            System.out.println("Your request has been sent to Admin.");
+                        } else{
+                            System.out.println("Sorry! Your request has not been sent to Admin.");
+                        }
                         break;
                 }
 
