@@ -1,4 +1,4 @@
 lin,jack,mita,2003,bangladeshi,islam,female,12345,dhaka,577697,lin@gmail,lps,2019,5,rajuk,2022,5,iut,cse,bsc,3.7,msc,3.5,5year,coding,java,Not Verified
-preo,jack,mita,2003,bangladeshi,islam,female,67890,dhaka,577697,preo@gmail,lps,2019,5,rajuk,2022,5,iut,cse,bsc,3.7,msc,3.5,5year,coding,java,Not Verified
+preo,jack,mita,2003,bangladeshi,islam,female,67890,dhaka,577697,preo@gmail,lps,2019,5,rajuk,2022,5,iut,cse,bsc,3.7,msc,3.5,7 year,coding,java,Not Verified
 nafisa,jack,mita,2003,bangladeshi,islam,female,12345,dhaka,577697,nafisa@gmail,lps,2019,5,rajuk,2022,5,iut,cse,bsc,3.7,msc,3.5,5year,coding,java,Not Verified
-lin,jack,mita,2003,bangladeshi,islam,female,12345,dhaka,577697,ar.com,lps,2019,5,rajuk,2022,5,iut,cse,bsc,3.7,msc,3.5,5year,coding,java,Verified
+lin,jack,mita,2003,bangladeshi,islam,female,0199433,pabna,577697,ar.com,lps,2019,5,rajuk,2022,5,iut,cse,bsc,3.7,msc,3.5,5year,reading,java,Verified

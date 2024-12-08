@@ -91,6 +91,11 @@ public class Applicant extends User {
         resume.showResume(this.getEmail());
     }
 
+    public void updateInfo()
+    {
+        resume.updateInfo(this.getEmail());
+    }
+
     private String findApplicant(String email) {
         String resumeInfo = "";
         try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
@@ -182,6 +187,9 @@ public class Applicant extends User {
         }
         return jobList;
     }
+
+
+
 
 
 }
