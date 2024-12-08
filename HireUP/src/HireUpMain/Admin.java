@@ -229,7 +229,10 @@ public class Admin extends User {
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
                 "Applicant_info.txt"))) {
-            System.out.println("===========Applicant Information===========");
+            System.out.println("=======================================================================================================================");
+            System.out.println("| S.No | Name                         | National ID          | Email                                 | Status         |");
+            System.out.println("=======================================================================================================================");
+
             int applicantSerial =0;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
@@ -237,10 +240,11 @@ public class Admin extends User {
                 String NID = data[9];
                 String Email = data[10];
                 String status = (data.length > 26) ? data[26] : "Not Verified";
-
-                    applicantSerial++;
-                    System.out.println(applicantSerial +"."+" "+ "Name:" + Name + " " + "Email:" + Email+ " " + "National ID:"+ NID + " " + "Status:"+ status + '\n');
+                applicantSerial++;
+                System.out.printf("| %-4d | %-28s | %-20s | %-37s | %-14s |%n",
+                        applicantSerial, Name, NID, Email, status);
                     ApplicantList.add(applicantSerial+","+line);
+                System.out.println("=======================================================================================================================");
 
             }
         } catch (IOException e) {

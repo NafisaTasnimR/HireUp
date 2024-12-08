@@ -718,8 +718,7 @@ public class Main {
                                         updateConsole();
                                         switch (selection6) {
                                             case "1":
-                                                System.out.println("Applicant");
-                                                System.out.println("***************  Applicant List  ***************");
+                                                System.out.println("=================================================Applicant Information================================================");
                                                 Admin admin=new Admin();
                                                 List<String>applicants= admin.ViewApplicantInformation();
                                                 System.out.println("Enter your selection: ");
