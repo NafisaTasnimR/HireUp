@@ -833,6 +833,7 @@ public class Main {
                                                 updateConsole();
                                                 break;
                                             case "3":
+                                                System.out.println("=========================================Admin Requests========================================");
                                                 Admin admin2=new Admin();
                                               List<String> adminRequests=  admin2.viewAdminRequest();
                                               Scanner adminRequestsc = new Scanner(System.in);

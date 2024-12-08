@@ -138,21 +138,20 @@ public class Admin extends User {
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
                 "AdminRequest.txt"))) {
-            System.out.println("Admin Requests:");
+            System.out.println("================================================================================================");
+            System.out.println("| S.No | Name                          | Email                                 | Role          |");
+            System.out.println("================================================================================================");
             int serial2=0;
-
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
                     String userName = data[0];
                     String email = data[2];
                     String role = data[3];
-                    if(userName.equals(data[0])){
-                        serial2++;
-                        System.out.println(serial2 +"."+" "+ "Username:"+ userName + " " + "Email:" + email + " "+"Role:"+role+'\n');
-                        AdminRequestList.add(serial2+","+line);
-                } else {
-                    System.out.println("Invalid Data:" + line);
-                }
+                    serial2++;
+                System.out.printf("| %-4d | %-29s | %-37s | %-13s |%n",
+                        serial2, userName, email, role);
+                AdminRequestList.add(serial2+","+line);
+                System.out.println("================================================================================================");
             }
         } catch (IOException e) {
             System.err.println("Error reading file" + e.getMessage());
