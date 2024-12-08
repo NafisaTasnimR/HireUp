@@ -102,6 +102,7 @@ public class Main {
                                 System.out.println("3.See Job Status");
                                 System.out.println("4.Create Resume");
                                 System.out.println("5.View Resume");
+                                System.out.println("6.Update Information");
                                 System.out.println("Enter your selection");
                                 Scanner sc8 = new Scanner(System.in);
                                 int selection1 = sc8.nextInt();
@@ -435,9 +436,15 @@ public class Main {
 
                                     case 5:
                                         System.out.println("View Resume");
-                                        System.out.println("***************  View Resume ***************");
+                                        System.out.println("***************  View Resume  ***************");
 
                                         applicant.showResume();
+                                        break;
+
+                                    case 6:
+                                        System.out.println("***************  Update Information  ***************");
+                                        applicant.updateInfo();
+                                        break;
 
 
                                 }

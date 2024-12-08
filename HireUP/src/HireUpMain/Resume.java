@@ -89,9 +89,9 @@ public class Resume {
                             System.out.println("University Name            : " + resumeList[17] +"\n");
                             System.out.println("Department                 : " + resumeList[18] +"\n");
                             System.out.println("Undergraduate Degree       : " + resumeList[19] +"\n");
-                            System.out.println("CGPA                       : " + resumeList[20] +"\n");
+                            System.out.println("Undergraduate CGPA         : " + resumeList[20] +"\n");
                             System.out.println("Postgraduate Degree        : " + resumeList[21] +"\n");
-                            System.out.println("CGPA                       : " + resumeList[22] +"\n");
+                            System.out.println("postgraduate CGPA          : " + resumeList[22] +"\n");
                             System.out.println("\n------------   ADDITIONAL INFORMATION   ------------\n");
                             System.out.println("Experience                 : " + resumeList[23] +"\n");
                             System.out.println("Hobbies                    : " + resumeList[24] +"\n");
@@ -121,4 +121,109 @@ public class Resume {
         return false;
     }
 
+    public void updateInfo(String email) {
+        Scanner scanner = new Scanner(System.in);
+        List<String> updatedLines = new ArrayList<>();
+        boolean found = false;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] resumeList = line.split(",");
+                if (resumeList[10].equals(email)) {
+                    found = true;
+
+
+                    System.out.println("What do you want to update?");
+                    System.out.println("1. Phone Number");
+                    System.out.println("2. Address");
+                    System.out.println("3. Email");
+                    System.out.println("4. Postgraduate Degree");
+                    System.out.println("5. Postgraduate CGPA");
+                    System.out.println("6. Experience");
+                    System.out.println("7. Skills");
+                    System.out.println("8. Hobbies");
+                    System.out.print("Enter your choice: ");
+                    int choice = scanner.nextInt();
+                    scanner.nextLine();
+
+                    switch (choice) {
+                        case 1:
+                        {
+                            System.out.print("Enter new Phone Number: ");
+                            resumeList[7] = scanner.nextLine();
+                            break;
+                        }
+                        case 2:
+                        {
+                            System.out.print("Enter new Address: ");
+                            resumeList[8] = scanner.nextLine();
+                            break;
+                        }
+                        case 3:
+                        {
+                            System.out.print("Enter new Email: ");
+                            resumeList[10] = scanner.nextLine();
+                            break;
+                        }
+                        case 4:
+                        {
+                            System.out.print("Enter Postgraduate Degree: ");
+                            resumeList[21] = scanner.nextLine();
+                            break;
+                        }
+                        case 5:
+                        {
+                            System.out.print("Enter Postgraduate CGPA: ");
+                            resumeList[22] = scanner.nextLine();
+                            break;
+                        }
+                        case 6:
+                        {
+                            System.out.print("Enter Experience: ");
+                            resumeList[23] = scanner.nextLine();
+                            break;
+                        }
+                        case 7:
+                        {
+                            System.out.print("Enter Hobbies: ");
+                            resumeList[24] = scanner.nextLine();
+                            break;
+                        }
+                        case 8:
+                        {
+                            System.out.print("Enter Skills: ");
+                            resumeList[25] = scanner.nextLine();
+                            break;
+                        }
+                        default:
+                            System.out.println("Invalid choice. No changes made.");
+                    }
+
+                    line = String.join(",", resumeList);
+                }
+                updatedLines.add(line);
+            }
+
+            if (!found) {
+                System.out.println("Resume not found for the given email.");
+                return;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
+            for (String updatedLine : updatedLines) {
+                writer.write(updatedLine);
+                writer.newLine();
+            }
+            System.out.println("Information updated successfully!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+
+}
