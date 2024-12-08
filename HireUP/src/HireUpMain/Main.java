@@ -725,8 +725,7 @@ public class Main {
                                         updateConsole();
                                         switch (selection6) {
                                             case "1":
-                                                System.out.println("Applicant");
-                                                System.out.println("***************  Applicant List  ***************");
+                                                System.out.println("=================================================Applicant Information================================================");
                                                 Admin admin=new Admin();
                                                 List<String>applicants= admin.ViewApplicantInformation();
                                                 System.out.println("Enter your selection: ");
@@ -783,8 +782,8 @@ public class Main {
                                                 updateConsole();
                                                 break;
                                             case "2":
-                                                System.out.println("Job Provider");
-                                                System.out.println("***************  Job Provider’s Website List  ***************");
+                                                System.out.println("================================Job Provider Information======================================");
+                                                //System.out.println("***************  Job Provider’s Website List  ***************");
                                                 Admin admin12=new Admin();
                                                List<String>jobProviders= admin12.ViewInformation();
                                                System.out.println("Enter your selection: ");
@@ -840,6 +839,7 @@ public class Main {
                                                 updateConsole();
                                                 break;
                                             case "3":
+                                                System.out.println("=========================================Admin Requests========================================");
                                                 Admin admin2=new Admin();
                                               List<String> adminRequests=  admin2.viewAdminRequest();
                                               Scanner adminRequestsc = new Scanner(System.in);

@@ -34,21 +34,27 @@ public class Admin extends User {
     public List<String> ViewInformation() {
         List<String> JobProviderList = new ArrayList<>();
         String line;
+        final int serialWidth = 5;
+        final int companyWidth = 30;
+        final int weblinkWidth = 40;
+        final int statusWidth = 20;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
                 "JobProvider_info.txt"))) {
-            System.out.println("Job Provider Information:");
+
+            System.out.println("===============================================================================================");
+            System.out.println("| S.No | Company Name                  | Weblink                               | Status       |");
+            System.out.println("===============================================================================================");
             int serial1 =0;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
                 String companyName = data[0];
                 String Weblink = data[1];
                 String status = (data.length > 2) ? data[2] : "";
-
                 serial1++;
-                    System.out.println(serial1 +"."+" "+ "Company Name:" + companyName + " " + "Weblink:" + Weblink + ", Status: " + status+ '\n');
+                System.out.printf("| %-4d | %-29s | %-37s | %-12s |%n",
+                        serial1, companyName, Weblink, status);
                     JobProviderList.add(serial1+","+line);
-
-            }
+            } System.out.println("===============================================================================================");
         } catch (IOException e) {
             System.err.println("Error reading file" + e.getMessage());
             e.printStackTrace();
@@ -132,21 +138,20 @@ public class Admin extends User {
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
                 "AdminRequest.txt"))) {
-            System.out.println("Admin Requests:");
+            System.out.println("================================================================================================");
+            System.out.println("| S.No | Name                          | Email                                 | Role          |");
+            System.out.println("================================================================================================");
             int serial2=0;
-
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
                     String userName = data[0];
                     String email = data[2];
                     String role = data[3];
-                    if(userName.equals(data[0])){
-                        serial2++;
-                        System.out.println(serial2 +"."+" "+ "Username:"+ userName + " " + "Email:" + email + " "+"Role:"+role+'\n');
-                        AdminRequestList.add(serial2+","+line);
-                } else {
-                    System.out.println("Invalid Data:" + line);
-                }
+                    serial2++;
+                System.out.printf("| %-4d | %-29s | %-37s | %-13s |%n",
+                        serial2, userName, email, role);
+                AdminRequestList.add(serial2+","+line);
+                System.out.println("================================================================================================");
             }
         } catch (IOException e) {
             System.err.println("Error reading file" + e.getMessage());
@@ -224,7 +229,10 @@ public class Admin extends User {
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
                 "Applicant_info.txt"))) {
-            System.out.println("Applicant Information:");
+            System.out.println("=======================================================================================================================");
+            System.out.println("| S.No | Name                         | National ID          | Email                                 | Status         |");
+            System.out.println("=======================================================================================================================");
+
             int applicantSerial =0;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
@@ -232,10 +240,11 @@ public class Admin extends User {
                 String NID = data[9];
                 String Email = data[10];
                 String status = (data.length > 26) ? data[26] : "Not Verified";
-
-                    applicantSerial++;
-                    System.out.println(applicantSerial +"."+" "+ "Name:" + Name + " " + "Email:" + Email+ " " + "National ID:"+ NID + " " + "Status:"+ status + '\n');
+                applicantSerial++;
+                System.out.printf("| %-4d | %-28s | %-20s | %-37s | %-14s |%n",
+                        applicantSerial, Name, NID, Email, status);
                     ApplicantList.add(applicantSerial+","+line);
+                System.out.println("=======================================================================================================================");
 
             }
         } catch (IOException e) {
