@@ -776,8 +776,8 @@ public class Main {
                                                 updateConsole();
                                                 break;
                                             case "2":
-                                                System.out.println("Job Provider");
-                                                System.out.println("***************  Job Provider’s Website List  ***************");
+                                                System.out.println("================================Job Provider Information======================================");
+                                                //System.out.println("***************  Job Provider’s Website List  ***************");
                                                 Admin admin12=new Admin();
                                                List<String>jobProviders= admin12.ViewInformation();
                                                System.out.println("Enter your selection: ");
