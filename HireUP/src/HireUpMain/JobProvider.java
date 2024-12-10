@@ -309,4 +309,28 @@ public class JobProvider extends User{
         return jobPostNo;
     }
 
+    private void sortList(List<String> applicantList,String sortBy)
+    {
+        if (sortBy.equalsIgnoreCase("cgpa")) {
+            applicantList.sort((a, b) -> {
+                double cgpaA = Double.parseDouble(a.split(",")[23]); // Assuming CGPA is the 3rd field in the info
+                double cgpaB = Double.parseDouble(b.split(",")[23]);
+                return Double.compare(cgpaB, cgpaA); // Descending order
+            });
+        } else if (sortBy.equalsIgnoreCase("msc")) {
+            applicantList.sort((a, b) -> {
+                String mscA = a.split(",")[24].trim(); // Assuming MSc info is the 5th field in the info
+                String mscB = b.split(",")[24].trim();
+                return mscB.compareTo(mscA); // Yes first, No later
+            });
+        }else if (sortBy.equalsIgnoreCase("experience")) {
+            applicantList.sort((a, b) -> {
+                String mscA = a.split(",")[4].trim(); // Assuming MSc info is the 5th field in the info
+                String mscB = b.split(",")[4].trim();
+                return mscB.compareTo(mscA); // Yes first, No later
+            });
+        }
+
+    }
+
 }

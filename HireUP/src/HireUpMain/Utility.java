@@ -60,4 +60,9 @@ public  class Utility {
         return Pattern.matches(phoneNumberRegex, phoneNumber);
     }
 
+    public static String extractYear(String experience)
+    {
+        return null;
+    }
+
 }
