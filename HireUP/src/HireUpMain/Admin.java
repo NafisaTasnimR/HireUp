@@ -34,13 +34,8 @@ public class Admin extends User {
     public List<String> ViewInformation() {
         List<String> JobProviderList = new ArrayList<>();
         String line;
-        final int serialWidth = 5;
-        final int companyWidth = 30;
-        final int weblinkWidth = 40;
-        final int statusWidth = 20;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
                 "JobProvider_info.txt"))) {
-
             System.out.println("===============================================================================================");
             System.out.println("| S.No | Company Name                  | Weblink                               | Status       |");
             System.out.println("===============================================================================================");
@@ -53,8 +48,9 @@ public class Admin extends User {
                 serial1++;
                 System.out.printf("| %-4d | %-29s | %-37s | %-12s |%n",
                         serial1, companyName, Weblink, status);
-                    JobProviderList.add(serial1+","+line);
-            } System.out.println("===============================================================================================");
+                JobProviderList.add(serial1 + "," + line);
+                System.out.println("===============================================================================================");
+            }
         } catch (IOException e) {
             System.err.println("Error reading file" + e.getMessage());
             e.printStackTrace();
