@@ -24,9 +24,11 @@ public class Applicant extends User {
 
     public List<String> searchJob(String preference) {
         List<String> jobList = new ArrayList<>();
+        Set<String> uniqueJobs = new HashSet<>();
+        int outputSerial = 0;
+
         try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\Job_info.txt"))) {
             String line;
-            int serial = 0;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
                 if (data.length == 10) {
@@ -34,21 +36,60 @@ public class Applicant extends User {
                     String companyName = data[1];
                     String jobPosition = data[2];
                     String skill = data[3];
-                    String experience = data[4];
-                    String salary = data[5];
+                    String experience = data[4].trim();
+                    String salary = data[5].trim();
                     String location = data[6];
                     String time = data[7];
                     String websiteLink = data[8];
                     String additional = data[9];
 
-                    if (Objects.equals(formatData(preference), companyName) || Objects.equals(formatData(preference), location) ||
-                            Objects.equals(formatData(preference), jobPosition) || Objects.equals(preference, experience)
-                            || Objects.equals(preference, salary) || Objects.equals(formatData(preference), skill)
-                            || Objects.equals(preference, time)) {
-                        serial++;
-                        System.out.println(serial + "." + "Company Name: " + data[1] + " "
-                                + "Job Position: " + data[2] + " " + "WebSite Address: " + data[8] + '\n');
-                        jobList.add(serial + "," + line);
+                    boolean matchFound = false;
+
+
+                    if (Objects.equals(formatData(preference), companyName) ||
+                            Objects.equals(formatData(preference), location) ||
+                            Objects.equals(formatData(preference), jobPosition) ||
+                            Objects.equals(preference, experience) ||
+                            Objects.equals(preference, salary) ||
+                            Objects.equals(formatData(preference), skill) ||
+                            Objects.equals(preference, time)) {
+
+                        matchFound = true;
+                    }
+
+
+                    try {
+                        if (preference.matches("\\d+")) {
+                            int input = Integer.parseInt(preference);
+                            if (input >= 1000) { // Salary input
+                                int lowerRange = Math.max(input - 5000, 0);
+                                int upperRange = input + 5000;
+                                int jobSalary = Integer.parseInt(salary);
+                                if (jobSalary >= lowerRange && jobSalary <= upperRange) {
+                                    matchFound = true;
+                                }
+                            } else {
+                                int lowerRange = Math.max(input - 2, 0);
+                                int upperRange = input + 2;
+                                int jobExperience = Integer.parseInt(experience);
+                                if (jobExperience >= lowerRange && jobExperience <= upperRange) {
+                                    matchFound = true;
+                                }
+                            }
+                        }
+                    } catch (NumberFormatException e) {
+                        // Ignore non-numeric preferences
+                    }
+
+
+                    if (matchFound) {
+                        String jobInfo = line;
+                        if (uniqueJobs.add(jobInfo)) {
+                            outputSerial++;
+                            System.out.println(outputSerial + ". Company Name: " + companyName + " "
+                                    + "Job Position: " + jobPosition + " " + "WebSite Address: " + websiteLink + '\n');
+                            jobList.add(outputSerial + "," + line); 
+                        }
                     }
                 } else {
                     System.out.println("Invalid data format.");
@@ -187,6 +228,32 @@ public class Applicant extends User {
         }
         return jobList;
     }
+
+
+    private void suggestJobsBySalary(int salaryInput) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\Job_info.txt"))) {
+            String line;
+            int serial = 0;
+            int lowerRange = Math.max(salaryInput - 5000, 0);
+            int upperRange = salaryInput + 5000;
+
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data.length == 10) {
+                    int jobSalary = Integer.parseInt(data[5].trim());
+                    if (jobSalary >= lowerRange && jobSalary <= upperRange) {
+                        serial++;
+                        System.out.println(serial + ". Company Name: " + data[1] +
+                                ", Job Position: " + data[2] + ", Salary: " + jobSalary);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 
 

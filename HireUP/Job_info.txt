@@ -1,7 +1,7 @@
-Abcd1,Abcd,Manager,Def,3,12000,Uttora,8am-6pm,www.abcd.com,experienced
-Abcd2,Abcd,Manager,Def,3,12000,Mirpur,8am-6pm,www.abcd.com,experienced
-Abcd3,Abcd,Manager,Def,3,12000,Gulshan,8am-6pm,www.abcd.com,experienced
-Abcd4,Abcd,Manager,Def,3,12000,Bashundhora,8am-6pm,www.abcd.com,experienced
-Abcer5,Abcer,Manager,Def,3,12000,Uttora,8am-6pm,www.abcd.com,experienced
-Abcd6,Abcd,Manager,Def,3,12000,Gulshan,8am-6pm,www.abcd.com,experienced
-Abcdwd7,Abcdwd,Manager,Def,3,12000,Uttora,8am-6pm,www.abcd.com,experienced
+Abcd1,PQR,Manager,Def,3,10000,Uttora,8am-6pm,www.orange.com,experienced
+Abcd2,LMN,Manager,Def,7,7000,Mirpur,8am-6pm,www.apple.com,experienced
+Abcd3,XYZ,Manager,Def,5,5000,Gulshan,8am-6pm,www.lemon.com,experienced
+Abcd4,ABCD,Manager,Def,4,12000,Bashundhora,8am-6pm,www.banana.com,experienced
+Abcer5,ABCER,Manager,Def,5,16000,Uttora,8am-6pm,www.grape.com,experienced
+Abcd6,Abcd,Manager,Def,3,20000,Gulshan,8am-6pm,www.abcd.com,experienced
+Abcdwd7,Abcdwd,Manager,Def,8,18000,Uttora,8am-6pm,www.abcd.com,experienced
