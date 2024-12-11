@@ -60,4 +60,17 @@ public  class Utility {
         return Pattern.matches(phoneNumberRegex, phoneNumber);
     }
 
+    public static String extractYear(String experience)
+    {
+        String year = "";
+        int length = experience.length();
+        for(int i=0; i<length; i++)
+        {
+            if(experience.charAt(i) >= '0' && experience.charAt(i) <= '9'){
+                year = year + experience.charAt(i);
+            }
+        }
+        return year;
+    }
+
 }
