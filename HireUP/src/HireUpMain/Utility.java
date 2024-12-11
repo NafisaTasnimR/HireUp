@@ -62,7 +62,7 @@ public  class Utility {
 
     public static String extractYear(String experience)
     {
-        String year = null;
+        String year = "";
         int length = experience.length();
         for(int i=0; i<length; i++)
         {

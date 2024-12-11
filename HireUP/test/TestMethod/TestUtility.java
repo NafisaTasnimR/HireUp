@@ -62,4 +62,12 @@ public class TestUtility {
         boolean expectedValue = true;
         assertEquals(expectedValue,Utility.isValidPhoneNumber("01846007106"));
     }
+
+    @Test
+    public void testExtractYear()
+    {
+        String experience = "3 years";
+        String expectedValue = "3";
+        assertEquals(expectedValue,Utility.extractYear(experience));
+    }
 }
