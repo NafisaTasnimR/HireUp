@@ -556,7 +556,27 @@ public class Main {
                                         System.out.println("Enter the Job Post Number that you want to see: ");
                                         Scanner sc70 = new Scanner(System.in);
                                         String serialNo = sc70.nextLine();
-                                        List<String> applicantList = jobProvider.seeApplicantList(jobProvider.getJobPostNo(serialNo,jobPostList));
+                                        System.out.println("Enter your preference to see the applicant list sorted: ");
+                                        System.out.println("1.BSc CGPA");
+                                        System.out.println("2. Has MSc Degree");
+                                        System.out.println("3. Experience");
+                                        Scanner scanner110 = new Scanner(System.in);
+                                        int selectionNo101 = scanner110.nextInt();
+                                        String searchPreference = "";
+                                        switch (selectionNo101)
+                                        {
+                                            case 1:
+                                                searchPreference = "cgpa";
+                                                break;
+                                            case 2:
+                                                searchPreference = "MSc";
+                                                break;
+                                            case 3:
+                                                searchPreference = "experience";
+                                                break;
+                                        }
+
+                                        List<String> applicantList = jobProvider.seeApplicantList(jobProvider.getJobPostNo(serialNo,jobPostList),searchPreference);
                                         if (serialNo != null) {
                                             System.out.println("***************  Applicants Personal Information  ***************");
                                             System.out.println("Enter the Serial number of the applicant you want to see: ");

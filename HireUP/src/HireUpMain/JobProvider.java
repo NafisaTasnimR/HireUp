@@ -68,7 +68,7 @@ public class JobProvider extends User{
         return false;
     }
 
-    public List<String> seeApplicantList(String jobPostNo)
+    public List<String> seeApplicantList(String jobPostNo,String sortingPreference)
     {
         List<String> applicantList = new ArrayList<>();
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Application.txt")))
@@ -106,6 +106,7 @@ public class JobProvider extends User{
         {
             System.out.println("There is a error : " + e.getMessage());
         }
+        this.sortList(applicantList,sortingPreference);
         return applicantList;
     }
 
@@ -311,24 +312,24 @@ public class JobProvider extends User{
         return jobPostNo;
     }
 
-    private void sortList(List<String> applicantList,String sortBy)
+    private void sortList(List<String> applicantList, String sortBy)
     {
         if (sortBy.equalsIgnoreCase("cgpa")) {
             applicantList.sort((a, b) -> {
-                double cgpaA = Double.parseDouble(a.split(",")[23]); // Assuming CGPA is the 3rd field in the info
-                double cgpaB = Double.parseDouble(b.split(",")[23]);
+                double cgpaA = Double.parseDouble(a.split(",")[22]); // Assuming CGPA is the 3rd field in the info
+                double cgpaB = Double.parseDouble(b.split(",")[22]);
                 return Double.compare(cgpaB, cgpaA); // Descending order
             });
         } else if (sortBy.equalsIgnoreCase("msc")) {
             applicantList.sort((a, b) -> {
-                String mscA = a.split(",")[24].trim(); // Assuming MSc info is the 5th field in the info
-                String mscB = b.split(",")[24].trim();
+                String mscA = a.split(",")[23].trim(); // Assuming MSc info is the 5th field in the info
+                String mscB = b.split(",")[23].trim();
                 return mscB.compareTo(mscA); // Yes first, No later
             });
         }else if (sortBy.equalsIgnoreCase("experience")) {
             applicantList.sort((a, b) -> {
-                double experienceA = Double.parseDouble(extractYear(a.split(",")[26].trim())); // Assuming MSc info is the 5th field in the info
-                double experienceB = Double.parseDouble(extractYear(b.split(",")[26].trim()));
+                double experienceA = Double.parseDouble(extractYear(a.split(",")[25].trim())); // Assuming MSc info is the 5th field in the info
+                double experienceB = Double.parseDouble(extractYear(b.split(",")[25].trim()));
                 return Double.compare(experienceB, experienceA); // Yes first, No later
             });
         }
