@@ -70,4 +70,12 @@ public class TestUtility {
         String expectedValue = "3";
         assertEquals(expectedValue,Utility.extractYear(experience));
     }
+
+    @Test
+    public void testExtractYear1()
+    {
+        String experience = "25years";
+        String expectedValue = "25";
+        assertEquals(expectedValue,Utility.extractYear(experience));
+    }
 }

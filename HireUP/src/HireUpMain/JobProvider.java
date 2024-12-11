@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import static HireUpMain.Utility.extractYear;
+
 public class JobProvider extends User{
     private String companyName;
     private String webAddress;
@@ -325,9 +327,9 @@ public class JobProvider extends User{
             });
         }else if (sortBy.equalsIgnoreCase("experience")) {
             applicantList.sort((a, b) -> {
-                String mscA = a.split(",")[4].trim(); // Assuming MSc info is the 5th field in the info
-                String mscB = b.split(",")[4].trim();
-                return mscB.compareTo(mscA); // Yes first, No later
+                double experienceA = Double.parseDouble(extractYear(a.split(",")[26].trim())); // Assuming MSc info is the 5th field in the info
+                double experienceB = Double.parseDouble(extractYear(b.split(",")[26].trim()));
+                return Double.compare(experienceB, experienceA); // Yes first, No later
             });
         }
 
