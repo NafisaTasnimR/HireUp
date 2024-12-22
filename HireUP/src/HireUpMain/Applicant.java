@@ -27,7 +27,7 @@ public class Applicant extends User {
         Set<String> uniqueJobs = new HashSet<>();
         int outputSerial = 0;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\Job_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Job_info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
@@ -231,7 +231,7 @@ public class Applicant extends User {
 
 
     private void suggestJobsBySalary(int salaryInput) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\Job_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Job_info.txt"))) {
             String line;
             int serial = 0;
             int lowerRange = Math.max(salaryInput - 5000, 0);
