@@ -9,6 +9,7 @@ import static HireUpMain.Utility.updateConsole;
 
 public class NewMain {
     private static boolean isRunning = true; // Global flag for the application state
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -81,8 +82,8 @@ public class NewMain {
                         System.out.println("Login successful!");
                         // Navigate to the corresponding menu based on role
                         switch (role.toLowerCase()) {
-                            case "applicant" -> applicantMenu(sc,user);
-                            case "job provider" -> jobProviderMenu(sc,user);
+                            case "applicant" -> applicantMenu(sc, user);
+                            case "job provider" -> jobProviderMenu(sc, user);
                             case "admin" -> adminMenu(sc);
                             default -> System.out.println("Invalid role. Returning to Login Menu.");
                         }
@@ -101,7 +102,7 @@ public class NewMain {
         }
     }
 
-    private static void applicantMenu(Scanner sc,User user) {
+    private static void applicantMenu(Scanner sc, User user) {
         while (true) {
             System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  Applicant \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
             System.out.println("1.Job Search");
@@ -122,29 +123,29 @@ public class NewMain {
             switch (selection) {
                 case 1 -> {
                     System.out.println("Search for Jobs selected.");
-                    jobList = jobSearch(sc,applicant);
+                    jobList = jobSearch(sc, applicant);
                     System.out.println("View Jobs details information.");
-                    seeJobInformation(sc,applicant,jobList);
+                    seeJobInformation(sc, applicant, jobList);
                     // Job search logic here
                 }
                 case 2 -> {
                     System.out.println("View Application Status selected.");
-                    seeJobStatus(sc,applicant);
+                    seeJobStatus(sc, applicant);
                     // Application status logic here
                 }
                 case 3 -> {
                     System.out.println("Create Resume selected.");
-                    createResumeOption(sc,user,applicant);
+                    createResumeOption(sc, user, applicant);
                     // Resume creation logic here
                 }
                 case 4 -> {
                     System.out.println("View Resume selected.");
-                    viewResumeOption(sc,applicant);
+                    viewResumeOption(sc, applicant);
                     //View resume logic here
                 }
                 case 5 -> {
                     System.out.println("Update Resume selected.");
-                    updateInformationOption(sc,applicant);
+                    updateInformationOption(sc, applicant);
                     //Update resume information logic here
                 }
                 case 6 -> {
@@ -157,7 +158,7 @@ public class NewMain {
         }
     }
 
-    private static void jobProviderMenu(Scanner sc,User user) {
+    private static void jobProviderMenu(Scanner sc, User user) {
         while (true) {
             System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\     Job Provider     " +
                     "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
@@ -176,17 +177,17 @@ public class NewMain {
                 case 1 -> {
                     System.out.println("Post Job Circular selected.");
                     // Job circular posting logic here
-                    postJobCircularOption(sc,jobProvider);
+                    postJobCircularOption(sc, jobProvider);
                 }
                 case 2 -> {
                     System.out.println("View Applicants selected.");
                     // Applicant viewing logic here
-                    seeApplicantListOption(sc,jobProvider);
+                    seeApplicantListOption(sc, jobProvider);
                 }
                 case 3 -> {
                     System.out.println("View Applicants short listed.");
                     //Shortlisted applicant viewing logic here
-                    seeShortListOption(sc,jobProvider);
+                    seeShortListOption(sc, jobProvider);
                 }
                 case 4 -> {
                     System.out.println("Returning to Login Menu...");
@@ -216,12 +217,12 @@ public class NewMain {
                 case 1 -> {
                     System.out.println("View admin requests selected.");
                     // Job verification logic here
-                    adminRequestOption(sc,admin);
+                    adminRequestOption(sc, admin);
                 }
                 case 2 -> {
                     System.out.println("Manage Users selected.");
                     // User management logic here
-                    manageUserOption(sc,admin);
+                    manageUserOption(sc, admin);
                 }
                 case 3 -> {
                     System.out.println("Returning to Login Menu...");
@@ -234,7 +235,7 @@ public class NewMain {
     }
 
     private static void registrationMenu(Scanner sc) {
-        while(true) {
+        while (true) {
             System.out.println("\n--- Registration Menu ---");
             System.out.println("Logic for registration here...");
             // Implement similar structure for registration as needed
@@ -258,18 +259,18 @@ public class NewMain {
 
             Scanner sc38 = new Scanner(System.in);
             int roleValue = sc38.nextInt();
-            //User user1 = null;
+            User user;
             switch (roleValue) {
                 case 1 -> {
-                    //user1 = new User(name,pass1,email1,"applicant");
-                /*if(user1.registration(user1)) {
-                    System.out.println("Congratulations! You have been registered.");
-                } else{
-                    System.out.println("Sorry! You have not registered.");
-                }*/
+                    user = new User(name, pass1, email1, "applicant");
+                    if (user.registration(user)) {
+                        System.out.println("Congratulations! You have been registered.");
+                    } else {
+                        System.out.println("Sorry! You have not registered.");
+                    }
                 }
                 case 2 -> {
-                    //user1 = new User(name, pass1, email1, "job provider");
+                    user = new User(name, pass1, email1, "job provider");
                     System.out.println("You need to provide some additional information");
                     System.out.println("Company Name:");
                     Scanner sc65 = new Scanner(System.in);
@@ -279,24 +280,24 @@ public class NewMain {
                     Scanner sc66 = new Scanner(System.in);
                     String webAddress = sc66.nextLine();
 
-                /*if (user1.registration(user1)) {
-                    JobProvider jobProvider = new JobProvider(companyName, webAddress);
-                    jobProvider.registrationJobProvider();
+                    if (user.registration(user)) {
+                        JobProvider jobProvider = new JobProvider(companyName, webAddress);
+                        jobProvider.registrationJobProvider();
 
-                    System.out.println("Congratulations! You have been registered.");
-                } else {
-                    System.out.println("Sorry! You have not registered.");
-                }*/
+                        System.out.println("Congratulations! You have been registered.");
+                    } else {
+                        System.out.println("Sorry! You have not registered.");
+                    }
 
                 }
                 case 3 -> {
                     System.out.println("Admin req send");
-                    //user1 = new User(name, pass1, email1, "admin");
-                /*if (user1.adminRegistrationRequest(user1)) {
-                    System.out.println("Your request has been sent to Admin.");
-                } else {
-                    System.out.println("Sorry! Your request has not been sent to Admin.");
-                }*/
+                    user = new User(name, pass1, email1, "admin");
+                    if (user.adminRegistrationRequest(user)) {
+                        System.out.println("Your request has been sent to Admin.");
+                    } else {
+                        System.out.println("Sorry! Your request has not been sent to Admin.");
+                    }
                 }
             }
 
@@ -328,9 +329,8 @@ public class NewMain {
         System.exit(0); // Optional: Immediate termination
     }
 
-    private static List<String> jobSearch(Scanner sc,Applicant applicant)
-    {
-        while(true) {
+    private static List<String> jobSearch(Scanner sc, Applicant applicant) {
+        while (true) {
             System.out.println("Search job");
             System.out.println("***************  Job Search  *****************");
             System.out.println("Add your preference");
@@ -394,8 +394,7 @@ public class NewMain {
         }
     }
 
-    private static void seeJobInformation(Scanner sc,Applicant applicant,List<String> jobList)
-    {
+    private static void seeJobInformation(Scanner sc, Applicant applicant, List<String> jobList) {
         while (true) {
             System.out.println("Job information");
             System.out.println("***************  Job Information  *************");
@@ -415,7 +414,7 @@ public class NewMain {
             switch (selection) {
                 case 1 -> {
                     System.out.println(" Apply");
-                    applicant.processApplication(query,jobList,applicant.getEmail());
+                    applicant.processApplication(query, jobList, applicant.getEmail());
                 }
                 case 2 -> {
                     System.out.println("Returning to Login Menu...");
@@ -430,9 +429,8 @@ public class NewMain {
         }
     }
 
-    private static void seeJobStatus(Scanner sc,Applicant applicant)
-    {
-        while(true) {
+    private static void seeJobStatus(Scanner sc, Applicant applicant) {
+        while (true) {
             System.out.println("Job status");
             System.out.println("***************  Job Status  ***************");
             List<String> jobs = applicant.applicationList(applicant.getEmail());
@@ -440,7 +438,7 @@ public class NewMain {
             Scanner jobPostNo = new Scanner(System.in);
             String selection80 = jobPostNo.nextLine();
             applicant.applicationStatus(selection80, jobs);
-            
+
             System.out.println("1.Go Back");
             System.out.println("2.Exit");
             System.out.println("Enter your selection");
@@ -461,9 +459,8 @@ public class NewMain {
         }
     }
 
-    private static void createResumeOption(Scanner sc,User user,Applicant applicant)
-    {
-        while(true) {
+    private static void createResumeOption(Scanner sc, User user, Applicant applicant) {
+        while (true) {
             System.out.println("Create Resume");
             System.out.println("***************  Create Resume ***************");
             System.out.println("=======================================");
@@ -577,11 +574,11 @@ public class NewMain {
 
             System.out.println("=======================================");
 
-        PersonalInformation personalInformation = new PersonalInformation(name,fatherName,motherName,dateOfBirth,nationality,religion,gender,phoneNumber,address,nationalID);
-        EducationalInformation educationalInformation = new EducationalInformation(name,schoolName,passingYear,sscOLevelResult,collegeName,passingYearHSC,hscALevelResult,universityName,department,undergraduateDegree,undergradCGPA,postgraduateDegree,postgradCGPA);
-        AdditionalInformation additionalInformation = new AdditionalInformation(name,experince,hobbies,skills);
-        Resume resume = new Resume(personalInformation,educationalInformation,additionalInformation);
-        applicant = new Applicant(user.getUserName(), user.getPassword(), user.getEmail(), user.getRole(), resume);
+            PersonalInformation personalInformation = new PersonalInformation(name, fatherName, motherName, dateOfBirth, nationality, religion, gender, phoneNumber, address, nationalID);
+            EducationalInformation educationalInformation = new EducationalInformation(name, schoolName, passingYear, sscOLevelResult, collegeName, passingYearHSC, hscALevelResult, universityName, department, undergraduateDegree, undergradCGPA, postgraduateDegree, postgradCGPA);
+            AdditionalInformation additionalInformation = new AdditionalInformation(name, experince, hobbies, skills);
+            Resume resume = new Resume(personalInformation, educationalInformation, additionalInformation);
+            applicant = new Applicant(user.getUserName(), user.getPassword(), user.getEmail(), user.getRole(), resume);
 
 
             System.out.println("1.Enter");
@@ -597,11 +594,10 @@ public class NewMain {
             switch (selection) {
                 case 1 -> {
                     System.out.println("Enter selected.");
-                    if(isValidPhoneNumber(phoneNumber)) {
-                    applicant.createResume();
-                    }
-                    else{
-                    System.out.println("Invalid phone number");
+                    if (isValidPhoneNumber(phoneNumber)) {
+                        applicant.createResume();
+                    } else {
+                        System.out.println("Invalid phone number");
                     }
 
                 }
@@ -617,9 +613,8 @@ public class NewMain {
         }
     }
 
-    private static void viewResumeOption(Scanner sc,Applicant applicant)
-    {
-        while(true) {
+    private static void viewResumeOption(Scanner sc, Applicant applicant) {
+        while (true) {
             System.out.println("View Resume");
             System.out.println("***************  View Resume  ***************");
             System.out.println("Showing resume");
@@ -646,8 +641,7 @@ public class NewMain {
 
     }
 
-    private static void updateInformationOption(Scanner sc,Applicant applicant)
-    {
+    private static void updateInformationOption(Scanner sc, Applicant applicant) {
         while (true) {
             System.out.println("***************  Update Information  ***************");
             System.out.println("Necessary info will be shown here");
@@ -673,8 +667,7 @@ public class NewMain {
         }
     }
 
-    private static void postJobCircularOption(Scanner sc,JobProvider jobProvider)
-    {
+    private static void postJobCircularOption(Scanner sc, JobProvider jobProvider) {
         while (true) {
             System.out.println("Post Job Circular");
             System.out.println("***************  Post Job Circular  ***************");
@@ -727,14 +720,14 @@ public class NewMain {
 
                         int selection1 = sc.nextInt();
                         sc.nextLine(); // Consume the newline character
-                         switch (selection1){
-                             case 1 -> {
-                                 System.out.println("Returning to Login Menu...");
-                                 return; // Go back to the Login menu
-                             }
-                             case 2 -> exitApplication(); // Exit the program
-                             default -> System.out.println("Invalid selection. Try again.");
-                         }
+                        switch (selection1) {
+                            case 1 -> {
+                                System.out.println("Returning to Login Menu...");
+                                return; // Go back to the Login menu
+                            }
+                            case 2 -> exitApplication(); // Exit the program
+                            default -> System.out.println("Invalid selection. Try again.");
+                        }
                     }
                 }
                 case 2 -> {
@@ -750,8 +743,7 @@ public class NewMain {
 
     }
 
-    private static void seeApplicantListOption(Scanner sc,JobProvider jobProvider)
-    {
+    private static void seeApplicantListOption(Scanner sc, JobProvider jobProvider) {
         System.out.println("See Applicant List");
         System.out.println("***************  Watch Application list  ***************");
         //Application list showing
@@ -769,8 +761,7 @@ public class NewMain {
         Scanner scanner110 = new Scanner(System.in);
         int selectionNo101 = scanner110.nextInt();
         String searchPreference = "";
-        switch (selectionNo101)
-        {
+        switch (selectionNo101) {
             case 1:
                 searchPreference = "cgpa";
                 break;
@@ -782,14 +773,14 @@ public class NewMain {
                 break;
         }
 
-        List<String> applicantList = jobProvider.seeApplicantList(jobProvider.getJobPostNo(serialNo,jobPostList),searchPreference);
-        while(true) {
+        List<String> applicantList = jobProvider.seeApplicantList(jobProvider.getJobPostNo(serialNo, jobPostList), searchPreference);
+        while (true) {
             if (serialNo != null) {
                 System.out.println("***************  Applicants Personal Information  ***************");
                 System.out.println("Enter the Serial number of the applicant you want to see: ");
                 Scanner scanner1 = new Scanner(System.in);
                 String serialNumber = scanner1.nextLine();
-                String applicantResume = jobProvider.viewApplicantDetails(serialNumber,applicantList);
+                String applicantResume = jobProvider.viewApplicantDetails(serialNumber, applicantList);
                 System.out.println("1. Select ");
                 System.out.println("2. Reject ");
                 System.out.println("3. Go Back ");
@@ -798,9 +789,9 @@ public class NewMain {
                 int selection = sc.nextInt();
                 sc.nextLine(); // Consume the newline character
                 switch (selection) {
-                    case 1-> {
+                    case 1 -> {
                         System.out.println("Selected!");
-                        List<String> applications = jobProvider.changeStatus(applicantResume,"Shortlisted");
+                        List<String> applications = jobProvider.changeStatus(applicantResume, "Shortlisted");
                         jobProvider.addToShortList(applications);
                         System.out.println("1. Go Back");
                         System.out.println("2. Exit ");
@@ -808,7 +799,7 @@ public class NewMain {
 
                         int selection1 = sc.nextInt();
                         sc.nextLine(); // Consume the newline character
-                        switch (selection1){
+                        switch (selection1) {
                             case 1 -> {
                                 System.out.println("Returning to Login Menu...");
                                 return; // Go back to the Login menu
@@ -817,9 +808,9 @@ public class NewMain {
                             default -> System.out.println("Invalid selection. Try again.");
                         }
                     }
-                    case 2-> {
+                    case 2 -> {
                         System.out.println("Rejected!");
-                        List<String> applications1 = jobProvider.changeStatus(applicantResume,"Rejected");
+                        List<String> applications1 = jobProvider.changeStatus(applicantResume, "Rejected");
                         jobProvider.addToShortList(applications1);
                         System.out.println("1. Go Back");
                         System.out.println("2. Exit ");
@@ -827,7 +818,7 @@ public class NewMain {
 
                         int selection1 = sc.nextInt();
                         sc.nextLine(); // Consume the newline character
-                        switch (selection1){
+                        switch (selection1) {
                             case 1 -> {
                                 System.out.println("Returning to Login Menu...");
                                 return; // Go back to the Login menu
@@ -850,9 +841,8 @@ public class NewMain {
         }
     }
 
-    private static void seeShortListOption(Scanner sc,JobProvider jobProvider)
-    {
-        while(true) {
+    private static void seeShortListOption(Scanner sc, JobProvider jobProvider) {
+        while (true) {
             System.out.println("See Short List");
             System.out.println("***************  Shortlisted Applicants  ***************");
             //list will be shown
@@ -861,7 +851,7 @@ public class NewMain {
             System.out.println("Choose a post to see it's shortListed applicants:");
             Scanner scanner100 = new Scanner(System.in);
             String selectedJobPost = scanner100.nextLine();
-            List<String> applicantShortList = jobProvider.seeShortList(selectedJobPost,jobPostList1);
+            List<String> applicantShortList = jobProvider.seeShortList(selectedJobPost, jobPostList1);
             System.out.println("1. See Any Applicant's Details");
             System.out.println("2. Go Back");
             System.out.println("3. Exit");
@@ -874,7 +864,7 @@ public class NewMain {
                         System.out.println("Enter the serial number: ");
                         Scanner scanner2 = new Scanner(System.in);
                         String serialNumber = scanner2.nextLine();
-                        jobProvider.viewApplicantDetails(serialNumber,applicantShortList);
+                        jobProvider.viewApplicantDetails(serialNumber, applicantShortList);
                         System.out.println("1. Go Back");
                         System.out.println("2. Exit");
                         System.out.println("Enter your selection: ");
@@ -902,8 +892,7 @@ public class NewMain {
         }
     }
 
-    private static void manageUserOption(Scanner sc,Admin admin)
-    {
+    private static void manageUserOption(Scanner sc, Admin admin) {
         while (true) {
             System.out.println("***************  User Information  ***************");
             System.out.println("1. Applicant");
@@ -919,11 +908,11 @@ public class NewMain {
             switch (selection) {
                 case 1 -> {
                     System.out.println("view applicant info");
-                    viewApplicantInformationOption(sc,admin);
+                    viewApplicantInformationOption(sc, admin);
                 }
                 case 2 -> {
                     System.out.println("view job provider info");
-                    viewJobProviderInformation(sc,admin);
+                    viewJobProviderInformation(sc, admin);
                 }
                 case 3 -> {
                     System.out.println("Returning to Login Menu...");
@@ -940,11 +929,10 @@ public class NewMain {
 
     }
 
-    private static void viewApplicantInformationOption(Scanner sc,Admin admin)
-    {
+    private static void viewApplicantInformationOption(Scanner sc, Admin admin) {
         while (true) {
             System.out.println("=================================================Applicant Information================================================");
-            List<String>applicants= admin.ViewApplicantInformation();//list
+            List<String> applicants = admin.ViewApplicantInformation();//list
             System.out.println("Enter your selection: ");
             Scanner applicantsc = new Scanner(System.in);
             int selectionApplicant = applicantsc.nextInt();
@@ -970,7 +958,7 @@ public class NewMain {
 
                     int selection1 = sc.nextInt();
                     sc.nextLine(); // Consume the newline character
-                    switch (selection1){
+                    switch (selection1) {
                         case 1 -> {
                             System.out.println("Returning to Login Menu...");
                             return; // Go back to the Login menu
@@ -988,7 +976,7 @@ public class NewMain {
 
                     int selection1 = sc.nextInt();
                     sc.nextLine(); // Consume the newline character
-                    switch (selection1){
+                    switch (selection1) {
                         case 1 -> {
                             System.out.println("Returning to Login Menu...");
                             return; // Go back to the Login menu
@@ -1025,13 +1013,12 @@ public class NewMain {
         }
     }
 
-    private static void viewJobProviderInformation(Scanner sc,Admin admin)
-    {
+    private static void viewJobProviderInformation(Scanner sc, Admin admin) {
         while (true) {
             System.out.println("================================Job Provider Information======================================");
             //System.out.println("***************  Job Provider’s Website List  ***************");
             //Admin admin12=new Admin();
-            List<String>jobProviders= admin.ViewInformation();
+            List<String> jobProviders = admin.ViewInformation();
             System.out.println("Enter your selection: ");
             Scanner jobProvidersc = new Scanner(System.in);
             int selectionJobProvider = jobProvidersc.nextInt();
@@ -1057,7 +1044,7 @@ public class NewMain {
 
                     int selection1 = sc.nextInt();
                     sc.nextLine(); // Consume the newline character
-                    switch (selection1){
+                    switch (selection1) {
                         case 1 -> {
                             System.out.println("Returning to Login Menu...");
                             return; // Go back to the Login menu
@@ -1075,7 +1062,7 @@ public class NewMain {
 
                     int selection1 = sc.nextInt();
                     sc.nextLine(); // Consume the newline character
-                    switch (selection1){
+                    switch (selection1) {
                         case 1 -> {
                             System.out.println("Returning to Login Menu...");
                             return; // Go back to the Login menu
@@ -1113,9 +1100,8 @@ public class NewMain {
         }
     }
 
-    private static void adminRequestOption(Scanner sc,Admin admin)
-    {
-        while(true) {
+    private static void adminRequestOption(Scanner sc, Admin admin) {
+        while (true) {
             System.out.println("=========================================Admin Requests========================================");
             List<String> adminRequests = admin.viewAdminRequest();
             Scanner adminRequestsc = new Scanner(System.in);
@@ -1141,7 +1127,7 @@ public class NewMain {
 
                     int selection1 = sc.nextInt();
                     sc.nextLine(); // Consume the newline character
-                    switch (selection1){
+                    switch (selection1) {
                         case 1 -> {
                             System.out.println("Returning to Login Menu...");
                             return; // Go back to the Login menu
@@ -1159,7 +1145,7 @@ public class NewMain {
 
                     int selection1 = sc.nextInt();
                     sc.nextLine(); // Consume the newline character
-                    switch (selection1){
+                    switch (selection1) {
                         case 1 -> {
                             System.out.println("Returning to Login Menu...");
                             return; // Go back to the Login menu
