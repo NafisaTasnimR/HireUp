@@ -6,3 +6,5 @@ Ar,ar,ar.com,Applicant
 Mira,mira,mira.com,Applicant
 Preo,preo,preo@gmail,Applicant
 Mihrimah,dhfjk,mihrimah@gmail.com,Admin
+Adrita Ahsan,Adrita!!08,adritaahsan@gmail.com,Applicant
+Pearson Co. & Limited,pearSon!!67,pearsonlimited@gmail.com,Job Provider

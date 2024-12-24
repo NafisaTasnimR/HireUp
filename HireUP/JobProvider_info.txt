@@ -2,3 +2,4 @@ bbgh,www.bbgh.com,Not Verified
 ilt,www.ilt.com,Not Verified
 hjk,www.hjk.com,Verified
 bbc,www.bbc.com,Not Verified
+Pearson Co. & Limited,www.pearsonWeb.com
