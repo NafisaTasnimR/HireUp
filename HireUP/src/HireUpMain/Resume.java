@@ -55,7 +55,6 @@ public class Resume {
 
     public boolean showResume(String email) {
         boolean found = false;
-
         try (BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -103,21 +102,14 @@ public class Resume {
 
                         }
                     }
-
-
             if (!found) {
                 System.out.println("You have not created your resume!");
-
             }
-
             return true;
-
-
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-
         return false;
     }
 
@@ -223,6 +215,22 @@ public class Resume {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public boolean isCreated(String email)
+    {
+        try(BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))){
+            String line;
+            while ((line = reader.readLine()) != null){
+                String[] applicantData = line.split(",");
+                if(Objects.equals(applicantData[10], email)){
+                    return true;
+                }
+            }
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return false;
     }
 
 

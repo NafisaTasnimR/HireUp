@@ -413,8 +413,23 @@ public class NewMain {
 
             switch (selection) {
                 case 1 -> {
-                    System.out.println(" Apply");
-                    applicant.processApplication(query, jobList, applicant.getEmail());
+                        System.out.println(" Apply");
+                        applicant.processApplication(query, jobList, applicant.getEmail());
+                        System.out.println("1.Go back");
+                        System.out.println("2.Exit");
+                        System.out.println("Enter your selection");
+
+                        int selection1 = sc.nextInt();
+                        sc.nextLine();
+                        switch (selection1) {
+                            case 1 -> {
+                                System.out.println("Returning to Login Menu...");
+                                return; // Go back to the Login menu
+                            }
+                            case 2 -> exitApplication(); // Exit the program
+                            default -> System.out.println("Invalid selection. Try again.");
+                        }
+
                 }
                 case 2 -> {
                     System.out.println("Returning to Login Menu...");

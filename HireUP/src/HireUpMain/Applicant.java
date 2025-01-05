@@ -168,8 +168,6 @@ public class Applicant extends User {
             }
 
         }
-
-
         return jobDetails;
     }
 
@@ -186,10 +184,13 @@ public class Applicant extends User {
 
 
     public void processApplication(String serialNo, List<String> jobList, String email) {
-
-        String combinedContent = findJob(serialNo, jobList) + findApplicant(email) + "," + "pending";
-
-        writeToFile(combinedContent);
+        if(resume.isCreated(email)) {
+            String combinedContent = findJob(serialNo, jobList) + findApplicant(email) + "," + "pending";
+            writeToFile(combinedContent);
+        }
+        else {
+            System.out.println("You Have To Create Your Resume To Apply For Any Job!");
+        }
     }
 
     public boolean applicationStatus(String serialNo, List<String> jobList) {
