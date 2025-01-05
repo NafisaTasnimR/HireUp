@@ -44,7 +44,7 @@ public class User {
 
     public boolean logIn() {
         try (BufferedReader br = new BufferedReader(new FileReader(
-                "User_Info.txt"))) {
+                "E:\\HireUp\\HireUp\\HireUP\\User_Info.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
@@ -72,7 +72,7 @@ public class User {
     }
 
     public boolean registration(User user) {
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("User_Info.txt", true))) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\User_Info.txt", true))) {
             if (!isValidEmail(user.getEmail())) {
                 System.out.println("Registration failed: Invalid email format.");
                 return false;
@@ -110,7 +110,7 @@ public class User {
 
 
     public User userObject(String password, String email, String role) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("User_Info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\User_Info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
