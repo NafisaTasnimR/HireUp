@@ -60,6 +60,9 @@ public class User {
                         System.out.println("Welcome," + data[0] + "!");
                         return true;
                     }
+                    else {
+                        return false;
+                    }
                 } else {
                     System.out.println("Invalid data format.");
                 }
