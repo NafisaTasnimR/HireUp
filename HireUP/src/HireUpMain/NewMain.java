@@ -11,6 +11,9 @@ public class NewMain {
     private static boolean isRunning = true; // Global flag for the application state
 
     public static void main(String[] args) {
+        mainMenu();
+    }
+    private static void mainMenu(){
         Scanner sc = new Scanner(System.in);
 
         while (isRunning) {
@@ -23,8 +26,16 @@ public class NewMain {
             int caseValue = sc.nextInt();
 
             switch (caseValue) {
-                case 1 -> loginMenu(sc);
-                case 2 -> registrationMenu(sc);
+                case 1 -> {
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    loginMenu(sc);
+                }
+                case 2 -> {
+                    updateConsole();
+                    System.out.println("//////////////////////////////////////////////");
+                    registrationMenu(sc);
+                }
                 case 3 -> exitApplication();
                 default -> System.out.println("Invalid selection. Try again.");
             }
@@ -33,19 +44,31 @@ public class NewMain {
         sc.close();
     }
 
+    private static void exitApplication() {
+        System.out.println("Exiting application. Goodbye!");
+        isRunning = false; // Stop the main loop
+        System.exit(0); // Optional: Immediate termination
+    }
+    private static void logout()
+    {
+        System.out.println("Logging out...");
+        System.out.println("//////////////////////////////////////////////");
+        updateConsole();
+        mainMenu();
+    }
     private static void loginMenu(Scanner sc) {
         while (true) {
             System.out.println("\n--- Login Menu ---");
             System.out.println("1. Proceed to Login");
             System.out.println("2. Go Back");
-            System.out.println("3. Exit");
+            System.out.println("3. Logout");
             System.out.print("Enter your selection: ");
 
             int selection = sc.nextInt();
-            sc.nextLine(); // Consume the newline character
+            sc.nextLine();
 
             switch (selection) {
-                case 1 -> { // Proceed to login
+                case 1 -> {
                     System.out.println("You choose :Login");
                     System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ Login \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
                     System.out.println("Enter your ");
@@ -78,9 +101,9 @@ public class NewMain {
 
                     user = user.userObject(pass, email, role);
 
-                    if (user.logIn()) {
-                        System.out.println("Login successful!");
-                        // Navigate to the corresponding menu based on role
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    if (user != null && user.logIn()) {
                         switch (role.toLowerCase()) {
                             case "applicant" -> applicantMenu(sc, user);
                             case "job provider" -> jobProviderMenu(sc, user);
@@ -90,13 +113,14 @@ public class NewMain {
                     } else {
                         System.out.println("Invalid credentials. Please try again.");
                     }
-                    updateConsole();
                 }
-                case 2 -> { // Go Back
+                case 2 -> {
                     System.out.println("Returning to Main Menu...");
-                    return; // Exit to Main Menu
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    return;
                 }
-                case 3 -> exitApplication(); // Exit the program
+                case 3 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
             }
         }
@@ -111,48 +135,54 @@ public class NewMain {
             System.out.println("4.View Resume");
             System.out.println("5.Update Information");
             System.out.println("6. Go Back");
-            System.out.println("7. Exit");
+            System.out.println("7. Logout");
             System.out.print("Enter your selection: ");
 
             int selection = sc.nextInt();
-            sc.nextLine(); // Consume the newline character
+            sc.nextLine();
 
             List<String> jobList;
             Applicant applicant = new Applicant(user.getUserName(), user.getPassword(), user.getEmail(), user.getRole());
 
+            updateConsole();
             switch (selection) {
                 case 1 -> {
                     System.out.println("Search for Jobs selected.");
                     jobList = jobSearch(sc, applicant);
                     System.out.println("View Jobs details information.");
                     seeJobInformation(sc, applicant, jobList);
-                    // Job search logic here
                 }
                 case 2 -> {
                     System.out.println("View Application Status selected.");
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
                     seeJobStatus(sc, applicant);
-                    // Application status logic here
                 }
                 case 3 -> {
                     System.out.println("Create Resume selected.");
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
                     createResumeOption(sc, user, applicant);
-                    // Resume creation logic here
                 }
                 case 4 -> {
                     System.out.println("View Resume selected.");
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
                     viewResumeOption(sc, applicant);
-                    //View resume logic here
                 }
                 case 5 -> {
                     System.out.println("Update Resume selected.");
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
                     updateInformationOption(sc, applicant);
-                    //Update resume information logic here
                 }
                 case 6 -> {
                     System.out.println("Returning to Login Menu...");
-                    return; // Go back to the Login menu
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    return;
                 }
-                case 7 -> exitApplication(); // Exit the program
+                case 7 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
             }
         }
@@ -167,33 +197,38 @@ public class NewMain {
             System.out.println("2.See Applicant List");
             System.out.println("3.See Short List");
             System.out.println("4. Go Back");
-            System.out.println("5. Exit");
+            System.out.println("5. Logout");
             System.out.print("Enter your selection: ");
 
             int selection = sc.nextInt();
-            sc.nextLine(); // Consume the newline character
+            sc.nextLine();
 
             switch (selection) {
                 case 1 -> {
                     System.out.println("Post Job Circular selected.");
-                    // Job circular posting logic here
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
                     postJobCircularOption(sc, jobProvider);
                 }
                 case 2 -> {
                     System.out.println("View Applicants selected.");
-                    // Applicant viewing logic here
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
                     seeApplicantListOption(sc, jobProvider);
                 }
                 case 3 -> {
                     System.out.println("View Applicants short listed.");
-                    //Shortlisted applicant viewing logic here
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
                     seeShortListOption(sc, jobProvider);
                 }
                 case 4 -> {
                     System.out.println("Returning to Login Menu...");
-                    return; // Go back to the Login menu
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    return;
                 }
-                case 5 -> exitApplication(); // Exit the program
+                case 5 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
             }
         }
@@ -205,30 +240,34 @@ public class NewMain {
             System.out.println("1. Admin Requests");
             System.out.println("2. Manage Users");
             System.out.println("3. Go Back");
-            System.out.println("4. Exit");
+            System.out.println("4. Logout");
             System.out.print("Enter your selection: ");
 
             int selection = sc.nextInt();
-            sc.nextLine(); // Consume the newline character
+            sc.nextLine();
 
             Admin admin = new Admin();
 
             switch (selection) {
                 case 1 -> {
                     System.out.println("View admin requests selected.");
-                    // Job verification logic here
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
                     adminRequestOption(sc, admin);
                 }
                 case 2 -> {
                     System.out.println("Manage Users selected.");
-                    // User management logic here
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
                     manageUserOption(sc, admin);
                 }
                 case 3 -> {
                     System.out.println("Returning to Login Menu...");
-                    return; // Go back to the Login menu
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    return;
                 }
-                case 4 -> exitApplication(); // Exit the program
+                case 4 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
             }
         }
@@ -236,9 +275,6 @@ public class NewMain {
 
     private static void registrationMenu(Scanner sc) {
         while (true) {
-            System.out.println("\n--- Registration Menu ---");
-            System.out.println("Logic for registration here...");
-            // Implement similar structure for registration as needed
             System.out.println("You choose :SignUp");
             System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\    Registration    " +
                     " \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
@@ -286,7 +322,7 @@ public class NewMain {
 
                         System.out.println("Congratulations! You have been registered.");
                     } else {
-                        System.out.println("Sorry! You have not registered.");
+                        System.out.println("Sorry! You have not been registered.");
                     }
 
                 }
@@ -306,27 +342,20 @@ public class NewMain {
             System.out.println("Enter your selection");
 
             int selection = sc.nextInt();
-            sc.nextLine(); // Consume the newline character
+            sc.nextLine();
 
             switch (selection) {
                 case 1 -> {
                     System.out.println("Returning to Login Menu...");
-                    return; // Go back to the Login menu
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    return;
                 }
-                case 2 -> exitApplication(); // Exit the program
+                case 2 -> exitApplication();
                 default -> System.out.println("Invalid selection. Try again.");
 
             }
-
-            System.out.println("//////////////////////////////////////////////");
-            //updateConsole();
         }
-    }
-
-    private static void exitApplication() {
-        System.out.println("Exiting application. Goodbye!");
-        isRunning = false; // Stop the main loop
-        System.exit(0); // Optional: Immediate termination
     }
 
     private static List<String> jobSearch(Scanner sc, Applicant applicant) {
@@ -340,13 +369,13 @@ public class NewMain {
             System.out.println("4.Skills");
             System.out.println("5.Time");
             System.out.println("6. Go Back");
-            System.out.println("7. Exit");
+            System.out.println("7. Logout");
             System.out.println("Enter your selection");
 
             List<String> jobList = new ArrayList<>();
 
             int selection = sc.nextInt();
-            sc.nextLine(); // Consume the newline character
+            sc.nextLine();
 
             switch (selection) {
                 case 1 -> {
@@ -381,15 +410,15 @@ public class NewMain {
                 }
                 case 6 -> {
                     System.out.println("Returning to Login Menu...");
-                    return new ArrayList<>(); // Go back to the Login menu
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    return new ArrayList<>();
                 }
-                case 7 -> exitApplication(); // Exit the program
+                case 7 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
 
 
             }
-            System.out.println("//////////////////////////////////////////////");
-            //updateConsole();
             return jobList;
         }
     }
@@ -401,31 +430,49 @@ public class NewMain {
             System.out.println("Add your preferred job no");
             Scanner sc70 = new Scanner(System.in);
             String query = sc70.nextLine();
+            System.out.println("//////////////////////////////////////////////");
+            updateConsole();
             applicant.showInformation(query, jobList);
 
             System.out.println("1.Apply");
             System.out.println("2.Go back");
-            System.out.println("3.Exit");
+            System.out.println("3.Logout");
             System.out.println("Enter your selection");
 
             int selection = sc.nextInt();
-            sc.nextLine(); // Consume the newline character
+            sc.nextLine();
 
             switch (selection) {
                 case 1 -> {
                     System.out.println(" Apply");
                     applicant.processApplication(query, jobList, applicant.getEmail());
+                    System.out.println("1.Go back");
+                    System.out.println("2.Logout");
+                    System.out.println("Enter your selection");
+
+                    int selection1 = sc.nextInt();
+                    sc.nextLine();
+                    switch (selection1) {
+                        case 1 -> {
+                            System.out.println("Returning to Login Menu...");
+                            System.out.println("//////////////////////////////////////////////");
+                            updateConsole();
+                            return;
+                        }
+                        case 2 -> logout();
+                        default -> System.out.println("Invalid selection. Try again.");
+                    }
                 }
                 case 2 -> {
                     System.out.println("Returning to Login Menu...");
-                    return; // Go back to the Login menu
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    return;
                 }
-                case 3 -> exitApplication(); // Exit the program
+                case 3 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
 
             }
-            System.out.println("//////////////////////////////////////////////");
-            //updateConsole();
         }
     }
 
@@ -440,22 +487,22 @@ public class NewMain {
             applicant.applicationStatus(selection80, jobs);
 
             System.out.println("1.Go Back");
-            System.out.println("2.Exit");
+            System.out.println("2.Logout");
             System.out.println("Enter your selection");
 
             int selection = sc.nextInt();
-            sc.nextLine(); // Consume the newline character
+            sc.nextLine();
 
             switch (selection) {
                 case 1 -> {
                     System.out.println("Returning to Login Menu...");
-                    return; // Go back to the Login menu
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    return;
                 }
-                case 2 -> exitApplication(); // Exit the program
+                case 2 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
             }
-            System.out.println("//////////////////////////////////////////////");
-            //updateConsole();
         }
     }
 
@@ -580,16 +627,15 @@ public class NewMain {
             Resume resume = new Resume(personalInformation, educationalInformation, additionalInformation);
             applicant = new Applicant(user.getUserName(), user.getPassword(), user.getEmail(), user.getRole(), resume);
 
-
             System.out.println("1.Enter");
 
             System.out.println("2.Go Back");
 
-            System.out.println("3.Exit");
+            System.out.println("3.Logout");
 
             System.out.println("Enter your selection");
             int selection = sc.nextInt();
-            sc.nextLine(); // Consume the newline character
+            sc.nextLine();
 
             switch (selection) {
                 case 1 -> {
@@ -599,17 +645,34 @@ public class NewMain {
                     } else {
                         System.out.println("Invalid phone number");
                     }
+                    System.out.println("1.Go Back");
+                    System.out.println("2.Logout");
+                    System.out.println("Enter your selection");
+
+                    int selection1 = sc.nextInt();
+                    sc.nextLine();
+
+                    switch (selection1) {
+                        case 1 -> {
+                            System.out.println("Returning to Login Menu...");
+                            System.out.println("//////////////////////////////////////////////");
+                            updateConsole();
+                            return;
+                        }
+                        case 2 -> logout();
+                        default -> System.out.println("Invalid selection. Try again.");
+                    }
 
                 }
                 case 2 -> {
                     System.out.println("Returning to Login Menu...");
-                    return; // Go back to the Login menu
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    return;
                 }
-                case 3 -> exitApplication(); // Exit the program
+                case 3 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
             }
-            System.out.println("//////////////////////////////////////////////");
-            //updateConsole();
         }
     }
 
@@ -621,22 +684,22 @@ public class NewMain {
             applicant.showResume();
 
             System.out.println("1.Go Back");
-            System.out.println("2.Exit");
+            System.out.println("2.Logout");
             System.out.println("Enter your selection");
 
             int selection = sc.nextInt();
-            sc.nextLine(); // Consume the newline character
+            sc.nextLine();
 
             switch (selection) {
                 case 1 -> {
                     System.out.println("Returning to Login Menu...");
-                    return; // Go back to the Login menu
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    return;
                 }
-                case 2 -> exitApplication(); // Exit the program
+                case 2 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
             }
-            System.out.println("//////////////////////////////////////////////");
-            //updateConsole();
         }
 
     }
@@ -648,22 +711,22 @@ public class NewMain {
             applicant.updateInfo();
 
             System.out.println("1.Go Back");
-            System.out.println("2.Exit");
+            System.out.println("2.Logout");
             System.out.println("Enter your selection");
 
             int selection = sc.nextInt();
-            sc.nextLine(); // Consume the newline character
+            sc.nextLine();
 
             switch (selection) {
                 case 1 -> {
                     System.out.println("Returning to Login Menu...");
-                    return; // Go back to the Login menu
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    return;
                 }
-                case 2 -> exitApplication(); // Exit the program
+                case 2 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
             }
-            System.out.println("//////////////////////////////////////////////");
-            //updateConsole();
         }
     }
 
@@ -701,11 +764,11 @@ public class NewMain {
 
             System.out.println("1. Post");
             System.out.println("2. Go Back");
-            System.out.println("3. Exit ");
+            System.out.println("3. Logout");
             System.out.println("Enter your selection: ");
 
             int selection = sc.nextInt();
-            sc.nextLine(); // Consume the newline character
+            sc.nextLine();
 
             switch (selection) {
                 case 1 -> {
@@ -715,30 +778,33 @@ public class NewMain {
                             System.out.println("You have successfully posted a Job post!");
                         }
                         System.out.println("1. Go Back");
-                        System.out.println("2. Exit ");
+                        System.out.println("2.Logout");
                         System.out.println("Enter your selection: ");
 
                         int selection1 = sc.nextInt();
-                        sc.nextLine(); // Consume the newline character
+                        sc.nextLine();
                         switch (selection1) {
                             case 1 -> {
                                 System.out.println("Returning to Login Menu...");
-                                return; // Go back to the Login menu
+                                System.out.println("//////////////////////////////////////////////");
+                                updateConsole();
+                                return;
                             }
-                            case 2 -> exitApplication(); // Exit the program
+                            case 2 -> logout();
                             default -> System.out.println("Invalid selection. Try again.");
                         }
                     }
                 }
                 case 2 -> {
                     System.out.println("Returning to Login Menu...");
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
                     return; // Go back to the Login menu
                 }
-                case 3 -> exitApplication(); // Exit the program
+                case 3 -> logout();
+                case 4 -> exitApplication(); // Exit the program
                 default -> System.out.println("Invalid selection. Try again.");
             }
-            System.out.println("//////////////////////////////////////////////");
-            updateConsole();
         }
 
     }
@@ -746,9 +812,6 @@ public class NewMain {
     private static void seeApplicantListOption(Scanner sc, JobProvider jobProvider) {
         System.out.println("See Applicant List");
         System.out.println("***************  Watch Application list  ***************");
-        //Application list showing
-        //here input for watch the applicant info will be taken
-        //a function will be called and that would show the info
         System.out.println("Choose a Job Circular from the following list: ");
         List<String> jobPostList = jobProvider.seeJobPosts();
         System.out.println("Enter the Job Post Number that you want to see: ");
@@ -775,36 +838,40 @@ public class NewMain {
 
         List<String> applicantList = jobProvider.seeApplicantList(jobProvider.getJobPostNo(serialNo, jobPostList), searchPreference);
         while (true) {
-            if (serialNo != null) {
-                System.out.println("***************  Applicants Personal Information  ***************");
+            if (!applicantList.isEmpty() && serialNo != null) {
                 System.out.println("Enter the Serial number of the applicant you want to see: ");
                 Scanner scanner1 = new Scanner(System.in);
                 String serialNumber = scanner1.nextLine();
+                System.out.println("//////////////////////////////////////////////");
+                updateConsole();
+                System.out.println("***************  Applicants Personal Information  ***************");
                 String applicantResume = jobProvider.viewApplicantDetails(serialNumber, applicantList);
                 System.out.println("1. Select ");
                 System.out.println("2. Reject ");
                 System.out.println("3. Go Back ");
-                System.out.println("4. Exit ");
+                System.out.println("4. Logout");
                 System.out.println("Enter your selection: ");
                 int selection = sc.nextInt();
-                sc.nextLine(); // Consume the newline character
+                sc.nextLine();
                 switch (selection) {
                     case 1 -> {
                         System.out.println("Selected!");
                         List<String> applications = jobProvider.changeStatus(applicantResume, "Shortlisted");
                         jobProvider.addToShortList(applications);
                         System.out.println("1. Go Back");
-                        System.out.println("2. Exit ");
+                        System.out.println("2. Logout");
                         System.out.println("Enter your selection: ");
 
                         int selection1 = sc.nextInt();
-                        sc.nextLine(); // Consume the newline character
+                        sc.nextLine();
                         switch (selection1) {
                             case 1 -> {
                                 System.out.println("Returning to Login Menu...");
-                                return; // Go back to the Login menu
+                                System.out.println("//////////////////////////////////////////////");
+                                updateConsole();
+                                return;
                             }
-                            case 2 -> exitApplication(); // Exit the program
+                            case 2 -> logout();
                             default -> System.out.println("Invalid selection. Try again.");
                         }
                     }
@@ -813,30 +880,54 @@ public class NewMain {
                         List<String> applications1 = jobProvider.changeStatus(applicantResume, "Rejected");
                         jobProvider.addToShortList(applications1);
                         System.out.println("1. Go Back");
-                        System.out.println("2. Exit ");
+                        System.out.println("2. Logout");
                         System.out.println("Enter your selection: ");
 
                         int selection1 = sc.nextInt();
-                        sc.nextLine(); // Consume the newline character
+                        sc.nextLine();
                         switch (selection1) {
                             case 1 -> {
                                 System.out.println("Returning to Login Menu...");
-                                return; // Go back to the Login menu
+                                System.out.println("//////////////////////////////////////////////");
+                                updateConsole();
+                                return;
                             }
-                            case 2 -> exitApplication(); // Exit the program
+                            case 2 -> logout();
                             default -> System.out.println("Invalid selection. Try again.");
                         }
                     }
                     case 3 -> {
                         System.out.println("Returning to Login Menu...");
-                        return; // Go back to the Login menu
+                        System.out.println("//////////////////////////////////////////////");
+                        updateConsole();
+                        return;
                     }
-                    case 4 -> exitApplication(); // Exit the program
+                    case 4 -> logout();
                     default -> System.out.println("Invalid selection. Try again.");
 
                 }
+            }
+            else {
                 System.out.println("//////////////////////////////////////////////");
                 updateConsole();
+                System.out.println("There is no application submitted for this job post yet!");
+                System.out.println("1. Go Back ");
+                System.out.println("2. Logout");
+                System.out.println("3. Exit ");
+                System.out.println("Enter your selection: ");
+                int selection = sc.nextInt();
+                sc.nextLine();
+                switch (selection) {
+                    case 1 -> {
+                        System.out.println("Returning to Login Menu...");
+                        System.out.println("//////////////////////////////////////////////");
+                        updateConsole();
+                        return; // Go back to the Login menu
+                    }
+                    case 2 -> logout();
+                    case 3 -> exitApplication(); // Exit the program
+                    default -> System.out.println("Invalid selection. Try again.");
+                }
             }
         }
     }
@@ -844,51 +935,53 @@ public class NewMain {
     private static void seeShortListOption(Scanner sc, JobProvider jobProvider) {
         while (true) {
             System.out.println("See Short List");
-            System.out.println("***************  Shortlisted Applicants  ***************");
-            //list will be shown
             System.out.println("You have previously posted these posts:");
             List<String> jobPostList1 = jobProvider.seeJobPosts();
             System.out.println("Choose a post to see it's shortListed applicants:");
             Scanner scanner100 = new Scanner(System.in);
             String selectedJobPost = scanner100.nextLine();
+            System.out.println("***************  Shortlisted Applicants  ***************");
             List<String> applicantShortList = jobProvider.seeShortList(selectedJobPost, jobPostList1);
             System.out.println("1. See Any Applicant's Details");
             System.out.println("2. Go Back");
-            System.out.println("3. Exit");
+            System.out.println("3. Logout");
             System.out.println("Enter your selection: ");
             int selection = sc.nextInt();
-            sc.nextLine(); // Consume the newline character
+            sc.nextLine();
             switch (selection) {
                 case 1 -> {
                     while (true) {
-                        System.out.println("Enter the serial number: ");
+                        System.out.println("Enter the serial number from the applicant list: ");
                         Scanner scanner2 = new Scanner(System.in);
                         String serialNumber = scanner2.nextLine();
+                        System.out.println("//////////////////////////////////////////////");
+                        updateConsole();
                         jobProvider.viewApplicantDetails(serialNumber, applicantShortList);
                         System.out.println("1. Go Back");
-                        System.out.println("2. Exit");
+                        System.out.println("2. Logout");
                         System.out.println("Enter your selection: ");
                         String selection100 = sc.nextLine();
                         switch (selection100) {
                             case "1" -> {
                                 System.out.println("Returning to Login Menu...");
-                                return; // Go back to the Login menu
+                                System.out.println("//////////////////////////////////////////////");
+                                updateConsole();
+                                return;
                             }
-                            case "2" -> exitApplication(); // Exit the program
+                            case "2" -> logout();
                             default -> System.out.println("Invalid selection. Try again.");
                         }
                     }
                 }
                 case 2 -> {
                     System.out.println("Returning to Login Menu...");
-                    return; // Go back to the Login menu
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    return;
                 }
-                case 3 -> exitApplication(); // Exit the program
+                case 3 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
-
             }
-            System.out.println("//////////////////////////////////////////////");
-            updateConsole();
         }
     }
 
@@ -898,33 +991,35 @@ public class NewMain {
             System.out.println("1. Applicant");
             System.out.println("2. Job Provider");
             System.out.println("3. Go Back");
-            System.out.println("4. Exit");
+            System.out.println("4. Logout");
 
             System.out.println("Enter your selection: ");
 
             int selection = sc.nextInt();
-            sc.nextLine(); // Consume the newline character
+            sc.nextLine();
 
             switch (selection) {
                 case 1 -> {
                     System.out.println("view applicant info");
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
                     viewApplicantInformationOption(sc, admin);
                 }
                 case 2 -> {
                     System.out.println("view job provider info");
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
                     viewJobProviderInformation(sc, admin);
                 }
                 case 3 -> {
                     System.out.println("Returning to Login Menu...");
-                    return; // Go back to the Login menu
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    return;
                 }
-                case 4 -> exitApplication(); // Exit the program
+                case 4 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
-
             }
-
-            System.out.println("//////////////////////////////////////////////");
-            //updateConsole();
         }
 
     }
@@ -932,38 +1027,39 @@ public class NewMain {
     private static void viewApplicantInformationOption(Scanner sc, Admin admin) {
         while (true) {
             System.out.println("=================================================Applicant Information================================================");
-            List<String> applicants = admin.ViewApplicantInformation();//list
+            List<String> applicants = admin.ViewApplicantInformation();
             System.out.println("Enter your selection: ");
             Scanner applicantsc = new Scanner(System.in);
             int selectionApplicant = applicantsc.nextInt();
 
-            //input from the list
             System.out.println("***************  Verification  ***************");
             System.out.println("1. Verify ");
             System.out.println("2. Delete");
             System.out.println("3. Go Back");
-            System.out.println("4. Exit");
+            System.out.println("4. Logout");
             System.out.println("Enter your selection: ");
 
             int selection = sc.nextInt();
-            sc.nextLine(); // Consume the newline character
+            sc.nextLine();
 
             switch (selection) {
                 case 1 -> {
                     admin.verifyApplicant(selectionApplicant, applicants);
                     System.out.println("Verified");
                     System.out.println("1. Go Back");
-                    System.out.println("2. Exit ");
+                    System.out.println("2. Logout");
                     System.out.println("Enter your selection: ");
 
                     int selection1 = sc.nextInt();
-                    sc.nextLine(); // Consume the newline character
+                    sc.nextLine();
                     switch (selection1) {
                         case 1 -> {
                             System.out.println("Returning to Login Menu...");
-                            return; // Go back to the Login menu
+                            System.out.println("//////////////////////////////////////////////");
+                            updateConsole();
+                            return;
                         }
-                        case 2 -> exitApplication(); // Exit the program
+                        case 2 -> logout();
                         default -> System.out.println("Invalid selection. Try again.");
                     }
                 }
@@ -971,45 +1067,31 @@ public class NewMain {
                     admin.deleteApplicant(selectionApplicant, applicants);
                     System.out.println("Deleted");
                     System.out.println("1. Go Back");
-                    System.out.println("2. Exit ");
+                    System.out.println("2. Logout");
                     System.out.println("Enter your selection: ");
 
                     int selection1 = sc.nextInt();
-                    sc.nextLine(); // Consume the newline character
+                    sc.nextLine();
                     switch (selection1) {
                         case 1 -> {
                             System.out.println("Returning to Login Menu...");
-                            return; // Go back to the Login menu
+                            System.out.println("//////////////////////////////////////////////");
+                            updateConsole();
+                            return;
                         }
-                        case 2 -> exitApplication(); // Exit the program
+                        case 2 -> logout();
                         default -> System.out.println("Invalid selection. Try again.");
                     }
                 }
                 case 3 -> {
                     System.out.println("Returning to Login Menu...");
-                    return; // Go back to the Login menu
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    return;
                 }
-                case 4 -> exitApplication(); // Exit the program
+                case 4 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
             }
-            System.out.println("//////////////////////////////////////////////");
-            //updateConsole();
-        /*System.out.println("1. Go Back");
-        System.out.println("2. Exit");
-        System.out.println("Enter your selection: ");
-        Scanner sc34 = new Scanner(System.in);
-        String selection7 = sc34.nextLine();
-        switch (selection7) {
-            case "1":
-                System.out.println("Go Back");
-                break;
-            case "2":
-                System.out.println("Goodbye!");
-                break;
-
-        }
-        System.out.println("//////////////////////////////////////////////");*/
-            //updateConsole();
         }
     }
 
@@ -1022,34 +1104,34 @@ public class NewMain {
             System.out.println("Enter your selection: ");
             Scanner jobProvidersc = new Scanner(System.in);
             int selectionJobProvider = jobProvidersc.nextInt();
-            //list
-            //input from the list
             System.out.println("***************  Verification  ***************");
             System.out.println("1. Verify ");
             System.out.println("2. Delete");
             System.out.println("3. Go Back");
-            System.out.println("4. Exit");
+            System.out.println("4. Logout");
             System.out.println("Enter your selection: ");
 
             int selection = sc.nextInt();
-            sc.nextLine(); // Consume the newline character
+            sc.nextLine();
 
             switch (selection) {
                 case 1 -> {
                     admin.verify(selectionJobProvider, jobProviders);
                     System.out.println("Verified");
                     System.out.println("1. Go Back");
-                    System.out.println("2. Exit ");
+                    System.out.println("2. Logout");
                     System.out.println("Enter your selection: ");
 
                     int selection1 = sc.nextInt();
-                    sc.nextLine(); // Consume the newline character
+                    sc.nextLine();
                     switch (selection1) {
                         case 1 -> {
                             System.out.println("Returning to Login Menu...");
-                            return; // Go back to the Login menu
+                            System.out.println("//////////////////////////////////////////////");
+                            updateConsole();
+                            return;
                         }
-                        case 2 -> exitApplication(); // Exit the program
+                        case 2 -> logout();
                         default -> System.out.println("Invalid selection. Try again.");
                     }
                 }
@@ -1057,46 +1139,31 @@ public class NewMain {
                     admin.delete(selectionJobProvider, jobProviders);
                     System.out.println("Deleted");
                     System.out.println("1. Go Back");
-                    System.out.println("2. Exit ");
+                    System.out.println("2. Logout");
                     System.out.println("Enter your selection: ");
 
                     int selection1 = sc.nextInt();
-                    sc.nextLine(); // Consume the newline character
+                    sc.nextLine();
                     switch (selection1) {
                         case 1 -> {
                             System.out.println("Returning to Login Menu...");
-                            return; // Go back to the Login menu
+                            System.out.println("//////////////////////////////////////////////");
+                            updateConsole();
+                            return;
                         }
-                        case 2 -> exitApplication(); // Exit the program
+                        case 2 -> logout();
                         default -> System.out.println("Invalid selection. Try again.");
                     }
                 }
                 case 3 -> {
                     System.out.println("Returning to Login Menu...");
-                    return; // Go back to the Login menu
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    return;
                 }
-                case 4 -> exitApplication(); // Exit the program
+                case 4 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
             }
-            System.out.println("//////////////////////////////////////////////");
-            //updateConsole();
-
-        /*System.out.println("1. Go Back");
-        System.out.println("2. Exit");
-        System.out.println("Enter your selection: ");
-        Scanner sc345 = new Scanner(System.in);
-        String selection785 = sc345.nextLine();
-        switch (selection785) {
-            case "1":
-                System.out.println("Go Back");
-                break;
-            case "2":
-                System.out.println("Goodbye!");
-                break;
-
-        }
-        System.out.println("//////////////////////////////////////////////");*/
-            //updateConsole();
         }
     }
 
@@ -1111,28 +1178,30 @@ public class NewMain {
             System.out.println("1. Approve ");
             System.out.println("2. Reject ");
             System.out.println("3. Go Back");
-            System.out.println("4. Exit");
+            System.out.println("4. Logout");
             System.out.println("Enter your selection: ");
 
             int selection = sc.nextInt();
-            sc.nextLine(); // Consume the newline character
+            sc.nextLine();
 
             switch (selection) {
                 case 1 -> {
                     admin.approve(selectionAdminRequest, adminRequests);
                     System.out.println("Approved");
                     System.out.println("1. Go Back");
-                    System.out.println("2. Exit ");
+                    System.out.println("2. Logout");
                     System.out.println("Enter your selection: ");
 
                     int selection1 = sc.nextInt();
-                    sc.nextLine(); // Consume the newline character
+                    sc.nextLine();
                     switch (selection1) {
                         case 1 -> {
                             System.out.println("Returning to Login Menu...");
-                            return; // Go back to the Login menu
+                            System.out.println("//////////////////////////////////////////////");
+                            updateConsole();
+                            return;
                         }
-                        case 2 -> exitApplication(); // Exit the program
+                        case 2 -> logout();
                         default -> System.out.println("Invalid selection. Try again.");
                     }
                 }
@@ -1140,30 +1209,31 @@ public class NewMain {
                     admin.deleteRequest(selectionAdminRequest, adminRequests);
                     System.out.println("Rejected");
                     System.out.println("1. Go Back");
-                    System.out.println("2. Exit ");
+                    System.out.println("2. Logout");
                     System.out.println("Enter your selection: ");
 
                     int selection1 = sc.nextInt();
-                    sc.nextLine(); // Consume the newline character
+                    sc.nextLine();
                     switch (selection1) {
                         case 1 -> {
                             System.out.println("Returning to Login Menu...");
-                            return; // Go back to the Login menu
+                            System.out.println("//////////////////////////////////////////////");
+                            updateConsole();
+                            return;
                         }
-                        case 2 -> exitApplication(); // Exit the program
+                        case 2 -> logout();
                         default -> System.out.println("Invalid selection. Try again.");
                     }
                 }
                 case 3 -> {
                     System.out.println("Returning to Login Menu...");
-                    return; // Go back to the Login menu
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    return;
                 }
-                case 4 -> exitApplication(); // Exit the program
+                case 4 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
             }
-
-            System.out.println("//////////////////////////////////////////////");
-            //updateConsole();
         }
     }
 }
