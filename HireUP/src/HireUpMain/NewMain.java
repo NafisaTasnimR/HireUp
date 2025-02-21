@@ -58,70 +58,49 @@ public class NewMain {
     }
     private static void loginMenu(Scanner sc) {
         while (true) {
-            System.out.println("\n--- Login Menu ---");
-            System.out.println("1. Proceed to Login");
-            System.out.println("2. Go Back");
-            System.out.println("3. Logout");
-            System.out.print("Enter your selection: ");
+            System.out.println("You choose :Login");
+            System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ Login \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
+            System.out.println("Enter your ");
 
-            int selection = sc.nextInt();
-            sc.nextLine();
+            System.out.println("Email:");
+            Scanner sc3 = new Scanner(System.in);
+            String email = sc3.nextLine();
 
-            switch (selection) {
-                case 1 -> {
-                    System.out.println("You choose :Login");
-                    System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ Login \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
-                    System.out.println("Enter your ");
+            System.out.println("Password:");
+            Scanner sc2 = new Scanner(System.in);
+            String pass = sc2.nextLine();
 
-                    System.out.println("Email:");
-                    Scanner sc3 = new Scanner(System.in);
-                    String email = sc3.nextLine();
+            System.out.println("Role:");
+            System.out.println("1.Applicant");
+            System.out.println("2.Job Provider");
+            System.out.println("3.Admin");
+            System.out.println("Enter your selection:");
 
-                    System.out.println("Password:");
-                    Scanner sc2 = new Scanner(System.in);
-                    String pass = sc2.nextLine();
+            Scanner sc4 = new Scanner(System.in);
+            String role = sc4.nextLine();
 
-                    System.out.println("Role:");
-                    System.out.println("1.Applicant");
-                    System.out.println("2.Job Provider");
-                    System.out.println("3.Admin");
-                    System.out.println("Enter your selection:");
+            role = switch (role) {
+                case "1" -> "Applicant";
+                case "2" -> "Job Provider";
+                case "3" -> "Admin";
+                default -> role;
+            };
 
-                    Scanner sc4 = new Scanner(System.in);
-                    String role = sc4.nextLine();
+            User user = new User();
 
-                    role = switch (role) {
-                        case "1" -> "Applicant";
-                        case "2" -> "Job Provider";
-                        case "3" -> "Admin";
-                        default -> role;
-                    };
+            user = user.userObject(pass, email, role);
 
-                    User user = new User();
-
-                    user = user.userObject(pass, email, role);
-
-                    System.out.println("//////////////////////////////////////////////");
-                    updateConsole();
-                    if (user != null && user.logIn()) {
-                        switch (role.toLowerCase()) {
-                            case "applicant" -> applicantMenu(sc, user);
-                            case "job provider" -> jobProviderMenu(sc, user);
-                            case "admin" -> adminMenu(sc);
-                            default -> System.out.println("Invalid role. Returning to Login Menu.");
-                        }
-                    } else {
-                        System.out.println("Invalid credentials. Please try again.");
-                    }
+            System.out.println("//////////////////////////////////////////////");
+            updateConsole();
+            if (user != null && user.logIn()) {
+                switch (role.toLowerCase()) {
+                    case "applicant" -> applicantMenu(sc, user);
+                    case "job provider" -> jobProviderMenu(sc, user);
+                    case "admin" -> adminMenu(sc);
+                    default -> System.out.println("Invalid role. Returning to Login Menu.");
                 }
-                case 2 -> {
-                    System.out.println("Returning to Main Menu...");
-                    System.out.println("//////////////////////////////////////////////");
-                    updateConsole();
-                    return;
-                }
-                case 3 -> logout();
-                default -> System.out.println("Invalid selection. Try again.");
+            } else {
+                System.out.println("Invalid credentials. Please try again.");
             }
         }
     }
@@ -134,8 +113,7 @@ public class NewMain {
             System.out.println("3.Create Resume");
             System.out.println("4.View Resume");
             System.out.println("5.Update Information");
-            System.out.println("6. Go Back");
-            System.out.println("7. Logout");
+            System.out.println("6. Logout");
             System.out.print("Enter your selection: ");
 
             int selection = sc.nextInt();
@@ -176,13 +154,7 @@ public class NewMain {
                     updateConsole();
                     updateInformationOption(sc, applicant);
                 }
-                case 6 -> {
-                    System.out.println("Returning to Login Menu...");
-                    System.out.println("//////////////////////////////////////////////");
-                    updateConsole();
-                    return;
-                }
-                case 7 -> logout();
+                case 6 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
             }
         }
@@ -196,8 +168,7 @@ public class NewMain {
             System.out.println("1.Post Job Circular");
             System.out.println("2.See Applicant List");
             System.out.println("3.See Short List");
-            System.out.println("4. Go Back");
-            System.out.println("5. Logout");
+            System.out.println("4. Logout");
             System.out.print("Enter your selection: ");
 
             int selection = sc.nextInt();
@@ -222,13 +193,7 @@ public class NewMain {
                     updateConsole();
                     seeShortListOption(sc, jobProvider);
                 }
-                case 4 -> {
-                    System.out.println("Returning to Login Menu...");
-                    System.out.println("//////////////////////////////////////////////");
-                    updateConsole();
-                    return;
-                }
-                case 5 -> logout();
+                case 4 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
             }
         }
@@ -239,8 +204,7 @@ public class NewMain {
             System.out.println("\n--- Admin Menu ---");
             System.out.println("1. Admin Requests");
             System.out.println("2. Manage Users");
-            System.out.println("3. Go Back");
-            System.out.println("4. Logout");
+            System.out.println("3. Logout");
             System.out.print("Enter your selection: ");
 
             int selection = sc.nextInt();
@@ -261,13 +225,7 @@ public class NewMain {
                     updateConsole();
                     manageUserOption(sc, admin);
                 }
-                case 3 -> {
-                    System.out.println("Returning to Login Menu...");
-                    System.out.println("//////////////////////////////////////////////");
-                    updateConsole();
-                    return;
-                }
-                case 4 -> logout();
+                case 3 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
             }
         }
