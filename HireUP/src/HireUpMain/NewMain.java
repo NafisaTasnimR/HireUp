@@ -1,5 +1,6 @@
 package HireUpMain;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -66,9 +67,9 @@ public class NewMain {
             Scanner sc3 = new Scanner(System.in);
             String email = sc3.nextLine();
 
-            System.out.println("Password:");
-            Scanner sc2 = new Scanner(System.in);
-            String pass = sc2.nextLine();
+            Console console = System.console();
+            char[] passwordArray = console.readPassword("Password");
+            String password = new String(passwordArray);
 
             System.out.println("Role:");
             System.out.println("1.Applicant");
@@ -88,7 +89,7 @@ public class NewMain {
 
             User user = new User();
 
-            user = user.userObject(pass, email, role);
+            user = user.userObject(password, email, role);
 
             System.out.println("//////////////////////////////////////////////");
             updateConsole();
