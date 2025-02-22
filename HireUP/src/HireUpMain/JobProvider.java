@@ -51,7 +51,7 @@ public class JobProvider extends User{
         String regex = "[,\\.\\s]";
         String[] nameArray = companyName.split(regex);
         String jobPostNo = nameArray[0] + String.valueOf((int)(Math.random()*100));
-        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("Job_info.txt",true))){
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\Job_info.txt",true))){
             bufferedWriter.newLine();
             bufferedWriter.write(jobPostNo + "," + job.getCompanyName() + "," +
                     job.getJobPosition() + "," + job.getSkill() + "," + job.getExperience()
@@ -70,6 +70,9 @@ public class JobProvider extends User{
 
     public List<String> seeApplicantList(String jobPostNo,String sortingPreference)
     {
+        System.out.println("================================================================================================================");
+        System.out.println("| S.No | Name                           | Phone Number              | Email                                    |");
+        System.out.println("================================================================================================================");
         List<String> applicantList = new ArrayList<>();
         int serial = 0;
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Application.txt")))
@@ -82,7 +85,8 @@ public class JobProvider extends User{
                 String applicantEmail = data[5];
                 if(Objects.equals(this.getCompanyName(), data[1]) && Objects.equals(jobPostNo, data[0]))
                 {
-                    try(BufferedReader bufferedReader1 = new BufferedReader(new FileReader("Applicant_info.txt"))){
+                    try(BufferedReader bufferedReader1 = new BufferedReader(new FileReader("Applicant_info.txt"))){;
+
                         String line1;
                         while ((line1 = bufferedReader1.readLine()) != null)
                         {
@@ -107,10 +111,11 @@ public class JobProvider extends User{
         {
             serial++;
             String[] data1 = applicant.split(",");
-            System.out.println(serial + "."+"Name: " + data1[1] +" "+
-                    "Phone Number: " + data1[8] +" "+
-                    "Email: " + data1[11] + '\n');
+
+            System.out.printf("| %-4d | %-30s | %-25s | %-40s | \n",
+                    serial, data1[1], data1[8], data1[11]);
             applicantList.set(serial-1,serial + "," + applicantList.get(serial-1));
+            System.out.println("================================================================================================================");
 
         }
         return applicantList;
@@ -145,34 +150,39 @@ public class JobProvider extends User{
                     }
                 }
                 if(count == 1) {
-                    System.out.println("PERSONAL INFORMATION");
-                    System.out.println("Name: " + applicantData[0]);
-                    System.out.println("Father's Name: " + applicantData[1]);
-                    System.out.println("Mother's Name: " + applicantData[2]);
-                    System.out.println("Date of Birth: " + applicantData[3]);
-                    System.out.println("Nationality: " + applicantData[4]);
-                    System.out.println("Religion: " + applicantData[5]);
-                    System.out.println("Gender: " + applicantData[6]);
-                    System.out.println("Phone Number: " + applicantData[7]);
-                    System.out.println("Address: " + applicantData[8]);
-                    System.out.println("National ID: " + applicantData[9]);
-                    System.out.println(" EDUCATIONAL INFORMATION ");
-                    System.out.println("School Name: " + applicantData[11]);
-                    System.out.println("Passing Year(SSC/O Level): " + applicantData[12]);
-                    System.out.println("SSC/O Level Result: " + applicantData[13]);
-                    System.out.println("College Name: " + applicantData[14]);
-                    System.out.println("Passing Year (HSC/A Level): " + applicantData[15]);
-                    System.out.println("HSC/A Level Result: " + applicantData[16]);
-                    System.out.println("University Name: " + applicantData[17]);
-                    System.out.println("University Department Name: " + applicantData[18]);
-                    System.out.println("Undergraduate Degree: " + applicantData[19]);
-                    System.out.println("CGPA: " + applicantData[20]);
-                    System.out.println("Postgraduate Degree: " + applicantData[21]);
-                    System.out.println("CGPA: " + applicantData[22]);
-                    System.out.println("ADDITIONAL INFORMATION: ");
-                    System.out.println("Experience: " + applicantData[23]);
-                    System.out.println("Hobbies: " + applicantData[24]);
-                    System.out.println("Skills: " + applicantData[25]);
+                    System.out.println("\n=====================================================");
+                    System.out.println("                       RESUME");
+                    System.out.println("=====================================================\n");
+                    System.out.println("\n-------------   PERSONAL INFORMATION   -------------\n");
+                    System.out.println("Name                       : " + applicantData[0]+ "\n");
+                    System.out.println("Father's Name              : " + applicantData[1]+ "\n");
+                    System.out.println("Mother's Name              : " + applicantData[2]+ "\n");
+                    System.out.println("Date of Birth              : " + applicantData[3]+ "\n");
+                    System.out.println("Nationality                : " + applicantData[4]+ "\n");
+                    System.out.println("Religion                   : " + applicantData[5]+ "\n");
+                    System.out.println("Gender                     : " + applicantData[6]+ "\n");
+                    System.out.println("Phone Number               : " + applicantData[7]+ "\n");
+                    System.out.println("Address                    : " + applicantData[8]+ "\n");
+                    System.out.println("National ID                : " + applicantData[9]+ "\n");
+                    System.out.println("\n------------   EDUCATIONAL INFORMATION   ------------\n");
+                    System.out.println("School Name                : " + applicantData[11]+ "\n");
+                    System.out.println("Passing Year(SSC/O Level)  : " + applicantData[12]+ "\n");
+                    System.out.println("SSC/O Level Result         : " + applicantData[13]+ "\n");
+                    System.out.println("College Name               : " + applicantData[14]+ "\n");
+                    System.out.println("Passing Year (HSC/A Level) : " + applicantData[15]+ "\n");
+                    System.out.println("HSC/A Level Result         : " + applicantData[16]+ "\n");
+                    System.out.println("University Name            : " + applicantData[17]+ "\n");
+                    System.out.println("University Department Name : " + applicantData[18]+ "\n");
+                    System.out.println("Undergraduate Degree       : " + applicantData[19]+ "\n");
+                    System.out.println("CGPA                       : " + applicantData[20]+ "\n");
+                    System.out.println("Postgraduate Degree        : " + applicantData[21]+ "\n");
+                    System.out.println("CGPA                       : " + applicantData[22]+ "\n");
+                    System.out.println("\n------------   ADDITIONAL INFORMATION   ------------\n");
+                    System.out.println("Experience                 : " + applicantData[23]+ "\n");
+                    System.out.println("Hobbies                    : " + applicantData[24]+ "\n");
+                    System.out.println("Skills                     : " + applicantData[25]+ "\n");
+                    System.out.println("=====================================================\n");
+
                 }
             }
         }catch (IOException e){
@@ -248,6 +258,10 @@ public class JobProvider extends User{
         }
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Application.txt")))
         {
+            System.out.println("================================================================================================================");
+            System.out.println("| S.No | Name                           | Phone Number              | Email                                    |");
+            System.out.println("================================================================================================================");
+
             String line;
             while ((line = bufferedReader.readLine()) != null)
             {
@@ -257,11 +271,12 @@ public class JobProvider extends User{
                 String email = data[5];
                 if(Objects.equals(jobPostNo, data[0]) && Objects.equals(data[6], "Shortlisted")) {
                     serial++;
-                    System.out.println(serial + "." + "Name: " + name + " " +
-                            "Phone Number: " + phoneNumber + " " +
-                            "Email: " + email + '\n');
+                    System.out.printf("| %-4d | %-30s | %-25s | %-40s | \n",
+                            serial, name, phoneNumber, email);
                     applicantShortList.add(serial + "," + name + ","+ phoneNumber + ","+ email);
                     pendingApplicant = true;
+                    System.out.println("================================================================================================================");
+
                 }
             }
             if(!pendingApplicant)
@@ -280,6 +295,10 @@ public class JobProvider extends User{
         List<String> jobPostList = new ArrayList<>();
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Job_info.txt")))
         {
+            System.out.println("================================================================================================================");
+            System.out.println("| S.No | Job Post No                    | Company Name              | Position                                 |");
+            System.out.println("================================================================================================================");
+
             String line;
             String jobPost;
             int serial = 0;
@@ -291,10 +310,12 @@ public class JobProvider extends User{
                 String position = data[2];
                 if(Objects.equals(this.getCompanyName(), data[1])) {
                     serial++;
-                    System.out.println(serial +"."+" "+ "Job Post No: " + jobPostNo +" "+
-                            "Company Name: " + companyName + " " + "Position: " + position + '\n');
+                    System.out.printf("| %-4d | %-30s | %-25s | %-40s | \n",
+                            serial, jobPostNo, companyName, position);
                     jobPost = serial + "," + line;
                     jobPostList.add(jobPost);
+                    System.out.println("================================================================================================================");
+
                 }
             }
         }catch (IOException e)

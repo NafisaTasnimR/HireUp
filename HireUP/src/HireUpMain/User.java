@@ -44,7 +44,7 @@ public class User {
 
     public boolean logIn() {
         try (BufferedReader br = new BufferedReader(new FileReader(
-                "\\HireUp\\HireUp\\HireUP\\User_Info.txt"))) {
+                "User_Info.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
@@ -60,6 +60,7 @@ public class User {
                         System.out.println("Welcome," + data[0] + "!");
                         return true;
                     }
+
                 } else {
                     System.out.println("Invalid data format.");
                 }

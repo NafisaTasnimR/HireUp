@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
+import static HireUpMain.Utility.updateConsole;
+
 public class Resume {
     private PersonalInformation PersonalInformation;
     private EducationalInformation EducationalInformation;
@@ -40,7 +42,7 @@ public class Resume {
     }
 
     public boolean generateResume(String email) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("\\HireUp\\HireUp\\HireUP\\Applicant_info.txt", true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Applicant_info.txt", true))) {
             writer.write(PersonalInformation.toFileString()+","+email+ "," +
                     EducationalInformation.toFileString()+","+
                     AdditionalInformation.toFileString());
@@ -55,8 +57,7 @@ public class Resume {
 
     public boolean showResume(String email) {
         boolean found = false;
-
-        try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
 
@@ -103,50 +104,29 @@ public class Resume {
 
                         }
                     }
-
-
             if (!found) {
                 System.out.println("You have not created your resume!");
-
             }
-
             return true;
-
-
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-
         return false;
     }
 
-    public void updateInfo(String email) {
+    public void updateInfo(String email,int choice) {
         Scanner scanner = new Scanner(System.in);
         List<String> updatedLines = new ArrayList<>();
         boolean found = false;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))) {
             String line;
 
             while ((line = reader.readLine()) != null) {
                 String[] resumeList = line.split(",");
                 if (resumeList[10].equals(email)) {
                     found = true;
-
-
-                    System.out.println("What do you want to update?");
-                    System.out.println("1. Phone Number");
-                    System.out.println("2. Address");
-                    System.out.println("3. Email");
-                    System.out.println("4. Postgraduate Degree");
-                    System.out.println("5. Postgraduate CGPA");
-                    System.out.println("6. Experience");
-                    System.out.println("7. Skills");
-                    System.out.println("8. Hobbies");
-                    System.out.print("Enter your choice: ");
-                    int choice = scanner.nextInt();
-                    scanner.nextLine();
 
                     switch (choice) {
                         case 1:
@@ -187,13 +167,13 @@ public class Resume {
                         }
                         case 7:
                         {
-                            System.out.print("Enter Hobbies: ");
+                            System.out.print("Enter Skills: ");
                             resumeList[24] = scanner.nextLine();
                             break;
                         }
                         case 8:
                         {
-                            System.out.print("Enter Skills: ");
+                            System.out.print("Enter Hobbies: ");
                             resumeList[25] = scanner.nextLine();
                             break;
                         }
@@ -214,7 +194,7 @@ public class Resume {
             e.printStackTrace();
         }
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Applicant_info.txt"))) {
             for (String updatedLine : updatedLines) {
                 writer.write(updatedLine);
                 writer.newLine();
@@ -223,6 +203,22 @@ public class Resume {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public boolean isCreated(String email)
+    {
+        try(BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))){
+            String line;
+            while ((line = reader.readLine()) != null){
+                String[] applicantData = line.split(",");
+                if(Objects.equals(applicantData[10], email)){
+                    return true;
+                }
+            }
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return false;
     }
 
 

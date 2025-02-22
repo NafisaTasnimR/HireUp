@@ -27,7 +27,7 @@ public class Applicant extends User {
         Set<String> uniqueJobs = new HashSet<>();
         int outputSerial = 0;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\Job_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Job_info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
@@ -45,7 +45,6 @@ public class Applicant extends User {
 
                     boolean matchFound = false;
 
-
                     if (Objects.equals(formatData(preference), companyName) ||
                             Objects.equals(formatData(preference), location) ||
                             Objects.equals(formatData(preference), jobPosition) ||
@@ -53,10 +52,8 @@ public class Applicant extends User {
                             Objects.equals(preference, salary) ||
                             Objects.equals(formatData(preference), skill) ||
                             Objects.equals(preference, time)) {
-
                         matchFound = true;
                     }
-
 
                     try {
                         if (preference.matches("\\d+")) {
@@ -68,7 +65,7 @@ public class Applicant extends User {
                                 if (jobSalary >= lowerRange && jobSalary <= upperRange) {
                                     matchFound = true;
                                 }
-                            } else {
+                            } else { // Experience input
                                 int lowerRange = Math.max(input - 2, 0);
                                 int upperRange = input + 2;
                                 int jobExperience = Integer.parseInt(experience);
@@ -81,14 +78,11 @@ public class Applicant extends User {
                         // Ignore non-numeric preferences
                     }
 
-
                     if (matchFound) {
                         String jobInfo = line;
                         if (uniqueJobs.add(jobInfo)) {
                             outputSerial++;
-                            System.out.println(outputSerial + ". Company Name: " + companyName + " "
-                                    + "Job Position: " + jobPosition + " " + "WebSite Address: " + websiteLink + '\n');
-                            jobList.add(outputSerial + "," + line); 
+                            jobList.add(outputSerial + "," + line);
                         }
                     }
                 } else {
@@ -98,6 +92,7 @@ public class Applicant extends User {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return jobList;
     }
 
@@ -132,9 +127,9 @@ public class Applicant extends User {
         resume.showResume(this.getEmail());
     }
 
-    public void updateInfo()
+    public void updateInfo(int choiceNo)
     {
-        resume.updateInfo(this.getEmail());
+        resume.updateInfo(this.getEmail(),choiceNo);
     }
 
     private String findApplicant(String email) {
@@ -168,8 +163,6 @@ public class Applicant extends User {
             }
 
         }
-
-
         return jobDetails;
     }
 
@@ -186,10 +179,13 @@ public class Applicant extends User {
 
 
     public void processApplication(String serialNo, List<String> jobList, String email) {
-
-        String combinedContent = findJob(serialNo, jobList) + findApplicant(email) + "," + "pending";
-
-        writeToFile(combinedContent);
+        if(resume.isCreated(email)) {
+            String combinedContent = findJob(serialNo, jobList) + findApplicant(email) + "," + "pending";
+            writeToFile(combinedContent);
+        }
+        else {
+            System.out.println("You Have To Create Your Resume To Apply For Any Job!");
+        }
     }
 
     public boolean applicationStatus(String serialNo, List<String> jobList) {
@@ -231,7 +227,7 @@ public class Applicant extends User {
 
 
     private void suggestJobsBySalary(int salaryInput) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\Job_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Job_info.txt"))) {
             String line;
             int serial = 0;
             int lowerRange = Math.max(salaryInput - 5000, 0);
