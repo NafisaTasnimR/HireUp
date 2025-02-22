@@ -67,6 +67,10 @@ public class NewMain {
             Scanner sc3 = new Scanner(System.in);
             String email = sc3.nextLine();
 
+            /*System.out.println("Password:");
+            Scanner sc2 = new Scanner(System.in);
+            String password = sc2.nextLine();*/
+
             Console console = System.console();
             char[] passwordArray = console.readPassword("Password");
             String password = new String(passwordArray);
@@ -847,145 +851,187 @@ public class NewMain {
     private static void seeApplicantListOption(Scanner sc, JobProvider jobProvider) {
         System.out.println("See Applicant List");
         System.out.println("***************  Watch Application list  ***************");
-        System.out.println("Choose a Job Circular from the following list: ");
-        List<String> jobPostList = jobProvider.seeJobPosts();
+
+        while (true) {
+            List<String> jobPostList = jobProvider.seeJobPosts();
+            System.out.println("1. View Applicant List Under A Job Post");
+            System.out.println("2. Go Back");
+            System.out.println("3. Logout");
+            System.out.println("Enter your selection: ");
+            int selection = sc.nextInt();
+            sc.nextLine();
+            switch (selection){
+                case 1 -> {
+                    String serialNo = chooseJobCircular(sc);
+                    if (serialNo == null) return;
+
+                    String searchPreference = getApplicantSortingPreference(sc);
+                    handleApplicantList(sc, jobProvider, serialNo, searchPreference, jobPostList);
+                }
+                case 2 -> {
+                    System.out.println("Returning to Login Menu...");
+                    updateConsole();
+                    return;
+                }
+                case 3 -> logout();
+                default -> System.out.println("Invalid selection. Try again.");
+            }
+
+        }
+    }
+
+    private static String chooseJobCircular(Scanner sc) {
+
         System.out.println("Enter the Job Post Number that you want to see: ");
-        Scanner sc70 = new Scanner(System.in);
-        String serialNo = sc70.nextLine();
+        String serialNo = sc.nextLine();
+        return serialNo.isEmpty() ? null : serialNo;
+    }
+
+    private static String getApplicantSortingPreference(Scanner sc) {
         System.out.println("Enter your preference to see the applicant list sorted: ");
         System.out.println("1. BSc CGPA");
         System.out.println("2. Has MSc Degree");
         System.out.println("3. Experience");
-        Scanner scanner110 = new Scanner(System.in);
-        int selectionNo101 = scanner110.nextInt();
-        String searchPreference = "";
-        switch (selectionNo101) {
-            case 1:
-                searchPreference = "cgpa";
-                break;
-            case 2:
-                searchPreference = "MSc";
-                break;
-            case 3:
-                searchPreference = "experience";
-                break;
-        }
 
-        List<String> applicantList = jobProvider.seeApplicantList(jobProvider.getJobPostNo(serialNo, jobPostList), searchPreference);
+        int selectionNo101 = sc.nextInt();
+        sc.nextLine();
+        return switch (selectionNo101) {
+            case 1 -> "cgpa";
+            case 2 -> "MSc";
+            case 3 -> "experience";
+            default -> "";
+        };
+    }
+
+    private static void handleApplicantList(Scanner sc, JobProvider jobProvider, String serialNo, String searchPreference, List<String> jobPostList) {
         while (true) {
-            if (!applicantList.isEmpty() && serialNo != null) {
-                System.out.println("Enter the Serial number of the applicant you want to see: ");
-                Scanner scanner1 = new Scanner(System.in);
-                String serialNumber = scanner1.nextLine();
-                System.out.println("//////////////////////////////////////////////");
-                updateConsole();
-                System.out.println("***************  Applicants Personal Information  ***************");
-                String applicantResume = jobProvider.viewApplicantDetails(serialNumber, applicantList);
-                System.out.println("1. Select ");
-                System.out.println("2. Reject ");
-                System.out.println("3. Go Back ");
-                System.out.println("4. Logout");
-                System.out.println("Enter your selection: ");
-                int selection = sc.nextInt();
-                sc.nextLine();
-                switch (selection) {
-                    case 1 -> {
-                        System.out.println("Selected!");
-                        List<String> applications = jobProvider.changeStatus(applicantResume, "Shortlisted");
-                        jobProvider.addToShortList(applications);
-                        System.out.println("1. Go Back");
-                        System.out.println("2. Logout");
-                        System.out.println("Enter your selection: ");
+            System.out.println("***************  Applicant List  ***************");
+            List<String> applicantList = jobProvider.seeApplicantList(jobProvider.getJobPostNo(serialNo, jobPostList), searchPreference);
 
-                        int selection1 = sc.nextInt();
-                        sc.nextLine();
-                        switch (selection1) {
-                            case 1 -> {
-                                System.out.println("Returning to Login Menu...");
-                                System.out.println("//////////////////////////////////////////////");
-                                updateConsole();
-                                return;
-                            }
-                            case 2 -> logout();
-                            default -> System.out.println("Invalid selection. Try again.");
-                        }
-                    }
-                    case 2 -> {
-                        System.out.println("Rejected!");
-                        List<String> applications1 = jobProvider.changeStatus(applicantResume, "Rejected");
-                        jobProvider.addToShortList(applications1);
-                        System.out.println("1. Go Back");
-                        System.out.println("2. Logout");
-                        System.out.println("Enter your selection: ");
-
-                        int selection1 = sc.nextInt();
-                        sc.nextLine();
-                        switch (selection1) {
-                            case 1 -> {
-                                System.out.println("Returning to Login Menu...");
-                                System.out.println("//////////////////////////////////////////////");
-                                updateConsole();
-                                return;
-                            }
-                            case 2 -> logout();
-                            default -> System.out.println("Invalid selection. Try again.");
-                        }
-                    }
-                    case 3 -> {
-                        System.out.println("Returning to Login Menu...");
-                        System.out.println("//////////////////////////////////////////////");
-                        updateConsole();
-                        return;
-                    }
-                    case 4 -> logout();
-                    default -> System.out.println("Invalid selection. Try again.");
-
-                }
-            }
-            else {
+            if (applicantList.isEmpty()) {
                 System.out.println("//////////////////////////////////////////////");
                 updateConsole();
                 System.out.println("There is no application submitted for this job post yet!");
                 System.out.println("1. Go Back ");
                 System.out.println("2. Logout");
-                System.out.println("3. Exit ");
-                System.out.println("Enter your selection: ");
                 int selection = sc.nextInt();
                 sc.nextLine();
+
                 switch (selection) {
                     case 1 -> {
                         System.out.println("Returning to Login Menu...");
-                        System.out.println("//////////////////////////////////////////////");
                         updateConsole();
-                        return; // Go back to the Login menu
+                        return;
                     }
                     case 2 -> logout();
-                    case 3 -> exitApplication(); // Exit the program
                     default -> System.out.println("Invalid selection. Try again.");
                 }
+                return;
+            }
+
+            System.out.println("1. Review an applicant");
+            System.out.println("2. Go Back");
+            System.out.println("3. Logout");
+            System.out.println("Enter your selection: ");
+
+            int choiceNo = sc.nextInt();
+            sc.nextLine();
+
+            switch (choiceNo) {
+                case 1 -> reviewApplicant(sc, jobProvider, applicantList);
+                case 2 -> {
+                    System.out.println("Returning to Job Circular List...");
+                    updateConsole();
+                    return; // Go back to the job circular selection
+                }
+                case 3 -> logout();
+                default -> System.out.println("Invalid selection. Try again.");
             }
         }
     }
+
+    private static void reviewApplicant(Scanner sc, JobProvider jobProvider, List<String> applicantList) {
+        System.out.println("Enter the Serial number of the applicant you want to see: ");
+        String serialNumber = sc.nextLine();
+        String applicantResume = jobProvider.viewApplicantDetails(serialNumber, applicantList);
+
+        System.out.println("1. Select ");
+        System.out.println("2. Reject ");
+        System.out.println("3. Go Back ");
+        System.out.println("4. Logout");
+        System.out.println("Enter your selection: ");
+
+        int selection = sc.nextInt();
+        sc.nextLine();
+
+        switch (selection) {
+            case 1 -> handleApplicantDecision(sc, jobProvider, applicantResume, "Shortlisted");
+            case 2 -> handleApplicantDecision(sc, jobProvider, applicantResume, "Rejected");
+            case 3 -> {
+                return; // Go back to the applicant list
+            }
+            case 4 -> logout();
+            default -> System.out.println("Invalid selection. Try again.");
+        }
+    }
+
+    private static void handleApplicantDecision(Scanner sc, JobProvider jobProvider, String applicantResume, String status) {
+        System.out.println(status.equals("Shortlisted") ? "Selected!" : "Rejected!");
+        List<String> applications = jobProvider.changeStatus(applicantResume, status);
+        jobProvider.addToShortList(applications);
+
+        System.out.println("1. Go Back to Applicant List");
+        System.out.println("2. Logout");
+        System.out.println("Enter your selection: ");
+
+        int selection = sc.nextInt();
+        sc.nextLine();
+
+        switch (selection) {
+            case 1 -> {
+                return;
+            }
+            case 2 -> logout();
+            default -> System.out.println("Invalid selection. Try again.");
+        }
+    }
+
+
 
     private static void seeShortListOption(Scanner sc, JobProvider jobProvider) {
         while (true) {
             System.out.println("See Short List");
             System.out.println("You have previously posted these posts:");
             List<String> jobPostList1 = jobProvider.seeJobPosts();
+            System.out.println("1. View Short List Under Job Post");
+            System.out.println("2. Go Back");
+            System.out.println("3. Logout");
+            System.out.println("Enter Your Selection: ");
+            Scanner scanner = new Scanner(System.in);
+            int choiceNo = scanner.nextInt();
+            if(choiceNo == 2){
+                System.out.println("Returning to Login Menu...");
+                System.out.println("//////////////////////////////////////////////");
+                updateConsole();
+                return;
+            }else if (choiceNo == 3){
+                logout();
+            }
             System.out.println("Choose a post to see it's shortListed applicants:");
             Scanner scanner100 = new Scanner(System.in);
             String selectedJobPost = scanner100.nextLine();
-            System.out.println("***************  Shortlisted Applicants  ***************");
-            List<String> applicantShortList = jobProvider.seeShortList(selectedJobPost, jobPostList1);
-            System.out.println("1. See Any Applicant's Details");
-            System.out.println("2. Go Back");
-            System.out.println("3. Logout");
-            System.out.println("Enter your selection: ");
-            int selection = sc.nextInt();
-            sc.nextLine();
-            switch (selection) {
-                case 1 -> {
-                    while (true) {
+            boolean backToJobList = false;
+            while (!backToJobList) {
+                System.out.println("***************  Shortlisted Applicants  ***************");
+                List<String> applicantShortList = jobProvider.seeShortList(selectedJobPost, jobPostList1);
+                System.out.println("1. See Any Applicant's Details");
+                System.out.println("2. Go Back");
+                System.out.println("3. Logout");
+                System.out.println("Enter your selection: ");
+                int selection = sc.nextInt();
+                sc.nextLine();
+                switch (selection) {
+                    case 1 -> {
                         System.out.println("Enter the serial number from the applicant list: ");
                         Scanner scanner2 = new Scanner(System.in);
                         String serialNumber = scanner2.nextLine();
@@ -1001,21 +1047,21 @@ public class NewMain {
                                 System.out.println("Returning to Login Menu...");
                                 System.out.println("//////////////////////////////////////////////");
                                 updateConsole();
-                                return;
+                                break;
                             }
                             case "2" -> logout();
                             default -> System.out.println("Invalid selection. Try again.");
                         }
                     }
+                    case 2 -> {
+                        System.out.println("Returning to Login Menu...");
+                        System.out.println("//////////////////////////////////////////////");
+                        updateConsole();
+                        backToJobList = true;
+                    }
+                    case 3 -> logout();
+                    default -> System.out.println("Invalid selection. Try again.");
                 }
-                case 2 -> {
-                    System.out.println("Returning to Login Menu...");
-                    System.out.println("//////////////////////////////////////////////");
-                    updateConsole();
-                    return;
-                }
-                case 3 -> logout();
-                default -> System.out.println("Invalid selection. Try again.");
             }
         }
     }
