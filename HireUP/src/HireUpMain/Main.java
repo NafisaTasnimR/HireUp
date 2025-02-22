@@ -443,7 +443,8 @@ public class Main {
 
                                     case 6:
                                         System.out.println("***************  Update Information  ***************");
-                                        applicant.updateInfo();
+                                        int i=0;
+                                        applicant.updateInfo(i);
                                         break;
 
 

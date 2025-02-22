@@ -27,11 +27,7 @@ public class Applicant extends User {
         Set<String> uniqueJobs = new HashSet<>();
         int outputSerial = 0;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Job_info.txt"))) {
-            System.out.println("================================================================================================================");
-            System.out.println("| S.No | Company Name                   | Job Position              | Website Address                          |");
-            System.out.println("================================================================================================================");
-
+        try (BufferedReader reader = new BufferedReader(new FileReader("Job_info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
@@ -49,7 +45,6 @@ public class Applicant extends User {
 
                     boolean matchFound = false;
 
-
                     if (Objects.equals(formatData(preference), companyName) ||
                             Objects.equals(formatData(preference), location) ||
                             Objects.equals(formatData(preference), jobPosition) ||
@@ -57,10 +52,8 @@ public class Applicant extends User {
                             Objects.equals(preference, salary) ||
                             Objects.equals(formatData(preference), skill) ||
                             Objects.equals(preference, time)) {
-
                         matchFound = true;
                     }
-
 
                     try {
                         if (preference.matches("\\d+")) {
@@ -72,7 +65,7 @@ public class Applicant extends User {
                                 if (jobSalary >= lowerRange && jobSalary <= upperRange) {
                                     matchFound = true;
                                 }
-                            } else {
+                            } else { // Experience input
                                 int lowerRange = Math.max(input - 2, 0);
                                 int upperRange = input + 2;
                                 int jobExperience = Integer.parseInt(experience);
@@ -85,16 +78,11 @@ public class Applicant extends User {
                         // Ignore non-numeric preferences
                     }
 
-
                     if (matchFound) {
                         String jobInfo = line;
                         if (uniqueJobs.add(jobInfo)) {
                             outputSerial++;
-                            System.out.printf("| %-4d | %-30s | %-25s | %-40s | \n",
-                                    outputSerial, companyName, jobPosition, websiteLink);
                             jobList.add(outputSerial + "," + line);
-                            System.out.println("================================================================================================================");
-
                         }
                     }
                 } else {
@@ -104,6 +92,7 @@ public class Applicant extends User {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return jobList;
     }
 
@@ -138,14 +127,14 @@ public class Applicant extends User {
         resume.showResume(this.getEmail());
     }
 
-    public void updateInfo()
+    public void updateInfo(int choiceNo)
     {
-        resume.updateInfo(this.getEmail());
+        resume.updateInfo(this.getEmail(),choiceNo);
     }
 
     private String findApplicant(String email) {
         String resumeInfo = "";
-        try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -179,7 +168,7 @@ public class Applicant extends User {
 
     // Method to write the combined string into a new file
     private void writeToFile(String content) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\Application.txt", true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Application.txt", true))) {
             writer.newLine();
             writer.write(content);
         } catch (IOException e) {
@@ -215,7 +204,7 @@ public class Applicant extends User {
 
     public List<String> applicationList(String email) {
         List<String> jobList = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Application.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Application.txt"))) {
             String line;
             int serial = 0;
             while ((line = reader.readLine()) != null) {

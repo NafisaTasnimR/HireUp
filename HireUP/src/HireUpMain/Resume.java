@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
+import static HireUpMain.Utility.updateConsole;
+
 public class Resume {
     private PersonalInformation PersonalInformation;
     private EducationalInformation EducationalInformation;
@@ -113,7 +115,7 @@ public class Resume {
         return false;
     }
 
-    public void updateInfo(String email) {
+    public void updateInfo(String email,int choice) {
         Scanner scanner = new Scanner(System.in);
         List<String> updatedLines = new ArrayList<>();
         boolean found = false;
@@ -125,20 +127,6 @@ public class Resume {
                 String[] resumeList = line.split(",");
                 if (resumeList[10].equals(email)) {
                     found = true;
-
-
-                    System.out.println("What do you want to update?");
-                    System.out.println("1. Phone Number");
-                    System.out.println("2. Address");
-                    System.out.println("3. Email");
-                    System.out.println("4. Postgraduate Degree");
-                    System.out.println("5. Postgraduate CGPA");
-                    System.out.println("6. Experience");
-                    System.out.println("7. Skills");
-                    System.out.println("8. Hobbies");
-                    System.out.print("Enter your choice: ");
-                    int choice = scanner.nextInt();
-                    scanner.nextLine();
 
                     switch (choice) {
                         case 1:
