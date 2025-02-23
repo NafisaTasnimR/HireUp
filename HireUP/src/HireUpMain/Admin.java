@@ -279,17 +279,18 @@ public class Admin extends User {
             String UnderGraduateCGPA = data[21];
             String PostGraduateDegree = data[22];
             String PostGraduateCGPA = data[23];
-            String Experience = data[24];
-            String Hobby = data[25];
-            String Skills = data[26];
-            String status =  (data.length > 27) ? data[27] : "Not Verified";
+            String ExtraInformation = data[24];
+            String Experience = data[25];
+            String Hobby = data[26];
+            String Skills = data[27];
+            String status =  (data.length > 28) ? data[28] : "Not Verified";
             if (serial ==applicantSerial)  {
-                VerifiedApplicants.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + Experience + "," + Hobby + "," + Skills + "," + "Verified");
+                VerifiedApplicants.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + ExtraInformation + "," + Experience + "," + Hobby + "," + Skills + "," + "Verified");
                 verifiedApplicant=true;
             }else if ("Verified".equals(status)) {
-                VerifiedApplicants.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + Experience + "," + Hobby + "," + Skills + "," + "Verified");
+                VerifiedApplicants.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + ExtraInformation + "," + Experience + "," + Hobby + "," + Skills + "," + "Verified");
             } else {
-                VerifiedApplicants.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + Experience + "," + Hobby + "," + Skills + "," + "Not Verified");
+                VerifiedApplicants.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + ExtraInformation + "," + Experience + "," + Hobby + "," + Skills + "," + "Not Verified");
             }
         }
         if (verifiedApplicant) {
@@ -337,18 +338,19 @@ public class Admin extends User {
             String UnderGraduateCGPA = data[21];
             String PostGraduateDegree = data[22];
             String PostGraduateCGPA = data[23];
-            String Experience = data[24];
-            String Hobby = data[25];
-            String Skills = data[26];
-            String status =  (data.length > 27) ? data[27] : "Not Verified";
+            String ExtraInformation = data[24];
+            String Experience = data[25];
+            String Hobby = data[26];
+            String Skills = data[27];
+            String status =  (data.length > 28) ? data[28] : "Not Verified";
            if(serial==applicantSerial){
                applicantDeleted=true;
            }
            else{
                if ("Verified".equals(status)) {
-                   ApplicantInfo.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + Experience + "," + Hobby + "," + Skills + "," + "Verified");
+                   ApplicantInfo.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + ExtraInformation + "," + Experience + "," + Hobby + "," + Skills + "," + "Verified");
                } else {
-                   ApplicantInfo.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + Experience + "," + Hobby + "," + Skills + "," + "Not Verified");
+                   ApplicantInfo.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + ExtraInformation + "," + Experience + "," + Hobby + "," + Skills + "," + "Not Verified");
                }
            }
         }

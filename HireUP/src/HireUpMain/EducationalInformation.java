@@ -16,12 +16,13 @@ public class EducationalInformation extends PersonalInformation{
     private String undergradCGPA;
     private String postgraduateDegree;
     private String postgradCGPA;
+    private String extraInformation;
 
     public EducationalInformation(String name, String schoolName, String sscPassingYear,
                                   String sscOLevelResult, String collegeName, String hscPassingYear,
                                   String hscALevelResult, String universityName, String department,
                                   String undergraduateDegree, String undergradCGPA,
-                                  String postgraduateDegree, String postgradCGPA) {
+                                  String postgraduateDegree, String postgradCGPA, String extraInformation) {
         super(name);
         this.schoolName = schoolName;
         this.sscPassingYear = sscPassingYear;
@@ -35,6 +36,7 @@ public class EducationalInformation extends PersonalInformation{
         this.undergradCGPA = undergradCGPA;
         this.postgraduateDegree = postgraduateDegree;
         this.postgradCGPA = postgradCGPA;
+        this.extraInformation = extraInformation;
 
     }
 
@@ -77,6 +79,7 @@ public class EducationalInformation extends PersonalInformation{
     public String getPostgradCGPA(){
         return postgradCGPA;
     }
+    public String getExtraInformation(){return extraInformation;}
 
 
     public String toFileString() {
@@ -91,6 +94,7 @@ public class EducationalInformation extends PersonalInformation{
                 + getUndergraduateDegree() + ","
                 + getUndergradCGPA() + ","
                 + getPostgraduateDegree() + ","
-                + getPostgradCGPA() ;
+                + getPostgradCGPA() + ","
+                + getExtraInformation();
     }
 }

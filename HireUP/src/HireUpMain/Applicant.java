@@ -138,7 +138,7 @@ public class Applicant extends User {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 26 && parts[10].equals(email) ) {
+                if (parts.length == 27 && parts[10].equals(email) ) {
                     String name = parts[0];
                     String phoneNumber = parts[7];
                     String fileEmail = parts[10];
@@ -203,26 +203,42 @@ public class Applicant extends User {
 
 
     public List<String> applicationList(String email) {
-        List<String> jobList = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader("Application.txt"))) {
-            String line;
-            int serial = 0;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts[5].equals(email)) {
-                    serial++;
-                    System.out.println(serial + "." + "Company Name: " + parts[1] + ","
-                            + "Job Position: " + parts[2] + '\n');
-                    jobList.add(serial + "," + line);
+            List<String> jobList = new ArrayList<>();
 
+            try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Application.txt"))) {
+                String line;
+                int serial = 0;
+
+                // Print table header
+                System.out.println("==========================================================================================");
+                System.out.println("| S.No | Company Name                   | Job Position              | Job Status         |");
+                System.out.println("==========================================================================================");
+
+                while ((line = reader.readLine()) != null) {
+                    String[] parts = line.split(",");
+
+                    if (parts.length > 6 && parts[5].equals(email)) {
+                        serial++;
+                        jobList.add(serial + "," + line);
+
+                        // Print structured table row
+                        System.out.printf("| %-4d | %-30s | %-25s | %-18s |\n",
+                                serial, parts[1], parts[2], parts[6]);
+                        System.out.println("------------------------------------------------------------------------------------------");
+                    }
                 }
 
+
+                if (serial == 0) {
+                    System.out.println("| No applications found for the given email.                                                              |");
+                    System.out.println("==========================================================================================================");
+                }
+
+            } catch (IOException e) {
+                System.err.println("Error reading the file: " + e.getMessage());
             }
 
-        } catch (IOException e) {
-            System.err.println("Error reading the file: " + e.getMessage());
-        }
-        return jobList;
+            return jobList;
     }
 
 
