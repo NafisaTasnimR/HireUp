@@ -493,10 +493,6 @@ public class Main {
             System.out.println("Job status");
             System.out.println("***************  Job Status  ***************");
             List<String> jobs = applicant.applicationList(applicant.getEmail());
-            System.out.println("Enter the number of the job you want to see status of :");
-            Scanner jobPostNo = new Scanner(System.in);
-            String selection80 = jobPostNo.nextLine();
-            applicant.applicationStatus(selection80, jobs);
 
             System.out.println("1.Go Back");
             System.out.println("2.Logout");
