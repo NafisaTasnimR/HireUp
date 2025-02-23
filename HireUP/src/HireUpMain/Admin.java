@@ -314,8 +314,10 @@ public class Admin extends User {
             String password1 = data[2];
             String email1 = data[3];
             String role1 = data[4];
+            String companyName=data[5];
+            String webAddress=data[6];
             if (Serial==serial27) {
-                approvedJobProviders.add(userName1 + "," + password1 + "," + email1+ "," + role1 );
+                approvedJobProviders.add(userName1 + "," + password1 + "," + email1+ "," + role1 + "," + companyName + "," + webAddress);
                 approvedJobProvider = true;
             }
         }
@@ -345,8 +347,10 @@ public class Admin extends User {
             String password = data[2];
             String email = data[3];
             String role = data[4];
+            String companyName=data[5];
+            String webAddress=data[6];
             if (!(serial3==serial27)||jobproviderRequestDeleted) {
-                approvedJobProviders.add(userName + "," + password + "," + email+ "," + role );
+                approvedJobProviders.add(userName + "," + password + "," + email+ "," + role + "," + companyName + "," + webAddress );
             } else {
                 jobproviderRequestDeleted = true;
             }
