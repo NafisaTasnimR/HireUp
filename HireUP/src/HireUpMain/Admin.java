@@ -129,96 +129,7 @@ public class Admin extends User {
         return false;
     }
 
-    public List<String> viewAdminRequest(){
-        List<String> AdminRequestList = new ArrayList<>();
-        String line;
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
-                "AdminRequest.txt"))) {
-            System.out.println("================================================================================================");
-            System.out.println("| S.No | Name                          | Email                                 | Role          |");
-            System.out.println("================================================================================================");
-            int serial2=0;
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] data = line.split(",");
-                    String userName = data[0];
-                    String email = data[2];
-                    String role = data[3];
-                    serial2++;
-                System.out.printf("| %-4d | %-29s | %-37s | %-13s |%n",
-                        serial2, userName, email, role);
-                AdminRequestList.add(serial2+","+line);
-                System.out.println("================================================================================================");
-            }
-        } catch (IOException e) {
-            System.err.println("Error reading file" + e.getMessage());
-            e.printStackTrace();
-        }
-       return AdminRequestList;
-    }
 
-
-    public boolean approve(int Serial,List<String> AdminRequestList) {
-        List<String> approvedAdmins = new ArrayList<>();
-        boolean approvedAdmin = false;
-        for(String AdminRequest : AdminRequestList) {
-            String[] data = AdminRequest.split(",");
-            int serial2= Integer.parseInt(data[0]);
-            String userName = data[1];
-            String password = data[2];
-            String email = data[3];
-            String role = data[4];
-            if (Serial==serial2) {
-                approvedAdmins.add(userName + "," + password + "," + email+ "," + role );
-                approvedAdmin = true;
-            }
-        }
-        if (approvedAdmin) {
-            try (BufferedWriter writer3 = new BufferedWriter(new FileWriter("User_info.txt", true))) {
-                for (String admin : approvedAdmins) {
-                    writer3.newLine();
-                    writer3.write(admin);
-                    writer3.flush();
-                }
-                this.deleteRequest(Serial,AdminRequestList);
-                return true;
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        } return false;
-    }
-
-
-    public boolean deleteRequest(int serial3,List<String> AdminRequestList) {
-        List<String> approvedAdmins = new ArrayList<>();
-        boolean requestDeleted = false;
-        for(String AdminRequest : AdminRequestList) {
-            String[] data = AdminRequest.split(",");
-            int serial2= Integer.parseInt(data[0]);
-            String userName = data[1];
-            String password = data[2];
-            String email = data[3];
-            String role = data[4];
-            if (!(serial3==serial2)||requestDeleted) {
-                approvedAdmins.add(userName + "," + password + "," + email+ "," + role );
-            } else {
-                requestDeleted = true;
-            }
-        }
-
-        if (requestDeleted) {
-            try (BufferedWriter writer4 = new BufferedWriter(new FileWriter("AdminRequest.txt"))) {
-                for (String approvedAdmin: approvedAdmins) {
-                    writer4.write(approvedAdmin);
-                    writer4.newLine();
-                    writer4.flush();
-                } writer4.close();
-                return true;
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return false;
-    }
 
     public List<String> ViewApplicantInformation() {
         List<String> ApplicantList = new ArrayList<>();
@@ -361,6 +272,186 @@ public class Admin extends User {
                     writer7.newLine();
                     writer7.flush();
                 } writer7.close();
+                return true;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return false;
+    }
+
+    public List<String> viewNewJobProviderRequests(){
+        List<String> JobProviderRequestList = new ArrayList<>();
+        String line;
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
+                "JobProviderRequest.txt"))) {
+            System.out.println("================================================================================================");
+            System.out.println("| S.No | Name                          | Web Address                                 | Role          |");
+            System.out.println("================================================================================================");
+            int serial27=0;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(",");
+                String companyName = data[4];
+                String webAddress = data[5];
+                String role = data[3];
+                serial27++;
+                System.out.printf("| %-4d | %-29s | %-37s | %-13s |%n",
+                        serial27, companyName, webAddress, role);
+                JobProviderRequestList.add(serial27+","+line);
+                System.out.println("================================================================================================");
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file" + e.getMessage());
+            e.printStackTrace();
+        }
+        return  JobProviderRequestList;
+    }
+    public boolean approveJobProvider(int Serial,List<String> JobProviderRequestList) {
+        List<String> approvedJobProviders = new ArrayList<>();
+        boolean approvedJobProvider = false;
+        for(String JobProviderRequest : JobProviderRequestList) {
+            String[] data = JobProviderRequest.split(",");
+            int serial27= Integer.parseInt(data[0]);
+            String userName1 = data[1];
+            String password1 = data[2];
+            String email1 = data[3];
+            String role1 = data[4];
+            String companyName=data[5];
+            String webAddress=data[6];
+            if (Serial==serial27) {
+                approvedJobProviders.add(userName1 + "," + password1 + "," + email1+ "," + role1 + "," + companyName + "," + webAddress);
+                approvedJobProvider = true;
+            }
+        }
+        if (approvedJobProvider) {
+            try (BufferedWriter writer8 = new BufferedWriter(new FileWriter("User_info.txt", true))) {
+                for (String jobProvider : approvedJobProviders) {
+                    writer8.newLine();
+                    writer8.write(jobProvider);
+                    writer8.flush();
+                }
+                this.deleteJobProviderRequest(Serial,JobProviderRequestList);
+                return true;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } return false;
+    }
+
+
+    public boolean deleteJobProviderRequest(int serial3,List<String> JobProviderRequestList) {
+        List<String> approvedJobProviders = new ArrayList<>();
+        boolean jobproviderRequestDeleted = false;
+        for(String JobProviderRequest : JobProviderRequestList) {
+            String[] data = JobProviderRequest.split(",");
+            int serial27= Integer.parseInt(data[0]);
+            String userName = data[1];
+            String password = data[2];
+            String email = data[3];
+            String role = data[4];
+            String companyName=data[5];
+            String webAddress=data[6];
+            if (!(serial3==serial27)||jobproviderRequestDeleted) {
+                approvedJobProviders.add(userName + "," + password + "," + email+ "," + role + "," + companyName + "," + webAddress );
+            } else {
+                jobproviderRequestDeleted = true;
+            }
+        }
+        if (jobproviderRequestDeleted) {
+            try (BufferedWriter writer47 = new BufferedWriter(new FileWriter("JobProviderRequest.txt"))) {
+                for (String approvedJobProvider: approvedJobProviders) {
+                    writer47.write(approvedJobProvider);
+                    writer47.newLine();
+                    writer47.flush();
+                } writer47.close();
+                return true;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return false;
+    }
+
+
+    public List<String> viewApplicantRequests(){
+        List<String> ApplicantRequestList = new ArrayList<>();
+        String line;
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
+                "ApplicantRequest.txt"))) {
+            System.out.println("================================================================================================");
+            System.out.println("| S.No | Name                          | Email                                 | Role          |");
+            System.out.println("================================================================================================");
+            int serial28=0;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] data = line.split(",");
+                String userName = data[0];
+                String email = data[2];
+                String role = data[3];
+                serial28++;
+                System.out.printf("| %-4d | %-29s | %-37s | %-13s |%n",
+                        serial28, userName, email, role);
+                ApplicantRequestList.add(serial28+","+line);
+                System.out.println("================================================================================================");
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file" + e.getMessage());
+            e.printStackTrace();
+        }
+        return  ApplicantRequestList;
+    }
+
+    public boolean approveApplicant(int Serial,List<String> ApplicantRequestList) {
+        List<String> approvedApplicants = new ArrayList<>();
+        boolean approvedApplicant = false;
+        for(String ApplicantRequest : ApplicantRequestList) {
+            String[] data = ApplicantRequest.split(",");
+            int serial28= Integer.parseInt(data[0]);
+            String userName1 = data[1];
+            String password1 = data[2];
+            String email1 = data[3];
+            String role1 = data[4];
+            if (Serial==serial28) {
+                approvedApplicants.add(userName1 + "," + password1 + "," + email1+ "," + role1 );
+                approvedApplicant = true;
+            }
+        }
+        if (approvedApplicant) {
+            try (BufferedWriter writer9 = new BufferedWriter(new FileWriter("User_info.txt", true))) {
+                for (String Applicant : approvedApplicants) {
+                    writer9.newLine();
+                    writer9.write(Applicant);
+                    writer9.flush();
+                }
+                this.deleteApplicantRequest(Serial,ApplicantRequestList);
+                return true;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } return false;
+    }
+    public boolean deleteApplicantRequest(int serial3,List<String> ApplicantRequestList) {
+        List<String> approvedApplicants = new ArrayList<>();
+        boolean ApplicantRequestDeleted = false;
+        for(String JobProviderRequest : ApplicantRequestList) {
+            String[] data = JobProviderRequest.split(",");
+            int serial28= Integer.parseInt(data[0]);
+            String userName = data[1];
+            String password = data[2];
+            String email = data[3];
+            String role = data[4];
+            if (!(serial3==serial28)||ApplicantRequestDeleted) {
+                approvedApplicants.add(userName + "," + password + "," + email+ "," + role );
+            } else {
+                ApplicantRequestDeleted = true;
+            }
+        }
+        if (ApplicantRequestDeleted) {
+            try (BufferedWriter writer48 = new BufferedWriter(new FileWriter("ApplicantRequest.txt"))) {
+                for (String approvedApplicant: approvedApplicants) {
+                    writer48.write(approvedApplicant);
+                    writer48.newLine();
+                    writer48.flush();
+                } writer48.close();
                 return true;
             } catch (IOException e) {
                 throw new RuntimeException(e);
