@@ -42,7 +42,7 @@ public class Resume {
     }
 
     public boolean generateResume(String email) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Applicant_info.txt", true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt", true))) {
             writer.write(PersonalInformation.toFileString()+","+email+ "," +
                     EducationalInformation.toFileString()+","+
                     AdditionalInformation.toFileString());
@@ -57,7 +57,7 @@ public class Resume {
 
     public boolean showResume(String email) {
         boolean found = false;
-        try (BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
 
@@ -69,34 +69,35 @@ public class Resume {
                             System.out.println("                       RESUME");
                             System.out.println("=====================================================\n");
                             System.out.println("\n-------------   PERSONAL INFORMATION   -------------\n");
-                            System.out.println("Name                       : " + resumeList[0] +"\n");
-                            System.out.println("Father's Name              : " + resumeList[1] +"\n");
-                            System.out.println("Mother's Name              : " + resumeList[2] +"\n");
-                            System.out.println("Date of Birth              : " + resumeList[3] +"\n");
-                            System.out.println("Nationality                : " + resumeList[4] +"\n");
-                            System.out.println("Religion                   : " + resumeList[5] +"\n");
-                            System.out.println("Gender                     : " + resumeList[6] +"\n");
-                            System.out.println("Phone Number               : " + resumeList[7] +"\n");
-                            System.out.println("Address                    : " + resumeList[8] +"\n");
-                            System.out.println("National ID                : " + resumeList[9] +"\n");
-                            System.out.println("Email                      : " + resumeList[10] +"\n");
+                            System.out.println("Name                         : " + resumeList[0] +"\n");
+                            System.out.println("Father's Name                : " + resumeList[1] +"\n");
+                            System.out.println("Mother's Name                : " + resumeList[2] +"\n");
+                            System.out.println("Date of Birth                : " + resumeList[3] +"\n");
+                            System.out.println("Nationality                  : " + resumeList[4] +"\n");
+                            System.out.println("Religion                     : " + resumeList[5] +"\n");
+                            System.out.println("Gender                       : " + resumeList[6] +"\n");
+                            System.out.println("Phone Number                 : " + resumeList[7] +"\n");
+                            System.out.println("Address                      : " + resumeList[8] +"\n");
+                            System.out.println("National ID                  : " + resumeList[9] +"\n");
+                            System.out.println("Email                        : " + resumeList[10] +"\n");
                             System.out.println("\n------------   EDUCATIONAL INFORMATION   ------------\n");
-                            System.out.println("School Name                : " + resumeList[11] +"\n");
-                            System.out.println("Passing Year(SSC/O Level)  : " + resumeList[12] +"\n");
-                            System.out.println("SSC/O Level Result         : " + resumeList[13] +"\n");
-                            System.out.println("College Name               : " + resumeList[14] +"\n");
-                            System.out.println("Passing Year (HSC/A Level) : " + resumeList[15] +"\n");
-                            System.out.println("HSC/A Level Result         : " + resumeList[16] +"\n");
-                            System.out.println("University Name            : " + resumeList[17] +"\n");
-                            System.out.println("Department                 : " + resumeList[18] +"\n");
-                            System.out.println("Undergraduate Degree       : " + resumeList[19] +"\n");
-                            System.out.println("Undergraduate CGPA         : " + resumeList[20] +"\n");
-                            System.out.println("Postgraduate Degree        : " + resumeList[21] +"\n");
-                            System.out.println("postgraduate CGPA          : " + resumeList[22] +"\n");
+                            System.out.println("School Name                  : " + resumeList[11] +"\n");
+                            System.out.println("Passing Year(SSC/O Level)    : " + resumeList[12] +"\n");
+                            System.out.println("SSC/O Level Result           : " + resumeList[13] +"\n");
+                            System.out.println("College Name                 : " + resumeList[14] +"\n");
+                            System.out.println("Passing Year (HSC/A Level)   : " + resumeList[15] +"\n");
+                            System.out.println("HSC/A Level Result           : " + resumeList[16] +"\n");
+                            System.out.println("University Name              : " + resumeList[17] +"\n");
+                            System.out.println("Department                   : " + resumeList[18] +"\n");
+                            System.out.println("Undergraduate Degree         : " + resumeList[19] +"\n");
+                            System.out.println("Undergraduate CGPA           : " + resumeList[20] +"\n");
+                            System.out.println("Postgraduate Degree          : " + resumeList[21] +"\n");
+                            System.out.println("Postgraduate CGPA            : " + resumeList[22] +"\n");
+                            System.out.println("Extra Educational Information: " + resumeList[23] +"\n");
                             System.out.println("\n------------   ADDITIONAL INFORMATION   ------------\n");
-                            System.out.println("Experience                 : " + resumeList[23] +"\n");
-                            System.out.println("Hobbies                    : " + resumeList[24] +"\n");
-                            System.out.println("Skills                     : " + resumeList[25] +"\n");
+                            System.out.println("Experience                   : " + resumeList[24] +"\n");
+                            System.out.println("Hobbies                      : " + resumeList[25] +"\n");
+                            System.out.println("Skills                       : " + resumeList[26] +"\n");
                             System.out.println("=====================================================\n");
 
 
@@ -120,7 +121,7 @@ public class Resume {
         List<String> updatedLines = new ArrayList<>();
         boolean found = false;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
             String line;
 
             while ((line = reader.readLine()) != null) {
@@ -161,20 +162,26 @@ public class Resume {
                         }
                         case 6:
                         {
-                            System.out.print("Enter Experience: ");
+                            System.out.println("Enter Extra Educational Information: ");
                             resumeList[23] = scanner.nextLine();
                             break;
                         }
                         case 7:
                         {
-                            System.out.print("Enter Skills: ");
+                            System.out.print("Enter Experience: ");
                             resumeList[24] = scanner.nextLine();
                             break;
                         }
                         case 8:
                         {
-                            System.out.print("Enter Hobbies: ");
+                            System.out.print("Enter Skills: ");
                             resumeList[25] = scanner.nextLine();
+                            break;
+                        }
+                        case 9:
+                        {
+                            System.out.print("Enter Hobbies: ");
+                            resumeList[26] = scanner.nextLine();
                             break;
                         }
                         default:
@@ -194,7 +201,7 @@ public class Resume {
             e.printStackTrace();
         }
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Applicant_info.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
             for (String updatedLine : updatedLines) {
                 writer.write(updatedLine);
                 writer.newLine();

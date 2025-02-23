@@ -618,6 +618,10 @@ public class Main {
             Scanner sc59 = new Scanner(System.in);
             String postgradCGPA = sc59.nextLine();
 
+            System.out.println("Extra Educational Information:  ");
+            Scanner sc80 = new Scanner(System.in);
+            String extraInformation = sc80.nextLine();
+
             System.out.println("===============   ADDITIONAL INFORMATION   ===============");
             System.out.println("Experience: ");
             Scanner sc60 = new Scanner(System.in);
@@ -634,7 +638,7 @@ public class Main {
             System.out.println("=======================================");
 
             PersonalInformation personalInformation = new PersonalInformation(name, fatherName, motherName, dateOfBirth, nationality, religion, gender, phoneNumber, address, nationalID);
-            EducationalInformation educationalInformation = new EducationalInformation(name, schoolName, passingYear, sscOLevelResult, collegeName, passingYearHSC, hscALevelResult, universityName, department, undergraduateDegree, undergradCGPA, postgraduateDegree, postgradCGPA);
+            EducationalInformation educationalInformation = new EducationalInformation(name, schoolName, passingYear, sscOLevelResult, collegeName, passingYearHSC, hscALevelResult, universityName, department, undergraduateDegree, undergradCGPA, postgraduateDegree, postgradCGPA, extraInformation);
             AdditionalInformation additionalInformation = new AdditionalInformation(name, experince, hobbies, skills);
             Resume resume = new Resume(personalInformation, educationalInformation, additionalInformation);
             applicant = new Applicant(user.getUserName(), user.getPassword(), user.getEmail(), user.getRole(), resume);
@@ -726,11 +730,12 @@ public class Main {
             System.out.println("3. Email");
             System.out.println("4. Postgraduate Degree");
             System.out.println("5. Postgraduate CGPA");
-            System.out.println("6. Experience");
-            System.out.println("7. Skills");
-            System.out.println("8. Hobbies");
-            System.out.println("9. Go Back");
-            System.out.println("10. Logout");
+            System.out.println("6. Extra Educational Information");
+            System.out.println("7. Experience");
+            System.out.println("8. Skills");
+            System.out.println("9. Hobbies");
+            System.out.println("10. Go Back");
+            System.out.println("11. Logout");
             System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
             sc.nextLine();
@@ -756,12 +761,12 @@ public class Main {
                     default -> System.out.println("Invalid selection. Try again.");
                 }
             }
-            else if(choice == 9){
+            else if(choice == 10){
                 System.out.println("Returning to Login Menu...");
                 System.out.println("//////////////////////////////////////////////");
                 updateConsole();
                 return;
-            } else if (choice == 10) {
+            } else if (choice == 11) {
                 logout();
             }else {
                 System.out.println("Invalid selection. Try again.");

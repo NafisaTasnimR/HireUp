@@ -138,7 +138,7 @@ public class Applicant extends User {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 26 && parts[10].equals(email) ) {
+                if (parts.length == 27 && parts[10].equals(email) ) {
                     String name = parts[0];
                     String phoneNumber = parts[7];
                     String fileEmail = parts[10];
