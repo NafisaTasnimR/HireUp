@@ -1,6 +1,8 @@
 package HireUpMain;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static HireUpMain.Utility.formatData;
@@ -94,21 +96,6 @@ public class User {
         } return false;
     }
 
-    public boolean adminRegistrationRequest(User user) {
-        try (BufferedWriter bufferedWriter1 = new BufferedWriter(
-                new FileWriter("AdminRequest.txt",true))) {
-            bufferedWriter1.newLine();
-            bufferedWriter1.write(formatData(user.getUserName()) + "," + user.getPassword() + "," +user.getEmail() +
-                    "," + formatData(user.getRole()));
-            bufferedWriter1.flush();
-            bufferedWriter1.close();
-            return true;
-        } catch (IOException e) {
-            System.err.println("Error in file writing." + e.getMessage());
-            e.printStackTrace();
-        }return false;
-    }
-
 
     public User userObject(String password, String email, String role) {
         try (BufferedReader reader = new BufferedReader(new FileReader("User_Info.txt"))) {
@@ -133,7 +120,32 @@ public class User {
 
         return null;
     }
-
-
-
+    public boolean NewJobProviderRequest(User user,String companyName,String webAddress) {
+        try (BufferedWriter bufferedWriter2 = new BufferedWriter(
+                new FileWriter("JobProviderRequest.txt",true))) {
+            bufferedWriter2.newLine();
+            bufferedWriter2.write(formatData(user.getUserName()) + "," + user.getPassword() + "," +user.getEmail() +
+                    "," + formatData(user.getRole()) + "," + formatData(companyName)+ "," + formatData(webAddress));
+            bufferedWriter2.flush();
+            bufferedWriter2.close();
+            return true;
+        } catch (IOException e) {
+            System.err.println("Error in file writing." + e.getMessage());
+            e.printStackTrace();
+        }return false;
+    }
+    public boolean NewApplicantRequest(User user) {
+        try (BufferedWriter bufferedWriter3 = new BufferedWriter(
+                new FileWriter("ApplicantRequest.txt",true))) {
+            bufferedWriter3.newLine();
+            bufferedWriter3.write(formatData(user.getUserName()) + "," + user.getPassword() + "," +user.getEmail() +
+                    "," + formatData(user.getRole()));
+            bufferedWriter3.flush();
+            bufferedWriter3.close();
+            return true;
+        } catch (IOException e) {
+            System.err.println("Error in file writing." + e.getMessage());
+            e.printStackTrace();
+        }return false;
+    }
 }
