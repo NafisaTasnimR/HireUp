@@ -2,6 +2,7 @@ package HireUpMain;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Admin extends User {
@@ -459,6 +460,103 @@ public class Admin extends User {
         }
         return false;
     }
+    public boolean processMultipleJobProviderRequests(List<Integer> serialNumbers, boolean approve, List<String> JobProviderRequestList) {
+        List<String> processedJobProviders = new ArrayList<>();
+        List<String> remainingJobProviders = new ArrayList<>();
+        boolean processed = false;
+
+        for (String jobProviderRequest : JobProviderRequestList) {
+            String[] data = jobProviderRequest.split(",");
+            int serial = Integer.parseInt(data[0]);
+
+            if (serialNumbers.contains(serial)) {
+                if (approve) {
+                    processedJobProviders.add(String.join(",", Arrays.copyOfRange(data, 1, data.length)));
+                }
+                processed = true;
+            } else {
+                remainingJobProviders.add(jobProviderRequest);
+            }
+        }
+
+        if (processed) {
+            if (approve) {
+                try (BufferedWriter multiplewriter = new BufferedWriter(new FileWriter("User_info.txt", true))) {
+                    for (String jobProvider : processedJobProviders) {
+                        multiplewriter.newLine();
+                        multiplewriter.write(jobProvider);
+                        multiplewriter.flush();
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            try (BufferedWriter writer23 = new BufferedWriter(new FileWriter("JobProviderRequest.txt"))) {
+                for (String remainingJobProvider : remainingJobProviders) {
+                    writer23.write(remainingJobProvider);
+                    writer23.newLine();
+                    writer23.flush();
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean processMultipleApplicantRequests(List<Integer> serialNumbers, boolean approve, List<String> ApplicantRequestList) {
+        List<String> processedApplicants = new ArrayList<>();
+        List<String> remainingApplicants = new ArrayList<>();
+        boolean processed = false;
+
+        for (String applicantRequest : ApplicantRequestList) {
+            String[] data = applicantRequest.split(",");
+            int serial = Integer.parseInt(data[0]);
+
+            if (serialNumbers.contains(serial)) {
+                if (approve) {
+                    processedApplicants.add(String.join(",", Arrays.copyOfRange(data, 1, data.length)));
+                }
+                processed = true;
+            } else {
+                remainingApplicants.add(applicantRequest);
+            }
+        }
+
+        if (processed) {
+            if (approve) {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter("User_info.txt", true))) {
+                    for (String applicant : processedApplicants) {
+                        writer.newLine();
+                        writer.write(applicant);
+                        writer.flush();
+                    }
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("ApplicantRequest.txt"))) {
+                for (String remainingApplicant : remainingApplicants) {
+                    writer.write(remainingApplicant);
+                    writer.newLine();
+                    writer.flush();
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+
 
 
 

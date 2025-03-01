@@ -2,8 +2,10 @@ package HireUpMain;
 
 import java.io.Console;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import static HireUpMain.Utility.isValidPhoneNumber;
 import static HireUpMain.Utility.updateConsole;
@@ -1267,7 +1269,7 @@ public class Main {
         }
     }
 
-    private static void applicantRequestOption(Scanner sc, Admin admin) {
+    /*private static void applicantRequestOption(Scanner sc, Admin admin) {
         while (true) {
             System.out.println("=========================================Applicant Requests========================================");
             List<String> applicantRequests = admin.viewApplicantRequests();
@@ -1335,8 +1337,8 @@ public class Main {
                 default -> System.out.println("Invalid selection. Try again.");
             }
         }
-    }
-    private static void jobProviderRequestOption(Scanner sc, Admin admin) {
+    }*/
+    /*private static void jobProviderRequestOption(Scanner sc, Admin admin) {
         while (true) {
             System.out.println("=========================================Job Provider Requests========================================");
             List<String> jobProviderRequests = admin.viewNewJobProviderRequests();
@@ -1404,7 +1406,97 @@ public class Main {
                 default -> System.out.println("Invalid selection. Try again.");
             }
         }
+    }*/
+
+    private static void jobProviderRequestOption(Scanner sc, Admin admin) {
+        while (true) {
+            System.out.println("=========================================Job Provider Requests========================================");
+            List<String> jobProviderRequests = admin.viewNewJobProviderRequests();
+            System.out.println("Enter serial numbers (comma-separated) for selection: ");
+
+            String input = sc.nextLine();
+            List<Integer> serialNumbers = Arrays.stream(input.split(","))
+                    .map(String::trim)
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+
+            System.out.println("***************  Approval  ***************");
+            System.out.println("1. Approve ");
+            System.out.println("2. Reject ");
+            System.out.println("3. Go Back");
+            System.out.println("4. Logout");
+            System.out.println("Enter your selection: ");
+
+            int selection = sc.nextInt();
+            sc.nextLine();
+
+            switch (selection) {
+                case 1 -> {
+                    admin.processMultipleJobProviderRequests(serialNumbers, true, jobProviderRequests);
+                    System.out.println("Approved");
+                }
+                case 2 -> {
+                    admin.processMultipleJobProviderRequests(serialNumbers, false, jobProviderRequests);
+                    System.out.println("Rejected");
+                }
+                case 3 -> {
+                    System.out.println("Returning to Login Menu...");
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    return;
+                }
+                case 4 -> logout();
+                default -> System.out.println("Invalid selection. Try again.");
+            }
+        }
     }
+
+
+
+    private static void applicantRequestOption(Scanner sc, Admin admin) {
+        while (true) {
+            System.out.println("=========================================Applicant Requests========================================");
+            List<String> applicantRequests = admin.viewApplicantRequests();
+
+            System.out.println("Enter serial numbers (comma-separated) for selection: ");
+            String input = sc.nextLine();
+            List<Integer> serialNumbers = Arrays.stream(input.split(","))
+                    .map(String::trim)
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+
+            System.out.println("***************  Approval  ***************");
+            System.out.println("1. Approve ");
+            System.out.println("2. Reject ");
+            System.out.println("3. Go Back");
+            System.out.println("4. Logout");
+            System.out.println("Enter your selection: ");
+
+            int selection = sc.nextInt();
+            sc.nextLine();
+
+            switch (selection) {
+                case 1 -> {
+                    admin.processMultipleApplicantRequests(serialNumbers, true, applicantRequests);
+                    System.out.println("Approved");
+                }
+                case 2 -> {
+                    admin.processMultipleApplicantRequests(serialNumbers, false, applicantRequests);
+                    System.out.println("Rejected");
+                }
+                case 3 -> {
+                    System.out.println("Returning to Login Menu...");
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    return;
+                }
+                case 4 -> logout();
+                default -> System.out.println("Invalid selection. Try again.");
+            }
+        }
+    }
+
+
 }
 
 
