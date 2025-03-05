@@ -2,21 +2,18 @@ package HireUpMain;
 
 import static HireUpMain.Utility.formatData;
 
-public class AdditionalInformation extends PersonalInformation{
-    private String name;
+public class AdditionalInformation {
     private String experience;
     private String hobby;
     private String Skills;
 
-    public AdditionalInformation(String name,String experience, String hobby, String Skills) {
-        super(name);
+    public AdditionalInformation(String experience, String hobby, String Skills) {
+
         this.experience = experience;
         this.hobby = hobby;
         this.Skills = Skills;
     }
-    public String getName() {
-        return name;
-    }
+
     public String getExperience() {
         return experience;
     }
@@ -27,9 +24,7 @@ public class AdditionalInformation extends PersonalInformation{
         return Skills;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+
     public void setExperience(String experience) {
         this.experience = experience;
     }

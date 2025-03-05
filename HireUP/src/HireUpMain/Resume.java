@@ -16,17 +16,16 @@ public class Resume {
     public Resume() {}
 
     public Resume(PersonalInformation personalInformation, EducationalInformation educationalInformation, AdditionalInformation additionalInformation) {
-        PersonalInformation = personalInformation;
-        EducationalInformation = educationalInformation;
-        AdditionalInformation = additionalInformation;
+        this.PersonalInformation = personalInformation;
+        this.EducationalInformation = educationalInformation;
+        this.AdditionalInformation = additionalInformation;
     }
+
 
     public PersonalInformation getPersonalInformation() {
         return PersonalInformation;
     }
-    public EducationalInformation getEducationalInformation() {
-        return EducationalInformation;
-    }
+
     public AdditionalInformation getAdditionalInformation() {
         return AdditionalInformation;
     }
@@ -65,9 +64,9 @@ public class Resume {
                         String applicantEmail = resumeList[10];
                         if (Objects.equals(applicantEmail, email)) {
 
-                            System.out.println("\n=====================================================");
+                            System.out.println("\n================================================================");
                             System.out.println("                       RESUME");
-                            System.out.println("=====================================================\n");
+                            System.out.println("==================================================================\n");
                             System.out.println("\n-------------   PERSONAL INFORMATION   -------------\n");
                             System.out.println("Name                         : " + resumeList[0] +"\n");
                             System.out.println("Father's Name                : " + resumeList[1] +"\n");
@@ -81,24 +80,24 @@ public class Resume {
                             System.out.println("National ID                  : " + resumeList[9] +"\n");
                             System.out.println("Email                        : " + resumeList[10] +"\n");
                             System.out.println("\n------------   EDUCATIONAL INFORMATION   ------------\n");
-                            System.out.println("School Name                  : " + resumeList[11] +"\n");
-                            System.out.println("Passing Year(SSC/O Level)    : " + resumeList[12] +"\n");
-                            System.out.println("SSC/O Level Result           : " + resumeList[13] +"\n");
-                            System.out.println("College Name                 : " + resumeList[14] +"\n");
-                            System.out.println("Passing Year (HSC/A Level)   : " + resumeList[15] +"\n");
-                            System.out.println("HSC/A Level Result           : " + resumeList[16] +"\n");
-                            System.out.println("University Name              : " + resumeList[17] +"\n");
-                            System.out.println("Department                   : " + resumeList[18] +"\n");
-                            System.out.println("Undergraduate Degree         : " + resumeList[19] +"\n");
-                            System.out.println("Undergraduate CGPA           : " + resumeList[20] +"\n");
-                            System.out.println("Postgraduate Degree          : " + resumeList[21] +"\n");
-                            System.out.println("Postgraduate CGPA            : " + resumeList[22] +"\n");
-                            System.out.println("Extra Educational Information: " + resumeList[23] +"\n");
+                            System.out.println("=================================================================");
+                            System.out.println("| Exam name | Institution Name | Subject | Result | Passing Year |");
+                            System.out.println("=================================================================");
+
+                            for (int i = 11; i < 41; i += 5) {
+                                if (!resumeList[i].equals("n/a")) {
+                                    System.out.printf("| %-9s | %-16s | %-8s | %-6s | %-12s |\n",
+                                            resumeList[i], resumeList[i + 1], resumeList[i + 2], resumeList[i + 3], resumeList[i + 4]);
+                                }
+                            }
+
+                            System.out.println("=================================================================");
+
                             System.out.println("\n------------   ADDITIONAL INFORMATION   ------------\n");
-                            System.out.println("Experience                   : " + resumeList[24] +"\n");
-                            System.out.println("Hobbies                      : " + resumeList[25] +"\n");
-                            System.out.println("Skills                       : " + resumeList[26] +"\n");
-                            System.out.println("=====================================================\n");
+                            System.out.println("Experience                   : " + resumeList[41] +"\n");
+                            System.out.println("Hobbies                      : " + resumeList[42] +"\n");
+                            System.out.println("Skills                       : " + resumeList[43] +"\n");
+                            System.out.println("===============================================================\n");
 
 
                             found = true;
@@ -116,100 +115,133 @@ public class Resume {
         return false;
     }
 
-    public void updateInfo(String email,int choice) {
-        Scanner scanner = new Scanner(System.in);
-        List<String> updatedLines = new ArrayList<>();
-        boolean found = false;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
-            String line;
 
-            while ((line = reader.readLine()) != null) {
-                String[] resumeList = line.split(",");
-                if (resumeList[10].equals(email)) {
-                    found = true;
+     public void updateInfo(String email,int choice) {
+         Scanner scanner = new Scanner(System.in);
+         List<String> updatedLines = new ArrayList<>();
+         boolean found = false;
 
-                    switch (choice) {
-                        case 1:
-                        {
-                            System.out.print("Enter new Phone Number: ");
-                            resumeList[7] = scanner.nextLine();
-                            break;
-                        }
-                        case 2:
-                        {
-                            System.out.print("Enter new Address: ");
-                            resumeList[8] = scanner.nextLine();
-                            break;
-                        }
-                        case 3:
-                        {
-                            System.out.print("Enter new Email: ");
-                            resumeList[10] = scanner.nextLine();
-                            break;
-                        }
-                        case 4:
-                        {
-                            System.out.print("Enter Postgraduate Degree: ");
-                            resumeList[21] = scanner.nextLine();
-                            break;
-                        }
-                        case 5:
-                        {
-                            System.out.print("Enter Postgraduate CGPA: ");
-                            resumeList[22] = scanner.nextLine();
-                            break;
-                        }
-                        case 6:
-                        {
-                            System.out.println("Enter Extra Educational Information: ");
-                            resumeList[23] = scanner.nextLine();
-                            break;
-                        }
-                        case 7:
-                        {
-                            System.out.print("Enter Experience: ");
-                            resumeList[24] = scanner.nextLine();
-                            break;
-                        }
-                        case 8:
-                        {
-                            System.out.print("Enter Skills: ");
-                            resumeList[25] = scanner.nextLine();
-                            break;
-                        }
-                        case 9:
-                        {
-                            System.out.print("Enter Hobbies: ");
-                            resumeList[26] = scanner.nextLine();
-                            break;
-                        }
-                        default:
-                            System.out.println("Invalid choice. No changes made.");
-                    }
+         try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
+             String line;
 
-                    line = String.join(",", resumeList);
-                }
-                updatedLines.add(line);
-            }
+             while ((line = reader.readLine()) != null) {
+                 String[] resumeList = line.split(",");
 
-            if (!found) {
-                System.out.println("Resume not found for the given email.");
-                return;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                 if (resumeList[10].equals(email)) {
+                     found = true;
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
-            for (String updatedLine : updatedLines) {
-                writer.write(updatedLine);
-                writer.newLine();
-            }
-            System.out.println("Information updated successfully!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                     switch (choice) {
+                         case 1:
+                             System.out.print("Enter new Phone Number: ");
+                             resumeList[7] = scanner.nextLine();
+                             break;
+                         case 2:
+                             System.out.print("Enter new Address: ");
+                             resumeList[8] = scanner.nextLine();
+                             break;
+                         case 3:
+                             System.out.print("Enter new Email: ");
+                             resumeList[10] = scanner.nextLine();
+                             break;
+                         case 4:
+                             // Append new Educational Information without clearing existing ones
+                             EducationalInformation educationalInformation = new EducationalInformation();
+                             System.out.println("Update Educational Information");
+
+                             int eduIndex = 11; // Starting index for education records in the file
+                             int currentCount = 0;
+
+                             // Count existing educational entries
+                             for (int i = 0; i < 6; i++) {
+                                 int startIdx = eduIndex + (i * 5);
+                                 if (!resumeList[startIdx].equals("n/a")) {
+                                     educationalInformation.addEducation(resumeList[startIdx], resumeList[startIdx + 1], resumeList[startIdx + 2], resumeList[startIdx + 3], resumeList[startIdx + 4]);
+                                     currentCount++;
+                                 }
+                             }
+
+                             while (true) {
+                                 if (currentCount >= 6) {
+                                     System.out.println("Maximum 6 educational entries allowed.");
+                                     break;
+                                 }
+
+                                 System.out.println("\n1. Add Educational Info");
+                                 System.out.println("2. Done");
+                                 int eduChoice = scanner.nextInt();
+                                 scanner.nextLine();
+
+                                 if (eduChoice == 1) {
+                                     System.out.print("Enter Degree Name: ");
+                                     String degree = scanner.nextLine();
+
+                                     System.out.print("Enter Institution Name: ");
+                                     String institution = scanner.nextLine();
+
+                                     System.out.print("Enter Subject: ");
+                                     String subject = scanner.nextLine();
+
+                                     System.out.print("Enter Result: ");
+                                     String result = scanner.nextLine();
+
+                                     System.out.print("Enter Passing Year: ");
+                                     String year = scanner.nextLine();
+
+                                     educationalInformation.addEducation(degree, institution, subject, result, year);
+                                     currentCount++;
+                                 } else if (eduChoice == 2) {
+                                     break;
+                                 } else {
+                                     System.out.println("Invalid choice. Try again.");
+                                 }
+                             }
+
+                             // Store updated educational information in the resumeList
+                             String[] eduArray = educationalInformation.toFileString().split(",");
+                             for (int i = 0; i < eduArray.length; i++) {
+                                 resumeList[eduIndex + i] = eduArray[i];
+                             }
+                             break;
+
+                         case 5:
+                             System.out.print("Enter Experience: ");
+                             resumeList[41] = scanner.nextLine();
+                             break;
+                         case 6:
+                             System.out.print("Enter Skills: ");
+                             resumeList[42] = scanner.nextLine();
+                             break;
+                         case 7:
+                             System.out.print("Enter Hobbies: ");
+                             resumeList[43] = scanner.nextLine();
+                             break;
+                         default:
+                             System.out.println("Invalid choice. No changes made.");
+                     }
+
+                     line = String.join(",", resumeList);
+                 }
+                 updatedLines.add(line);
+             }
+
+             if (!found) {
+                 System.out.println("Resume not found for the given email.");
+                 return;
+             }
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+
+         try (BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
+             for (String updatedLine : updatedLines) {
+                 writer.write(updatedLine);
+                 writer.newLine();
+             }
+             System.out.println("Information updated successfully!");
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
     }
     public boolean isCreated(String email)
     {
@@ -227,6 +259,5 @@ public class Resume {
         }
         return false;
     }
-
 
 }
