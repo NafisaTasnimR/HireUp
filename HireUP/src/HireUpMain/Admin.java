@@ -2,6 +2,7 @@ package HireUpMain;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Admin extends User {
@@ -58,40 +59,6 @@ public class Admin extends User {
         return JobProviderList;
     }
 
-
-    public boolean verify(int serial,List<String> JobProviderList) {
-        List<String> VerifiedCompanies = new ArrayList<>();
-        boolean verifiedCompany = false;
-        for(String JobProvider : JobProviderList) {
-            String[] data = JobProvider.split(",");
-            int serial1= Integer.parseInt(data[0]);
-            String companyName = data[1];
-            String Weblink = data[2];
-            String status = (data.length > 3) ? data[3] : "Not Verified";
-            if (serial==serial1) {
-                VerifiedCompanies.add(companyName + "," + Weblink + "," + "Verified");
-                verifiedCompany = true;
-            }else if ("Verified".equals(status)) {
-                VerifiedCompanies.add(companyName + "," + Weblink + "," + "Verified");
-            } else {
-                VerifiedCompanies.add(companyName + "," + Weblink + "," + "Not Verified");
-            }
-        }
-        if (verifiedCompany) {
-            try (BufferedWriter writer2 = new BufferedWriter(new FileWriter("JobProvider_info.txt"))) {
-                for (String company : VerifiedCompanies) {
-                    writer2.write(company);
-                    writer2.newLine();
-                    writer2.flush();
-                }
-                writer2.close();
-                return true;
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return false;
-    }
 
     public boolean delete(int serial,List<String> JobProviderList) {
         List<String> JobProviderInfo = new ArrayList<>();
@@ -161,65 +128,6 @@ public class Admin extends User {
         return ApplicantList;
     }
 
-    public boolean verifyApplicant(int serial,List<String> ApplicantList) {
-        List<String> VerifiedApplicants = new ArrayList<>();
-        boolean verifiedApplicant = false;
-        for(String JobProvider : ApplicantList) {
-            String[] data = JobProvider.split(",");
-            int applicantSerial= Integer.parseInt(data[0]);
-            String Name = data[1];
-            String FatherName = data[2];
-            String MotherName = data[3];
-            String DateOfBirth = data[4];
-            String Nationality = data[5];
-            String Religion = data[6];
-            String Gender = data[7];
-            String PhoneNumber = data[8];
-            String Address = data[9];
-            String NID = data[10];
-            String Email = data[11];
-            String SchoolName = data[12];
-            String PassingYearSSC= data[13];
-            String SSCResult = data[14];
-            String CollegeName = data[15];
-            String PassingYearHSC= data[16];
-            String HSCResult = data[17];
-            String UniversityName = data[18];
-            String DepartmentName = data[19];
-            String UnderGraduateDegree = data[20];
-            String UnderGraduateCGPA = data[21];
-            String PostGraduateDegree = data[22];
-            String PostGraduateCGPA = data[23];
-            String ExtraInformation = data[24];
-            String Experience = data[25];
-            String Hobby = data[26];
-            String Skills = data[27];
-            String status =  (data.length > 28) ? data[28] : "Not Verified";
-            if (serial ==applicantSerial)  {
-                VerifiedApplicants.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + ExtraInformation + "," + Experience + "," + Hobby + "," + Skills + "," + "Verified");
-                verifiedApplicant=true;
-            }else if ("Verified".equals(status)) {
-                VerifiedApplicants.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + ExtraInformation + "," + Experience + "," + Hobby + "," + Skills + "," + "Verified");
-            } else {
-                VerifiedApplicants.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + ExtraInformation + "," + Experience + "," + Hobby + "," + Skills + "," + "Not Verified");
-            }
-        }
-        if (verifiedApplicant) {
-            try (BufferedWriter writer5 = new BufferedWriter(new FileWriter("Applicant_info.txt"))) {
-                for (String applicant : VerifiedApplicants) {
-                    writer5.write(applicant);
-                    writer5.newLine();
-                    writer5.flush();
-                }
-                writer5.close();
-                return true;
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return false;
-    }
-
     public boolean deleteApplicant(int serial,List<String> ApplicantList) {
         List<String> ApplicantInfo = new ArrayList<>();
         boolean applicantDeleted = false;
@@ -285,9 +193,9 @@ public class Admin extends User {
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
                 "JobProviderRequest.txt"))) {
-            System.out.println("================================================================================================");
+            System.out.println("======================================================================================================");
             System.out.println("| S.No | Name                          | Web Address                                 | Role          |");
-            System.out.println("================================================================================================");
+            System.out.println("======================================================================================================");
             int serial27=0;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
@@ -298,7 +206,7 @@ public class Admin extends User {
                 System.out.printf("| %-4d | %-29s | %-37s | %-13s |%n",
                         serial27, companyName, webAddress, role);
                 JobProviderRequestList.add(serial27+","+line);
-                System.out.println("================================================================================================");
+            System.out.println("=====================================================================================================");
             }
         } catch (IOException e) {
             System.err.println("Error reading file" + e.getMessage());
@@ -391,7 +299,7 @@ public class Admin extends User {
                 System.out.printf("| %-4d | %-29s | %-37s | %-13s |%n",
                         serial28, userName, email, role);
                 ApplicantRequestList.add(serial28+","+line);
-                System.out.println("================================================================================================");
+            System.out.println("================================================================================================");
             }
         } catch (IOException e) {
             System.err.println("Error reading file" + e.getMessage());
@@ -459,6 +367,109 @@ public class Admin extends User {
         }
         return false;
     }
+    public boolean processMultipleJobProviderRequests(List<Integer> serialNumbers, boolean approve, List<String> JobProviderRequestList) {
+        List<String> processedJobProviders = new ArrayList<>();
+        List<String> remainingJobProviders = new ArrayList<>();
+        boolean processed = false;
+
+        for (String jobProviderRequest : JobProviderRequestList) {
+            String[] data = jobProviderRequest.split(",");
+            int serial = Integer.parseInt(data[0]);
+
+            if (serialNumbers.contains(serial)) {
+                if (approve) {
+                    processedJobProviders.add(String.join(",", Arrays.copyOfRange(data, 1, data.length)));
+                }
+                processed = true;
+            } else {
+                // FIX: Exclude serial when adding to remainingJobProviders
+                String remainingData = String.join(",", Arrays.copyOfRange(data, 1, data.length));
+                remainingJobProviders.add(remainingData);
+            }
+        }
+
+        if (processed) {
+            if (approve) {
+                try (BufferedWriter multiplewriter = new BufferedWriter(new FileWriter("User_info.txt", true))) {
+                    for (String jobProvider : processedJobProviders) {
+                        multiplewriter.write(jobProvider.trim());
+                        multiplewriter.newLine();
+                    }
+                    multiplewriter.flush();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            try (BufferedWriter writer23 = new BufferedWriter(new FileWriter("JobProviderRequest.txt"))) {
+                for (String remainingJobProvider : remainingJobProviders) {
+                    writer23.write(remainingJobProvider.trim());
+                    writer23.newLine();
+                }
+                writer23.flush();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean processMultipleApplicantRequests(List<Integer> serialNumbers, boolean approve, List<String> ApplicantRequestList) {
+        List<String> processedApplicants = new ArrayList<>();
+        List<String> remainingApplicants = new ArrayList<>();
+        boolean processed = false;
+
+        for (String applicantRequest : ApplicantRequestList) {
+            String[] data = applicantRequest.split(",");
+            int serial = Integer.parseInt(data[0]);
+
+            if (serialNumbers.contains(serial)) {
+                if (approve) {
+                    // Exclude serial number when approving
+                    processedApplicants.add(String.join(",", Arrays.copyOfRange(data, 1, data.length)));
+                }
+                processed = true;
+            } else {
+                // Exclude serial number from remaining applicants
+                String remainingData = String.join(",", Arrays.copyOfRange(data, 1, data.length));
+                remainingApplicants.add(remainingData);
+            }
+        }
+
+        if (processed) {
+            if (approve) {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter("User_info.txt", true))) {
+                    for (String applicant : processedApplicants) {
+                        writer.write(applicant.trim()); // Ensure no unnecessary spaces
+                        writer.newLine();
+                    }
+                    writer.flush();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            // Write updated remaining applicants to "ApplicantRequest.txt"
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("ApplicantRequest.txt"))) {
+                for (String remainingApplicant : remainingApplicants) {
+                    writer.write(remainingApplicant.trim());
+                    writer.newLine();
+                }
+                writer.flush();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+
 
 
 
