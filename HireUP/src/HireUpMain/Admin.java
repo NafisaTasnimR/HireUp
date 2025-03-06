@@ -37,47 +37,41 @@ public class Admin extends User {
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
                 "JobProvider_info.txt"))) {
-            System.out.println("===============================================================================================");
-            System.out.println("| S.No | Company Name                  | Weblink                               | Status       |");
-            System.out.println("===============================================================================================");
-            int serial1 =0;
+            System.out.println("======================================================================================");
+            System.out.println("| S.No | Company Name                        | Weblink                               |");
+            System.out.println("======================================================================================");
+            int serial1 = 0;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
                 String companyName = data[0];
                 String Weblink = data[1];
-                String status = (data.length > 2) ? data[2] : "";
                 serial1++;
-                System.out.printf("| %-4d | %-29s | %-37s | %-12s |%n",
-                        serial1, companyName, Weblink, status);
-                JobProviderList.add(serial1 + "," + line);
-                System.out.println("===============================================================================================");
+                System.out.printf("| %-4d | %-35s | %-37s |%n",
+                        serial1, companyName, Weblink);
+            System.out.println("--------------------------------------------------------------------------------------");
+                JobProviderList.add(serial1 + "," + companyName + "," + Weblink);
             }
         } catch (IOException e) {
-            System.err.println("Error reading file" + e.getMessage());
+            System.err.println("Error reading file: " + e.getMessage());
             e.printStackTrace();
         }
         return JobProviderList;
     }
 
 
-    public boolean delete(int serial,List<String> JobProviderList) {
+
+    public boolean delete(int serial, List<String> JobProviderList) {
         List<String> JobProviderInfo = new ArrayList<>();
         boolean dataDeleted = false;
-        for(String JobProvider : JobProviderList) {
+        for (String JobProvider : JobProviderList) {
             String[] data = JobProvider.split(",");
-            int serial1= Integer.parseInt(data[0]);
+            int serial1 = Integer.parseInt(data[0]);
             String companyName = data[1];
             String Weblink = data[2];
-            String status = (data.length > 3) ? data[3] : "Not Verified";
-            if (serial ==serial1)  {
+            if (serial == serial1) {
                 dataDeleted = true;
             } else {
-                if("Verified".equals(status)) {
-                    JobProviderInfo.add(companyName + "," + Weblink + "," + "Verified");
-                }
-                else{
-                    JobProviderInfo.add(companyName + "," + Weblink + "," + "Not Verified");
-                }
+                JobProviderInfo.add(companyName + "," + Weblink);
             }
         }
         if (dataDeleted) {
@@ -86,8 +80,7 @@ public class Admin extends User {
                     writer.write(jobprovider);
                     writer.newLine();
                     writer.flush();
-
-                }writer.close();
+                }
                 return true;
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -103,30 +96,29 @@ public class Admin extends User {
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
                 "Applicant_info.txt"))) {
-            System.out.println("=======================================================================================================================");
-            System.out.println("| S.No | Name                         | National ID          | Email                                 | Status         |");
-            System.out.println("=======================================================================================================================");
-
-            int applicantSerial =0;
+            System.out.println("=====================================================================================================");
+            System.out.println("| S.No | Name                           | National ID          | Email                               |");
+            System.out.println("=====================================================================================================");
+            int applicantSerial = 0;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
                 String Name = data[0];
                 String NID = data[9];
                 String Email = data[10];
-                String status = (data.length > 26) ? data[26] : "Not Verified";
                 applicantSerial++;
-                System.out.printf("| %-4d | %-28s | %-20s | %-37s | %-14s |%n",
-                        applicantSerial, Name, NID, Email, status);
-                    ApplicantList.add(applicantSerial+","+line);
-                System.out.println("=======================================================================================================================");
-
+                System.out.printf("| %-4d | %-30s | %-20s | %-35s |%n",
+                        applicantSerial, Name, NID, Email);
+                System.out.println("-----------------------------------------------------------------------------------------------------");
+                ApplicantList.add(applicantSerial + "," + Name + "," + NID + "," + Email);
             }
         } catch (IOException e) {
-            System.err.println("Error reading file" + e.getMessage());
+            System.err.println("Error reading file: " + e.getMessage());
             e.printStackTrace();
         }
         return ApplicantList;
     }
+
+
 
     public boolean deleteApplicant(int serial,List<String> ApplicantList) {
         List<String> ApplicantInfo = new ArrayList<>();

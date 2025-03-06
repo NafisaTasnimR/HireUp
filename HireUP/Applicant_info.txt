@@ -1,6 +1,6 @@
-lin,jack,mita,2003,bangladeshi,islam,female,12345,dhaka,577697,lin@gmail,lps,2019,5,rajuk,2022,5,iut,cse,bsc,3.70,N/A,N/A,2 year,coding,java,Not Verified
-preo,jack,mita,2003,bangladeshi,islam,female,67890,dhaka,577697,preo@gmail,lps,2019,5,rajuk,2022,5,iut,cse,bsc,3.89,N/A,N/A,7 year,coding,java,Not Verified
-nafisa,jack,mita,2003,bangladeshi,islam,female,12345,dhaka,577697,nafisa@gmail,lps,2019,5,rajuk,2022,5,iut,cse,bsc,3.69,msc,3.5,5year,coding,java,Not Verified
-lin,jack,mita,2003,bangladeshi,islam,female,0199433,pabna,577697,ar.com,lps,2019,5,rajuk,2022,5,iut,cse,bsc,3.7,msc,3.5,5year,reading,java,Verified
+lin,jack,mita,2003,bangladeshi,islam,female,12345,dhaka,577697,lin@gmail,lps,2019,5,rajuk,2022,5,iut,cse,bsc,3.70,N/A,N/A,2 year,coding,java
+preo,jack,mita,2003,bangladeshi,islam,female,67890,dhaka,577697,preo@gmail,lps,2019,5,rajuk,2022,5,iut,cse,bsc,3.89,N/A,N/A,7 year,coding,java
+nafisa,jack,mita,2003,bangladeshi,islam,female,12345,dhaka,577697,nafisa@gmail,lps,2019,5,rajuk,2022,5,iut,cse,bsc,3.69,msc,3.5,5year,coding,java
+lin,jack,mita,2003,bangladeshi,islam,female,0199433,pabna,577697,ar.com,lps,2019,5,rajuk,2022,5,iut,cse,bsc,3.7,msc,3.5,5year,reading,java
 Sanjana,G,Hg,hg,Bh,Jbh,Gh,01954476487,jhk,hj,s.com,Hsc,Vnc,Science,5,2017,Ssc,Vns,Science,5,2015,Bsc,Iut,Cse,3.6,2027,Msc,Iut,Cse,3.5,2029,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,5,F,G
 Mira,Abc,Nhj,jh,Jj,Hg,Jh,01765432123,iohu,098765432345,mira.com,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,6,Jhb,J
