@@ -584,58 +584,44 @@ public class Main {
 
             System.out.println("===============   EDUCATIONAL INFORMATION   ===============");
 
-            System.out.println("School Name: ");
+            EducationalInformation educationalInformation = new EducationalInformation();
 
-            Scanner sc49 = new Scanner(System.in);
-            String schoolName = sc49.nextLine();
+            while (true) {
+                System.out.println("\n1. Add Educational Info");
+                System.out.println("2. Done");
 
-            System.out.println("Passing Year(SSC/O Level): ");
-            Scanner sc50 = new Scanner(System.in);
-            String passingYear = sc50.nextLine();
+                int choice = sc.nextInt();
+                sc.nextLine();
 
-            System.out.println("SSC/O Level Result: ");
-            Scanner sc51 = new Scanner(System.in);
-            String sscOLevelResult = sc51.nextLine();
+                if (choice == 1) {
+                    if (educationalInformation.getEducationRecords().size() >= 6) {
+                        System.out.println("You can add up to 6 educational entries only.");
+                        continue;
+                    }
 
-            System.out.println("College Name: ");
-            Scanner sc52 = new Scanner(System.in);
-            String collegeName = sc52.nextLine();
+                    System.out.println("Enter Degree Name: ");
+                    String degree = sc.nextLine();
 
-            System.out.println("Passing Year (HSC/A Level): ");
-            Scanner sc53 = new Scanner(System.in);
-            String passingYearHSC = sc53.nextLine();
+                    System.out.println("Enter Institution Name: ");
+                    String institution = sc.nextLine();
 
-            System.out.println("HSC/A Level Result: ");
-            Scanner sc54 = new Scanner(System.in);
-            String hscALevelResult = sc54.nextLine();
+                    System.out.println("Enter Subject: ");
+                    String subject = sc.nextLine();
 
-            System.out.println("University Name: ");
-            Scanner sc55 = new Scanner(System.in);
-            String universityName = sc55.nextLine();
+                    System.out.println("Enter Result: ");
+                    String result = sc.nextLine();
 
-            System.out.println("Department: ");
-            Scanner dept = new Scanner(System.in);
-            String department = dept.nextLine();
+                    System.out.println("Enter Passing Year: ");
+                    String year = sc.nextLine();
 
-            System.out.println("Undergraduate Degree: ");
-            Scanner sc56 = new Scanner(System.in);
-            String undergraduateDegree = sc56.nextLine();
+                    educationalInformation.addEducation(degree, institution, subject, result, year);
+                } else if (choice == 2) {
+                    break;
+                } else {
+                    System.out.println("Invalid choice. Try again.");
+                }
+            }
 
-            System.out.println("UnderGraduate CGPA: ");
-            Scanner sc57 = new Scanner(System.in);
-            String undergradCGPA = sc57.nextLine();
-
-            System.out.println("Postgraduate Degree: ");
-            Scanner sc58 = new Scanner(System.in);
-            String postgraduateDegree = sc58.nextLine();
-
-            System.out.println("Postgraduate CGPA: ");
-            Scanner sc59 = new Scanner(System.in);
-            String postgradCGPA = sc59.nextLine();
-
-            System.out.println("Extra Educational Information:  ");
-            Scanner sc80 = new Scanner(System.in);
-            String extraInformation = sc80.nextLine();
 
             System.out.println("===============   ADDITIONAL INFORMATION   ===============");
             System.out.println("Experience: ");
@@ -653,8 +639,7 @@ public class Main {
             System.out.println("=======================================");
 
             PersonalInformation personalInformation = new PersonalInformation(name, fatherName, motherName, dateOfBirth, nationality, religion, gender, phoneNumber, address, nationalID);
-            EducationalInformation educationalInformation = new EducationalInformation(name, schoolName, passingYear, sscOLevelResult, collegeName, passingYearHSC, hscALevelResult, universityName, department, undergraduateDegree, undergradCGPA, postgraduateDegree, postgradCGPA, extraInformation);
-            AdditionalInformation additionalInformation = new AdditionalInformation(name, experince, hobbies, skills);
+            AdditionalInformation additionalInformation = new AdditionalInformation( experince, hobbies, skills);
             Resume resume = new Resume(personalInformation, educationalInformation, additionalInformation);
             applicant = new Applicant(user.getUserName(), user.getPassword(), user.getEmail(), user.getRole(), resume);
 
@@ -743,19 +728,17 @@ public class Main {
             System.out.println("1. Phone Number");
             System.out.println("2. Address");
             System.out.println("3. Email");
-            System.out.println("4. Postgraduate Degree");
-            System.out.println("5. Postgraduate CGPA");
-            System.out.println("6. Extra Educational Information");
-            System.out.println("7. Experience");
-            System.out.println("8. Skills");
-            System.out.println("9. Hobbies");
-            System.out.println("10. Go Back");
-            System.out.println("11. Logout");
+            System.out.println("4. Educational Information");
+            System.out.println("5. Experience");
+            System.out.println("6. Skills");
+            System.out.println("7. Hobby");
+            System.out.println("8. Go Back");
+            System.out.println("9. Logout");
             System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
             sc.nextLine();
 
-            if(choice>=1 && choice<=8)
+            if(choice>=1 && choice<=7)
             {
                 applicant.updateInfo(choice);
                 System.out.println("1.Go Back");
