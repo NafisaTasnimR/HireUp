@@ -62,11 +62,9 @@ public class User {
                         System.out.println("Welcome," + data[0] + "!");
                         return true;
                     }
-
-                } else {
-                    System.out.println("Invalid data format.");
                 }
             }
+            System.out.println("Invalid data format.");
         } catch (IOException e) {
             System.err.println("Error in file reading.");
             e.printStackTrace();
