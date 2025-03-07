@@ -207,35 +207,47 @@ public class Admin extends User {
         return  JobProviderRequestList;
     }
     public boolean approveJobProvider(int Serial,List<String> JobProviderRequestList) {
-        List<String> approvedJobProviders = new ArrayList<>();
+        List<String> userInformation = new ArrayList<>();
+        List<String> jobProviderInformation = new ArrayList<>();
         boolean approvedJobProvider = false;
         for(String JobProviderRequest : JobProviderRequestList) {
             String[] data = JobProviderRequest.split(",");
-            int serial27= Integer.parseInt(data[0]);
-            String userName1 = data[1];
-            String password1 = data[2];
-            String email1 = data[3];
-            String role1 = data[4];
+            int userSerial= Integer.parseInt(data[0]);
+            String userName = data[1];
+            String password = data[2];
+            String email = data[3];
+            String role = data[4];
             String companyName=data[5];
             String webAddress=data[6];
-            if (Serial==serial27) {
-                approvedJobProviders.add(userName1 + "," + password1 + "," + email1+ "," + role1 + "," + companyName + "," + webAddress);
+            if (Serial==userSerial) {
+                userInformation.add(userName + "," + password + "," + email+ "," + role);
+                jobProviderInformation.add(companyName + "," + webAddress);
                 approvedJobProvider = true;
             }
         }
         if (approvedJobProvider) {
-            try (BufferedWriter writer8 = new BufferedWriter(new FileWriter("User_info.txt", true))) {
-                for (String jobProvider : approvedJobProviders) {
-                    writer8.newLine();
-                    writer8.write(jobProvider);
-                    writer8.flush();
+            try (BufferedWriter userWriter = new BufferedWriter(new FileWriter("User_info.txt", true));
+                 BufferedWriter jobProviderWriter = new BufferedWriter(new FileWriter("JobProvider_info.txt", true))) {
+
+                for (String userInfo : userInformation) {
+                    userWriter.write(userInfo);
+                    userWriter.newLine();
                 }
-                this.deleteJobProviderRequest(Serial,JobProviderRequestList);
-                return true;
+                for (String jobProviderInfo : jobProviderInformation) {
+                    jobProviderWriter.write(jobProviderInfo);
+                    jobProviderWriter.newLine();
+                }
+                userWriter.flush();
+                jobProviderWriter.flush();
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        } return false;
+            this.deleteJobProviderRequest(Serial, JobProviderRequestList);
+
+            return true;
+        }
+        return false;
     }
 
 
