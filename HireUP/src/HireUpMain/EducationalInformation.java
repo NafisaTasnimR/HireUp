@@ -22,14 +22,12 @@ public class EducationalInformation {
     public String toFileString() {
         StringBuilder sb = new StringBuilder();
 
-        // Convert existing education records to CSV format
         for (String[] record : educationRecords) {
             for (String field : record) {
                 sb.append(formatData(field)).append(",");
             }
         }
 
-        // Fill remaining empty slots with "n/a" to ensure 30 fields
         while (sb.toString().split(",").length < 30) {
             sb.append("n/a,");
         }

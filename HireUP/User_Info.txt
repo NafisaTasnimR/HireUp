@@ -1,20 +1,10 @@
-Abcd,www,.com,Job Provider
-Rodoshi,www.som,..com,Admin
-Mrittika,www//,m.com,Admin
-Nishat,wwwmm,n.com,Admin
-Ar,ar,ar.com,Applicant
-Mira,mira,mira.com,Applicant
-Preo,preo,preo@gmail,Applicant
-Mihrimah,dhfjk,mihrimah@gmail.com,Admin
-Ar,ar,ar.com,Applicant
-Preo,preo,preo@gmail,Applicant
-Mihrimah,dhfjk,mihrimah@gmail.com,Applicant
-Mrittika,hdgfdghjdhy,jdjdhjf.com,Job Provider, Huda,www.huda.com
-Nafisa,hjklhn8*qM,mmm@gghh.com,Job Provider,Milkyway,www.milkyway.com
-Nishat,dhujhjmhas,bdshdy.com,Job Provider,Abib,www.abib.com
-Mrittika,hdgfdghjdhy,jdjdhjf.com,Job Provider, Kayali,www.kayali.com
-Mira,mira,mira.com,Applicant
-Ar,ar,ar.com,Applicant
-Adrita Ahsan,Adrita!!08,adritaahsan@gmail.com,Applicant
-Nuzhat,hydheg*jhsh,jwujhehy.com,Job Provider,Mars,www.mars.com
-Mrittika,hdgfdghjdhy,jdjdhjf.com,Job Provider, CT,www.ct.com
+Rodoshi,rod114,rodoshi@gmail.com,Admin
+Nishat,nish124,nishat@gmail.com,Admin
+Mrittika,mri150,mrittika@gmail.com,Admin
+Nafisa,mlk8*,nafisa@milkyway.com,Job Provider
+Nuzhat,mrs#3,nuzhat@mars.com,Job Provider
+Mira,mira@44,mira44@gmail.com,Applicant
+Preo,preo@24,preo24@gmail.com,Applicant
+Oishee,oishee10@,oishee10@gmail.com,Applicant
+Adrita,Adrita08@,adrita8@gmail.com,Applicant
+Sanjana,sanjana06@,sanjana6@gmail.com,Applicant

@@ -66,8 +66,8 @@ public class Resume {
 
                             System.out.println("\n================================================================");
                             System.out.println("                       RESUME");
-                            System.out.println("==================================================================\n");
-                            System.out.println("\n-------------   PERSONAL INFORMATION   -------------\n");
+                            System.out.println("================================================================\n");
+                            System.out.println("\n-------------------   PERSONAL INFORMATION   -------------------\n");
                             System.out.println("Name                         : " + resumeList[0] +"\n");
                             System.out.println("Father's Name                : " + resumeList[1] +"\n");
                             System.out.println("Mother's Name                : " + resumeList[2] +"\n");
@@ -79,21 +79,20 @@ public class Resume {
                             System.out.println("Address                      : " + resumeList[8] +"\n");
                             System.out.println("National ID                  : " + resumeList[9] +"\n");
                             System.out.println("Email                        : " + resumeList[10] +"\n");
-                            System.out.println("\n------------   EDUCATIONAL INFORMATION   ------------\n");
-                            System.out.println("=================================================================");
-                            System.out.println("| Exam name | Institution Name | Subject | Result | Passing Year |");
-                            System.out.println("=================================================================");
+                            System.out.println("\n-------------------   EDUCATIONAL INFORMATION   -------------------\n");
+                            System.out.println("==========================================================================================================================================");
+                            System.out.println("| Exam Name                  | Institution Name                   | Subject                          | Result       | Passing Year       |");
+                            System.out.println("==========================================================================================================================================");
 
                             for (int i = 11; i < 41; i += 5) {
                                 if (!resumeList[i].equals("n/a")) {
-                                    System.out.printf("| %-9s | %-16s | %-8s | %-6s | %-12s |\n",
+                                    System.out.printf("| %-26s | %-34s | %-32s | %-12s | %-18s |\n",
                                             resumeList[i], resumeList[i + 1], resumeList[i + 2], resumeList[i + 3], resumeList[i + 4]);
                                 }
                             }
 
-                            System.out.println("=================================================================");
-
-                            System.out.println("\n------------   ADDITIONAL INFORMATION   ------------\n");
+                            System.out.println("==========================================================================================================================================");
+                            System.out.println("\n-------------------   ADDITIONAL INFORMATION   -------------------\n");
                             System.out.println("Experience                   : " + resumeList[41] +"\n");
                             System.out.println("Hobbies                      : " + resumeList[42] +"\n");
                             System.out.println("Skills                       : " + resumeList[43] +"\n");
@@ -145,11 +144,10 @@ public class Resume {
                              resumeList[10] = scanner.nextLine();
                              break;
                          case 4:
-                             // Append new Educational Information without clearing existing ones
                              EducationalInformation educationalInformation = new EducationalInformation();
                              System.out.println("Update Educational Information");
 
-                             int eduIndex = 11; // Starting index for education records in the file
+                             int eduIndex = 11;
                              int currentCount = 0;
 
                              // Count existing educational entries
@@ -197,7 +195,6 @@ public class Resume {
                                  }
                              }
 
-                             // Store updated educational information in the resumeList
                              String[] eduArray = educationalInformation.toFileString().split(",");
                              for (int i = 0; i < eduArray.length; i++) {
                                  resumeList[eduIndex + i] = eduArray[i];

@@ -308,11 +308,6 @@ public class Main {
                         System.out.println("Sorry! Applicant Request Has Not Been Sent.");
                     }
 
-                    /*if (user.registration(user)) {
-                        System.out.println("Congratulations! You have been registered.");
-                    } else {
-                        System.out.println("Sorry! You have not registered.");
-                    }*/
                 }
                 case 2 -> {
                     user = new User(name, pass1, email1, "job provider");
@@ -331,23 +326,9 @@ public class Main {
                     }
                 }
 
-                   /* if (user.registration(user)) {
-                        JobProvider jobProvider = new JobProvider(companyName, webAddress);
-                        jobProvider.registrationJobProvider();
-
-                        System.out.println("Congratulations! You have been registered.");
-                    } else {
-                        System.out.println("Sorry! You have not been registered.");
-                    }*/
                 case 3 -> {
                     System.out.println("Admin req send");
                     user  = new User(name, pass1, email1, "admin");
-
-                   /* if (user1.adminRegistrationRequest()) {
-                        System.out.println("Your request has been sent to Admin.");
-                    } else {
-                        System.out.println("Sorry! Your request has not been sent to Admin.");
-                    }*/
                 }
             }
 

@@ -1,5 +1,2 @@
-bbgh,www.bbgh.com
-ilt,www.ilt.com
-hjk,www.hjk.com
-bbc,www.bbc.com
-Pearson Co. & Limited,www.pearsonWeb.com
+Milkyway,www.milkyway.com
+Mars,www.mars.com
