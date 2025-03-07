@@ -1,9 +1,10 @@
 package HireUpMain;
 
-import java.io.Console;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import static HireUpMain.Utility.isValidPhoneNumber;
 import static HireUpMain.Utility.updateConsole;
@@ -67,13 +68,13 @@ public class Main {
             Scanner sc3 = new Scanner(System.in);
             String email = sc3.nextLine();
 
-            /*System.out.println("Password:");
+            System.out.println("Password:");
             Scanner sc2 = new Scanner(System.in);
-            String password = sc2.nextLine();*/
+            String password = sc2.nextLine();
 
-            Console console = System.console();
-            char[] passwordArray = console.readPassword("Password");
-            String password = new String(passwordArray);
+           /* Console console = System.console();
+            char[] passwordArray = console.readPassword("Password : ");
+            String password = new String(passwordArray);*/
 
             System.out.println("Role:");
             System.out.println("1.Applicant");
@@ -239,9 +240,10 @@ public class Main {
     private static void adminMenu(Scanner sc) {
         while (true) {
             System.out.println("\n--- Admin Menu ---");
-            System.out.println("1. Admin Requests");
-            System.out.println("2. Manage Users");
-            System.out.println("3. Logout");
+            System.out.println("1. New Applicant Requests");
+            System.out.println("2. New Job Provider Requests");
+            System.out.println("3. Manage Users");
+            System.out.println("4. Logout");
             System.out.print("Enter your selection: ");
 
             int selection = sc.nextInt();
@@ -251,18 +253,24 @@ public class Main {
 
             switch (selection) {
                 case 1 -> {
-                    System.out.println("View admin requests selected.");
+                    System.out.println("View applicant requests selected.");
                     System.out.println("//////////////////////////////////////////////");
                     updateConsole();
-                    adminRequestOption(sc, admin);
+                    applicantRequestOption(sc, admin);
                 }
                 case 2 -> {
+                    System.out.println("View job provider requests selected.");
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    jobProviderRequestOption(sc, admin);
+                }
+                case 3 -> {
                     System.out.println("Manage Users selected.");
                     System.out.println("//////////////////////////////////////////////");
                     updateConsole();
-                    manageUserOption(sc, admin);
+                    deleteUserOption(sc, admin);
                 }
-                case 3 -> logout();
+                case 4 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
             }
         }
@@ -294,11 +302,17 @@ public class Main {
             switch (roleValue) {
                 case 1 -> {
                     user = new User(name, pass1, email1, "applicant");
-                    if (user.registration(user)) {
+                    if(user.NewApplicantRequest(user)){
+                        System.out.println("Applicant Request Has Been Sent.");
+                    } else{
+                        System.out.println("Sorry! Applicant Request Has Not Been Sent.");
+                    }
+
+                    /*if (user.registration(user)) {
                         System.out.println("Congratulations! You have been registered.");
                     } else {
                         System.out.println("Sorry! You have not registered.");
-                    }
+                    }*/
                 }
                 case 2 -> {
                     user = new User(name, pass1, email1, "job provider");
@@ -310,25 +324,30 @@ public class Main {
                     System.out.println("Web Address:");
                     Scanner sc66 = new Scanner(System.in);
                     String webAddress = sc66.nextLine();
+                    if (user.NewJobProviderRequest(user, companyName, webAddress)) {
+                        System.out.println("Your request has been sent to Admin.");
+                    } else {
+                        System.out.println("Sorry! Your request has not been sent to Admin.");
+                    }
+                }
 
-                    if (user.registration(user)) {
+                   /* if (user.registration(user)) {
                         JobProvider jobProvider = new JobProvider(companyName, webAddress);
                         jobProvider.registrationJobProvider();
 
                         System.out.println("Congratulations! You have been registered.");
                     } else {
                         System.out.println("Sorry! You have not been registered.");
-                    }
-
-                }
+                    }*/
                 case 3 -> {
                     System.out.println("Admin req send");
-                    user = new User(name, pass1, email1, "admin");
-                    if (user.adminRegistrationRequest(user)) {
+                    user  = new User(name, pass1, email1, "admin");
+
+                   /* if (user1.adminRegistrationRequest()) {
                         System.out.println("Your request has been sent to Admin.");
                     } else {
                         System.out.println("Sorry! Your request has not been sent to Admin.");
-                    }
+                    }*/
                 }
             }
 
@@ -493,10 +512,6 @@ public class Main {
             System.out.println("Job status");
             System.out.println("***************  Job Status  ***************");
             List<String> jobs = applicant.applicationList(applicant.getEmail());
-            System.out.println("Enter the number of the job you want to see status of :");
-            Scanner jobPostNo = new Scanner(System.in);
-            String selection80 = jobPostNo.nextLine();
-            applicant.applicationStatus(selection80, jobs);
 
             System.out.println("1.Go Back");
             System.out.println("2.Logout");
@@ -569,54 +584,44 @@ public class Main {
 
             System.out.println("===============   EDUCATIONAL INFORMATION   ===============");
 
-            System.out.println("School Name: ");
+            EducationalInformation educationalInformation = new EducationalInformation();
 
-            Scanner sc49 = new Scanner(System.in);
-            String schoolName = sc49.nextLine();
+            while (true) {
+                System.out.println("\n1. Add Educational Info");
+                System.out.println("2. Done");
 
-            System.out.println("Passing Year(SSC/O Level): ");
-            Scanner sc50 = new Scanner(System.in);
-            String passingYear = sc50.nextLine();
+                int choice = sc.nextInt();
+                sc.nextLine();
 
-            System.out.println("SSC/O Level Result: ");
-            Scanner sc51 = new Scanner(System.in);
-            String sscOLevelResult = sc51.nextLine();
+                if (choice == 1) {
+                    if (educationalInformation.getEducationRecords().size() >= 6) {
+                        System.out.println("You can add up to 6 educational entries only.");
+                        continue;
+                    }
 
-            System.out.println("College Name: ");
-            Scanner sc52 = new Scanner(System.in);
-            String collegeName = sc52.nextLine();
+                    System.out.println("Enter Degree Name: ");
+                    String degree = sc.nextLine();
 
-            System.out.println("Passing Year (HSC/A Level): ");
-            Scanner sc53 = new Scanner(System.in);
-            String passingYearHSC = sc53.nextLine();
+                    System.out.println("Enter Institution Name: ");
+                    String institution = sc.nextLine();
 
-            System.out.println("HSC/A Level Result: ");
-            Scanner sc54 = new Scanner(System.in);
-            String hscALevelResult = sc54.nextLine();
+                    System.out.println("Enter Subject: ");
+                    String subject = sc.nextLine();
 
-            System.out.println("University Name: ");
-            Scanner sc55 = new Scanner(System.in);
-            String universityName = sc55.nextLine();
+                    System.out.println("Enter Result: ");
+                    String result = sc.nextLine();
 
-            System.out.println("Department: ");
-            Scanner dept = new Scanner(System.in);
-            String department = dept.nextLine();
+                    System.out.println("Enter Passing Year: ");
+                    String year = sc.nextLine();
 
-            System.out.println("Undergraduate Degree: ");
-            Scanner sc56 = new Scanner(System.in);
-            String undergraduateDegree = sc56.nextLine();
+                    educationalInformation.addEducation(degree, institution, subject, result, year);
+                } else if (choice == 2) {
+                    break;
+                } else {
+                    System.out.println("Invalid choice. Try again.");
+                }
+            }
 
-            System.out.println("UnderGraduate CGPA: ");
-            Scanner sc57 = new Scanner(System.in);
-            String undergradCGPA = sc57.nextLine();
-
-            System.out.println("Postgraduate Degree: ");
-            Scanner sc58 = new Scanner(System.in);
-            String postgraduateDegree = sc58.nextLine();
-
-            System.out.println("Postgraduate CGPA: ");
-            Scanner sc59 = new Scanner(System.in);
-            String postgradCGPA = sc59.nextLine();
 
             System.out.println("===============   ADDITIONAL INFORMATION   ===============");
             System.out.println("Experience: ");
@@ -634,8 +639,7 @@ public class Main {
             System.out.println("=======================================");
 
             PersonalInformation personalInformation = new PersonalInformation(name, fatherName, motherName, dateOfBirth, nationality, religion, gender, phoneNumber, address, nationalID);
-            EducationalInformation educationalInformation = new EducationalInformation(name, schoolName, passingYear, sscOLevelResult, collegeName, passingYearHSC, hscALevelResult, universityName, department, undergraduateDegree, undergradCGPA, postgraduateDegree, postgradCGPA);
-            AdditionalInformation additionalInformation = new AdditionalInformation(name, experince, hobbies, skills);
+            AdditionalInformation additionalInformation = new AdditionalInformation( experince, hobbies, skills);
             Resume resume = new Resume(personalInformation, educationalInformation, additionalInformation);
             applicant = new Applicant(user.getUserName(), user.getPassword(), user.getEmail(), user.getRole(), resume);
 
@@ -724,18 +728,17 @@ public class Main {
             System.out.println("1. Phone Number");
             System.out.println("2. Address");
             System.out.println("3. Email");
-            System.out.println("4. Postgraduate Degree");
-            System.out.println("5. Postgraduate CGPA");
-            System.out.println("6. Experience");
-            System.out.println("7. Skills");
-            System.out.println("8. Hobbies");
-            System.out.println("9. Go Back");
-            System.out.println("10. Logout");
+            System.out.println("4. Educational Information");
+            System.out.println("5. Experience");
+            System.out.println("6. Skills");
+            System.out.println("7. Hobby");
+            System.out.println("8. Go Back");
+            System.out.println("9. Logout");
             System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
             sc.nextLine();
 
-            if(choice>=1 && choice<=8)
+            if(choice>=1 && choice<=7)
             {
                 applicant.updateInfo(choice);
                 System.out.println("1.Go Back");
@@ -756,12 +759,12 @@ public class Main {
                     default -> System.out.println("Invalid selection. Try again.");
                 }
             }
-            else if(choice == 9){
+            else if(choice == 10){
                 System.out.println("Returning to Login Menu...");
                 System.out.println("//////////////////////////////////////////////");
                 updateConsole();
                 return;
-            } else if (choice == 10) {
+            } else if (choice == 11) {
                 logout();
             }else {
                 System.out.println("Invalid selection. Try again.");
@@ -1066,7 +1069,7 @@ public class Main {
         }
     }
 
-    private static void manageUserOption(Scanner sc, Admin admin) {
+    private static void deleteUserOption(Scanner sc, Admin admin) {
         while (true) {
             System.out.println("***************  User Information  ***************");
             System.out.println("1. Applicant");
@@ -1113,38 +1116,18 @@ public class Main {
             Scanner applicantsc = new Scanner(System.in);
             int selectionApplicant = applicantsc.nextInt();
 
-            System.out.println("***************  Verification  ***************");
-            System.out.println("1. Verify ");
-            System.out.println("2. Delete");
-            System.out.println("3. Go Back");
-            System.out.println("4. Logout");
+            System.out.println("***************  Remove Applicant  ***************");
+            System.out.println("1. Delete");
+            System.out.println("2. Go Back");
+            System.out.println("3. Logout");
             System.out.println("Enter your selection: ");
 
             int selection = sc.nextInt();
             sc.nextLine();
 
             switch (selection) {
-                case 1 -> {
-                    admin.verifyApplicant(selectionApplicant, applicants);
-                    System.out.println("Verified");
-                    System.out.println("1. Go Back");
-                    System.out.println("2. Logout");
-                    System.out.println("Enter your selection: ");
 
-                    int selection1 = sc.nextInt();
-                    sc.nextLine();
-                    switch (selection1) {
-                        case 1 -> {
-                            System.out.println("Returning to Login Menu...");
-                            System.out.println("//////////////////////////////////////////////");
-                            updateConsole();
-                            return;
-                        }
-                        case 2 -> logout();
-                        default -> System.out.println("Invalid selection. Try again.");
-                    }
-                }
-                case 2 -> {
+                case 1 -> {
                     admin.deleteApplicant(selectionApplicant, applicants);
                     System.out.println("Deleted");
                     System.out.println("1. Go Back");
@@ -1164,13 +1147,13 @@ public class Main {
                         default -> System.out.println("Invalid selection. Try again.");
                     }
                 }
-                case 3 -> {
+                case 2 -> {
                     System.out.println("Returning to Login Menu...");
                     System.out.println("//////////////////////////////////////////////");
                     updateConsole();
                     return;
                 }
-                case 4 -> logout();
+                case 3 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
             }
         }
@@ -1185,38 +1168,18 @@ public class Main {
             System.out.println("Enter your selection: ");
             Scanner jobProvidersc = new Scanner(System.in);
             int selectionJobProvider = jobProvidersc.nextInt();
-            System.out.println("***************  Verification  ***************");
-            System.out.println("1. Verify ");
-            System.out.println("2. Delete");
-            System.out.println("3. Go Back");
-            System.out.println("4. Logout");
+            System.out.println("***************  Remove Job Provider  ***************");
+            System.out.println("1. Delete");
+            System.out.println("2. Go Back");
+            System.out.println("3. Logout");
             System.out.println("Enter your selection: ");
 
             int selection = sc.nextInt();
             sc.nextLine();
 
             switch (selection) {
-                case 1 -> {
-                    admin.verify(selectionJobProvider, jobProviders);
-                    System.out.println("Verified");
-                    System.out.println("1. Go Back");
-                    System.out.println("2. Logout");
-                    System.out.println("Enter your selection: ");
 
-                    int selection1 = sc.nextInt();
-                    sc.nextLine();
-                    switch (selection1) {
-                        case 1 -> {
-                            System.out.println("Returning to Login Menu...");
-                            System.out.println("//////////////////////////////////////////////");
-                            updateConsole();
-                            return;
-                        }
-                        case 2 -> logout();
-                        default -> System.out.println("Invalid selection. Try again.");
-                    }
-                }
-                case 2 -> {
+                case 1 -> {
                     admin.delete(selectionJobProvider, jobProviders);
                     System.out.println("Deleted");
                     System.out.println("1. Go Back");
@@ -1236,30 +1199,30 @@ public class Main {
                         default -> System.out.println("Invalid selection. Try again.");
                     }
                 }
-                case 3 -> {
+                case 2 -> {
                     System.out.println("Returning to Login Menu...");
                     System.out.println("//////////////////////////////////////////////");
                     updateConsole();
                     return;
                 }
-                case 4 -> logout();
+                case 3 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
             }
         }
     }
 
-    private static void adminRequestOption(Scanner sc, Admin admin) {
+    private static void jobProviderRequestOption(Scanner sc, Admin admin) {
         while (true) {
-            System.out.println("=========================================Admin Requests========================================");
-            List<String> adminRequests = admin.viewAdminRequest();
-            Scanner adminRequestsc = new Scanner(System.in);
-            System.out.println("Enter your selection: ");
-            int selectionAdminRequest = adminRequestsc.nextInt();
+            System.out.println("=========================================Job Provider Requests=======================================");
+            List<String> jobProviderRequests = admin.viewNewJobProviderRequests();
+
             System.out.println("***************  Approval  ***************");
-            System.out.println("1. Approve ");
-            System.out.println("2. Reject ");
-            System.out.println("3. Go Back");
-            System.out.println("4. Logout");
+            System.out.println("1. Single Approval ");
+            System.out.println("2.Group By Approval");
+            System.out.println("3. Single Rejection ");
+            System.out.println("4. Group By Rejection");
+            System.out.println("5. Go Back");
+            System.out.println("6. Logout");
             System.out.println("Enter your selection: ");
 
             int selection = sc.nextInt();
@@ -1267,7 +1230,10 @@ public class Main {
 
             switch (selection) {
                 case 1 -> {
-                    admin.approve(selectionAdminRequest, adminRequests);
+                    Scanner jobProviderRequestsc = new Scanner(System.in);
+                    System.out.println("Enter your selection: ");
+                    int selectionJobProviderRequest = jobProviderRequestsc.nextInt();
+                    admin.approveJobProvider(selectionJobProviderRequest, jobProviderRequests);
                     System.out.println("Approved");
                     System.out.println("1. Go Back");
                     System.out.println("2. Logout");
@@ -1286,9 +1252,17 @@ public class Main {
                         default -> System.out.println("Invalid selection. Try again.");
                     }
                 }
+
                 case 2 -> {
-                    admin.deleteRequest(selectionAdminRequest, adminRequests);
-                    System.out.println("Rejected");
+                    System.out.println("Enter serial numbers (comma-separated) for selection: ");
+
+                    String input = sc.nextLine();
+                    List<Integer> serialNumbers = Arrays.stream(input.split(","))
+                    .map(String::trim)
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+                    admin.processMultipleJobProviderRequests(serialNumbers, true, jobProviderRequests);
+                    System.out.println("Approved");
                     System.out.println("1. Go Back");
                     System.out.println("2. Logout");
                     System.out.println("Enter your selection: ");
@@ -1307,16 +1281,198 @@ public class Main {
                     }
                 }
                 case 3 -> {
+                    Scanner jobProviderRequestsc = new Scanner(System.in);
+                    System.out.println("Enter your selection: ");
+                    int selectionJobProviderRequest = jobProviderRequestsc.nextInt();
+                    admin.deleteJobProviderRequest(selectionJobProviderRequest, jobProviderRequests);
+                    System.out.println("Rejected");
+                    System.out.println("1. Go Back");
+                    System.out.println("2. Logout");
+                    System.out.println("Enter your selection: ");
+
+                    int selection1 = sc.nextInt();
+                    sc.nextLine();
+                    switch (selection1) {
+                        case 1 -> {
+                            System.out.println("Returning to Login Menu...");
+                            System.out.println("//////////////////////////////////////////////");
+                            updateConsole();
+                            return;
+                        }
+                        case 2 -> logout();
+                        default -> System.out.println("Invalid selection. Try again.");
+                    }
+                }
+                case 4 -> {
+                    System.out.println("Enter serial numbers (comma-separated) for selection: ");
+
+                    String input = sc.nextLine();
+                    List<Integer> serialNumbers = Arrays.stream(input.split(","))
+                            .map(String::trim)
+                            .map(Integer::parseInt)
+                            .collect(Collectors.toList());
+                    admin.processMultipleJobProviderRequests(serialNumbers, false, jobProviderRequests);
+                    System.out.println("Rejected");
+                    System.out.println("1. Go Back");
+                    System.out.println("2. Logout");
+                    System.out.println("Enter your selection: ");
+
+                    int selection1 = sc.nextInt();
+                    sc.nextLine();
+                    switch (selection1) {
+                        case 1 -> {
+                            System.out.println("Returning to Login Menu...");
+                            System.out.println("//////////////////////////////////////////////");
+                            updateConsole();
+                            return;
+                        }
+                        case 2 -> logout();
+                        default -> System.out.println("Invalid selection. Try again.");
+                    }
+                }
+                case 5-> {
                     System.out.println("Returning to Login Menu...");
                     System.out.println("//////////////////////////////////////////////");
                     updateConsole();
                     return;
                 }
-                case 4 -> logout();
+                case 6 -> logout();
                 default -> System.out.println("Invalid selection. Try again.");
             }
         }
     }
+
+
+
+    private static void applicantRequestOption(Scanner sc, Admin admin) {
+        while (true) {
+            System.out.println("=========================================Applicant Requests========================================");
+            List<String> applicantRequests = admin.viewApplicantRequests();
+            System.out.println("***************  Approval  ***************");
+            System.out.println("1. Single Approval ");
+            System.out.println("2. Group By Approval ");
+            System.out.println("3. Single Rejection ");
+            System.out.println("4. Group By Rejection");
+            System.out.println("5. Go Back");
+            System.out.println("6. Logout");
+            System.out.println("Enter your selection: ");
+
+            int selection = sc.nextInt();
+            sc.nextLine();
+
+            switch (selection) {
+                case 1 -> {
+                    Scanner applicantRequestsc = new Scanner(System.in);
+                    System.out.println("Enter your selection: ");
+                    int selectionApplicantRequest = applicantRequestsc.nextInt();
+                    admin.approveApplicant(selectionApplicantRequest, applicantRequests);
+                    System.out.println("Approved");
+                    System.out.println("1. Go Back");
+                    System.out.println("2. Logout");
+                    System.out.println("Enter your selection: ");
+
+                    int selection1 = sc.nextInt();
+                    sc.nextLine();
+                    switch (selection1) {
+                        case 1 -> {
+                            System.out.println("Returning to Login Menu...");
+                            System.out.println("//////////////////////////////////////////////");
+                            updateConsole();
+                            return;
+                        }
+                        case 2 -> logout();
+                        default -> System.out.println("Invalid selection. Try again.");
+                    }
+                }
+
+                case 2 -> {
+                    System.out.println("Enter serial numbers (comma-separated) for selection: ");
+                    String input = sc.nextLine();
+                    List<Integer> serialNumbers = Arrays.stream(input.split(","))
+                            .map(String::trim)
+                            .map(Integer::parseInt)
+                            .collect(Collectors.toList());
+                    admin.processMultipleApplicantRequests(serialNumbers, true, applicantRequests);
+                    System.out.println("Approved");
+                    System.out.println("1. Go Back");
+                    System.out.println("2. Logout");
+                    System.out.println("Enter your selection: ");
+
+                    int selection1 = sc.nextInt();
+                    sc.nextLine();
+                    switch (selection1) {
+                        case 1 -> {
+                            System.out.println("Returning to Login Menu...");
+                            System.out.println("//////////////////////////////////////////////");
+                            updateConsole();
+                            return;
+                        }
+                        case 2 -> logout();
+                        default -> System.out.println("Invalid selection. Try again.");
+                    }
+                }
+                case 3 -> {
+                    Scanner applicantRequestsc = new Scanner(System.in);
+                    System.out.println("Enter your selection: ");
+                    int selectionApplicantRequest = applicantRequestsc.nextInt();
+                    admin.deleteApplicant(selectionApplicantRequest, applicantRequests);
+                    System.out.println("Rejected");
+                    System.out.println("1. Go Back");
+                    System.out.println("2. Logout");
+                    System.out.println("Enter your selection: ");
+
+                    int selection1 = sc.nextInt();
+                    sc.nextLine();
+                    switch (selection1) {
+                        case 1 -> {
+                            System.out.println("Returning to Login Menu...");
+                            System.out.println("//////////////////////////////////////////////");
+                            updateConsole();
+                            return;
+                        }
+                        case 2 -> logout();
+                        default -> System.out.println("Invalid selection. Try again.");
+                    }
+                }
+                case 4 -> {
+                    System.out.println("Enter serial numbers (comma-separated) for selection: ");
+                    String input = sc.nextLine();
+                    List<Integer> serialNumbers = Arrays.stream(input.split(","))
+                            .map(String::trim)
+                            .map(Integer::parseInt)
+                            .collect(Collectors.toList());
+                    admin.processMultipleApplicantRequests(serialNumbers, false, applicantRequests);
+                    System.out.println("Rejected");
+                    System.out.println("1. Go Back");
+                    System.out.println("2. Logout");
+                    System.out.println("Enter your selection: ");
+
+                    int selection1 = sc.nextInt();
+                    sc.nextLine();
+                    switch (selection1) {
+                        case 1 -> {
+                            System.out.println("Returning to Login Menu...");
+                            System.out.println("//////////////////////////////////////////////");
+                            updateConsole();
+                            return;
+                        }
+                        case 2 -> logout();
+                        default -> System.out.println("Invalid selection. Try again.");
+                    }
+                }
+                case 5 -> {
+                    System.out.println("Returning to Login Menu...");
+                    System.out.println("//////////////////////////////////////////////");
+                    updateConsole();
+                    return;
+                }
+                case 6 -> logout();
+                default -> System.out.println("Invalid selection. Try again.");
+            }
+        }
+    }
+
+
 }
 
 

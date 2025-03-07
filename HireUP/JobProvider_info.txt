@@ -1,5 +1,5 @@
-bbgh,www.bbgh.com,Not Verified
-ilt,www.ilt.com,Not Verified
-hjk,www.hjk.com,Verified
-bbc,www.bbc.com,Not Verified
+bbgh,www.bbgh.com
+ilt,www.ilt.com
+hjk,www.hjk.com
+bbc,www.bbc.com
 Pearson Co. & Limited,www.pearsonWeb.com

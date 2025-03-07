@@ -1,96 +1,43 @@
 package HireUpMain;
 
+import java.util.ArrayList;
+import java.util.List;
 import static HireUpMain.Utility.formatData;
 
-public class EducationalInformation extends PersonalInformation{
-    private String name;
-    private String schoolName;
-    private String sscPassingYear;
-    private String sscOLevelResult;
-    private String collegeName;
-    private String hscPassingYear;
-    private String hscALevelResult;
-    private String universityName;
-    private String department;
-    private String undergraduateDegree;
-    private String undergradCGPA;
-    private String postgraduateDegree;
-    private String postgradCGPA;
+public class EducationalInformation {
+    private List<String[]> educationRecords;
 
-    public EducationalInformation(String name, String schoolName, String sscPassingYear,
-                                  String sscOLevelResult, String collegeName, String hscPassingYear,
-                                  String hscALevelResult, String universityName, String department,
-                                  String undergraduateDegree, String undergradCGPA,
-                                  String postgraduateDegree, String postgradCGPA) {
-        super(name);
-        this.schoolName = schoolName;
-        this.sscPassingYear = sscPassingYear;
-        this.sscOLevelResult = sscOLevelResult;
-        this.collegeName = collegeName;
-        this.hscPassingYear = hscPassingYear;
-        this.hscALevelResult = hscALevelResult;
-        this.universityName = universityName;
-        this.department = department;
-        this.undergraduateDegree = undergraduateDegree;
-        this.undergradCGPA = undergradCGPA;
-        this.postgraduateDegree = postgraduateDegree;
-        this.postgradCGPA = postgradCGPA;
-
+    public EducationalInformation() {
+        this.educationRecords = new ArrayList<>();
     }
 
-    public String getName(){
-        return name;
+    public void addEducation(String degree, String institution, String subject, String result, String year) {
+        if (educationRecords.size() < 6) {
+            educationRecords.add(new String[]{degree, institution, subject, result, year});
+        } else {
+            System.out.println("Maximum 6 educational entries allowed.");
+        }
     }
-    public String getSchoolName(){
-        return schoolName;
-    }
-    public String getSscPassingYear(){
-        return sscPassingYear;
-    }
-    public String getSscOLevelResult(){
-        return sscOLevelResult;
-    }
-    public String getCollegeName(){
-        return collegeName;
-    }
-    public String getHscPassingYear(){
-        return hscPassingYear;
-    }
-    public String getHscALevelResult(){
-        return hscALevelResult;
-    }
-    public String getUniversityName(){
-        return universityName;
-    }
-    public String getDepartment(){
-        return department;
-    }
-    public String getUndergraduateDegree(){
-        return undergraduateDegree;
-    }
-    public String getUndergradCGPA(){
-        return undergradCGPA;
-    }
-    public String getPostgraduateDegree(){
-        return postgraduateDegree;
-    }
-    public String getPostgradCGPA(){
-        return postgradCGPA;
-    }
-
 
     public String toFileString() {
-        return  getSchoolName() + ","
-                + getSscPassingYear() + ","
-                + getSscOLevelResult() + ","
-                + formatData(getCollegeName()) + ","
-                + getHscPassingYear() + ","
-                + getHscALevelResult() + ","
-                + formatData(getUniversityName()) + ","
-                + formatData(getDepartment()) + ","
-                + getUndergraduateDegree() + ","
-                + getUndergradCGPA() + ","
-                + getPostgraduateDegree() + ","
-                + getPostgradCGPA() ;
+        StringBuilder sb = new StringBuilder();
+
+        // Convert existing education records to CSV format
+        for (String[] record : educationRecords) {
+            for (String field : record) {
+                sb.append(formatData(field)).append(",");
+            }
+        }
+
+        // Fill remaining empty slots with "n/a" to ensure 30 fields
+        while (sb.toString().split(",").length < 30) {
+            sb.append("n/a,");
+        }
+
+        return sb.toString().replaceAll(",$", ""); // Remove trailing comma
+    }
+
+    public List<String[]> getEducationRecords() {
+        return educationRecords;
     }
 }
