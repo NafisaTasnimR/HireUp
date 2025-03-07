@@ -1218,7 +1218,7 @@ public class Main {
 
             System.out.println("***************  Approval  ***************");
             System.out.println("1. Single Approval ");
-            System.out.println("2.Group By Approval");
+            System.out.println("2. Group By Approval");
             System.out.println("3. Single Rejection ");
             System.out.println("4. Group By Rejection");
             System.out.println("5. Go Back");
@@ -1246,7 +1246,7 @@ public class Main {
                             System.out.println("Returning to Login Menu...");
                             System.out.println("//////////////////////////////////////////////");
                             updateConsole();
-                            return;
+                            break;
                         }
                         case 2 -> logout();
                         default -> System.out.println("Invalid selection. Try again.");
@@ -1274,7 +1274,7 @@ public class Main {
                             System.out.println("Returning to Login Menu...");
                             System.out.println("//////////////////////////////////////////////");
                             updateConsole();
-                            return;
+                            break;
                         }
                         case 2 -> logout();
                         default -> System.out.println("Invalid selection. Try again.");
@@ -1297,7 +1297,7 @@ public class Main {
                             System.out.println("Returning to Login Menu...");
                             System.out.println("//////////////////////////////////////////////");
                             updateConsole();
-                            return;
+                            break;
                         }
                         case 2 -> logout();
                         default -> System.out.println("Invalid selection. Try again.");
@@ -1324,7 +1324,7 @@ public class Main {
                             System.out.println("Returning to Login Menu...");
                             System.out.println("//////////////////////////////////////////////");
                             updateConsole();
-                            return;
+                            break;
                         }
                         case 2 -> logout();
                         default -> System.out.println("Invalid selection. Try again.");
@@ -1378,7 +1378,7 @@ public class Main {
                             System.out.println("Returning to Login Menu...");
                             System.out.println("//////////////////////////////////////////////");
                             updateConsole();
-                            return;
+                            break;
                         }
                         case 2 -> logout();
                         default -> System.out.println("Invalid selection. Try again.");
@@ -1405,7 +1405,7 @@ public class Main {
                             System.out.println("Returning to Login Menu...");
                             System.out.println("//////////////////////////////////////////////");
                             updateConsole();
-                            return;
+                            break;
                         }
                         case 2 -> logout();
                         default -> System.out.println("Invalid selection. Try again.");
@@ -1415,7 +1415,7 @@ public class Main {
                     Scanner applicantRequestsc = new Scanner(System.in);
                     System.out.println("Enter your selection: ");
                     int selectionApplicantRequest = applicantRequestsc.nextInt();
-                    admin.deleteApplicant(selectionApplicantRequest, applicantRequests);
+                    admin.deleteApplicantRequest(selectionApplicantRequest, applicantRequests);
                     System.out.println("Rejected");
                     System.out.println("1. Go Back");
                     System.out.println("2. Logout");
@@ -1428,7 +1428,7 @@ public class Main {
                             System.out.println("Returning to Login Menu...");
                             System.out.println("//////////////////////////////////////////////");
                             updateConsole();
-                            return;
+                            break;
                         }
                         case 2 -> logout();
                         default -> System.out.println("Invalid selection. Try again.");
@@ -1454,7 +1454,7 @@ public class Main {
                             System.out.println("Returning to Login Menu...");
                             System.out.println("//////////////////////////////////////////////");
                             updateConsole();
-                            return;
+                            break;
                         }
                         case 2 -> logout();
                         default -> System.out.println("Invalid selection. Try again.");
