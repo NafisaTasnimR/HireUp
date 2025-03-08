@@ -221,7 +221,7 @@ public class Admin extends User {
             String webAddress=data[6];
             if (Serial==userSerial) {
                 userInformation.add(userName + "," + password + "," + email+ "," + role);
-                jobProviderInformation.add(companyName + "," + webAddress);
+                jobProviderInformation.add(userName + "," + password + "," + email+ "," + role+"," +companyName + "," + webAddress);
                 approvedJobProvider = true;
             }
         }

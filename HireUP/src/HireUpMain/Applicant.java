@@ -31,7 +31,7 @@ public class Applicant extends User {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data.length == 10) {
+                if (data.length == 11) {
                     String jobPostNo = data[0];
                     String companyName = data[1];
                     String jobPosition = data[2];
@@ -138,7 +138,7 @@ public class Applicant extends User {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 43 && parts[10].equals(email) ) {
+                if (parts.length == 44 && parts[10].equals(email) ) {
                     String name = parts[0];
                     String phoneNumber = parts[7];
                     String fileEmail = parts[10];
@@ -159,7 +159,7 @@ public class Applicant extends User {
         for (String job : jobList) {
             String[] jobInfo = job.split(",");
             if (jobInfo[0].equals(serialNo)) {
-                jobDetails = jobInfo[1] + "," + jobInfo[2] + "," + jobInfo[3] + ",";
+                jobDetails = jobInfo[1] + "," + jobInfo[2] + "," + jobInfo[3] + "," + jobInfo[11] + ",";
             }
 
         }
@@ -205,7 +205,7 @@ public class Applicant extends User {
     public List<String> applicationList(String email) {
             List<String> jobList = new ArrayList<>();
 
-            try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Application.txt"))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader("Application.txt"))) {
                 String line;
                 int serial = 0;
 
