@@ -27,7 +27,7 @@ public class Applicant extends User {
         Set<String> uniqueJobs = new HashSet<>();
         int outputSerial = 0;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("Job_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Job_info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
@@ -65,7 +65,7 @@ public class Applicant extends User {
                                 if (jobSalary >= lowerRange && jobSalary <= upperRange) {
                                     matchFound = true;
                                 }
-                            } else { // Experience input
+                            } else {
                                 int lowerRange = Math.max(input - 2, 0);
                                 int upperRange = input + 2;
                                 int jobExperience = Integer.parseInt(experience);
@@ -75,7 +75,7 @@ public class Applicant extends User {
                             }
                         }
                     } catch (NumberFormatException e) {
-                        // Ignore non-numeric preferences
+                        System.err.println("Invalid number format: " + e.getMessage());
                     }
 
                     if (matchFound) {
@@ -134,7 +134,7 @@ public class Applicant extends User {
 
     private String findApplicant(String email) {
         String resumeInfo = "";
-        try (BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -166,9 +166,8 @@ public class Applicant extends User {
         return jobDetails;
     }
 
-    // Method to write the combined string into a new file
     private void writeToFile(String content) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Application.txt", true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\Application.txt", true))) {
             writer.newLine();
             writer.write(content);
         } catch (IOException e) {
@@ -188,28 +187,15 @@ public class Applicant extends User {
         }
     }
 
-    public boolean applicationStatus(String serialNo, List<String> jobList) {
-        for (String job : jobList) {
-            String[] jobInfo = job.split(",");
-            if (Objects.equals(jobInfo[0], serialNo)) {
-                System.out.println("Application Status: " + jobInfo[7] + "\n");
-
-            }
-
-        }
-        return true;
-
-    }
 
 
-    public List<String> applicationList(String email) {
+     public List<String> applicationList(String email) {
             List<String> jobList = new ArrayList<>();
 
             try (BufferedReader reader = new BufferedReader(new FileReader("Application.txt"))) {
                 String line;
                 int serial = 0;
 
-                // Print table header
                 System.out.println("==========================================================================================");
                 System.out.println("| S.No | Company Name                   | Job Position              | Job Status         |");
                 System.out.println("==========================================================================================");
@@ -221,10 +207,10 @@ public class Applicant extends User {
                         serial++;
                         jobList.add(serial + "," + line);
 
-                        // Print structured table row
                         System.out.printf("| %-4d | %-30s | %-25s | %-18s |\n",
                                 serial, parts[1], parts[2], parts[6]);
                         System.out.println("------------------------------------------------------------------------------------------");
+
                     }
                 }
 
