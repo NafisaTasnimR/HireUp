@@ -47,7 +47,8 @@ public class Main {
     }
 
     private static void exitApplication() {
-        System.out.println("Exiting application. Goodbye!");
+        System.out.println("Thank You For Using HireUp!");
+        System.out.println("Exiting The System...");
         isRunning = false;
         System.exit(0);
     }
