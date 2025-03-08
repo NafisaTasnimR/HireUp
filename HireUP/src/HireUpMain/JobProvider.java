@@ -13,11 +13,6 @@ public class JobProvider extends User{
     private String companyName;
     private String webAddress;
 
-    public JobProvider(String companyname,String webaddress)
-    {
-        this.companyName = companyname;
-        this.webAddress = webaddress;
-    }
     public JobProvider(String username,String password,String email,String role,String companyName,String webAddress){
         super(username,password,email,role);
         this.companyName = companyName;
@@ -65,7 +60,6 @@ public class JobProvider extends User{
             + "," + job.getWebsiteLink() + "," + job.getAdditional() + "," + this.getEmail());
             bufferedWriter.flush();
             bufferedWriter.close();
-            System.out.println("You have successfully posted a job circular!");
             return true;
         }catch (IOException e)
         {
@@ -348,21 +342,21 @@ public class JobProvider extends User{
     {
         if (sortBy.equalsIgnoreCase("cgpa")) {
             applicantList.sort((a, b) -> {
-                double cgpaA = Double.parseDouble(a.split(",")[21]); // Assuming CGPA is the 3rd field in the info
+                double cgpaA = Double.parseDouble(a.split(",")[21]);
                 double cgpaB = Double.parseDouble(b.split(",")[21]);
-                return Double.compare(cgpaB, cgpaA); // Descending order
+                return Double.compare(cgpaB, cgpaA);
             });
         } else if (sortBy.equalsIgnoreCase("msc")) {
             applicantList.sort((a, b) -> {
-                String mscA = a.split(",")[22].trim(); // Assuming MSc info is the 5th field in the info
+                String mscA = a.split(",")[22].trim();
                 String mscB = b.split(",")[22].trim();
-                return mscB.compareTo(mscA); // Yes first, No later
+                return mscB.compareTo(mscA);
             });
         }else if (sortBy.equalsIgnoreCase("experience")) {
             applicantList.sort((a, b) -> {
-                double experienceA = Double.parseDouble(extractYear(a.split(",")[24].trim())); // Assuming MSc info is the 5th field in the info
+                double experienceA = Double.parseDouble(extractYear(a.split(",")[24].trim()));
                 double experienceB = Double.parseDouble(extractYear(b.split(",")[24].trim()));
-                return Double.compare(experienceB, experienceA); // Yes first, No later
+                return Double.compare(experienceB, experienceA);
             });
         }
 

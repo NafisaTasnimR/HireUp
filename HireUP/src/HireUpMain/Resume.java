@@ -149,8 +149,6 @@ public class Resume {
 
                              int eduIndex = 11;
                              int currentCount = 0;
-
-                             // Count existing educational entries
                              for (int i = 0; i < 6; i++) {
                                  int startIdx = eduIndex + (i * 5);
                                  if (!resumeList[startIdx].equals("n/a")) {

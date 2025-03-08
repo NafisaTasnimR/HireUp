@@ -134,7 +134,7 @@ public class Applicant extends User {
 
     private String findApplicant(String email) {
         String resumeInfo = "";
-        try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -167,9 +167,10 @@ public class Applicant extends User {
     }
 
     private void writeToFile(String content) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\Application.txt", true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Application.txt", true))) {
             writer.newLine();
             writer.write(content);
+            System.out.println("Successfully Applied For The Job");
         } catch (IOException e) {
             System.err.println("Error writing to file");
             e.printStackTrace();
@@ -192,7 +193,7 @@ public class Applicant extends User {
      public List<String> applicationList(String email) {
             List<String> jobList = new ArrayList<>();
 
-            try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\Application.txt"))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader("Application.txt"))) {
                 String line;
                 int serial = 0;
 

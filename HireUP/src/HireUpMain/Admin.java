@@ -405,7 +405,6 @@ public class Admin extends User {
                 }
                 processed = true;
             } else {
-                // FIX: Exclude serial when adding to remainingJobProviders
                 String remainingData = String.join(",", Arrays.copyOfRange(data, 1, data.length));
                 remainingJobProviders.add(remainingData);
             }
@@ -451,12 +450,10 @@ public class Admin extends User {
 
             if (serialNumbers.contains(serial)) {
                 if (approve) {
-                    // Exclude serial number when approving
                     processedApplicants.add(String.join(",", Arrays.copyOfRange(data, 1, data.length)));
                 }
                 processed = true;
             } else {
-                // Exclude serial number from remaining applicants
                 String remainingData = String.join(",", Arrays.copyOfRange(data, 1, data.length));
                 remainingApplicants.add(remainingData);
             }
@@ -466,7 +463,7 @@ public class Admin extends User {
             if (approve) {
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter("User_info.txt", true))) {
                     for (String applicant : processedApplicants) {
-                        writer.write(applicant.trim()); // Ensure no unnecessary spaces
+                        writer.write(applicant.trim());
                         writer.newLine();
                     }
                     writer.flush();
@@ -474,8 +471,6 @@ public class Admin extends User {
                     throw new RuntimeException(e);
                 }
             }
-
-            // Write updated remaining applicants to "ApplicantRequest.txt"
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("ApplicantRequest.txt"))) {
                 for (String remainingApplicant : remainingApplicants) {
                     writer.write(remainingApplicant.trim());
@@ -491,10 +486,6 @@ public class Admin extends User {
 
         return false;
     }
-
-
-
-
-
+    
 }
 

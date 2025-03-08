@@ -32,7 +32,7 @@ public class EducationalInformation {
             sb.append("n/a,");
         }
 
-        return sb.toString().replaceAll(",$", ""); // Remove trailing comma
+        return sb.toString().replaceAll(",$", "");
     }
 
     public List<String[]> getEducationRecords() {
