@@ -18,7 +18,11 @@ public class JobProvider extends User{
         this.companyName = companyname;
         this.webAddress = webaddress;
     }
-    public JobProvider(){}
+    public JobProvider(String username,String password,String email,String role,String companyName,String webAddress){
+        super(username,password,email,role);
+        this.companyName = companyName;
+        this.webAddress = webAddress;
+    }
 
     public JobProvider(String companyName){
         this.companyName = companyName;
@@ -32,17 +36,19 @@ public class JobProvider extends User{
     {
         return webAddress;
     }
-    //getter setter
-    public boolean registrationJobProvider() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("JobProvider_info.txt", true))) {
-            writer.write(this.getCompanyName() + "," + this.getWebAddress());
-            writer.newLine();
-            System.out.println("Data has been written to file!");
-            return true;
+    public static JobProvider loadFromFile(String email) {
+        try (BufferedReader br = new BufferedReader(new FileReader("JobProvider_info.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data[2].equals(email)) {
+                    return new JobProvider(data[0], data[1], data[2], data[3],data[4],data[5]);
+                }
+            }
         } catch (IOException e) {
-            System.err.println("Error occurred writing to file : " + e.getMessage());
+            System.out.println("Error reading file: " + e.getMessage());
         }
-        return false;
+        return null;
     }
 
     public boolean postJob(Job job)
@@ -51,12 +57,12 @@ public class JobProvider extends User{
         String regex = "[,\\.\\s]";
         String[] nameArray = companyName.split(regex);
         String jobPostNo = nameArray[0] + String.valueOf((int)(Math.random()*100));
-        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\Job_info.txt",true))){
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("Job_info.txt",true))){
             bufferedWriter.newLine();
             bufferedWriter.write(jobPostNo + "," + job.getCompanyName() + "," +
                     job.getJobPosition() + "," + job.getSkill() + "," + job.getExperience()
             + "," + job.getSalary() + "," + job.getLocation() + "," + job.getTime()
-            + "," + job.getWebsiteLink() + "," + job.getAdditional());
+            + "," + job.getWebsiteLink() + "," + job.getAdditional() + "," + this.getEmail());
             bufferedWriter.flush();
             bufferedWriter.close();
             System.out.println("You have successfully posted a job circular!");
@@ -82,8 +88,8 @@ public class JobProvider extends User{
             while((line = bufferedReader.readLine()) != null)
             {
                 String[] data = line.split(",");
-                String applicantEmail = data[5];
-                if(Objects.equals(this.getCompanyName(), data[1]) && Objects.equals(jobPostNo, data[0]))
+                String applicantEmail = data[6];
+                if(Objects.equals(this.getEmail(), data[3]) && Objects.equals(jobPostNo, data[0]))
                 {
                     try(BufferedReader bufferedReader1 = new BufferedReader(new FileReader("Applicant_info.txt"))){;
 
@@ -207,12 +213,12 @@ public class JobProvider extends User{
             while ((line = bufferedReader.readLine()) != null)
             {
                 String[] applicationData = line.split(",");
-                if(Objects.equals(jobPostNo, applicationData[0]) && Objects.equals(applicantEmail, applicationData[5]))
+                if(Objects.equals(jobPostNo, applicationData[0]) && Objects.equals(applicantEmail, applicationData[6]))
                 {
-                    applicationData[6] = status;
+                    applicationData[7] = status;
                     changedApplicationInfo.add(applicationData[0] + "," +applicationData[1] + ","+applicationData[2]
                             + "," +applicationData[3] + ","+applicationData[4] +
-                            ","+applicationData[5] + ","+applicationData[6]);
+                            ","+applicationData[5] + ","+applicationData[6] + "," + applicationData[7]);
                 }
                 else {
                     changedApplicationInfo.add(line);
@@ -222,10 +228,6 @@ public class JobProvider extends User{
         {
             System.out.println("There is a error : " + e.getMessage());
         }
-
-
-        //need to pass the data from application.txt file to change the status
-        //already have the applicantEmail and job post no to find the accurate applicant and change his/her status
         return changedApplicationInfo;
 
     }
@@ -267,10 +269,10 @@ public class JobProvider extends User{
             while ((line = bufferedReader.readLine()) != null)
             {
                 String[] data = line.split(",");
-                String name = data[3];
-                String phoneNumber = data[4];
-                String email = data[5];
-                if(Objects.equals(jobPostNo, data[0]) && Objects.equals(data[6], "Shortlisted")) {
+                String name = data[4];
+                String phoneNumber = data[5];
+                String email = data[6];
+                if(Objects.equals(jobPostNo, data[0]) && Objects.equals(data[7], "Shortlisted")) {
                     serial++;
                     System.out.printf("| %-4d | %-30s | %-25s | %-40s | \n",
                             serial, name, phoneNumber, email);
@@ -309,7 +311,7 @@ public class JobProvider extends User{
                 String jobPostNo = data[0];
                 String companyName = data[1];
                 String position = data[2];
-                if(Objects.equals(this.getCompanyName(), data[1])) {
+                if(Objects.equals(this.getEmail(), data[10])) {
                     serial++;
                     System.out.printf("| %-4d | %-30s | %-25s | %-40s | \n",
                             serial, jobPostNo, companyName, position);
@@ -317,6 +319,8 @@ public class JobProvider extends User{
                     jobPostList.add(jobPost);
                     System.out.println("================================================================================================================");
 
+                }else{
+                    System.out.println("email doesn't match");
                 }
             }
         }catch (IOException e)
