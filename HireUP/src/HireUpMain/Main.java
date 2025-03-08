@@ -135,7 +135,7 @@ public class Main {
                         if (jobList == null) {
                             jobList = jobSearch(sc, applicant);
                             if (jobList == null || jobList.isEmpty()) {
-                                System.out.println("Search was canceled. Returning to main menu.");
+                                System.out.println("Currently, there are no job openings with your search!");
                                 break;
                             }
                         }
@@ -350,7 +350,7 @@ public class Main {
     private static List<String> jobSearch(Scanner sc, Applicant applicant) {
         while (true) {
             System.out.println("Search job");
-            System.out.println("***************  Job Search  *****************");
+            System.out.println("***************  Job Search  ***************");
             System.out.println("Add your preference");
             System.out.println("1.Location");
             System.out.println("2.Experience");
@@ -423,7 +423,7 @@ public class Main {
             if (data.length >= 11) { // Original 10 fields + serial number
                 outputSerial++;
                 System.out.printf("| %-4d | %-30s | %-25s | %-40s | \n",
-                        outputSerial, data[1], data[2], data[8]); // companyName, jobPosition, websiteLink
+                        outputSerial, data[2], data[3], data[9]); // companyName, jobPosition, websiteLink
                 System.out.println("================================================================================================================");
             }
         }

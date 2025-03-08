@@ -59,8 +59,8 @@ public class Applicant extends User {
                         if (preference.matches("\\d+")) {
                             int input = Integer.parseInt(preference);
                             if (input >= 1000) { // Salary input
-                                int lowerRange = Math.max(input - 5000, 0);
-                                int upperRange = input + 5000;
+                                int lowerRange = Math.max(input - 10000, 0);
+                                int upperRange = input + 10000;
                                 int jobSalary = Integer.parseInt(salary);
                                 if (jobSalary >= lowerRange && jobSalary <= upperRange) {
                                     matchFound = true;
@@ -102,15 +102,15 @@ public class Applicant extends User {
 
             String[] jobInfo = job.split(",");
             if (Objects.equals(jobInfo[0],query) ) {
-                System.out.println("Company Name: " + jobInfo[2] + "\n");
-                System.out.println("Job Position: " + jobInfo[3] + "\n");
-                System.out.println("Skill: " + jobInfo[4] + "\n");
-                System.out.println("Experience: " + jobInfo[5] + "\n");
-                System.out.println("Salary: " + jobInfo[6] + "\n");
-                System.out.println("Location: " + jobInfo[7] + "\n");
-                System.out.println("Time: " + jobInfo[8] + "\n");
-                System.out.println("Website Link: " + jobInfo[9] + "\n");
-                System.out.println("Additional: " + jobInfo[10] + "\n");
+                System.out.println("Company Name : " + jobInfo[2] + "\n");
+                System.out.println("Job Position : " + jobInfo[3] + "\n");
+                System.out.println("Skill        : " + jobInfo[4] + "\n");
+                System.out.println("Experience   : " + jobInfo[5] + "\n");
+                System.out.println("Salary       : " + jobInfo[6] + "\n");
+                System.out.println("Location     : " + jobInfo[7] + "\n");
+                System.out.println("Time         : " + jobInfo[8] + "\n");
+                System.out.println("Website Link : " + jobInfo[9] + "\n");
+                System.out.println("Additional   : " + jobInfo[10] + "\n");
             }
 
         }
@@ -192,7 +192,7 @@ public class Applicant extends User {
      public List<String> applicationList(String email) {
             List<String> jobList = new ArrayList<>();
 
-            try (BufferedReader reader = new BufferedReader(new FileReader("Application.txt"))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\Application.txt"))) {
                 String line;
                 int serial = 0;
 
@@ -203,12 +203,12 @@ public class Applicant extends User {
                 while ((line = reader.readLine()) != null) {
                     String[] parts = line.split(",");
 
-                    if (parts.length > 6 && parts[5].equals(email)) {
+                    if (parts.length > 6 && parts[6].equals(email)) {
                         serial++;
                         jobList.add(serial + "," + line);
 
                         System.out.printf("| %-4d | %-30s | %-25s | %-18s |\n",
-                                serial, parts[1], parts[2], parts[6]);
+                                serial, parts[1], parts[2], parts[7]);
                         System.out.println("------------------------------------------------------------------------------------------");
 
                     }
@@ -226,35 +226,6 @@ public class Applicant extends User {
 
             return jobList;
     }
-
-
-    private void suggestJobsBySalary(int salaryInput) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("Job_info.txt"))) {
-            String line;
-            int serial = 0;
-            int lowerRange = Math.max(salaryInput - 5000, 0);
-            int upperRange = salaryInput + 5000;
-
-            while ((line = reader.readLine()) != null) {
-                String[] data = line.split(",");
-                if (data.length == 10) {
-                    int jobSalary = Integer.parseInt(data[5].trim());
-                    if (jobSalary >= lowerRange && jobSalary <= upperRange) {
-                        serial++;
-                        System.out.println(serial + ". Company Name: " + data[1] +
-                                ", Job Position: " + data[2] + ", Salary: " + jobSalary);
-                    }
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
-
-
-
+    
 
 }
