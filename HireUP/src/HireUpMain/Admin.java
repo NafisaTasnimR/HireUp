@@ -60,7 +60,7 @@ public class Admin extends User {
 
 
 
-    public boolean delete(int serial, List<String> JobProviderList) {
+    public boolean deleteJobProvider(int serial, List<String> JobProviderList) {
         List<String> JobProviderInfo = new ArrayList<>();
         boolean dataDeleted = false;
         for (String JobProvider : JobProviderList) {
@@ -89,8 +89,6 @@ public class Admin extends User {
         return false;
     }
 
-
-
     public List<String> ViewApplicantInformation() {
         List<String> ApplicantList = new ArrayList<>();
         String line;
@@ -109,7 +107,7 @@ public class Admin extends User {
                 System.out.printf("| %-4d | %-30s | %-20s | %-35s |%n",
                         applicantSerial, Name, NID, Email);
                 System.out.println("-----------------------------------------------------------------------------------------------------");
-                ApplicantList.add(applicantSerial + "," + Name + "," + NID + "," + Email);
+                ApplicantList.add(applicantSerial+ "," +line);
             }
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
@@ -118,8 +116,6 @@ public class Admin extends User {
         return ApplicantList;
     }
 
-
-
     public boolean deleteApplicant(int serial,List<String> ApplicantList) {
         List<String> ApplicantInfo = new ArrayList<>();
         boolean applicantDeleted = false;
@@ -127,8 +123,8 @@ public class Admin extends User {
             String[] data = Applicant.split(",");
             int applicantSerial= Integer.parseInt(data[0]);
             String Name = data[1];
-            String FatherName = data[2];
-            String MotherName = data[3];
+            String FathersName = data[2];
+            String MothersName = data[3];
             String DateOfBirth = data[4];
             String Nationality = data[5];
             String Religion = data[6];
@@ -137,32 +133,55 @@ public class Admin extends User {
             String Address = data[9];
             String NID = data[10];
             String Email = data[11];
-            String SchoolName = data[12];
-            String PassingYearSSC= data[13];
-            String SSCResult = data[14];
-            String CollegeName = data[15];
-            String PassingYearHSC= data[16];
-            String HSCResult = data[17];
-            String UniversityName = data[18];
-            String DepartmentName = data[19];
-            String UnderGraduateDegree = data[20];
-            String UnderGraduateCGPA = data[21];
-            String PostGraduateDegree = data[22];
-            String PostGraduateCGPA = data[23];
-            String ExtraInformation = data[24];
-            String Experience = data[25];
-            String Hobby = data[26];
-            String Skills = data[27];
-            String status =  (data.length > 28) ? data[28] : "Not Verified";
+            String SscName = data[12];
+            String SscInstitutionName= data[13];
+            String SscSubject = data[14];
+            String SscResult = data[15];
+            String SscPassingYear= data[16];
+            String HscName = data[17];
+            String HscInstitutionName = data[18];
+            String HscSubject = data[19];
+            String HscResult = data[20];
+            String HscPassingYear = data[21];
+            String UnderGraduateName = data[22];
+            String UnderGraduateInstitutionName = data[23];
+            String UnderGraduateSubject = data[24];
+            String UnderGraduateResult = data[25];
+            String UnderGraduatePassingYear = data[26];
+            String HonoursName = data[27];
+            String HonoursInstitutionName = data[28];
+            String HonoursSubject = data[29];
+            String HonoursResult = data[30];
+            String HonoursPassingYear = data[31];
+            String PostGraduateName = data[32];
+            String PostGraduateInstitutionName = data[33];
+            String PostGraduateSubject = data[34];
+            String PostGraduateResult = data[35];
+            String PostGraduatePassingYear = data[36];
+            String MastersName = data[37];
+            String MastersInstitutionName = data[38];
+            String MastersSubject = data[39];
+            String MastersResult = data[40];
+            String MastersPassingYear = data[41];
+            String Experience= data[42];
+            String Hobbies= data[43];
+            String Skills = data[44];
+
            if(serial==applicantSerial){
                applicantDeleted=true;
            }
            else{
-               if ("Verified".equals(status)) {
-                   ApplicantInfo.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + ExtraInformation + "," + Experience + "," + Hobby + "," + Skills + "," + "Verified");
-               } else {
-                   ApplicantInfo.add(Name +","+ FatherName + "," + MotherName + "," + DateOfBirth + "," + Nationality + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email + "," + SchoolName + "," + PassingYearSSC + "," + SSCResult + "," + CollegeName + "," + PassingYearHSC + "," + HSCResult + "," + UniversityName + "," + DepartmentName + "," + UnderGraduateDegree + "," + UnderGraduateCGPA + "," + PostGraduateDegree + "," + PostGraduateCGPA + "," + ExtraInformation + "," + Experience + "," + Hobby + "," + Skills + "," + "Not Verified");
-               }
+           ApplicantInfo.add(Name +","+ FathersName + "," + MothersName + "," + DateOfBirth + "," + Nationality
+           + "," + Religion + "," + Gender + "," + PhoneNumber + "," + Address + "," + NID + "," + Email
+           + "," + SscName + "," + SscInstitutionName + "," + SscSubject + "," + SscResult + "," +
+           SscPassingYear + "," + HscName + "," + HscInstitutionName + "," + HscSubject + "," +
+           HscResult + "," + HscPassingYear + "," + UnderGraduateName + "," + UnderGraduateInstitutionName
+           + "," + UnderGraduateSubject + "," + UnderGraduateResult + "," + UnderGraduatePassingYear
+           + "," + HonoursName + "," + HonoursInstitutionName + "," + HonoursSubject + ","
+           + HonoursResult + "," + HonoursPassingYear + "," + PostGraduateName + "," + PostGraduateInstitutionName
+           + "," + PostGraduateSubject + "," + PostGraduateResult + "," + PostGraduatePassingYear + "," + MastersName
+           + "," + MastersInstitutionName + "," + MastersSubject + "," + MastersResult + "," + MastersPassingYear + ","
+           + Experience + "," + Hobbies + "," + Skills);
            }
         }
         if (applicantDeleted) {
@@ -195,10 +214,10 @@ public class Admin extends User {
                 String webAddress = data[5];
                 String role = data[3];
                 serial27++;
-                System.out.printf("| %-4d | %-29s | %-37s | %-13s |%n",
+                System.out.printf("| %-4d | %-30s | %-40s | %-15s |%n",
                         serial27, companyName, webAddress, role);
                 JobProviderRequestList.add(serial27+","+line);
-            System.out.println("=====================================================================================================");
+            System.out.println("======================================================================================================");
             }
         } catch (IOException e) {
             System.err.println("Error reading file" + e.getMessage());

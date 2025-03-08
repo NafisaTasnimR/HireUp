@@ -293,7 +293,6 @@ public class Main {
             System.out.println("Role: ");
             System.out.println("1.Applicant");
             System.out.println("2.Job Provider");
-            System.out.println("3.Admin");
             System.out.println("Enter your role: ");
 
             Scanner sc38 = new Scanner(System.in);
@@ -324,11 +323,6 @@ public class Main {
                     } else {
                         System.out.println("Sorry! Your request has not been sent to Admin.");
                     }
-                }
-
-                case 3 -> {
-                    System.out.println("Admin req send");
-                    user  = new User(name, pass1, email1, "admin");
                 }
             }
 
@@ -1161,7 +1155,7 @@ public class Main {
             switch (selection) {
 
                 case 1 -> {
-                    admin.delete(selectionJobProvider, jobProviders);
+                    admin.deleteJobProvider(selectionJobProvider, jobProviders);
                     System.out.println("Deleted");
                     System.out.println("1. Go Back");
                     System.out.println("2. Logout");

@@ -121,12 +121,20 @@ public class User {
     public boolean NewJobProviderRequest(User user,String companyName,String webAddress) {
         try (BufferedWriter bufferedWriter2 = new BufferedWriter(
                 new FileWriter("JobProviderRequest.txt",true))) {
+            if (!isValidEmail(user.getEmail())) {
+                System.out.println("Registration failed: Invalid email format.");
+                return false;
+            } else if (!isValidPassword(user.getPassword())) {
+                System.out.println("Registration failed: Invalid password format.");
+                return false;
+            } else {
             bufferedWriter2.newLine();
             bufferedWriter2.write(formatData(user.getUserName()) + "," + user.getPassword() + "," +user.getEmail() +
                     "," + formatData(user.getRole()) + "," + formatData(companyName)+ "," + formatData(webAddress));
             bufferedWriter2.flush();
             bufferedWriter2.close();
             return true;
+            }
         } catch (IOException e) {
             System.err.println("Error in file writing." + e.getMessage());
             e.printStackTrace();
@@ -135,12 +143,20 @@ public class User {
     public boolean NewApplicantRequest(User user) {
         try (BufferedWriter bufferedWriter3 = new BufferedWriter(
                 new FileWriter("ApplicantRequest.txt",true))) {
-            bufferedWriter3.newLine();
-            bufferedWriter3.write(formatData(user.getUserName()) + "," + user.getPassword() + "," +user.getEmail() +
-                    "," + formatData(user.getRole()));
-            bufferedWriter3.flush();
-            bufferedWriter3.close();
-            return true;
+            if (!isValidEmail(user.getEmail())) {
+                System.out.println("Registration failed: Invalid email format.");
+                return false;
+            } else if (!isValidPassword(user.getPassword())) {
+                System.out.println("Registration failed: Invalid password format.");
+                return false;
+            } else {
+                bufferedWriter3.newLine();
+                bufferedWriter3.write(formatData(user.getUserName()) + "," + user.getPassword() + "," + user.getEmail() +
+                        "," + formatData(user.getRole()));
+                bufferedWriter3.flush();
+                bufferedWriter3.close();
+                return true;
+            }
         } catch (IOException e) {
             System.err.println("Error in file writing." + e.getMessage());
             e.printStackTrace();

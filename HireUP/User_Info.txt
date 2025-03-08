@@ -8,4 +8,8 @@ Preo,preo@24,preo24@gmail.com,Applicant
 Oishee,oishee10@,oishee10@gmail.com,Applicant
 Adrita,Adrita08@,adrita8@gmail.com,Applicant
 Sanjana,sanjana06@,sanjana6@gmail.com,Applicant
+<<<<<<< Updated upstream
 Nafisa Tasnim,6six,sixyardsstory@gmail.com,Job Provider
+=======
+Mrittika,hdgfdghjdhy,jdjdhjf.com,Job Provider
+>>>>>>> Stashed changes
