@@ -1,1 +1,7 @@
+<<<<<<< Updated upstream
 Nafisa Tasnim,6six,sixyardsstory@gmail.com,Job Provider,Six Yard's Story,www.sixyardsstory.com
+=======
+Mars,www.mars.com
+Milk,www.milk.com
+Huda Beauty,www.hudabeauty.com
+>>>>>>> Stashed changes
