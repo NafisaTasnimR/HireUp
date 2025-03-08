@@ -1,13 +1,1 @@
-Abcd1,Abcd,Manager,nafisa,114,nafisa@gmail,pending
-Abcd1,Abcd,Manager,adrita,108,adrita@gmail,pending
-Abcd3,Abcd,Manager,lin,7001,lin@gmail,Shortlisted
-Abcd2,Abcd,Manager,mrittika,150,mrittika@gmail,pending
-Abcd3,Abcd,Manager,preo,124,preo@gmail,Shortlisted
-Abcer5,Abcer,Manager,mira,12345,ar.com,pending
-Abcdwd7,Abcdwd,Manager,mira,12345,ar.com,pending
-Abcd1,Abcd,Manager,mira,12345,ar.com,pending
-Abcd1,Abcd,Manager,era,12395,ar.com,pending
-Abcdwd7,Abcdwd,Manager,mira,019656574,mira.com,pending
-Abcdwd7,Abcdwd,Manager,mira,019656574,mira.com,pending
-Abcd1,Abcd,Manager,mira,12345,mira.com,pending
-Abcd3,Abcd,Manager,nafisa,114,nafisa@gmail,pending
+Six55,Six Yard's Story,Secretary,sixyardsstory@gmail.com,Mira Jahan,01873237890,mira44@gmail.com,Shortlisted

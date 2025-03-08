@@ -202,7 +202,7 @@ public class Main {
         while (true) {
             System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\     Job Provider     " +
                     "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
-            JobProvider jobProvider = new JobProvider(user.getUserName());
+            JobProvider jobProvider = JobProvider.loadFromFile(user.getEmail());
             System.out.println("1. Post Job Circular");
             System.out.println("2. Review & Shortlist Applicants");
             System.out.println("3. See Short List");
