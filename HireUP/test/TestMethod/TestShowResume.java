@@ -8,14 +8,11 @@ import static org.junit.Assert.assertEquals;
 
 public class TestShowResume {
     @Test
-    public void testShowResume()
-    {
-
-        boolean expectedValue = true;
+    public void testShowResume() {
         Resume resume = new Resume();
-        assertEquals(expectedValue, resume.showResume("ar.com"));
+        boolean result = resume.showResume("adrita8@gmail.com");
+        assertEquals(true, result);
     }
-
 
 
 }

@@ -15,7 +15,7 @@ public class TestApplicant {
     @Test
     public void testsearchJob()
     {
-        String location = "uttora";
+        String location = "gulshan";
         int count=0,listCount = 0;
         List<String> filteredJobList = new ArrayList<>();
         Applicant applicant = new Applicant();
@@ -36,7 +36,7 @@ public class TestApplicant {
     @Test
     public void testsearchJob2()
     {
-        String companyName = "abcd";
+        String companyName = "Six Yard's Story";
         int count=0,listCount = 0;
         List<String> filteredJobList = new ArrayList<>();
         Applicant applicant = new Applicant();
@@ -54,18 +54,5 @@ public class TestApplicant {
         assertEquals(listCount,count);
     }
 
-//    @Test
-//    public void testStatus() {
-//        boolean expectedValue = true;
-//        Applicant applicant = new Applicant();
-//        assertEquals(expectedValue,applicant.applicationStatus("ar.com"));
-//    }
-
-//    @Test
-//    public void testApplicationList() {
-//        boolean expectedValue = false;
-//        Applicant applicant = new Applicant();
-//        assertEquals(expectedValue,applicant.applicationList("ar.com"));
-//    }
 
 }
