@@ -43,13 +43,13 @@ public class Admin extends User {
             int serial1 = 0;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split(",");
-                String companyName = data[0];
-                String Weblink = data[1];
+                String companyName = data[4];
+                String Weblink = data[5];
                 serial1++;
                 System.out.printf("| %-4d | %-35s | %-37s |%n",
                         serial1, companyName, Weblink);
             System.out.println("--------------------------------------------------------------------------------------");
-                JobProviderList.add(serial1 + "," + companyName + "," + Weblink);
+                JobProviderList.add(serial1 + "," + line);
             }
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
@@ -66,12 +66,16 @@ public class Admin extends User {
         for (String JobProvider : JobProviderList) {
             String[] data = JobProvider.split(",");
             int serial1 = Integer.parseInt(data[0]);
-            String companyName = data[1];
-            String Weblink = data[2];
+            String name = data[1];
+            String password = data[2];
+            String email = data[3];
+            String role = data[4];
+            String companyName = data[5];
+            String Weblink = data[6];
             if (serial == serial1) {
                 dataDeleted = true;
             } else {
-                JobProviderInfo.add(companyName + "," + Weblink);
+                JobProviderInfo.add(name + "," + password + "," + email + "," + role + "," + companyName + "," + Weblink);
             }
         }
         if (dataDeleted) {

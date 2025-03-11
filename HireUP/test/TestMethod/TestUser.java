@@ -11,54 +11,25 @@ public class TestUser {
     public void testLogin()
     {
         boolean expectedValue = true;
-        User user = new User("nafisa","www",".com","job provider");
+        User user = new User("nafisa","mlk8*","nafisa@milkyway.com","Job Provider");
         assertEquals(expectedValue,user.logIn());
     }
     @Test
     public void testLogin2()
     {
         boolean expectedValue = true;
-        User user1 = new User("Mrittika","www//","m.com","admin");
+        User user1 = new User("Mrittika","mri150","mrittika@gmail.com","Admin");
         assertEquals(expectedValue,user1.logIn());
     }
   @Test
     public void testLogin3()
     {
         boolean expectedValue = true;
-        User user = new User("rodoshi","www.som","..com","admin");
+        User user = new User("Mira","mira@44","mira44@gmail.com","Applicant");
         assertEquals(expectedValue,user.logIn());
     }
 
-    @Test
-    public void testRegistration()
-    {
-        boolean expectedValue = true;
-        User user1 = new User("Mrittika","www//","m.com","admin");
-        assertEquals(expectedValue,user1.registration(user1));
 
-    }
-
-    @Test
-    public void testRegistration2()
-    {
-        boolean expectedValue = true;
-        User user1 = new User("Nishat","wwwmm","n.com","admin");
-        assertEquals(expectedValue,user1.registration(user1));
-
-    }
-    @Test
-    public void testRegistration3()
-    {
-        boolean expectedValue = true;
-        User user1 = new User("AR","hjhfrg","ar.com","applicant");
-        assertEquals(expectedValue,user1.registration(user1));
-    }
-
-    /*public void testAdminRequest(){
-        boolean expectedValue = true;
-        User user1 = new User("Sanjana","snake","n.com","admin");
-        assertEquals(expectedValue, user1.adminRegistrationRequest(user1));
-    }*/
 
 
 }

@@ -46,7 +46,7 @@ public class User {
 
     public boolean logIn() {
         try (BufferedReader br = new BufferedReader(new FileReader(
-                "\\HireUp\\HireUp\\HireUP\\User_Info.txt"))) {
+                "User_Info.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
@@ -96,7 +96,7 @@ public class User {
 
 
     public User userObject(String password, String email, String role) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\User_Info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("User_Info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -130,7 +130,7 @@ public class User {
             } else {
             bufferedWriter2.newLine();
             bufferedWriter2.write(formatData(user.getUserName()) + "," + user.getPassword() + "," +user.getEmail() +
-                    "," + formatData(user.getRole()) + "," + formatData(companyName)+ "," + formatData(webAddress));
+                    "," + formatData(user.getRole()) + "," + formatData(companyName)+ "," + webAddress);
             bufferedWriter2.flush();
             bufferedWriter2.close();
             return true;
