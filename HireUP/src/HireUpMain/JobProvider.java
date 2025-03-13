@@ -286,7 +286,7 @@ public class JobProvider extends User{
     public List<String> seeJobPosts()
     {
         List<String> jobPostList = new ArrayList<>();
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("\\HireUp\\HireUp\\HireUP\\Job_info.txt")))
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Job_info.txt")))
         {
             System.out.println("================================================================================================================");
             System.out.println("| S.No | Job Post No                    | Company Name              | Position                                 |");

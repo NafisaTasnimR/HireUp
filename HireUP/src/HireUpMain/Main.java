@@ -1,5 +1,6 @@
 package HireUpMain;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -73,8 +74,8 @@ public class Main {
             Scanner sc2 = new Scanner(System.in);
             String password = sc2.nextLine();
 
-           /* Console console = System.console();
-            char[] passwordArray = console.readPassword("Password : ");
+            /*Console console = System.console();
+            char[] passwordArray = ((Console) console).readPassword("Password : ");
             String password = new String(passwordArray);*/
 
             System.out.println("Role:");
@@ -734,12 +735,12 @@ public class Main {
                     default -> System.out.println("Invalid selection. Try again.");
                 }
             }
-            else if(choice == 10){
+            else if(choice == 8){
                 System.out.println("Returning to Previous Menu...");
                 System.out.println("//////////////////////////////////////////////");
                 updateConsole();
                 return;
-            } else if (choice == 11) {
+            } else if (choice == 9) {
                 logout();
             }else {
                 System.out.println("Invalid selection. Try again.");
