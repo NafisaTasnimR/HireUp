@@ -313,7 +313,7 @@ public class Admin extends User {
         List<String> ApplicantRequestList = new ArrayList<>();
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
-                "ApplicantRequest.txt"))) {
+                "E:\\HireUp\\HireUp\\HireUP\\ApplicantRequest.txt"))) {
             System.out.println("================================================================================================");
             System.out.println("| S.No | Name                          | Email                                 | Role          |");
             System.out.println("================================================================================================");
@@ -352,10 +352,11 @@ public class Admin extends User {
             }
         }
         if (approvedApplicant) {
-            try (BufferedWriter writer9 = new BufferedWriter(new FileWriter("User_info.txt", true))) {
+            try (BufferedWriter writer9 = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\User_info.txt", true))) {
                 for (String Applicant : approvedApplicants) {
-                    writer9.newLine();
+
                     writer9.write(Applicant);
+                    writer9.newLine();
                     writer9.flush();
                 }
                 this.deleteApplicantRequest(Serial,ApplicantRequestList);
@@ -382,7 +383,7 @@ public class Admin extends User {
             }
         }
         if (ApplicantRequestDeleted) {
-            try (BufferedWriter writer48 = new BufferedWriter(new FileWriter("ApplicantRequest.txt"))) {
+            try (BufferedWriter writer48 = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\ApplicantRequest.txt"))) {
                 for (String approvedApplicant: approvedApplicants) {
                     writer48.write(approvedApplicant);
                     writer48.newLine();
