@@ -672,7 +672,7 @@ public class Main {
         while (true) {
             System.out.println("View Resume");
             System.out.println("***************  View Resume  ***************");
-            System.out.println("Showing resume");
+            System.out.println("Showing resume: ");
             applicant.showResume();
 
             System.out.println("1. Go Back");
@@ -1091,13 +1091,13 @@ public class Main {
 
     private static void viewApplicantInformationOption(Scanner sc, Admin admin) {
         while (true) {
-            System.out.println("=================================================Applicant Information================================================");
+            System.out.println("=========================================    Applicant Information    ========================================");
             List<String> applicants = admin.ViewApplicantInformation();
             System.out.println("Enter your selection: ");
             Scanner scanner = new Scanner(System.in);
             int selectionApplicant = scanner.nextInt();
 
-            System.out.println("***************  Remove Applicant  ***************");
+            System.out.println("********************  Remove Applicant  ********************");
             System.out.println("1. Delete");
             System.out.println("2. Go Back");
             System.out.println("3. Logout");
@@ -1142,7 +1142,7 @@ public class Main {
 
     private static void viewJobProviderInformation(Scanner sc, Admin admin) {
         while (true) {
-            System.out.println("================================Job Provider Information======================================");
+            System.out.println("================================  Job Provider Information  ================================");
             List<String> jobProviders = admin.ViewInformation();
             System.out.println("Enter your selection: ");
             Scanner scanner = new Scanner(System.in);
