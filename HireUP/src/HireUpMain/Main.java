@@ -202,8 +202,8 @@ public class Main {
 
     private static void jobProviderMenu(Scanner sc, User user) {
         while (true) {
-            System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\     Job Provider     " +
-                    "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
+            System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  Job Provider  " +
+                    "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
             JobProvider jobProvider = JobProvider.loadFromFile(user.getEmail());
             System.out.println("1. Post Job Circular");
             System.out.println("2. Review & Shortlist Applicants");
@@ -241,7 +241,7 @@ public class Main {
 
     private static void adminMenu(Scanner sc) {
         while (true) {
-            System.out.println("\n--- Admin Menu ---");
+            System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  Admin  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
             System.out.println("1. New Applicant Requests");
             System.out.println("2. New Job Provider Requests");
             System.out.println("3. Manage Users");
@@ -281,8 +281,8 @@ public class Main {
     private static void registrationMenu(Scanner sc) {
         while (true) {
             System.out.println("You choose :SignUp");
-            System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\    Registration    " +
-                    " \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
+            System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\    Registration    " +
+                    " \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
             System.out.println("Name: ");
             Scanner sc35 = new Scanner(System.in);
             String name = sc35.nextLine();
@@ -1147,7 +1147,7 @@ public class Main {
             System.out.println("Enter your selection: ");
             Scanner scanner = new Scanner(System.in);
             int selectionJobProvider = scanner.nextInt();
-            System.out.println("***************  Remove Job Provider  ***************");
+            System.out.println("********************  Remove Job Provider  ********************");
             System.out.println("1. Delete");
             System.out.println("2. Go Back");
             System.out.println("3. Logout");
@@ -1192,10 +1192,10 @@ public class Main {
 
     private static void jobProviderRequestOption(Scanner sc, Admin admin) {
         while (true) {
-            System.out.println("=========================================Job Provider Requests=======================================");
+            System.out.println("======================================   Job Provider Requests   ====================================");
             List<String> jobProviderRequests = admin.viewNewJobProviderRequests();
 
-            System.out.println("***************  Approval  ***************");
+            System.out.println("********************  Approval  ********************");
             System.out.println("1. Single Approval ");
             System.out.println("2. Group By Approval");
             System.out.println("3. Single Rejection");
@@ -1210,7 +1210,7 @@ public class Main {
             switch (selection) {
                 case 1 -> {
                     Scanner scanner = new Scanner(System.in);
-                    System.out.println("Enter your selection: ");
+                    System.out.println("Enter serial no: ");
                     int selectionJobProviderRequest = scanner.nextInt();
                     admin.approveJobProvider(selectionJobProviderRequest, jobProviderRequests);
                     System.out.println("The Selected Job Provider Request Has Been Approved");
@@ -1261,7 +1261,7 @@ public class Main {
                 }
                 case 3 -> {
                     Scanner scanner = new Scanner(System.in);
-                    System.out.println("Enter your selection: ");
+                    System.out.println("Enter serial no: ");
                     int selectionJobProviderRequest = scanner.nextInt();
                     admin.deleteJobProviderRequest(selectionJobProviderRequest, jobProviderRequests);
                     System.out.println("The Selected Job Provider Request Has Been Rejected");
