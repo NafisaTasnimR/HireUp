@@ -36,7 +36,7 @@ public class Admin extends User {
         List<String> JobProviderList = new ArrayList<>();
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
-                "JobProvider_info.txt"))) {
+                "E:\\HireUp\\HireUp\\HireUP\\JobProvider_info.txt"))) {
             System.out.println("======================================================================================");
             System.out.println("| S.No | Company Name                        | Weblink                               |");
             System.out.println("======================================================================================");
@@ -207,7 +207,7 @@ public class Admin extends User {
         List<String> JobProviderRequestList = new ArrayList<>();
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
-                "JobProviderRequest.txt"))) {
+                "E:\\HireUp\\HireUp\\HireUP\\JobProviderRequest.txt"))) {
             System.out.println("======================================================================================================");
             System.out.println("| S.No | Name                          | Web Address                                 | Role          |");
             System.out.println("======================================================================================================");
@@ -293,7 +293,7 @@ public class Admin extends User {
             }
         }
         if (jobproviderRequestDeleted) {
-            try (BufferedWriter writer47 = new BufferedWriter(new FileWriter("JobProviderRequest.txt"))) {
+            try (BufferedWriter writer47 = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\JobProviderRequest.txt"))) {
                 for (String approvedJobProvider: approvedJobProviders) {
                     writer47.write(approvedJobProvider);
                     writer47.newLine();
