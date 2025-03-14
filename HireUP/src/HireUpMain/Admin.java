@@ -249,18 +249,20 @@ public class Admin extends User {
             }
         }
         if (approvedJobProvider) {
-            try (PrintWriter userWriter = new PrintWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\User_info.txt", true));
-                 PrintWriter jobProviderWriter = new PrintWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\JobProvider_info.txt", true))) {
+            try (BufferedWriter userWriter = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\User_info.txt", true));
+                 BufferedWriter jobProviderWriter = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\JobProvider_info.txt", true))) {
 
                 for (String userInfo : userInformation) {
-                    userWriter.println(userInfo);
+                    userWriter.write(userInfo);
+                    userWriter.newLine();
+                    userWriter.flush();
                 }
                 for (String jobProviderInfo : jobProviderInformation) {
-                    jobProviderWriter.println(jobProviderInfo);
+                    jobProviderWriter.write(jobProviderInfo);
+                    jobProviderWriter.newLine();
+                    jobProviderWriter.flush();
 
                 }
-                userWriter.flush();
-                jobProviderWriter.flush();
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
