@@ -250,7 +250,7 @@ public class Admin extends User {
         }
         if (approvedJobProvider) {
             try (PrintWriter userWriter = new PrintWriter(new FileWriter("User_info.txt", true));
-                 BufferedWriter jobProviderWriter = new BufferedWriter(new FileWriter("JobProvider_info.txt", true))) {
+                 PrintWriter jobProviderWriter = new PrintWriter(new FileWriter("JobProvider_info.txt", true))) {
 
                 for (String userInfo : userInformation) {
                     userWriter.write(userInfo);
