@@ -1,2 +1,3 @@
 Six55,Six Yard's Story,Secretary,Speaking English,3-4 years,50000,Gulshan,9am-6pm,www.sixyardsstory.com,experienced,sixyardsstory@gmail.com
 Six54,Six Yard's Story,Executive Manager,Communication,5-6 years,70000,Uttara,9am-5pm,www.sixyardsstory.com,Microsoft Excel,sixyardsstory@gmail.com
+Six96,Six Yard's Story,HR Manager,Data Analysis,2-3 years,65000,Motijheel,8am-5pm,www.sixyardsstory.com,HR Software,sixyardsstory@gmail.com
