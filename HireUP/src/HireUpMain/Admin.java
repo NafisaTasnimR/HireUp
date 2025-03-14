@@ -36,7 +36,7 @@ public class Admin extends User {
         List<String> JobProviderList = new ArrayList<>();
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
-                "E:\\HireUp\\HireUp\\HireUP\\JobProvider_info.txt"))) {
+                "JobProvider_info.txt"))) {
             System.out.println("======================================================================================");
             System.out.println("| S.No | Company Name                        | Weblink                               |");
             System.out.println("======================================================================================");
@@ -207,7 +207,7 @@ public class Admin extends User {
         List<String> JobProviderRequestList = new ArrayList<>();
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
-                "E:\\HireUp\\HireUp\\HireUP\\JobProviderRequest.txt"))) {
+                "JobProviderRequest.txt"))) {
             System.out.println("======================================================================================================");
             System.out.println("| S.No | Name                          | Web Address                                 | Role          |");
             System.out.println("======================================================================================================");
@@ -249,8 +249,8 @@ public class Admin extends User {
             }
         }
         if (approvedJobProvider) {
-            try (BufferedWriter userWriter = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\User_info.txt", true));
-                 BufferedWriter jobProviderWriter = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\JobProvider_info.txt", true))) {
+            try (BufferedWriter userWriter = new BufferedWriter(new FileWriter("User_info.txt", true));
+                 BufferedWriter jobProviderWriter = new BufferedWriter(new FileWriter("JobProvider_info.txt", true))) {
 
                 for (String userInfo : userInformation) {
                     userWriter.write(userInfo);
@@ -294,7 +294,7 @@ public class Admin extends User {
             }
         }
         if (jobproviderRequestDeleted) {
-            try (BufferedWriter writer47 = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\JobProviderRequest.txt"))) {
+            try (BufferedWriter writer47 = new BufferedWriter(new FileWriter("JobProviderRequest.txt"))) {
                 for (String approvedJobProvider: approvedJobProviders) {
                     writer47.write(approvedJobProvider);
                     writer47.newLine();
@@ -313,7 +313,7 @@ public class Admin extends User {
         List<String> ApplicantRequestList = new ArrayList<>();
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
-                "E:\\HireUp\\HireUp\\HireUP\\ApplicantRequest.txt"))) {
+                "ApplicantRequest.txt"))) {
             System.out.println("================================================================================================");
             System.out.println("| S.No | Name                          | Email                                 | Role          |");
             System.out.println("================================================================================================");
@@ -352,7 +352,7 @@ public class Admin extends User {
             }
         }
         if (approvedApplicant) {
-            try (BufferedWriter writer9 = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\User_info.txt", true))) {
+            try (BufferedWriter writer9 = new BufferedWriter(new FileWriter("User_info.txt", true))) {
                 for (String Applicant : approvedApplicants) {
 
                     writer9.write(Applicant);
@@ -383,7 +383,7 @@ public class Admin extends User {
             }
         }
         if (ApplicantRequestDeleted) {
-            try (BufferedWriter writer48 = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\ApplicantRequest.txt"))) {
+            try (BufferedWriter writer48 = new BufferedWriter(new FileWriter("ApplicantRequest.txt"))) {
                 for (String approvedApplicant: approvedApplicants) {
                     writer48.write(approvedApplicant);
                     writer48.newLine();

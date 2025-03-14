@@ -1091,7 +1091,7 @@ public class Main {
 
     private static void viewApplicantInformationOption(Scanner sc, Admin admin) {
         while (true) {
-            System.out.println("=========================================    Applicant Information    ========================================");
+            System.out.println("=========================================  Applicant Information  ========================================");
             List<String> applicants = admin.ViewApplicantInformation();
             System.out.println("Enter your selection: ");
             Scanner scanner = new Scanner(System.in);
@@ -1192,7 +1192,7 @@ public class Main {
 
     private static void jobProviderRequestOption(Scanner sc, Admin admin) {
         while (true) {
-            System.out.println("======================================   Job Provider Requests   ====================================");
+            System.out.println("======================================  Job Provider Requests  ====================================");
             List<String> jobProviderRequests = admin.viewNewJobProviderRequests();
 
             System.out.println("********************  Approval  ********************");
@@ -1325,7 +1325,7 @@ public class Main {
 
     private static void applicantRequestOption(Scanner sc, Admin admin) {
         while (true) {
-            System.out.println("=========================================Applicant Requests========================================");
+            System.out.println("=======================================  Applicant Requests  ======================================");
             List<String> applicantRequests = admin.viewApplicantRequests();
             System.out.println("***************  Approval  ***************");
             System.out.println("1. Single Approval ");
@@ -1342,7 +1342,7 @@ public class Main {
             switch (selection) {
                 case 1 -> {
                     Scanner scanner = new Scanner(System.in);
-                    System.out.println("Enter your selection: ");
+                    System.out.println("Enter serial no: ");
                     int selectionApplicantRequest = scanner.nextInt();
                     admin.approveApplicant(selectionApplicantRequest, applicantRequests);
                     System.out.println("The Selected Applicant Request Has Been Approved");
@@ -1392,7 +1392,7 @@ public class Main {
                 }
                 case 3 -> {
                     Scanner scanner = new Scanner(System.in);
-                    System.out.println("Enter your selection: ");
+                    System.out.println("Enter serial no: ");
                     int selectionApplicantRequest = scanner.nextInt();
                     admin.deleteApplicantRequest(selectionApplicantRequest, applicantRequests);
                     System.out.println("Selected Applicant Request Has Been Rejected");
