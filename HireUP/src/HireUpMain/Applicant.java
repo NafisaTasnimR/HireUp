@@ -147,7 +147,7 @@ public class Applicant extends User {
                 }
             }
         } catch (IOException e) {
-            System.err.println("Error reading file ");
+            System.err.println("Error reading file. ");
             e.printStackTrace();
         }
 
@@ -170,9 +170,9 @@ public class Applicant extends User {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Application.txt", true))) {
             writer.newLine();
             writer.write(content);
-            System.out.println("Successfully Applied For The Job");
+            System.out.println("Successfully Applied For The Job.");
         } catch (IOException e) {
-            System.err.println("Error writing to file");
+            System.err.println("Error writing to file.");
             e.printStackTrace();
         }
     }
@@ -217,8 +217,8 @@ public class Applicant extends User {
 
 
                 if (serial == 0) {
-                    System.out.println("| No applications found for the given email.                                                              |");
-                    System.out.println("==========================================================================================================");
+                    System.out.println("| No applications found for the given email.                                             |");
+                    System.out.println("==========================================================================================");
                 }
 
             } catch (IOException e) {

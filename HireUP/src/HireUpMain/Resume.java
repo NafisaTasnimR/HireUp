@@ -64,10 +64,10 @@ public class Resume {
                         String applicantEmail = resumeList[10];
                         if (Objects.equals(applicantEmail, email)) {
 
-                            System.out.println("\n================================================================");
+                            System.out.println("\n==========================================================================================================================================");
                             System.out.println("                       RESUME");
-                            System.out.println("================================================================\n");
-                            System.out.println("\n-------------------   PERSONAL INFORMATION   -------------------\n");
+                            System.out.println("==========================================================================================================================================\n");
+                            System.out.println("\n-------------------------------------------------------   PERSONAL INFORMATION   -------------------------------------------------------\n");
                             System.out.println("Name                         : " + resumeList[0] +"\n");
                             System.out.println("Father's Name                : " + resumeList[1] +"\n");
                             System.out.println("Mother's Name                : " + resumeList[2] +"\n");
@@ -79,7 +79,7 @@ public class Resume {
                             System.out.println("Address                      : " + resumeList[8] +"\n");
                             System.out.println("National ID                  : " + resumeList[9] +"\n");
                             System.out.println("Email                        : " + resumeList[10] +"\n");
-                            System.out.println("\n-------------------   EDUCATIONAL INFORMATION   -------------------\n");
+                            System.out.println("\n-------------------------------------------------------   EDUCATIONAL INFORMATION   -------------------------------------------------------\n");
                             System.out.println("==========================================================================================================================================");
                             System.out.println("| Exam Name                  | Institution Name                   | Subject                          | Result       | Passing Year       |");
                             System.out.println("==========================================================================================================================================");
@@ -92,11 +92,11 @@ public class Resume {
                             }
 
                             System.out.println("==========================================================================================================================================");
-                            System.out.println("\n-------------------   ADDITIONAL INFORMATION   -------------------\n");
+                            System.out.println("\n-------------------------------------------------------   ADDITIONAL INFORMATION   -------------------------------------------------------\n");
                             System.out.println("Experience                   : " + resumeList[41] +"\n");
                             System.out.println("Hobbies                      : " + resumeList[42] +"\n");
                             System.out.println("Skills                       : " + resumeList[43] +"\n");
-                            System.out.println("===============================================================\n");
+                            System.out.println("==========================================================================================================================================\n");
 
 
                             found = true;
