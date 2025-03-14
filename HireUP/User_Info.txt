@@ -1,7 +1,7 @@
 Rodoshi,rod114,rodoshi@gmail.com,Admin
 Nishat,nish124,nishat@gmail.com,Admin
 Mrittika,mri150,mrittika@gmail.com,Admin
-Nafisa,mlk8*,milkyway@gmail.com,Job Provider
+Sneha,mlk8*,milkyway@gmail.com,Job Provider
 Nuzhat,mrs#3,mars@gmail.com,Job Provider
 Mira,mira@44,mira44@gmail.com,Applicant
 Preo,preo@24,preo24@gmail.com,Applicant
