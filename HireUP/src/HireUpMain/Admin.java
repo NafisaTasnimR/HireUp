@@ -254,7 +254,7 @@ public class Admin extends User {
 
                 for (String userInfo : userInformation) {
                     userWriter.write(userInfo);
-                    userWriter.newLine();
+                    userWriter.println();
                 }
                 for (String jobProviderInfo : jobProviderInformation) {
                     jobProviderWriter.write(jobProviderInfo);
