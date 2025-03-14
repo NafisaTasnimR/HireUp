@@ -249,8 +249,8 @@ public class Admin extends User {
             }
         }
         if (approvedJobProvider) {
-            try (PrintWriter userWriter = new PrintWriter(new FileWriter("User_info.txt", true));
-                 PrintWriter jobProviderWriter = new PrintWriter(new FileWriter("JobProvider_info.txt", true))) {
+            try (PrintWriter userWriter = new PrintWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\User_info.txt", true));
+                 PrintWriter jobProviderWriter = new PrintWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\JobProvider_info.txt", true))) {
 
                 for (String userInfo : userInformation) {
                     userWriter.write(userInfo);
