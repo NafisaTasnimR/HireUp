@@ -253,8 +253,7 @@ public class Admin extends User {
                  PrintWriter jobProviderWriter = new PrintWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\JobProvider_info.txt", true))) {
 
                 for (String userInfo : userInformation) {
-                    userWriter.write(userInfo);
-                    userWriter.println();
+                    userWriter.println(userInfo);
                 }
                 for (String jobProviderInfo : jobProviderInformation) {
                     jobProviderWriter.write(jobProviderInfo);
