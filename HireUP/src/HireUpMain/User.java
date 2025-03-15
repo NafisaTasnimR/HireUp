@@ -71,30 +71,7 @@ public class User {
         }
         return false;
     }
-
-    public boolean registration(User user) {
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("User_Info.txt", true))) {
-            if (!isValidEmail(user.getEmail())) {
-                System.out.println("Registration failed: Invalid email format.");
-                return false;
-            } else if (!isValidPassword(user.getPassword())) {
-                System.out.println("Registration failed: Invalid password format.");
-                return false;
-            } else {
-                bufferedWriter.newLine();
-                bufferedWriter.write(formatData(user.getUserName()) + "," +
-                        user.getPassword() + "," + user.getEmail() +
-                        "," + formatData(user.getRole()));
-                bufferedWriter.close();
-                return true;
-            }
-        } catch (IOException e) {
-            System.err.println("Error in file writing." + e.getMessage());
-            e.printStackTrace();
-        } return false;
-    }
-
-
+    
     public User userObject(String password, String email, String role) {
         try (BufferedReader reader = new BufferedReader(new FileReader("User_Info.txt"))) {
             String line;
