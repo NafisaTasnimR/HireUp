@@ -29,6 +29,13 @@ public class TestUser {
         assertEquals(expectedValue,user.logIn());
     }
 
+    @Test
+    public void testApplicantRequest(){
+        boolean expectedValue = true;
+        User user = new User("Mysha","Hjkjlj&&7","mysha@gmail.com","Applicant");
+        assertEquals(expectedValue,user.NewApplicantRequest(user));
+    }
+
 
 
 
