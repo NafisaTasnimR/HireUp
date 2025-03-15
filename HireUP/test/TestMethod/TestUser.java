@@ -36,6 +36,12 @@ public class TestUser {
         assertEquals(expectedValue,user.NewApplicantRequest(user));
     }
 
+    @Test
+    public  void testJobProviderRequest(){
+        boolean expectedValue = true;
+        User user = new User("Sneha","Kjklg*8J","sneha@gmail.com","Job Provider");
+        assertEquals(expectedValue,user.NewJobProviderRequest(user,"Pran","www.pran.com"));
+    }
 
 
 
