@@ -5,3 +5,4 @@ Milkyway24,Milkyway,Manager,Microsoft Word,5 years,100000,Gulshan,8am-6pm,www.mi
 Milkyway76,Milkyway,Accountant,Microsoft Excel,3 years,60000,Dhanmondi,9am-3pm,www.milkyway.com,Analytical Skills,milkyway@gmail.com
 Milkyway57,Milkyway,Software Developer,Java,3 years,70000,Banani,10am-6pm,www.milkyway.com,Database Management,milkyway@gmail.com
 Milk40,Milk,Marketing Manager,Digital Marketing,2 yeears,55000,Mirpur 01,11am-6pm,www.milk.com,Social Media Expertise,milk@gmail.com
+Milk97,Milk,Sales Representative,CRM tools,3 years,48000,Nikunja,9am-5pm,www.milk.com,Product Knowledge,milk@gmail.com
