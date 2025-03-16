@@ -240,7 +240,7 @@ public class Resume {
     }
     public boolean isCreated(String email)
     {
-        try(BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))){
+        try(BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))){
             String line;
             while ((line = reader.readLine()) != null){
                 String[] applicantData = line.split(",");

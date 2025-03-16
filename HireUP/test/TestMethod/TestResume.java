@@ -30,4 +30,11 @@ public class TestResume {
         resume.updateInfo("nafisa123@gmail.com", 1);
         assertTrue(true, "Resume information should be updated.");
     }
+
+    @Test
+    public void testResumeExists() {
+        Resume resume = new Resume();
+        boolean exists = resume.isCreated("adrita8@gmail.com");
+        assertTrue(exists, "Resume should exist in the system.");
+    }
 }
