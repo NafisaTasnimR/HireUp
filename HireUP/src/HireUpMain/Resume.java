@@ -56,7 +56,7 @@ public class Resume {
 
     public boolean showResume(String email) {
         boolean found = false;
-        try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
 
@@ -65,9 +65,9 @@ public class Resume {
                         if (Objects.equals(applicantEmail, email)) {
 
                             System.out.println("\n==========================================================================================================================================");
-                            System.out.println("                       RESUME");
+                            System.out.println("                                                                 RESUME");
                             System.out.println("==========================================================================================================================================\n");
-                            System.out.println("\n-------------------------------------------------------   PERSONAL INFORMATION   -------------------------------------------------------\n");
+                            System.out.println("\n-------------------------------------------------------   PERSONAL INFORMATION   ---------------------------------------------------------\n");
                             System.out.println("Name                         : " + resumeList[0] +"\n");
                             System.out.println("Father's Name                : " + resumeList[1] +"\n");
                             System.out.println("Mother's Name                : " + resumeList[2] +"\n");
@@ -79,7 +79,7 @@ public class Resume {
                             System.out.println("Address                      : " + resumeList[8] +"\n");
                             System.out.println("National ID                  : " + resumeList[9] +"\n");
                             System.out.println("Email                        : " + resumeList[10] +"\n");
-                            System.out.println("\n-------------------------------------------------------   EDUCATIONAL INFORMATION   -------------------------------------------------------\n");
+                            System.out.println("\n-------------------------------------------------------   EDUCATIONAL INFORMATION   ------------------------------------------------------\n");
                             System.out.println("==========================================================================================================================================");
                             System.out.println("| Exam Name                  | Institution Name                   | Subject                          | Result       | Passing Year       |");
                             System.out.println("==========================================================================================================================================");
@@ -121,7 +121,7 @@ public class Resume {
          List<String> updatedLines = new ArrayList<>();
          boolean found = false;
 
-         try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
+         try (BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))) {
              String line;
 
              while ((line = reader.readLine()) != null) {
@@ -240,7 +240,7 @@ public class Resume {
     }
     public boolean isCreated(String email)
     {
-        try(BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))){
+        try(BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))){
             String line;
             while ((line = reader.readLine()) != null){
                 String[] applicantData = line.split(",");
