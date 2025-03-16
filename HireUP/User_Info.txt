@@ -10,3 +10,4 @@ Adrita,Adrita08@,adrita8@gmail.com,Applicant
 Sanjana,sanjana06@,sanjana6@gmail.com,Applicant
 Nafisa Tasnim,6six,sixyardsstory@gmail.com,Job Provider
 Preownti Rahman,S1Rahman,milk@gmail.com,Job Provider
+JohnDoe,pass123,john@example.com,JobProvider

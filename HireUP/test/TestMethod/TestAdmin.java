@@ -3,6 +3,7 @@ package TestMethod;
 import HireUpMain.Admin;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -25,5 +26,14 @@ public class TestAdmin {
         assertNotNull(result, "The returned list should not be null");
         assertFalse(result.isEmpty(), "The list should not be empty");
     }
-    
+
+    @Test
+    public void testApproveJobProvider() {
+        Admin admin = new Admin();
+        List<String> jobProviderRequests = Arrays.asList(
+                "1,JohnDoe,pass123,john@example.com,JobProvider,TechCorp,www.techcorp.com"
+        );
+        boolean result = admin.approveJobProvider(1, jobProviderRequests);
+        assertTrue(result);
+    }
 }
