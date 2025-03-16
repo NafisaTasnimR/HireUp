@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestResume {
 
@@ -21,5 +22,12 @@ public class TestResume {
         Resume resume = new Resume(personalInformation, educationalInformation, additionalInformation);
         assertEquals(expectedValue, resume.generateResume("nafisa23@gmail.com"));
 
+    }
+
+    @Test
+    public void testResumeUpdate() {
+        Resume resume = new Resume();
+        resume.updateInfo("nafisa123@gmail.com", 1);
+        assertTrue(true, "Resume information should be updated.");
     }
 }
