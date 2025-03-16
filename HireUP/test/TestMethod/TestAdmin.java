@@ -31,9 +31,16 @@ public class TestAdmin {
     public void testApproveJobProvider() {
         Admin admin = new Admin();
         List<String> jobProviderRequests = Arrays.asList(
-                "1,JohnDoe,pass123,john@example.com,JobProvider,TechCorp,www.techcorp.com"
+                "1,JohnDoe,pass123,john@gmail.com,JobProvider,TechCorp,www.techcorp.com"
         );
         boolean result = admin.approveJobProvider(1, jobProviderRequests);
+        assertTrue(result);
+    }
+    @Test
+    public void testApproveApplicant() {
+        Admin admin = new Admin();
+        List<String> applicantRequests = Arrays.asList("1,Sneha,pass123,Sneha@gmail.com,Applicant");
+        boolean result = admin.approveApplicant(1, applicantRequests);
         assertTrue(result);
     }
 }
