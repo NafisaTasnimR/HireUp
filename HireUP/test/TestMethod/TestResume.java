@@ -37,4 +37,11 @@ public class TestResume {
         boolean exists = resume.isCreated("adrita8@gmail.com");
         assertTrue(exists, "Resume should exist in the system.");
     }
+
+    @Test
+    public void testResumeDisplay() {
+        Resume resume = new Resume();
+        boolean isDisplayed = resume.showResume("adrita8@gmail.com");
+        assertTrue(isDisplayed, "Resume should be displayed successfully if it exists.");
+    }
 }
