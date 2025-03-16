@@ -9,6 +9,7 @@ import java.util.Objects;
 
 import static HireUpMain.Utility.formatData;
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestApplicant {
 
@@ -72,6 +73,14 @@ public class TestApplicant {
         }
 
         assertEquals(listCount,count);
+    }
+
+    @Test
+    public void testEmptyJobSearch() {
+        String invalidCriteria = "NonExistentJob";
+        Applicant applicant = new Applicant();
+        List<String> filteredJobList = applicant.searchJob(invalidCriteria);
+        assertTrue(filteredJobList.isEmpty(), "No jobs should match an invalid search criteria.");
     }
 
 
