@@ -54,5 +54,25 @@ public class TestApplicant {
         assertEquals(listCount,count);
     }
 
+    @Test
+    public void testSearchJobByPosition() {
+        String jobPosition = "Software Developer";
+        int count=0,listCount = 0;
+        List<String> filteredJobList = new ArrayList<>();
+        Applicant applicant = new Applicant();
+        filteredJobList = applicant.searchJob(jobPosition);
+        for (String line: filteredJobList)
+        {
+            String[] data = line.split(",");
+            if(Objects.equals(data[3],formatData(jobPosition)))
+            {
+                count++;
+            }
+            listCount++;
+        }
+
+        assertEquals(listCount,count);
+    }
+
 
 }

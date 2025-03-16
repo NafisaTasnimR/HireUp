@@ -27,7 +27,7 @@ public class Applicant extends User {
         Set<String> uniqueJobs = new HashSet<>();
         int outputSerial = 0;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("Job_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Job_info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
