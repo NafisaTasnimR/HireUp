@@ -30,17 +30,25 @@ public class TestUser {
     }
 
     @Test
+    public void testLogin4()
+    {
+        boolean expectedValue = true;
+        User user = new User("John Doe","pass123","john@gmail.com","Job Provider");
+        assertEquals(expectedValue,user.logIn());
+    }
+
+    @Test
     public void testApplicantRequest(){
         boolean expectedValue = true;
         User user = new User("Mysha","Hjkjlj&&7","mysha@gmail.com","Applicant");
-        assertEquals(expectedValue,user.NewApplicantRequest(user));
+        assertEquals(expectedValue,user.sendNewApplicantRequest(user));
     }
 
     @Test
     public  void testJobProviderRequest(){
         boolean expectedValue = true;
         User user = new User("Sneha","Kjklg*8J","sneha@gmail.com","Job Provider");
-        assertEquals(expectedValue,user.NewJobProviderRequest(user,"Pran","www.pran.com"));
+        assertEquals(expectedValue,user.sendNewJobProviderRequest(user,"Pran","www.pran.com"));
     }
 
 

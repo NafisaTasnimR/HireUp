@@ -94,7 +94,7 @@ public class JobProvider extends User{
             {
                 String[] data = line.split(",");
                 String applicantEmail = data[6];
-                if(Objects.equals(this.getEmail(), data[3]) && Objects.equals(jobPostNo, data[0]))
+                if(Objects.equals(this.getEmail(), data[3]) && Objects.equals(jobPostNo, data[0]) && Objects.equals(data[7],"pending"))
                 {
                     try(BufferedReader bufferedReader1 = new BufferedReader(new FileReader("Applicant_info.txt"))){;
 
@@ -310,6 +310,7 @@ public class JobProvider extends User{
             String line;
             String jobPost;
             int serial = 0;
+            boolean noJobPostYet = true;
             while ((line = bufferedReader.readLine()) != null)
             {
                 String[] data = line.split(",");
@@ -318,15 +319,17 @@ public class JobProvider extends User{
                 String position = data[2];
                 if(Objects.equals(this.getEmail(), data[10])) {
                     serial++;
+                    noJobPostYet = false;
                     System.out.printf("| %-4d | %-30s | %-25s | %-40s | \n",
                             serial, jobPostNo, companyName, position);
                     jobPost = serial + "," + line;
                     jobPostList.add(jobPost);
                     System.out.println("================================================================================================================");
 
-                }else{
-                    System.out.println("email doesn't match");
                 }
+            }
+            if(noJobPostYet){
+                System.out.println("There Is No Job Post Available Under Your Company!");
             }
         }catch (IOException e)
         {

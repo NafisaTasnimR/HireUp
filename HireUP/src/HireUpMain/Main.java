@@ -870,6 +870,7 @@ public class Main {
         System.out.println("1. BSc CGPA");
         System.out.println("2. Has MSc Degree");
         System.out.println("3. Experience");
+        System.out.println("Enter Your Filtering Preference:");
 
         int selectionNo = sc.nextInt();
         sc.nextLine();
@@ -892,6 +893,7 @@ public class Main {
                 System.out.println("There is no application submitted for this job post yet!");
                 System.out.println("1. Go Back ");
                 System.out.println("2. Logout");
+                System.out.println("Enter Your Selection: ");
                 int selection = sc.nextInt();
                 sc.nextLine();
 
