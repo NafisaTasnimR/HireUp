@@ -1,6 +1,5 @@
 package HireUpMain;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -303,7 +302,7 @@ public class Main {
             switch (roleValue) {
                 case 1 -> {
                     user = new User(name, password, email, "applicant");
-                    if(user.NewApplicantRequest(user)){
+                    if(user.sendNewApplicantRequest(user)){
                         System.out.println("Applicant Request Has Been Sent.");
                     } else{
                         System.out.println("Sorry! Applicant Request Has Not Been Sent.");
@@ -320,7 +319,7 @@ public class Main {
                     System.out.println("Web Address:");
                     Scanner sc66 = new Scanner(System.in);
                     String webAddress = sc66.nextLine();
-                    if (user.NewJobProviderRequest(user, companyName, webAddress)) {
+                    if (user.sendNewJobProviderRequest(user, companyName, webAddress)) {
                         System.out.println("Your request has been sent to Admin.");
                     } else {
                         System.out.println("Sorry! Your request has not been sent to Admin.");
@@ -487,7 +486,7 @@ public class Main {
         while (true) {
             System.out.println("Job status");
             System.out.println("***************  Job Status  ***************");
-            List<String> jobs = applicant.applicationList(applicant.getEmail());
+            List<String> jobs = applicant.getApplicationList(applicant.getEmail());
 
             System.out.println("1. Go Back");
             System.out.println("2. Logout");
@@ -1192,9 +1191,8 @@ public class Main {
 
     private static void jobProviderRequestOption(Scanner sc, Admin admin) {
         while (true) {
-            System.out.println("======================================  Job Provider Requests  ====================================");
-            List<String> jobProviderRequests = admin.viewNewJobProviderRequests();
-
+            System.out.println("=========================================Job Provider Requests=======================================");
+            List<String> jobProviderRequests = admin.viewJobProviderRequests();
             System.out.println("********************  Approval  ********************");
             System.out.println("1. Single Approval ");
             System.out.println("2. Group By Approval");

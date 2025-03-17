@@ -203,7 +203,7 @@ public class Admin extends User {
         return false;
     }
 
-    public List<String> viewNewJobProviderRequests(){
+    public List<String> viewJobProviderRequests(){
         List<String> JobProviderRequestList = new ArrayList<>();
         String line;
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
@@ -366,7 +366,7 @@ public class Admin extends User {
             }
         } return false;
     }
-    public boolean deleteApplicantRequest(int serial3,List<String> ApplicantRequestList) {
+    public boolean deleteApplicantRequest(int serial,List<String> ApplicantRequestList) {
         List<String> approvedApplicants = new ArrayList<>();
         boolean ApplicantRequestDeleted = false;
         for(String JobProviderRequest : ApplicantRequestList) {
@@ -376,7 +376,7 @@ public class Admin extends User {
             String password = data[2];
             String email = data[3];
             String role = data[4];
-            if (!(serial3==serial28)||ApplicantRequestDeleted) {
+            if (!(serial==serial28)||ApplicantRequestDeleted) {
                 approvedApplicants.add(userName + "," + password + "," + email+ "," + role );
             } else {
                 ApplicantRequestDeleted = true;

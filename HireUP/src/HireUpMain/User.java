@@ -1,8 +1,6 @@
 package HireUpMain;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import static HireUpMain.Utility.formatData;
@@ -95,7 +93,7 @@ public class User {
 
         return null;
     }
-    public boolean NewJobProviderRequest(User user,String companyName,String webAddress) {
+    public boolean sendNewJobProviderRequest(User user, String companyName, String webAddress) {
         try (BufferedWriter bufferedWriter2 = new BufferedWriter(
                 new FileWriter("JobProviderRequest.txt",true))) {
             if (!isValidEmail(user.getEmail())) {
@@ -117,7 +115,7 @@ public class User {
             e.printStackTrace();
         }return false;
     }
-    public boolean NewApplicantRequest(User user) {
+    public boolean sendNewApplicantRequest(User user) {
         try (BufferedWriter bufferedWriter3 = new BufferedWriter(
                 new FileWriter("ApplicantRequest.txt",true))) {
             if (!isValidEmail(user.getEmail())) {

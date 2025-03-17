@@ -190,7 +190,7 @@ public class Applicant extends User {
 
 
 
-     public List<String> applicationList(String email) {
+     public List<String> getApplicationList(String email) {
             List<String> jobList = new ArrayList<>();
 
             try (BufferedReader reader = new BufferedReader(new FileReader("Application.txt"))) {

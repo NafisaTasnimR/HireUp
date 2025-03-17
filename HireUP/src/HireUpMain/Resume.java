@@ -63,7 +63,6 @@ public class Resume {
                         String[] resumeList = line.split(",");
                         String applicantEmail = resumeList[10];
                         if (Objects.equals(applicantEmail, email)) {
-
                             System.out.println("\n==========================================================================================================================================");
                             System.out.println("                                                                 RESUME");
                             System.out.println("==========================================================================================================================================\n");
