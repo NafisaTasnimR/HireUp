@@ -8,15 +8,19 @@ import java.util.List;
 import java.util.Objects;
 
 import static HireUpMain.Utility.extractYear;
+import static HireUpMain.Utility.formatData;
 
 public class JobProvider extends User{
     private String companyName;
     private String webAddress;
 
+    private List<Job> jobs;
+
     public JobProvider(String username,String password,String email,String role,String companyName,String webAddress){
         super(username,password,email,role);
         this.companyName = companyName;
         this.webAddress = webAddress;
+        this.jobs = new ArrayList<>();
     }
 
     public String getCompanyName()
@@ -27,6 +31,11 @@ public class JobProvider extends User{
     {
         return webAddress;
     }
+
+    public List<Job> getJobs() {
+        return jobs;
+    }
+
     public static JobProvider loadFromFile(String email) {
         try (BufferedReader br = new BufferedReader(new FileReader("JobProvider_info.txt"))) {
             String line;
@@ -42,26 +51,32 @@ public class JobProvider extends User{
         return null;
     }
 
-    public boolean postJob(Job job)
-    {
+    public void addJob(Job job) {
+        jobs.add(job);
+    }
+
+    private boolean saveToFile(Job job) {
         String companyName = job.getCompanyName();
         String regex = "[,\\.\\s]";
         String[] nameArray = companyName.split(regex);
         String jobPostNo = nameArray[0] + String.valueOf((int)(Math.random()*100));
-        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("Job_info.txt",true))){
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("Job_info.txt", true))) {
             bufferedWriter.newLine();
-            bufferedWriter.write(jobPostNo + "," + job.getCompanyName() + "," +
-                    job.getJobPosition() + "," + job.getSkill() + "," + job.getExperience()
-            + "," + job.getSalary() + "," + job.getLocation() + "," + job.getTime()
-            + "," + job.getWebsiteLink() + "," + job.getAdditional() + "," + this.getEmail());
+            bufferedWriter.write(jobPostNo + "," + formatData(this.getCompanyName()) + "," +
+                    formatData(job.getJobPosition()) + "," + formatData(job.getSkill()) + "," + job.getExperience()
+                    + "," + job.getSalary() + "," + formatData(job.getLocation()) + "," + job.getTime()
+                    + "," + this.getWebAddress() + "," + job.getAdditional() + "," + this.getEmail());
             bufferedWriter.flush();
-            bufferedWriter.close();
             return true;
-        }catch (IOException e)
-        {
+        } catch (IOException e) {
             System.out.println("Error occurred writing to file: " + e.getMessage());
+            return false;
         }
-        return false;
+    }
+
+    public boolean postJob(Job job) {
+        this.addJob(job);
+        return saveToFile(job);
     }
 
     public List<String> seeApplicantList(String jobPostNo,String sortingPreference)
