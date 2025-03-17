@@ -41,7 +41,7 @@ public class Resume {
     }
 
     public boolean generateResume(String email) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt", true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Applicant_info.txt", true))) {
             writer.write(PersonalInformation.toFileString()+","+email+ "," +
                     EducationalInformation.toFileString()+","+
                     AdditionalInformation.toFileString());
@@ -56,7 +56,7 @@ public class Resume {
 
     public boolean showResume(String email) {
         boolean found = false;
-        try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
 
@@ -121,7 +121,7 @@ public class Resume {
          List<String> updatedLines = new ArrayList<>();
          boolean found = false;
 
-         try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
+         try (BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))) {
              String line;
 
              while ((line = reader.readLine()) != null) {
@@ -228,7 +228,7 @@ public class Resume {
              e.printStackTrace();
          }
 
-         try (BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
+         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Applicant_info.txt"))) {
              for (String updatedLine : updatedLines) {
                  writer.write(updatedLine);
                  writer.newLine();
@@ -240,7 +240,7 @@ public class Resume {
     }
     public boolean isCreated(String email)
     {
-        try(BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))){
+        try(BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))){
             String line;
             while ((line = reader.readLine()) != null){
                 String[] applicantData = line.split(",");

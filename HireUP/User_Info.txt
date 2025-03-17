@@ -11,4 +11,4 @@ Sanjana,sanjana06@,sanjana6@gmail.com,Applicant
 Nafisa Tasnim,6six,sixyardsstory@gmail.com,Job Provider
 Preownti Rahman,S1Rahman,milk@gmail.com,Job Provider
 JohnDoe,pass123,john@gmail.com,JobProvider
-Sneha,pass123,Sneha@gmail.com,Applicant
+Sneha,pass123,sneha@gmail.com,Applicant

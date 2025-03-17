@@ -27,7 +27,7 @@ public class Applicant extends User {
         Set<String> uniqueJobs = new HashSet<>();
         int outputSerial = 0;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Job_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Job_info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
@@ -134,7 +134,7 @@ public class Applicant extends User {
 
     private String findApplicant(String email) {
         String resumeInfo = "";
-        try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Applicant_info.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -167,7 +167,7 @@ public class Applicant extends User {
     }
 
     private void writeToFile(String content) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\Application.txt", true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Application.txt", true))) {
             writer.newLine();
             writer.write(content);
             System.out.println("Successfully Applied For The Job.");
@@ -193,7 +193,7 @@ public class Applicant extends User {
      public List<String> applicationList(String email) {
             List<String> jobList = new ArrayList<>();
 
-            try (BufferedReader reader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Application.txt"))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader("Application.txt"))) {
                 String line;
                 int serial = 0;
 
