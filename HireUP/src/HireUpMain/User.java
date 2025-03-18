@@ -103,7 +103,7 @@ public class User {
                 System.out.println("Registration failed: Invalid password format.");
                 return false;
             } else {
-            bufferedWriter2.newLine();
+            //bufferedWriter2.newLine();
             bufferedWriter2.write(formatData(user.getUserName()) + "," + user.getPassword() + "," +user.getEmail() +
                     "," + formatData(user.getRole()) + "," + formatData(companyName)+ "," + webAddress);
             bufferedWriter2.flush();
@@ -125,7 +125,7 @@ public class User {
                 System.out.println("Registration failed: Invalid password format.");
                 return false;
             } else {
-                bufferedWriter3.newLine();
+                //bufferedWriter3.newLine();
                 bufferedWriter3.write(formatData(user.getUserName()) + "," + user.getPassword() + "," + user.getEmail() +
                         "," + formatData(user.getRole()));
                 bufferedWriter3.flush();

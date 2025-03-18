@@ -354,7 +354,6 @@ public class Admin extends User {
         if (approvedApplicant) {
             try (BufferedWriter writer9 = new BufferedWriter(new FileWriter("User_info.txt", true))) {
                 for (String Applicant : approvedApplicants) {
-
                     writer9.write(Applicant);
                     writer9.newLine();
                     writer9.flush();

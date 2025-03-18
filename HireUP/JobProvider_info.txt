@@ -3,3 +3,5 @@ Ayesha,mlk8*,milkyway@gmail.com,Job Provider,Milkyway,www.milkyway.com
 Tanzia Rahman,S1Rahman,milk@gmail.com,Job Provider,Milk,www.milk.com
 John Doe,pass123,john@gmail.com,Job Provider,TechCorp,www.techcorp.com
 Nuzhat,mrs#3,mars@gmail.com,Job Provider,Mars,www.mars.com
+Rahman,rh5,rahman5@gmail.com,Job Provider,PRAN,www.pranfoods.net
+Khan,kh3,khan3@gmail.com,Job Provider,Akij Group,www.akij.net
