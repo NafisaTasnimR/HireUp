@@ -1,8 +1,8 @@
 Six55,Six Yard's Story,Secretary,sixyardsstory@gmail.com,Mira Jahan,01873237890,mira44@gmail.com,Shortlisted
 Six55,Six Yard's Story,Secretary,sixyardsstory@gmail.com,Preownti Rahman,01873567890,preo24@gmail.com,pending
-Six54,Six Yard's Story,Executive Manager,sixyardsstory@gmail.com,Oishee Rahman,01963237890,oishee10@gmail.com,pending
+Six54,Six Yard's Story,Executive Manager,sixyardsstory@gmail.com,Oishee Rahman,01963237890,oishee10@gmail.com,Rejected
 Six54,Six Yard's Story,Executive Manager,sixyardsstory@gmail.com,Mira Jahan,01873237890,mira44@gmail.com,pending
-Six96,Six Yard's Story,HR Manager,sixyardsstory@gmail.com,Adrita Ahsan,01873987890,adrita8@gmail.com,pending
+Six96,Six Yard's Story,HR Manager,sixyardsstory@gmail.com,Adrita Ahsan,01873987890,adrita8@gmail.com,Shortlisted
 Six96,Six Yard's Story,HR Manager,sixyardsstory@gmail.com,Sanjana Afreen,01976536896,sanjana6@gmail.com,pending
 Milkyway76,Milkyway,Accountant,milkyway@gmail.com,Preownti Rahman,01873567890,preo24@gmail.com,pending
 Milkyway76,Milkyway,Accountant,milkyway@gmail.com,Adrita Ahsan,01873987890,adrita8@gmail.com,pending
@@ -14,4 +14,3 @@ Milk40,Milk,Marketing Manager,milk@gmail.com,Oishee Rahman,01963237890,oishee10@
 Milk40,Milk,Marketing Manager,milk@gmail.com,Sanjana Afreen,01976536896,sanjana6@gmail.com,pending
 Milk97,Milk,Sales Representative,milk@gmail.com,Mira Jahan,01873237890,mira44@gmail.com,pending
 Milk97,Milk,Sales Representative,milk@gmail.com,Adrita Ahsan,01873987890,adrita8@gmail.com,pending
-

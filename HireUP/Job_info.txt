@@ -1,6 +1,6 @@
-Six55,Six Yard's Story,Secretary,Speaking English,3-4 years,50000,Gulshan,9am-6pm,www.sixyardsstory.com,experienced,sixyardsstory@gmail.com
-Six54,Six Yard's Story,Executive Manager,Communication,5-6 years,70000,Uttara,9am-5pm,www.sixyardsstory.com,Microsoft Excel,sixyardsstory@gmail.com
-Six96,Six Yard's Story,HR Manager,Data Analysis,2-3 years,65000,Motijheel,8am-5pm,www.sixyardsstory.com,HR Software,sixyardsstory@gmail.com
+Six55,Six Yard's Story,Secretary,Speaking English,4 years,50000,Gulshan,9am-6pm,www.sixyardsstory.com,experienced,sixyardsstory@gmail.com
+Six54,Six Yard's Story,Executive Manager,Communication,6 years,70000,Uttara,9am-5pm,www.sixyardsstory.com,Microsoft Excel,sixyardsstory@gmail.com
+Six96,Six Yard's Story,HR Manager,Data Analysis,3 years,65000,Motijheel,8am-5pm,www.sixyardsstory.com,HR Software,sixyardsstory@gmail.com
 Milkyway24,Milkyway,Manager,Microsoft Word,5 years,100000,Gulshan,8am-6pm,www.milkyway.com,Microsoft Excel,milkyway@gmail.com
 Milkyway76,Milkyway,Accountant,Microsoft Excel,3 years,60000,Dhanmondi,9am-3pm,www.milkyway.com,Analytical Skills,milkyway@gmail.com
 Milkyway57,Milkyway,Software Developer,Java,3 years,70000,Banani,10am-6pm,www.milkyway.com,Database Management,milkyway@gmail.com

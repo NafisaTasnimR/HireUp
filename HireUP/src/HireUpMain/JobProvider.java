@@ -358,20 +358,20 @@ public class JobProvider extends User{
     {
         if (sortBy.equalsIgnoreCase("cgpa")) {
             applicantList.sort((a, b) -> {
-                double cgpaA = Double.parseDouble(a.split(",")[21]);
-                double cgpaB = Double.parseDouble(b.split(",")[21]);
+                double cgpaA = Double.parseDouble(a.split(",")[25]);
+                double cgpaB = Double.parseDouble(b.split(",")[25]);
                 return Double.compare(cgpaB, cgpaA);
             });
         } else if (sortBy.equalsIgnoreCase("msc")) {
             applicantList.sort((a, b) -> {
-                String mscA = a.split(",")[22].trim();
-                String mscB = b.split(",")[22].trim();
+                String mscA = a.split(",")[30].trim();
+                String mscB = b.split(",")[30].trim();
                 return mscB.compareTo(mscA);
             });
         }else if (sortBy.equalsIgnoreCase("experience")) {
             applicantList.sort((a, b) -> {
-                double experienceA = Double.parseDouble(extractYear(a.split(",")[24].trim()));
-                double experienceB = Double.parseDouble(extractYear(b.split(",")[24].trim()));
+                double experienceA = Double.parseDouble(extractYear(a.split(",")[42].trim()));
+                double experienceB = Double.parseDouble(extractYear(b.split(",")[42].trim()));
                 return Double.compare(experienceB, experienceA);
             });
         }
