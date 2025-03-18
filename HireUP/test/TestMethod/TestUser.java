@@ -40,7 +40,7 @@ public class TestUser {
     @Test
     public void testApplicantRequest(){
         boolean expectedValue = true;
-        User user = new User("Mysha","Hjkjlj&&7","mysha@gmail.com","Applicant");
+        User user = new User("Ayesha","Hjkjlj&&7","ayesha@gmail.com","Applicant");
         assertEquals(expectedValue,user.sendNewApplicantRequest(user));
     }
 
