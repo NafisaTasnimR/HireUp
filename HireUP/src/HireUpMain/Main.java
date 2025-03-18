@@ -70,13 +70,13 @@ public class Main {
             Scanner sc3 = new Scanner(System.in);
             String email = sc3.nextLine();
 
-            System.out.println("Password:");
+            /*System.out.println("Password:");
             Scanner sc2 = new Scanner(System.in);
-            String password = sc2.nextLine();
+            String password = sc2.nextLine();*/
 
-            /*Console console = System.console();
+            Console console = System.console();
             char[] passwordArray = ((Console) console).readPassword("Password : ");
-            String password = new String(passwordArray);*/
+            String password = new String(passwordArray);
 
             System.out.println("Role:");
             System.out.println("1. Applicant");
