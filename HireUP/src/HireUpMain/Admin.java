@@ -396,7 +396,8 @@ public class Admin extends User {
         return false;
     }
     public boolean processMultipleJobProviderRequests(List<Integer> serialNumbers, boolean approve, List<String> JobProviderRequestList) {
-        List<String> processedJobProviders = new ArrayList<>();
+        List<String> userInformation = new ArrayList<>();
+        List<String> jobProviderInformation = new ArrayList<>();
         List<String> remainingJobProviders = new ArrayList<>();
         boolean processed = false;
 
@@ -406,34 +407,45 @@ public class Admin extends User {
 
             if (serialNumbers.contains(serial)) {
                 if (approve) {
-                    processedJobProviders.add(String.join(",", Arrays.copyOfRange(data, 1, data.length)));
+                    String userInfo = String.join(",", Arrays.copyOfRange(data, 1, 5)); // Extract user details
+                    String jobProviderInfo = String.join(",", Arrays.copyOfRange(data, 1, data.length)); // Extract full details
+                    userInformation.add(userInfo);
+                    jobProviderInformation.add(jobProviderInfo);
                 }
                 processed = true;
             } else {
-                String remainingData = String.join(",", Arrays.copyOfRange(data, 1, data.length));
-                remainingJobProviders.add(remainingData);
+                remainingJobProviders.add(String.join(",", Arrays.copyOfRange(data, 1, data.length)));
             }
         }
 
         if (processed) {
             if (approve) {
-                try (BufferedWriter multiplewriter = new BufferedWriter(new FileWriter("User_info.txt", true))) {
-                    for (String jobProvider : processedJobProviders) {
-                        multiplewriter.write(jobProvider.trim());
-                        multiplewriter.newLine();
+                try (BufferedWriter userWriter = new BufferedWriter(new FileWriter("User_info.txt", true));
+                     BufferedWriter jobProviderWriter = new BufferedWriter(new FileWriter("JobProvider_info.txt", true))) {
+
+                    for (String userInfo : userInformation) {
+                        userWriter.write(userInfo.trim());
+                        userWriter.newLine();
                     }
-                    multiplewriter.flush();
+                    userWriter.flush();
+
+                    for (String jobProviderInfo : jobProviderInformation) {
+                        jobProviderWriter.write(jobProviderInfo.trim());
+                        jobProviderWriter.newLine();
+                    }
+                    jobProviderWriter.flush();
+
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
 
-            try (BufferedWriter writer23 = new BufferedWriter(new FileWriter("JobProviderRequest.txt"))) {
+            try (BufferedWriter requestWriter = new BufferedWriter(new FileWriter("JobProviderRequest.txt"))) {
                 for (String remainingJobProvider : remainingJobProviders) {
-                    writer23.write(remainingJobProvider.trim());
-                    writer23.newLine();
+                    requestWriter.write(remainingJobProvider.trim());
+                    requestWriter.newLine();
                 }
-                writer23.flush();
+                requestWriter.flush();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -443,6 +455,7 @@ public class Admin extends User {
 
         return false;
     }
+
 
     public boolean processMultipleApplicantRequests(List<Integer> serialNumbers, boolean approve, List<String> ApplicantRequestList) {
         List<String> processedApplicants = new ArrayList<>();
