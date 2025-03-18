@@ -37,7 +37,7 @@ public class JobProvider extends User{
     }
 
     public static JobProvider loadFromFile(String email) {
-        try (BufferedReader br = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\JobProvider_info.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("JobProvider_info.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
@@ -60,7 +60,7 @@ public class JobProvider extends User{
         String regex = "[,\\.\\s]";
         String[] nameArray = companyName.split(regex);
         String jobPostNo = nameArray[0] + String.valueOf((int)(Math.random()*100));
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\Job_info.txt", true))) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("Job_info.txt", true))) {
             bufferedWriter.newLine();
             bufferedWriter.write(jobPostNo + "," + formatData(this.getCompanyName()) + "," +
                     formatData(job.getJobPosition()) + "," + formatData(job.getSkill()) + "," + job.getExperience()
@@ -86,7 +86,7 @@ public class JobProvider extends User{
         System.out.println("================================================================================================================");
         List<String> applicantList = new ArrayList<>();
         int serial = 0;
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Application.txt")))
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Application.txt")))
         {
             String line;
             String applicantInfo = null;
@@ -96,7 +96,7 @@ public class JobProvider extends User{
                 String applicantEmail = data[6];
                 if(Objects.equals(this.getEmail(), data[3]) && Objects.equals(jobPostNo, data[0]) && Objects.equals(data[7],"pending"))
                 {
-                    try(BufferedReader bufferedReader1 = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))){;
+                    try(BufferedReader bufferedReader1 = new BufferedReader(new FileReader("Applicant_info.txt"))){;
 
                         String line1;
                         while ((line1 = bufferedReader1.readLine()) != null)
@@ -136,7 +136,7 @@ public class JobProvider extends User{
     {
         String email;
         String applicantResume = null;
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Applicant_info.txt"))){
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Applicant_info.txt"))){
             String line;
             while((line = bufferedReader.readLine()) != null)
             {
@@ -214,7 +214,7 @@ public class JobProvider extends User{
         String[] data = applicantResume.split(",");
         jobPostNo = data[1];
         applicantEmail = data[12];
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Application.txt")))
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Application.txt")))
         {
             String line;
             while ((line = bufferedReader.readLine()) != null)
@@ -241,7 +241,7 @@ public class JobProvider extends User{
 
     public void addToShortList(List<String> changedApplicationInfo)
     {
-        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("E:\\HireUp\\HireUp\\HireUP\\Application.txt"))){
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("Application.txt"))){
             for(String application: changedApplicationInfo){
                 bufferedWriter.write(application);
                 bufferedWriter.newLine();
@@ -266,7 +266,7 @@ public class JobProvider extends User{
                 jobPostNo = jobData[1];
             }
         }
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Application.txt")))
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Application.txt")))
         {
             System.out.println("================================================================================================================");
             System.out.println("| S.No | Name                           | Phone Number              | Email                                    |");
@@ -303,7 +303,7 @@ public class JobProvider extends User{
     public List<String> seeJobPosts()
     {
         List<String> jobPostList = new ArrayList<>();
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("E:\\HireUp\\HireUp\\HireUP\\Job_info.txt")))
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("Job_info.txt")))
         {
             System.out.println("================================================================================================================");
             System.out.println("| S.No | Job Post No                    | Company Name              | Position                                 |");

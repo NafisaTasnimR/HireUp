@@ -1,14 +1,14 @@
 Rodoshi,rod114,rodoshi@gmail.com,Admin
 Nishat,nish124,nishat@gmail.com,Admin
 Mrittika,mri150,mrittika@gmail.com,Admin
-Sneha,mlk8*,milkyway@gmail.com,Job Provider
+Ayesha,mlk8*,milkyway@gmail.com,Job Provider
 Nuzhat,mrs#3,mars@gmail.com,Job Provider
 Mira,mira@44,mira44@gmail.com,Applicant
-Preo,preo@24,preo24@gmail.com,Applicant
+Preownti,preo@24,preo24@gmail.com,Applicant
 Oishee,oishee10@,oishee10@gmail.com,Applicant
 Adrita,Adrita08@,adrita8@gmail.com,Applicant
 Sanjana,sanjana06@,sanjana6@gmail.com,Applicant
 Nafisa Tasnim,6six,sixyardsstory@gmail.com,Job Provider
-Preownti Rahman,S1Rahman,milk@gmail.com,Job Provider
+Tanzia Rahman,S1Rahman,milk@gmail.com,Job Provider
 John Doe,pass123,john@gmail.com,Job Provider
 Sneha,pass123,sneha@gmail.com,Applicant

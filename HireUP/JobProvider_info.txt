@@ -1,4 +1,5 @@
 Nafisa Tasnim,6six,sixyardsstory@gmail.com,Job Provider,Six Yard's Story,www.sixyardsstory.com
-Sneha,mlk8*,milkyway@gmail.com,Job Provider,Milkyway,www.milkyway.com
-Preownti Rahman,S1Rahman,milk@gmail.com,Job Provider,Milk,www.milk.com
+Ayesha,mlk8*,milkyway@gmail.com,Job Provider,Milkyway,www.milkyway.com
+Tanzia Rahman,S1Rahman,milk@gmail.com,Job Provider,Milk,www.milk.com
 John Doe,pass123,john@gmail.com,Job Provider,TechCorp,www.techcorp.com
+Nuzhat,mrs#3,mars@gmail.com,Job Provider,Mars,www.mars.com
