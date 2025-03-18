@@ -16,13 +16,3 @@ Adiba,Adiba13adiba#,adiba@gmail.com,Applicant
 Sneha,pass123,sneha@gmail.com,Applicant
 Bohota,bohota,bohota57@gmail,Applicant
 Khan,kh3,khan3@gmail.com,Job Provider
-Hasan,hs7,hasan7@gmail.com,Job Provider
-Mahin,MahinhjhU6^,mahin@gmail.com,Job Provider
-Mihrimah,Mihrimah65*,mihrimah@gmail.com,Applicant
-Asif,Asif$78*,asif@gmail.com,Applicant
-Sneha,pass123,sneha@gmail.com,Applicant
-Ahmed,ah2,ahmed2@gmail.com,Job Provider
-Sultana,sl8,sultana8@gmail.com,Job Provider
-Mahmud,jdhJhsg5%,mahmud@gmail.com,Job Provider
-Hasan,hs7,hasan7@gmail.com,Job Provider
-Ahmed,ah2,ahmed2@gmail.com,Job Provider

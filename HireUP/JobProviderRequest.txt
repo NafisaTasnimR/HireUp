@@ -1,3 +1,7 @@
-Mahin,MahinhjhU6^,mahin@gmail.com,Job Provider,Fresh,www.fresh.com
+Hasan,hs7,hasan7@gmail.com,Job Provider,Walton,www.waltonbd.com
+Ahmed,ah2,ahmed2@gmail.com,Job Provider,Square Group,www.squaregroup.com
 Sultana,sl8,sultana8@gmail.com,Job Provider,Bashundhara Group,www.bashundharagroup.com
-Riya,RiyaH87*,riya@gmail.com,Job Provider,Yatai,www.yatai.com
+Arko,hjkiHhwgh%%,arko@gmail.com,Job Provider,Bashundhara,www.bashundhara.com
+Mahmud,jdhJhsg5%,mahmud@gmail.com,Job Provider,Mum,www.mum.com
+Saeed,Saeed&87T,saeed@gmail.com,Job Provider,Mojo,www.mojo.com
+Mahin,MahinhjhU6^,mahin@gmail.com,Job Provider,Fresh,www.fresh.com

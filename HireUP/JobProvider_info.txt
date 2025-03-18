@@ -5,9 +5,3 @@ John Doe,pass123,john@gmail.com,Job Provider,TechCorp,www.techcorp.com
 Nuzhat,mrs#3,mars@gmail.com,Job Provider,Mars,www.mars.com
 Rahman,rh5,rahman5@gmail.com,Job Provider,PRAN,www.pranfoods.net
 Khan,kh3,khan3@gmail.com,Job Provider,Akij Group,www.akij.net
-Hasan,hs7,hasan7@gmail.com,Job Provider,Walton,www.waltonbd.com
-Mahin,MahinhjhU6^,mahin@gmail.com,Job Provider,Fresh,www.fresh.com
-Ahmed,ah2,ahmed2@gmail.com,Job Provider,Square Group,www.squaregroup.com
-Sultana,sl8,sultana8@gmail.com,Job Provider,Bashundhara Group,www.bashundharagroup.com
-Hasan,hs7,hasan7@gmail.com,Job Provider,Walton,www.waltonbd.com
-Ahmed,ah2,ahmed2@gmail.com,Job Provider,Square Group,www.squaregroup.com
