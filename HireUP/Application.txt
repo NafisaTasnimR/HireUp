@@ -12,4 +12,6 @@ Milkyway57,Milkyway,Software Developer,milkyway@gmail.com,Preownti Rahman,018735
 Milkyway57,Milkyway,Software Developer,milkyway@gmail.com,Mira Jahan,01873237890,mira44@gmail.com,pending
 Milk40,Milk,Marketing Manager,milk@gmail.com,Oishee Rahman,01963237890,oishee10@gmail.com,pending
 Milk40,Milk,Marketing Manager,milk@gmail.com,Sanjana Afreen,01976536896,sanjana6@gmail.com,pending
+Milk97,Milk,Sales Representative,milk@gmail.com,Mira Jahan,01873237890,mira44@gmail.com,pending
+Milk97,Milk,Sales Representative,milk@gmail.com,Adrita Ahsan,01873987890,adrita8@gmail.com,pending
 
