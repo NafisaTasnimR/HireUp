@@ -1,4 +1,4 @@
-****** HIRE UP ******
+## HIRE UP 
 
 ## Overview
 HireUp is a console-based Java application designed to connect job applicants with job providers. The system allows job seekers to search and apply for jobs, job providers to post and manage job listings, and an admin to oversee the entire platform.
